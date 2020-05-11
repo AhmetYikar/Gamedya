@@ -1,0 +1,70 @@
+﻿@model Entites.Models.UserModels.NewsUser
+
+@{
+    ViewBag.Title = "Kullanıcı Düzenle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="box box-primary">
+    <div class="box-body box-profile">
+        <h3 class="profile-username text-center">@ViewBag.Title</h3>
+        <div>
+            <ul class="list-group list-group-unbordered">
+                <li class="list-group-item">
+                    @Html.DisplayNameFor(model => model.FullName)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.FullName)
+                    </dd>
+                </li>
+                <li class="list-group-item">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.UserName)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.UserName)
+                    </dd>
+                </li>
+                <li class="list-group-item">
+                    <dt>
+                        Bu kullanıcının sahip olduğu roller
+                    </dt>
+                </li>
+                <li class="list-group-item">
+                    <dd>
+                        @if (ViewBag.RoleNames.Count == 0)
+                        {
+                            <hr />
+                            <p>Hiç bir rol atanmamıştır!</p>
+                        }
+                        <table class="table">
+
+                            @{int rolesCount = ViewBag.RoleNames.Count;
+
+                                foreach (var item in ViewBag.RoleNames)
+                                {
+                                    rolesCount--;
+
+                                    <i>
+                                        @item
+                                    </i>
+                                    if (rolesCount != 0)
+                                    {
+                                        <tr>,</tr>
+                                    }
+
+                                }
+
+                            }
+
+                        </table>
+                    </dd>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+@Html.ActionLink("Düzenle", "Edit", new { id = Model.Id }) |
+@Html.ActionLink("Listeye Geri Dön", "Index")

@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Gamedya.Models.NewsViewWeb>
+
+<div class="tab sitebar" style="background:#0094ff">
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#1" data-toggle="tab">Latest</a></li>
+        <li><a href="#2" data-toggle="tab">Populer</a></li>
+    </ul>
+
+    <div class="tab-content">
+        <div class="tab-pane active" id="1">
+
+            @foreach (var item in Model)
+            {
+                <div class="media">
+                    <div class="media-left">
+                        <a href="@Url.Action("Details", "NewsDetails",new {id=item.Id})"><img class="media-object" src="@item.TinyImagePath" alt="Generic placeholder image" style="height:60px"></a>
+                    </div><!--media-left-->
+                    <div class="media-body">
+                        <h4 class="media-heading"><a href="@Url.Action("Details", "NewsDetails",new {id=item.Id})">@item.Title</a></h4>
+                        <span class="rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star-half-full"></i>
+                        </span>
+                    </div><!--media-body-->
+                </div><!--media-->
+
+            }
+
+        </div><!--tab-pane-->
+
+        <div class="tab-pane" id="2">
+            @Html.Action("GetPopularNews", "LatestNews")
+        </div><!--tab-pane-->
+    </div><!--tab-content-->
+</div><!--tab-->

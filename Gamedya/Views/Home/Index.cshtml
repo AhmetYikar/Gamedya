@@ -1,0 +1,39 @@
+﻿<!-- Feature Carousel Section -->
+<section id="feature_news_section" class="feature_news_section section_wrapper">
+    <div class="container">
+        <div class="row">
+            @Html.Action("GetSlider","Slider")
+
+            <div class="col-md-6">
+                <div class="feature_news_static">
+                    <div class="row">
+                        @Html.Action("GetYouTube","YouTube")
+                        @Html.Action("GetTwitch","Twitch")
+                    </div><!--row-->
+                </div><!--feature_news_static-->
+            </div><!--col-md-6-->
+        </div><!--row-->
+    </div><!--container-->
+</section><!--feature_news_section-->
+<!-- Feature Category Section & sidebar -->
+
+<section id="feature_category_section" class="feature_category_section section_wrapper">
+    <div class="container">
+        <div class="col-md-9">
+            @Html.Action("GetPcNews","PcNews")
+            @Html.Action("GetMobilNews","MobilNews")
+            @Html.Action("GetScienceNews","ScienceNews")
+
+        </div>
+        <div class="col-md-3">
+            @Html.Action("GetLatestNews", "LatestNews")
+
+            @Html.Action("MostComment", "MostCommentNews")
+
+
+        </div>
+    </div>
+</section><!--feature_category_section-->
+
+@Html.Action("GetMoreNews","MoreNews")
+@Html.Action("GetVideoNews","VideoNews")

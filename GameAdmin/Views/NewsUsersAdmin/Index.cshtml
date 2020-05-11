@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Entites.Models.UserModels.NewsUser>
+
+@{
+    ViewBag.Title = "Kullanıcılar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="box">
+    <div class="box-header">
+        <h3 class="box-title">@ViewBag.Title</h3>
+    </div>
+    <div>
+        <p class="text-center">
+            @Html.ActionLink("Yeni Kullanıcı", "Create", "NewsUsersAdmin", null, new { @class = "btn btn-block btn-primary btn-sm" })
+        </p>
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
+        <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+            <div id="example1_filter" class="dataTables_filter pull-right">
+                <label>Arama: <input type="search" class="form-control input-sm" placeholder="" aria-controls="example1"></label>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.FullName)
+                            </th>
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.UserName)
+                            </th>
+                            <th></th>
+                        </tr>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.FullName)
+                                </td>
+
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.UserName)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Düzenle", "Edit", new { id = item.Id }) |
+                                    @Html.ActionLink("Detaylar", "Details", new { id = item.Id }) |
+                                    @Html.ActionLink("Sil", "Delete", new { id = item.Id })
+                                </td>
+                            </tr>
+                        }
+                        <tfoot>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.FullName)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.UserName)
+                                </th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

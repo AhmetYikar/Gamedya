@@ -1,0 +1,96 @@
+﻿@model PagedList.IPagedList<GameAdmin.Models.NewsViewModel>
+@using PagedList.Mvc;
+@using PagedList;
+@using GameAdmin.Helper;
+@{
+    ViewBag.Title = "Haberler";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="box">
+    <div class="box-header">
+        <h3 class="box-title">@ViewBag.Title</h3>
+    </div>
+    <div>
+        <p class="text-center">
+            @Html.ActionLink("Yeni Haber", "Create", "News", null, new { @class = "btn btn-block btn-primary btn-sm" })
+        </p>
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
+        <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+            <div id="example1_filter" class="dataTables_filter pull-right">
+                <label>Arama:  <input type="search" class="form-control input-sm" placeholder="" aria-controls="example1"></label>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.First().TinyImagePath)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.First().Title)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.First().Date)
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        <img src="@Html.DisplayFor(modelItem => item.TinyImagePath)" style="height:80px;">
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Title)
+                                    </td>
+                                    <td>
+                                        @item.Date.ToString()
+                                    </td>
+
+                                    <td>
+                                        @Html.ActionLink("Düzenle", "Edit", new { id = item.Id }) |
+                                        <a href="@Url.Action("Details", "News", new { id = item.Id})">Detaylar</a>|
+                                        @Html.ActionLink("Sil", "Delete", new { id = item.Id })|
+
+                                        @if (item.CommentCount > 0)
+                                        {
+                                            <a href="@Url.Action("Index", "NewsComments", new { id = item.Id})">Haber Yorumları</a>
+                                            <span class="label label-primary">@item.CommentCount.ToString()</span>
+                                        }
+                                        else
+                                        {<d>Haber Yorumları </d>}
+
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                        <tfoot>
+                        <tfoot>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.First().TinyImagePath)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.First().Title)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.First().Date)
+                                </th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+        @Html.ActionLink("Listeye Geri DÖn", "Index")
+        Sayfa @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) - @Model.PageCount
+        @Html.PagedListPager(Model, sayfaNo => Url.Action("index", "news",
+new { sayfaNo, siralama = ViewBag.SonSiralama1, SonArananKelime = ViewBag.sonArananKelime1, @class = "page-numbers current bg-border-color" }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
+        <!-- /.box-body -->
+    </div>
+</div>

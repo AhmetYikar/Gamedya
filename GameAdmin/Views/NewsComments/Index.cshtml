@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Entites.Models.NewsModels.NewsComment>
+
+@{
+    ViewBag.Title = "Comments";
+}
+
+<div class="content-wrapper">
+    <div class="container ml-3 mt-3">
+        <div class="col-md-12">
+            <div class="card card-primary " style="width: 65rem;">
+                <div class="card-header">
+                    <h3 class="card-title ">@Model.First().News.Title başlıklı haberin yorumları  </h3>
+                </div>
+
+                <div class="container">
+
+
+                    <table class="table">
+                        <tr>
+
+                            <th>
+                                Yorum Sahibi
+                            </th>
+                            
+                            <th>
+                                @Html.DisplayNameFor(model => model.Content)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.IsOk)
+                            </th>
+                            <th></th>
+                        </tr>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.NewsUser.FullName)
+                                </td>
+                               
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Content)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.IsOk)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+                    <a href="@Url.Action("Details", "News", new { id = Model.First().NewsId})">Habere Geri Dön</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

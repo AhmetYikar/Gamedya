@@ -1,0 +1,60 @@
+﻿
+@model List<Gamedya.Models.NewsViewWeb>
+@{ Layout = null;}
+
+<div class="category_layout">
+    <div class="item_caregory red"><h2><a href="category.html">PC OYUN HABERLERİ</a></h2></div>
+    <div class="row">
+        <div class="col-md-7">
+            <div class="item feature_news_item">
+                <div class="item_wrapper">
+                    <div class="item_img">
+                        <img class="img-responsive" src="@Model.First().BigImagePath" >
+                    </div><!--item_img-->
+                    <div class="item_title_date">
+                        <div class="news_item_title">
+                            <h2><a href="@Url.Action("Details", "NewsDetails",new {id=Model.First().Id})">@Model.First().Title</a></h2>
+                        </div><!--news_item_title-->
+                        <div class="item_meta"><a href="#">@Model.First().Date.ToLongDateString()</a></div>
+                    </div><!--item_title_date-->
+                </div><!--item_wrapper-->
+                <div class="item_content">
+                    @Model.First().Summary
+                </div><!--item_content-->
+
+
+            </div><!--feature_news_item-->
+        </div><!--col-md-7-->
+
+        <div class="col-md-5">
+            <div class="media_wrapper">
+
+                @for (int i = 1; i < Model.Count(); i++)
+                {
+
+                    <div class="media">
+                        <div class="media-left">
+                            <a href="@Url.Action("Details", "NewsDetails",new {id=Model[i].Id})"><img class="media-object" src="@Model[i].TinyImagePath" alt="Generic placeholder image" style="height:80px"></a>
+                        </div><!--media-left-->
+
+                        <h3 class="media-heading">
+                            <a href="@Url.Action("Details", "NewsDetails",new {id=Model[i].Id})">
+                                @Model[i].Title
+                            </a>
+                        </h3>
+                        @if (@Model[i].Summary.Count() > 50)
+                        {
+                            <p>@Model[i].Summary.Substring(0, 50)</p>
+                        }
+
+                    </div><!--media-->
+
+
+                }
+
+
+            </div><!--media_wrapper-->
+
+        </div><!--col-md-5-->
+    </div><!--row-->
+</div><!--category_layout-->

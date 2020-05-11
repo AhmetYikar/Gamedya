@@ -1,0 +1,120 @@
+﻿@model Entites.Models.NewsModels.News
+@{
+    ViewBag.Title = "Details";
+}
+@using Gamedya.Helper
+
+<div class="container">
+
+    <h2>Details</h2>
+
+    <div>
+        <h4>News</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.NewsCategory.CategoryName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.NewsCategory.CategoryName)
+            </dd>
+
+            <dt>
+                Haber sahibi
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.NewsUser.FullName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Title)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Title)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Summary)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Summary)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Content)
+            </dt>
+
+            <dd>
+                @Html.Raw(Model.Content)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Date)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Date)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.EditDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.EditDate)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.IsActive)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.IsActive)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ViewCount)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ViewCount)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.NewsPlatform)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.NewsPlatform)
+            </dd>
+
+        </dl>
+        <div>
+            <textarea type="Text" id="comment" placeholder="yorumunuz..."></textarea>
+            <br />
+            @if (User.GetFullName() != "")
+            {
+                <p>@User.GetFullName()</p>
+            }
+            else
+            {
+                <input type="text" id="guestName" placeholder="adınız..." />
+            }
+
+            <br />
+            <button type="button" onclick="AddComment(@Model.Id)" class="btn btn-info"> Yorum ekle </button>
+        </div>
+
+        <p>
+            @Html.Action("Index", "NewsComment", new { id = Model.Id })
+        </p>
+    </div>
+
+
+    <script src="~/Scripts/Global.js"></script>
+
+</div>

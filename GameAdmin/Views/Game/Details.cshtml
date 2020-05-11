@@ -1,0 +1,84 @@
+﻿@model Entites.Models.GameModels.Game
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="box box-primary">
+    <div class="box-body box-profile">
+        <h3 class="profile-username text-center">Game Detayları</h3>
+
+        <ul class="list-group list-group-unbordered">
+            <li class="list-group-item">
+                <dt>
+                    @Html.DisplayNameFor(model => model.GameGenre.GenreName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.GameGenre.GenreName)
+                </dd>
+            </li>
+            <li class="list-group-item">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+
+            </li>
+            <li class="list-group-item">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Publisher)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Publisher)
+                </dd>
+            </li>
+
+            <li class="list-group-item">
+                <dt>
+                    @Html.DisplayNameFor(model => model.ReleaseDate)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ReleaseDate)
+                </dd>
+
+            </li>
+
+            <li class="list-group-item">
+                <dt>
+                    @Html.DisplayNameFor(model => model.GamePlatform)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.GamePlatform)
+                </dd>
+            </li>
+            <li class="list-group-item">
+                <dt>
+                    Game Sahibi
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.NewsUser.FullName)
+                </dd>
+            </li>
+        </ul>
+    </div>
+
+</div>
+
+@if (Model.NewsUserId == User.GetUserId())
+{
+    @Html.ActionLink("Düzenle", "Edit", new { id = Model.Id }) <a>|</a>
+}
+
+@*@Html.ActionLink("Düzenle", "Edit", new { id = Model.Id }) |*@
+
+@Html.ActionLink("Listeye Dön", "Index") |
+@Html.ActionLink("Haber Yorumları", "Comments", new { id = Model.Id })

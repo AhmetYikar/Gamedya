@@ -1,0 +1,118 @@
+﻿@model Entites.Models.BlogModels.BlogPost
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="box box-primary">
+    <div class="box-body box-profile">
+        <h3 class="profile-username text-center">Blog Detayları</h3>
+        <dt>
+            @Html.DisplayNameFor(model => model.TinyImagePath)
+        </dt>
+
+        <dd>
+            <img src="@Html.DisplayFor(model => model.TinyImagePath)">
+        </dd>
+
+        <ul class="list-group list-group-unbordered">
+            <li class="list-group-item">
+                <dt>
+                    @Html.DisplayNameFor(model => model.BlogCategory.CategoryName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.BlogCategory.CategoryName)
+                </dd>
+            </li>
+            <li class="list-group-item">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Title)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Title)
+                </dd>
+
+            </li>
+            <li class="list-group-item">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Summary)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Summary)
+                </dd>
+            </li>
+
+            <li class="list-group-item">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Content)
+                </dt>
+
+                <dd>
+                    @Html.Raw(Model.Content)
+                </dd>
+
+            </li>
+
+            <li class="list-group-item">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Date)
+                </dt>
+
+                <dd>
+                    @Model.Date.ToString()
+                </dd>
+
+            </li>
+            <li class="list-group-item">
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.EditDate)
+                </dt>
+
+                <dd>
+                    @Model.EditDate.ToString()
+                </dd>
+            </li>
+            <li class="list-group-item">
+                <dt>
+                    @Html.DisplayNameFor(model => model.ViewCount)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ViewCount)
+                </dd>
+            </li>
+            <li class="list-group-item">
+                <dt>
+                    Blog Sahibi
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.NewsUser.FullName)
+                </dd>
+            </li>
+        </ul>
+    </div>
+
+</div>
+
+@if (Model.NewsUserId == User.GetUserId())
+{
+    @Html.ActionLink("Düzenle", "Edit", new { id = Model.Id }) <d>|</d>
+}
+else
+{<d>Düzenle |</d>}
+
+@if (Model.BlogComments != null && Model.BlogComments.Count() > 0)
+{
+    <a href="@Url.Action("Index", "BlogComment", new { id = Model.Id})">Blog Yorumları</a>
+    <span class="label label-primary">@Model.BlogComments.Count().ToString()</span><d> |</d>
+}
+else
+{<d>Blog Yorumları |</d>}
+
+@Html.ActionLink("Listeye Dön", "Index") |

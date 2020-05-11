@@ -1,0 +1,46 @@
+﻿@model Entites.Models.UserModels.NewsUser
+
+@{
+    ViewBag.Title = "Kullanıcı Sil";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="box box-primary">
+    <div class="box-body box-profile">
+        <h3 class="profile-username text-center">@ViewBag.Title</h3>
+
+        <p class="text-muted text-center text-danger">Kullanıcıyı SİLMEK İSTEDİĞİNİZE EMİN MİSİNİZ?</p>
+        <div>
+            <ul class="list-group list-group-unbordered">
+                <li class="list-group-item">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.FullName)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.FullName)
+                    </dd>
+                </li>
+                <li class="list-group-item">
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.UserName)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.UserName)
+                    </dd>
+                </li>
+            </ul>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                <div class="form-actions no-color">
+                    <input type="submit" value="Sil" class="btn btn-primary btn-block" />
+                </div>
+            }
+        </div>
+    </div>
+</div>
+@Html.ActionLink("Listeye Geri Dön", "Index")

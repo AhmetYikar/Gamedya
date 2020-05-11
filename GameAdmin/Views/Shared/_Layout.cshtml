@@ -1,0 +1,343 @@
+﻿@using GameAdmin.Helper
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    @Styles.Render("~/Assest/css")
+    <script src="~/Scripts/ckeditor/ckeditor.js"></script>
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+    <div class="wrapper">
+        <header class="main-header">
+            <!-- Logo -->
+            <a href="@Url.Action("Index", "Dashboard")" class="logo">
+                <!-- mini logo for sidebar mini 50x50 pixels -->
+                <span class="logo-mini"><b>G</b>M</span>
+                <!-- logo for regular state and mobile devices -->
+                <span class="logo-lg"><b>Ga</b>Medya  </span>
+            </a>
+            <!-- Header Navbar: style can be found in header.less -->
+            <nav class="navbar navbar-static-top">
+                <!-- Sidebar toggle button-->
+                <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                </a>
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="#" class="btn btn-sm">
+                                <i class="fa fa-home"></i>
+                                <span>Siteye git</span>
+                            </a>
+                        </li>
+                        <!-- Messages: style can be found in dropdown.less-->
+                        <li class="dropdown messages-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-envelope-o"></i>
+                                <span class="label label-success">?</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="header">You have ? messages</li>
+                                <li>
+                                    <!-- inner menu: contains the actual data -->
+                                </li>
+                                <li class="footer"><a href="@Url.Action("Index", "Message")">See All Messages</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <!-- User Account: style can be found in dropdown.less -->
+                            @Html.Partial("_LoginPartial")
+                            <!-- Control Sidebar Toggle Button -->
+                        </li>
+                        <li>
+                            <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <!-- Left side column. contains the logo and sidebar -->
+        <aside class="main-sidebar">
+            <!-- sidebar: style can be found in sidebar.less -->
+            <section class="sidebar">
+                <!-- Sidebar user panel -->
+                <div class="user-panel">
+                    <div class="pull-left image">
+                        <img src="@User.GetUserImage()" class="img-circle" alt="User Image">
+                    </div>
+                    <div class="pull-left info">
+                        <p>@User.GetFullName()</p>
+                        <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                    </div>
+                </div>
+                <!-- search form -->
+                <form action="#" method="get" class="sidebar-form">
+                    <div class="input-group">
+                        <input type="text" name="q" class="form-control" placeholder="Search...">
+                        <span class="input-group-btn">
+                            <button type="submit" name="search" id="search-btn" class="btn btn-flat">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+                <!-- /.search form -->
+                <!-- sidebar menu: : style can be found in sidebar.less -->
+                <ul class="sidebar-menu" data-widget="tree">
+                    <li class="header">ANA YÖNETİM</li>
+                    <li class="active treeview">
+                        <a href="#" class="bg-aqua-active">
+                            <i class="fa fa-dashboard"></i> <span>Haberler</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li class="active"><a href="@Url.Action("Create", "News")"><i class="fa fa-circle-o"></i> Haber Ekle</a></li>
+                            <li><a href="@Url.Action("Index", "News")"><i class="fa fa-circle-o"></i> Haber Listele</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-files-o"></i>
+                            <span>Forumlar</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="@Url.Action("Create", "Forum")"><i class="fa fa-circle-o"></i> Forum Ekle</a></li>
+                            <li><a href="@Url.Action("Index", "Forum")"><i class="fa fa-circle-o"></i> Forumları Listele</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-pie-chart"></i>
+                            <span>Bloglar</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="@Url.Action("Create", "Blog")"><i class="fa fa-circle-o"></i> Blog Ekle</a></li>
+                            <li><a href="@Url.Action("Index", "Blog")"><i class="fa fa-circle-o"></i> Blogları Listele</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-laptop"></i>
+                            <span>Game</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="@Url.Action("Create", "Game")"><i class="fa fa-circle-o"></i> Game Ekle</a></li>
+                            <li><a href="@Url.Action("Index", "Game")"><i class="fa fa-circle-o"></i> Game Listele</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-edit"></i> <span>Haber Kategorileri</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="@Url.Action("Create", "NewsCategory")"><i class="fa fa-circle-o"></i> Kategori Ekle</a></li>
+                            <li><a href="@Url.Action("Index", "NewsCategory")"><i class="fa fa-circle-o"></i> Kategorileri Listele</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-table"></i> <span>Forum Kategoriler</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="@Url.Action("Create", "ForumCategory")"><i class="fa fa-circle-o"></i>Kategori Ekle</a></li>
+                            <li><a href="@Url.Action("Index", "ForumCategory")"><i class="fa fa-circle-o"></i>Kategorileri Listele</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-folder"></i> <span>Blog Kategoriler</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="@Url.Action("Create", "BlogCategory")"><i class="fa fa-circle-o"></i>Kategori Ekle</a></li>
+                            <li><a href="@Url.Action("Index", "BlogCategory")"><i class="fa fa-circle-o"></i> Kategorileri Listele</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-share"></i> <span>Game Genre</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="@Url.Action("Create", "GameGenre")"><i class="fa fa-circle-o"></i> Game Genre Ekle </a></li>
+                            <li><a href="@Url.Action("Index", "GameGenre")"><i class="fa fa-circle-o"></i>Game Genre Listele</a></li>
+                        </ul>
+
+                    </li>
+                    <li class="header">SON</li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-envelope"></i> <span>Mesajlar</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="@Url.Action("Index", "Message")"><i class="fa fa-circle-o"></i>Gelen Kutusu </a></li>
+                            <li><a href="#"><i class="fa fa-circle-o"></i>Giden Kutusu</a></li>
+                        </ul>
+                    </li>
+                    @if (User.IsInRole("admin"))
+                    {
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-address-book"></i> <span>Kullanıcı Yönetim</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="@Url.Action("Index", "RolesAdmin")"><i class="fa fa-circle-o"></i>Kullanıcı Rolleri</a></li>
+                                <li><a href="@Url.Action("Index", "NewsUsersAdmin")"><i class="fa fa-circle-o"></i>Kullanıcılar</a></li>
+                            </ul>
+                        </li>
+                    }
+
+
+                </ul>
+            </section>
+            <!-- /.sidebar -->
+        </aside>
+        <!-- /.content-wrapper -->
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark" style="display: none;">
+            <!-- Create the tabs -->
+            <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
+                <li><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
+            </ul>
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <!-- Home tab content -->
+                <div class="tab-pane" id="control-sidebar-home-tab">
+                    <h3 class="control-sidebar-heading">Tasks Progress</h3>
+                    <ul class="control-sidebar-menu">
+                        <li>
+                            <a href="javascript:void(0)">
+                                <h4 class="control-sidebar-subheading">
+                                    Custom Template Design
+                                    <span class="label label-danger pull-right">70%</span>
+                                </h4>
+
+                                <div class="progress progress-xxs">
+                                    <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)">
+                                <h4 class="control-sidebar-subheading">
+                                    Update Resume
+                                    <span class="label label-success pull-right">95%</span>
+                                </h4>
+
+                                <div class="progress progress-xxs">
+                                    <div class="progress-bar progress-bar-success" style="width: 95%"></div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)">
+                                <h4 class="control-sidebar-subheading">
+                                    Laravel Integration
+                                    <span class="label label-warning pull-right">50%</span>
+                                </h4>
+
+                                <div class="progress progress-xxs">
+                                    <div class="progress-bar progress-bar-warning" style="width: 50%"></div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)">
+                                <h4 class="control-sidebar-subheading">
+                                    Back End Framework
+                                    <span class="label label-primary pull-right">68%</span>
+                                </h4>
+
+                                <div class="progress progress-xxs">
+                                    <div class="progress-bar progress-bar-primary" style="width: 68%"></div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- /.control-sidebar-menu -->
+                </div>
+                <!-- /.tab-pane -->
+                <!-- Stats tab content -->
+                <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>
+            </div>
+        </aside>
+        <!-- /.control-sidebar -->
+        <!--  -->
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <div class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <h1 class="m-0 text-dark">@ViewBag.HeaderTitle</h1>
+                        </div><!-- /.col -->
+                        <div class="col-sm-6">
+                            <ol class="breadcrumb float-sm-right">
+                                <li class="breadcrumb-item">
+                                    <a href="@Url.Action("Index","Dashboard")">Yönetim Paneli</a>
+                                </li>
+                                @*<li class="breadcrumb-item">
+                                        <a href="@Url.Action("Index",Html.ControllerName())">
+                                            @Html.BreadcrumbControllerName()
+                                        </a>
+                                    </li>
+                                    <li class="breadcrumb-item active">
+                                        @Html.BreadcrumbActionName()
+                                    </li>*@
+                            </ol>
+                        </div><!-- /.col -->
+                    </div><!-- /.row -->
+                </div><!-- /.container-fluid -->
+            </div>
+            <!-- /.content-header -->
+            <!-- Main content -->
+            <div class="content">
+                <div class="container-fluid">
+                    @RenderBody()
+                </div>
+            </div>
+            <!-- /.content -->
+        </div>
+
+        <footer class="main-footer">
+            <strong>Copyright &copy;@DateTime.Now.Year <a href="#">ARYAZıLım</a>.</strong> Tüm HAKLARI SAKLIDIR.
+        </footer>
+    </div>
+    <!-- ./wrapper -->
+    <!-- jQuery 3 -->
+    @Scripts.Render("~/Assest/bootstrap")
+    <script>$.widget.bridge('uibutton', $.ui.button);</script>
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>
