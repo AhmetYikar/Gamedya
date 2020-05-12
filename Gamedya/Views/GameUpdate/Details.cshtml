@@ -1,0 +1,52 @@
+﻿@model Entites.Models.GameModels.GameUpdate
+
+@{
+    <title> Gamedya| GameUpdate </title>
+}
+
+<div class="container">
+    <h2>
+        @Html.DisplayFor(model => model.Title)
+    </h2>
+
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Content)
+            </dt>
+
+            <dd>
+                @Html.Raw(Model.Content)
+            </dd>
+
+            <dt>
+                Game Name
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Game.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ArticleType)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ArticleType)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Date)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Date)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</div>

@@ -249,9 +249,11 @@
     <Compile Include="Controllers\ForumCategoryController.cs" />
     <Compile Include="Controllers\ForumController.cs" />
     <Compile Include="Controllers\ForumReplyController.cs" />
+    <Compile Include="Controllers\GeneralArticleController.cs" />
     <Compile Include="Controllers\GameController.cs" />
     <Compile Include="Controllers\GameGenreController.cs" />
     <Compile Include="Controllers\GameReviewController.cs" />
+    <Compile Include="Controllers\GameUpdateController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MessageController.cs" />
@@ -7810,6 +7812,16 @@
     <Content Include="Scripts\umd\popper.js.flow" />
     <Content Include="Scripts\umd\popper.js.map" />
     <Content Include="Scripts\umd\popper.min.js.map" />
+    <Content Include="Views\GameUpdate\Index.cshtml" />
+    <Content Include="Views\GameUpdate\Create.cshtml" />
+    <Content Include="Views\GameUpdate\Delete.cshtml" />
+    <Content Include="Views\GameUpdate\Details.cshtml" />
+    <Content Include="Views\GameUpdate\Edit.cshtml" />
+    <Content Include="Views\GeneralArticle\Create.cshtml" />
+    <Content Include="Views\GeneralArticle\Delete.cshtml" />
+    <Content Include="Views\GeneralArticle\Details.cshtml" />
+    <Content Include="Views\GeneralArticle\Edit.cshtml" />
+    <Content Include="Views\GeneralArticle\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
