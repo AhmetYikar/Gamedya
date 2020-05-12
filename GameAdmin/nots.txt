@@ -1,0 +1,63 @@
+﻿﻿*blog create de boş geçince dropdown htası veriyor.
+
+*forum create de resim ve content boş geçince dropdown hatası 
+alınıyor ancak diğerleri 
+boş geçince kaydediyor
+
+*Blog a isactive propu eklenecek
+
+*blog ve forum da content ve kapak resmi boş geçince dropdown hatası
+veriyor.
+
+*index sıralamaları yeniden eskiye doğru değil ve aramlar etkin değil
+
+
+*forgot password çalışmıyor. ve aynı sayfada yenileme linki email adresinize gönderilmiştir eklenecek.	
+
+
+*detayla breadcrump hatasını düzelt
+
+*tüm viewlere breadcrump için helper getir.
+
+*Kişiye özel mesaj
+*profil resmi olarak avatar.
+*NewsViewWeb e görüntülenme sayısı gelecek
+*get more news e neye göre haber getirelim / random ??
+
+*yorumun yorumu / parent id?
+*yorum hata mesajı
+
+*news edit imageurl eklenecek
+
+*KATEGORİYE GÖRE GETİRME YAPILACAK
+
+*Blog-forum un image url leri halledilecek viewlerle beraber
+
+*DİREK PROJEYİ GİRİŞ YAPMADAN BAŞLAATINCA İNDEX E GİDİYOR LOGİNE GİTMESİ AYARLANACAK
+
+*ckeditor textarea ile çözüldu sorun olurmu kadir hocaya sorulacak
+
+*ckeditor editlerde çalışmıyor
+
+
+-------------------------------------------
+-------------------------------------------
+***FİXED******
+*içerik yöneticisi(örn. haber/yeni) -FİXED.
+
+*logoff yapınca login sayfasına yönlendirme yapılacak.-FİXED.
+
+*logon yapılınca indexe  sayfasına yönelecek-FİXED.
+
+*login yapılıcna rolüne göre yönlendirme yapılacak. adminse dashboarda gidcek
+değilse index e gitsin.-FİXED.
+
+*çıkış yapınca admin panelinde duruyor -FİXED.
+
+*acount-roles-newsuseradmin controllar larına authorize -FİXED.
+
+*login sayfası- FİXED.
+
+*forgetpassword view - FİXED.
+
+--------------------------------------------
