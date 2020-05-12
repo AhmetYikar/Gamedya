@@ -58,7 +58,7 @@ namespace GameAdmin.Controllers
         // daha fazla bilgi için https://go.microsoft.com/fwlink/?LinkId=317598 sayfasına bakın.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Date,Title,Content,GameId")] GameUpdate gameReview)
+        public ActionResult Create([Bind(Include = "Id,Date,Title,Content,GameId,ArticleType")] GameUpdate gameReview)
         {
             if (ModelState.IsValid)
             {
@@ -93,7 +93,7 @@ namespace GameAdmin.Controllers
         // daha fazla bilgi için https://go.microsoft.com/fwlink/?LinkId=317598 sayfasına bakın.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Date,Title,Content,GameId")] GameUpdate gameReview)
+        public ActionResult Edit([Bind(Include = "Id,Date,Title,Content,GameId,ArticleType")] GameUpdate gameReview)
         {
             GameUpdate dbGameReview = uow.GameUpdate.GetById(gameReview.Id);
             dbGameReview.GameId = gameReview.GameId;
