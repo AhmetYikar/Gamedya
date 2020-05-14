@@ -235,6 +235,13 @@
     <Compile Include="Ckeditor\ImageBrowser.aspx.designer.cs">
       <DependentUpon>ImageBrowser.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Ckeditor\LinkBrowser.aspx.cs">
+      <DependentUpon>LinkBrowser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Ckeditor\LinkBrowser.aspx.designer.cs">
+      <DependentUpon>LinkBrowser.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BlogCategoryController.cs" />
     <Compile Include="Controllers\BlogCommentController.cs" />
@@ -6639,6 +6646,7 @@
     <Content Include="Assest\plugins\timepicker\bootstrap-timepicker.min.js" />
     <Content Include="Ckeditor\config.js" />
     <Content Include="Ckeditor\ImageBrowser.aspx" />
+    <Content Include="Ckeditor\LinkBrowser.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -6648,6 +6656,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="nots.txt" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Assest\bower_components\bootstrap-colorpicker\.bower.json" />
@@ -7816,6 +7825,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="files\" />
+    <Folder Include="images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

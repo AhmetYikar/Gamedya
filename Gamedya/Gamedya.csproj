@@ -6575,6 +6575,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="nots.txt" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Asset\bower_components\bootstrap-colorpicker\.bower.json" />
@@ -7268,10 +7269,12 @@
     <Content Include="Template\assets\img\lol.jpg" />
     <Content Include="Template\assets\img\owl.video.play.png" />
     <Content Include="Template\assets\img\pubg.jpg" />
+    <Content Include="Template\assets\img\twitch.jpg" />
     <Content Include="Template\assets\img\video-thumb.jpg" />
     <Content Include="Template\assets\img\video.jpg" />
     <Content Include="Template\assets\img\video2.jpg" />
     <Content Include="Template\assets\img\video3.jpg" />
+    <Content Include="Template\assets\img\youtube.jpg" />
     <Content Include="Template\assets\js\bootstrap.min.js" />
     <Content Include="Template\assets\js\jquery.min.js" />
     <Content Include="Template\assets\js\offcanvas.min.js" />
