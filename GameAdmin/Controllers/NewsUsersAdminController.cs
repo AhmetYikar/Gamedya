@@ -10,6 +10,9 @@ using System.Web;
 using System.Web.Mvc;
 using Entites.Models.UserModels;
 using static GameAdmin.ApplicationSignInManager;
+using ServiceLayer.Uow;
+using DAL;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace GameAdmin.Controllers
 {
@@ -57,7 +60,57 @@ namespace GameAdmin.Controllers
         [HttpGet]
         public async Task<ActionResult> Index()
         {
+            ViewBag.Roles = RoleManager.Roles;
             return View(await UserManager.Users.ToListAsync());
+        }
+
+        // GET Users: ByRoleName
+        public ActionResult GetByRoleName(string roleId)
+        {
+
+            var users = new List<NewsUser>();
+
+            foreach (var user in UserManager.Users.ToList())
+            {
+                List<IdentityUserRole> roles = user.Roles.ToList();
+                foreach (var role in roles)
+                {
+                    if (role.RoleId==roleId)
+                    {
+                        users.Add(user);
+                        break;
+                    }
+                }                       
+            }
+
+
+            try
+            {
+                
+                return PartialView(users);
+            }
+            catch (Exception)
+            {
+                return RedirectToAction("Index");
+            }
+
+
+        }
+
+        public ActionResult UsersWithOutRole()
+        {
+            IEnumerable<NewsUser> users = UserManager.Users.Where(a=>a.Roles.Count()<1);
+
+            try
+            {
+                return PartialView(users);
+            }
+            catch (Exception)
+            {
+                return RedirectToAction("Index");
+            }
+
+
         }
 
         //

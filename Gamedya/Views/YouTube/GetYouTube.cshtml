@@ -1,25 +1,63 @@
 ﻿@{ Layout = null;}
 
 
-    <div class="col-md-6">
 
-        <div class="box box-danger">
-            <div class="box-body box-profile">
-                <img class="profile-user-img img-responsive img-circle" src="~/Template/assets/img/youtube.jpg" alt="User profile picture">
 
-                <h3 class="profile-username text-center">YOUTUBE</h3>
+<div class="col-md-5">
 
-                <p class="text-muted text-center">TRENDLER</p>
+    <div class="tab sitebar">
 
-                <ul class="list-group list-group-unbordered">
-                    <li class="list-group-item">
-                        <iframe width="225" height="500" src="https://www.youtube.com/embed/videoseries?list=PLR_YIZnmz_shqKliLbS7dAxmNtfkasNgJ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>                      
-                    </li>
-               
-                </ul>
 
-                @*<a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>*@
+        <div class="tab-content" style="padding:0 0">
+            <div class="tab-pane active" id="3">
+                <div class="media" style="padding: 0 0">
+                    <iframe style="height:368px;width:100%" src="https://www.youtube.com/embed/videoseries?list=PLR_YIZnmz_shqKliLbS7dAxmNtfkasNgJ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <div class="media-body">
+
+                    </div>
+                </div>
             </div>
-            <!-- /.box-body -->
+            <div class="tab-pane " id="4">
+                <div class="media" style="padding: 0 0">
+                    <div>
+                        <iframe style="height:368px;width:100%" class="yt_iframe" src="https://player.twitch.tv/?autoplay=false&video=v614388544" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div><!--media-left-->
+                    <div class="media-body">
+
+                    </div>
+                </div>
+            </div>
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#3" data-toggle="tab">YouTube</a></li>
+                <li><a href="#4" data-toggle="tab">Twitch</a></li>
+            </ul>
+        </div>
+
+
+
+        <div class="tab-pane active">
+            <h4> yandaki sliderın yazısını geçmeyecek şekilde Buraya Youtube ve Twitch listesi gelebilir??</h4>
         </div>
     </div>
+
+</div>
+
+
+
+
+   
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -4233,6 +4233,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .tab-content > .active {
   display: block;
+  
 }
 .nav-tabs .dropdown-menu {
   margin-top: -1px;
@@ -4400,6 +4401,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   margin: 7.5px -15px;
 }
 .navbar-nav > li > a {
+   
   padding-top: 10px;
   padding-bottom: 10px;
   line-height: 20px;

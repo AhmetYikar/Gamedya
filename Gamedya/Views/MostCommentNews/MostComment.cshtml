@@ -1,21 +1,21 @@
 ﻿@model IEnumerable<Gamedya.Models.NewsViewWeb>
 
 
-    <div class="most_comment" style="background:#0094ff">
+    <div class="most_comment" style="background:transparent;border-style:ridge">
         <div class="sidebar_title">
             <h2>Most Commented</h2>
         </div>
         @foreach (var item in Model)
         {
             <div class="media">
-                <div class="media-left">
-                    <a href="@Url.Action("Details", "NewsDetails",new {id=item.Id})"><img class="media-object" src="@item.TinyImagePath" alt="Generic placeholder image" style="height:60px"></a>
+                <div class="media-left"style="height:60px">
+                    <a href="@Url.Action("Details", "NewsDetails",new {id=item.Id})"><img class="media-object" src="@item.TinyImagePath" style="height:60px" ></a>
                 </div><!--media-left-->
                 <div class="media-body">
                     <h3 class="media-heading"><a href="@Url.Action("Details", "NewsDetails",new {id=item.Id})">@item.Title</a></h3>
                     <div class="comment_box">
-                        <div class="comments_icon"> <i class="fa fa-comments" aria-hidden="true"></i></div>
-                        <div class="comments"><a href="#">@item.CommentCount</a></div>
+                        <div class="comments_icon" > <i style="color:#ff6102" class="fa fa-comments" aria-hidden="true"></i></div>
+                        <div class="comments"><a style="color:#ff6102" href="#">@item.CommentCount</a></div>
                     </div><!--comment_box-->
                 </div><!--media-body-->
             </div><!--media-->

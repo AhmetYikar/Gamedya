@@ -7624,6 +7624,7 @@
     <Content Include="Scripts\esm\popper-utils.min.js" />
     <Content Include="Scripts\esm\popper.js" />
     <Content Include="Scripts\esm\popper.min.js" />
+    <Content Include="Scripts\Global.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
@@ -7822,6 +7823,8 @@
     <Content Include="Views\GeneralArticle\Details.cshtml" />
     <Content Include="Views\GeneralArticle\Edit.cshtml" />
     <Content Include="Views\GeneralArticle\Index.cshtml" />
+    <Content Include="Views\NewsUsersAdmin\GetByRoleName.cshtml" />
+    <Content Include="Views\NewsUsersAdmin\UsersWithOutRole.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

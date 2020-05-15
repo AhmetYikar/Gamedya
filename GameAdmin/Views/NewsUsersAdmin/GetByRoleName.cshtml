@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Entites.Models.UserModels.NewsUser>
+@{Layout = null;}
+
+<div class="row">
+    <div class="col-sm-12">
+        <table class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.FullName)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.UserName)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FullName)
+                    </td>
+
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserName)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Düzenle", "Edit", new { id = item.Id }) |
+                        @Html.ActionLink("Detaylar", "Details", new { id = item.Id }) |
+                        @Html.ActionLink("Sil", "Delete", new { id = item.Id })
+                    </td>
+                </tr>
+            }
+            <tfoot>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FullName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.UserName)
+                    </th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
+
+
