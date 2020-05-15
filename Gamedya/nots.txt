@@ -4,3 +4,8 @@
 
  <add namespace="MvcSiteMapProvider.Web.Html" />
         <add namespace="MvcSiteMapProvider.Web.Html.Models" />
+
+        **Etiketler EKlenecek
+        *İlgili Haberler Kontroları ile beraber ekelenecek.
+        *FAcebook vs paylaşımları haberlerin ayarlanacak.detailse de 
+        *yorum eklenince üstünde satır çıkacak onaylandıktan sonra bir süre sonra kaybolacak

@@ -6,115 +6,165 @@
 
 <div class="container">
 
-    <h2>Details</h2>
 
-    <div>
-        <h4>News</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.NewsCategory.CategoryName)
-            </dt>
+<div class="col-md-9">
+    <div class="single_content_layout">
+        <div class="item feature_news_item">
+            <div class="item_img">
+                <img class="img-responsive" src="@Model.TinyImagePath" alt="@Model.Title">
+            </div><!--item_img-->
+            <div class="item_wrapper">
+                <div class="news_item_title">
+                    <h2><a href="#">@Model.Title</a></h2>
+                </div><!--news_item_title-->
+                <div class="item_meta"><a href="#">@Model.Date.ToString()</a> by:<a href="#">@Model.NewsUser.FullName</a></div>
 
-            <dd>
-                @Html.DisplayFor(model => model.NewsCategory.CategoryName)
-            </dd>
+                <span class="rating">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-half-full"></i>
+                </span>
 
-            <dt>
-                Haber sahibi
-            </dt>
+                <div class="single_social_icon">
+                    <a class="icons-sm fb-ic" href="#"><i class="fa fa-facebook"></i><span>Facebook</span></a>
+                    <!--Twitter-->
+                    <a class="icons-sm tw-ic" href="#"><i class="fa fa-twitter"></i><span>Twitter</span></a>
+                    <!--Google +-->
+                    <a class="icons-sm gplus-ic" href="#"><i class="fa fa-google-plus"></i><span>Google Plus</span></a>
+                    <!--Linkedin-->
+                    <a class="icons-sm li-ic" href="#"><i class="fa fa-linkedin"></i><span>Linkedin</span></a>
 
-            <dd>
-                @Html.DisplayFor(model => model.NewsUser.FullName)
-            </dd>
+                </div> <!--social_icon1-->
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Title)
-            </dt>
+                <div class="item_content">
+                    @Html.Raw(@Model.Content)
+                </div><!--item_content-->
+                <div class="category_list">
+                    <a href="#">Messi</a>
+                    <a href="#">Leonel</a>
+                    <a href="#">Bercelona</a>
+                    <a href="#">Argentina</a>
+                    <a href="#">Football</a>
+                </div><!--category_list-->
+            </div><!--item_wrapper-->
+        </div><!--feature_news_item-->
 
-            <dd>
-                @Html.DisplayFor(model => model.Title)
-            </dd>
+        <div class="single_related_news">
+            <div class="single_media_title"><h2>Related News</h2></div>
+            <div class="media_wrapper">
+                <div class="media">
+                    <div class="media-left">
+                        <a href="#"><img class="media-object" src="assets/img/img-list5.jpg" alt="Generic placeholder image"></a>
+                    </div><!--media-left-->
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            <a href="#">
+                                Machester United start the player
+                            </a>
+                        </h4>
+                        <div class="media_meta"><a href="#">20Aug- 2015,</a> by:<a href="#">Jhonson</a></div>
+                        <div class="media_content">
+                            <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore</p>
+                        </div><!--media_content-->
+                    </div><!--media-body-->
+                </div><!--media-->
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Summary)
-            </dt>
+                <div class="media">
+                    <div class="media-left">
+                        <a href="#"><img class="media-object" src="assets/img/img-list2.jpg" alt="Generic placeholder image"></a>
+                    </div><!--media-left-->
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            <a href="#">
+                                Machester United start the player
+                            </a>
+                        </h4>
+                        <div class="media_meta"><a href="#">20Aug- 2015,</a> by:<a href="#">Jhonson</a></div>
+                        <div class="media_content">
+                            <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore</p>
+                        </div><!--media_content-->
+                    </div><!--media-body-->
+                </div><!--media-->
 
-            <dd>
-                @Html.DisplayFor(model => model.Summary)
-            </dd>
+                <div class="media">
+                    <div class="media-left">
+                        <a href="#"><img class="media-object" src="assets/img/img-list3.jpg" alt="Generic placeholder image"></a>
+                    </div><!--media-left-->
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            <a href="#">
+                                Machester United start the player
+                            </a>
+                        </h4>
+                        <div class="media_meta"><a href="#">20Aug- 2015,</a> by:<a href="#">Jhonson</a></div>
+                        <div class="media_content">
+                            <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore</p>
+                        </div><!--media_content-->
+                    </div><!--media-body-->
+                </div><!--media-->
+            </div><!--media_wrapper-->
+        </div><!--single_related_news-->
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Content)
-            </dt>
 
-            <dd>
-                @Html.Raw(Model.Content)
-            </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Date)
-            </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.Date)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.EditDate)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.EditDate)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.IsActive)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.IsActive)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.ViewCount)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.ViewCount)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.NewsPlatform)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.NewsPlatform)
-            </dd>
-
-        </dl>
-        <div>
-            <textarea type="Text" id="comment" placeholder="yorumunuz..."></textarea>
-            <br />
-            @if (User.GetFullName() != "")
-            {
-                <p>@User.GetFullName()</p>
-            }
-            else
-            {
-                <input type="text" id="guestName" placeholder="adınız..." />
-            }
-
-            <br />
-            <button type="button" onclick="AddComment(@Model.Id)" class="btn btn-info"> Yorum ekle </button>
-        </div>
 
         <p>
             @Html.Action("Index", "NewsComment", new { id = Model.Id })
         </p>
-    </div>
 
+        <div class="add_a_comment">
+            <div class="single_media_title"><h2>Yorum Ekle </h2></div>
+            <div id="back" >
+            
+            </div>
+           
+            <div class="comment_form">
+                <form>
+                    <div class="form-group">
+
+
+                        @if (User.GetFullName() != "")
+                        {
+                            <p>@User.GetFullName()</p>
+                        }
+                        else
+                        {
+                            <input type="text" class="form-control" id="guestName" placeholder="Adınız">
+
+                        }
+
+                    </div>
+                    @*<div class="form-group">
+                            <input type="text" class="form-control" id="inputEmail" placeholder="Email">
+                        </div>*@
+                    <div class="form-group comment">
+                        <textarea class="form-control" id="comment" placeholder="Yorumunuz..."></textarea>
+                    </div>
+                    <button type="button" onclick="AddComment(@Model.Id)" class="btn btn-submit red"> Yorum ekle </button>
+                </form>
+            </div><!--comment_form-->
+        </div><!--add_a_comment-->
+
+    </div><!--single_content_layout-->
+</div>
+
+
+<div class="col-md-3">
+    @Html.Action("GetLatestNews", "LatestNews")
+
+    @Html.Action("MostComment", "MostCommentNews")
+    </div>
 
     <script src="~/Scripts/Global.js"></script>
 
 </div>
+   
+
+
+
+
+
+
