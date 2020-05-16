@@ -1,9 +1,11 @@
 ﻿using DAL;
+using Entities.Models;
 using ServiceLayer.Repository.BlogRepository;
 using ServiceLayer.Repository.ForumRepository;
 using ServiceLayer.Repository.GameRepository;
 using ServiceLayer.Repository.MessageRepository;
 using ServiceLayer.Repository.NewsRepository;
+using ServiceLayer.Repository.NotificationRepository;
 using ServiceLayer.Repository.UserRepository;
 using System;
 using System.Collections.Generic;
@@ -46,6 +48,10 @@ namespace ServiceLayer.Uow
             LikeTable = new LikeTableRepository(_context);
             NewsUser = new NewsUserRepository(_context);
             Message = new MessageRepository(_context);
+            MessageRecipient = new MessageRecipientRepository(_context);
+            Notification = new NotificationRepository(_context);
+
+
         }
 
 
@@ -74,8 +80,9 @@ namespace ServiceLayer.Uow
         public ILikeTableRepository LikeTable { get; private set; }
         public INewsUserRepository NewsUser { get; private set; }
         public IMessageRepository Message { get; private set; }
+        public IMessageRecipientRepository MessageRecipient { get; private set; }
 
-
+        public INotificationRepository Notification { get; private set; }
 
 
 

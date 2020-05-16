@@ -76,3 +76,9 @@ C:\Users\SnmzŞti\Desktop\Gamedya\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cac
 C:\Users\SnmzŞti\Desktop\Gamedya\DAL\obj\Debug\DAL.csproj.CopyComplete
 C:\Users\SnmzŞti\Desktop\Gamedya\DAL\obj\Debug\DAL.dll
 C:\Users\SnmzŞti\Desktop\Gamedya\DAL\obj\Debug\DAL.pdb
+C:\Users\ahmet\source\repos\Gamedya\DAL\obj\Debug\DAL.Migrations.notification.resources
+C:\Users\ahmet\source\repos\Gamedya\DAL\obj\Debug\DAL.Migrations.notificationFix.resources
+C:\Users\ahmet\source\repos\Gamedya\DAL\obj\Debug\DAL.Migrations.dn.resources
+C:\Users\ahmet\source\repos\Gamedya\DAL\obj\Debug\DAL.Migrations.notificationType_removed.resources
+C:\Users\ahmet\source\repos\Gamedya\DAL\obj\Debug\DAL.Migrations.notificationUser.resources
+C:\Users\ahmet\source\repos\Gamedya\DAL\obj\Debug\DAL.Migrations.dropTable.resources

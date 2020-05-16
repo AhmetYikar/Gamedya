@@ -3,6 +3,7 @@ using Entites.Models.ForumModels;
 using Entites.Models.GameModels;
 using Entites.Models.MessageModels;
 using Entites.Models.NewsModels;
+using Entities.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
@@ -51,6 +52,9 @@ namespace Entites.Models.UserModels
         public ICollection<NewsComment> NewsComments { get; set; }
         public ICollection<Game> MyFavouriteGames { get; set; }
         public ICollection<Message> Messages { get; set; }
+        public ICollection<MessageRecipient> MessageRecipients { get; set; }
+        public ICollection<Notification> Notifications { get; set; }
+
 
 
 

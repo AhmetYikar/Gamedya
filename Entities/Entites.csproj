@@ -87,11 +87,13 @@
     <Compile Include="Models\GameModels\GameGenre.cs" />
     <Compile Include="Models\GameModels\GameUpdate.cs" />
     <Compile Include="Models\MessageModels\Message.cs" />
+    <Compile Include="Models\MessageModels\MessageRecipient.cs" />
     <Compile Include="Models\NewsModels\News.cs" />
     <Compile Include="Models\NewsModels\NewsCategory.cs" />
     <Compile Include="Models\NewsModels\NewsComment.cs" />
     <Compile Include="Models\NewsModels\NewsImage.cs" />
     <Compile Include="Models\NewsModels\NewsVideo.cs" />
+    <Compile Include="Models\NotificationModels\Notification.cs" />
     <Compile Include="Models\Status\Status.cs" />
     <Compile Include="Models\UserModels\NewsUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

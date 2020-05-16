@@ -12,6 +12,8 @@ namespace Gamedya.Models
         public string PhoneNumber { get; set; }
         public bool TwoFactor { get; set; }
         public bool BrowserRemembered { get; set; }
+        public bool HasProfilImage { get; set; }
+
     }
 
     public class ManageLoginsViewModel
@@ -37,6 +39,16 @@ namespace Gamedya.Models
         [Display(Name = "Confirm new password")]
         [Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+    }
+
+    //Profil resmi için yapıldı
+    public class SetProfilImageViewModel
+    {        
+        [Display(Name = "Profil resmi")]
+        public string ProfilImage { get; set; }
+        public bool HasProfilImage { get; set; }
+
+
     }
 
     public class ChangePasswordViewModel

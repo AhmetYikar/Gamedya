@@ -5,6 +5,7 @@
        
         @foreach (var item in Model)
         {
+            string unlikeId = "un" + item.Id;
             <div class="media">
                 <div class="media-left">
                     <a href="#">
@@ -17,8 +18,8 @@
 
                 <div class="comment_article_social">                 
 
-                    <p onclick="AddLike(@item.Id)" class="fa fa-thumbs-o-up">@item.LikeCount.ToString() </p>
-                    <p onclick="AddUnLike(@item.Id)" class="fa fa-thumbs-o-down"> @item.UnLikeCount.ToString()</p>
+                    <p id="@item.Id" onclick="AddLike(@item.Id)" class="fa fa-thumbs-o-up">@item.LikeCount.ToString() </p>&nbsp
+                    <p id="@unlikeId" onclick="AddUnLike(@item.Id)" class="fa fa-thumbs-o-down"> @item.UnLikeCount.ToString()</p>
                     <br />
                     <div class="item_meta">
                         @Html.DisplayFor(modelItem => item.Date)                    </div>

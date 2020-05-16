@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Entities.Models;
 
 namespace DAL
 {
@@ -55,6 +56,9 @@ namespace DAL
         public System.Data.Entity.DbSet<BlogCategory> BlogCategories { get; set; }
 
         public System.Data.Entity.DbSet<Message> Messages { get; set; }
+        public System.Data.Entity.DbSet<MessageRecipient> MessageRecipients { get; set; }
+        public System.Data.Entity.DbSet<Notification> Notifications { get; set; }
+
 
     }
 }

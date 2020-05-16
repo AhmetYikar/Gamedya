@@ -34,7 +34,7 @@ namespace Gamedya.Controllers
         [HttpPost]
         public JsonResult AddComment(string comment,string guestName, int newsId)
         {
-            if (comment!=" ")
+            if (comment!="")
             {
                 NewsComment newsComment = new NewsComment();
                 
@@ -57,6 +57,7 @@ namespace Gamedya.Controllers
                 return Json(false, JsonRequestBehavior.AllowGet);
             }
             return Json(true, JsonRequestBehavior.AllowGet);
+
 
         }
     }

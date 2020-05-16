@@ -50,10 +50,6 @@ namespace GameAdmin.Controllers
 
             ViewBag.SonArananKelime1 = ara;
 
-
-
-
-
             if (String.IsNullOrEmpty(siralama))
             {
                 ViewBag.AdaGoreSirala2 = "ZdenAya";
@@ -215,7 +211,6 @@ namespace GameAdmin.Controllers
             }
             ViewBag.NewsCategoryId = new SelectList(uow.NewsCategory.GetAll(), "Id", "CategoryName");
             return View(news);
-
 
         }
 

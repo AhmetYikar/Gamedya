@@ -3,6 +3,7 @@ using ServiceLayer.Repository.ForumRepository;
 using ServiceLayer.Repository.GameRepository;
 using ServiceLayer.Repository.MessageRepository;
 using ServiceLayer.Repository.NewsRepository;
+using ServiceLayer.Repository.NotificationRepository;
 using ServiceLayer.Repository.UserRepository;
 using System;
 using System.Collections.Generic;
@@ -38,6 +39,10 @@ namespace ServiceLayer.Uow
 
         INewsUserRepository NewsUser { get; }
         IMessageRepository Message { get; }
+        IMessageRecipientRepository MessageRecipient { get; }
+
+        INotificationRepository Notification { get; }
+
 
 
         int Complete();

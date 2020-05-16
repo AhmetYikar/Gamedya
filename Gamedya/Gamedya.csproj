@@ -7365,9 +7365,11 @@
     <Content Include="Views\GeneralArticle\Details.cshtml" />
     <Content Include="Views\GeneralArticle\Index.cshtml" />
     <Content Include="Views\PcNews\AllPcNews.cshtml" />
+    <Content Include="Views\Manage\SetProfilImage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\UserImages\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

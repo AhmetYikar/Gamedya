@@ -30,7 +30,9 @@ namespace Gamedya.Controllers
                 uow.NewsComment.Update(comment);
                 uow.LikeTable.Insert(likeTable);
                 uow.Complete();
-                return Json(false, JsonRequestBehavior.AllowGet);
+                int count = comment.LikeCount;
+
+                return Json(count, JsonRequestBehavior.AllowGet);
             }
             catch (Exception)
             {
@@ -54,7 +56,8 @@ namespace Gamedya.Controllers
                 uow.NewsComment.Update(comment);
                 uow.LikeTable.Insert(likeTable);
                 uow.Complete();
-                return Json(false, JsonRequestBehavior.AllowGet);
+                int count = comment.UnLikeCount;
+                return Json(count, JsonRequestBehavior.AllowGet);
             }
             catch (Exception)
             {

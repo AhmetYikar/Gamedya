@@ -1,4 +1,5 @@
 ﻿using Entites.Models.UserModels;
+using Entities.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -19,9 +20,10 @@ namespace Entites.Models.MessageModels
         [DataType(DataType.Date)]
         [Display(Name = "Mesaj tarihi")]
         public DateTime Date { get; set; }
-
         public string NewsUserId { get; set; }
         public NewsUser NewsUser { get; set; }
+        public ICollection<MessageRecipient> MessageRecipients { get; set; }
+
 
     }
 }
