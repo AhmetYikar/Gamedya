@@ -4,13 +4,20 @@
 
     $.ajax({
         url: '/NewsComment/AddComment/',
-        data: { comment: yourComment, guestName:yourName, newsId: data },
+        data: { comment: yourComment, guestName: yourName, newsId: data },
         type: 'POST',
         dataType: 'json',
-        success: function (data) { alert("Yorumunuz gönderildi. Onaylandıktan sonra yayınlanacaktır.");},
-       
+        success: (function (i) {
+            $("#back").append("<h5>Yorumunuz Onaylandıktan Sonra Yayınlacaktır</h5>"),
+                setInterval(function () {
+                    $("#back").fadeOut(3000);
+                }, 5000);
+        })
+
     })
+
 }
+        
 
 
 function AddLike(data) {

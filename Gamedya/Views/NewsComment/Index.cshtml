@@ -1,17 +1,32 @@
 ﻿@model IEnumerable<Entites.Models.NewsModels.NewsComment>
-<h2>Yorumlar</h2>
 
+    <div class="readers_comment">
+        <div class="single_media_title"><h2>Yorumlar</h2></div>
+       
+        @foreach (var item in Model)
+        {
+            <div class="media">
+                <div class="media-left">
+                    <a href="#">
+                        <img alt="64x64" class="media-object" data-src="~Template/assets/img/img-author1.jpg" src="~Template/assets/img/img-author1.jpg" data-holder-rendered="true">
+                    </a>
+                </div>
+                <div class="media-body">
+                    <h2 class="media-heading">@item.GuestName</h2>
+                   @item.Content
 
-@foreach (var item in Model)
-{
+                <div class="comment_article_social">                 
 
-    <h5> @Html.DisplayFor(modelItem => item.GuestName)</h5>
-    @Html.DisplayFor(modelItem => item.Content) <br />
+                    <p onclick="AddLike(@item.Id)" class="fa fa-thumbs-o-up">@item.LikeCount.ToString() </p>
+                    <p onclick="AddUnLike(@item.Id)" class="fa fa-thumbs-o-down"> @item.UnLikeCount.ToString()</p>
+                    <br />
+                    <div class="item_meta">
+                        @Html.DisplayFor(modelItem => item.Date)                    </div>
+                 
+                </div>
+                </div>
+            </div>
+        }
+        </div><!--readers_comment-->
 
-    <p onclick="AddLike(@item.Id)" class="fa fa-heart">@item.LikeCount.ToString() </p>
-    <p onclick="AddUnLike(@item.Id)" class="fa fa-heartbeat"> @item.UnLikeCount.ToString()</p>
-    <br />
-    <p style="font-size:10px"> @Html.DisplayFor(modelItem => item.Date)</p>
-    <br />
-
-}
+      
