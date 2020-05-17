@@ -7,6 +7,12 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Gamedya.Models;
+using ServiceLayer.Uow;
+using DAL;
+using System.IO;
+using System.Drawing;
+using Entites.Models.UserModels;
+using Gamedya.Helper;
 
 namespace Gamedya.Controllers
 {
@@ -67,6 +73,7 @@ namespace Gamedya.Controllers
             var model = new IndexViewModel
             {
                 HasPassword = HasPassword(),
+                HasProfilImage = HasProfilImage(),
                 PhoneNumber = await UserManager.GetPhoneNumberAsync(userId),
                 TwoFactor = await UserManager.GetTwoFactorEnabledAsync(userId),
                 Logins = await UserManager.GetLoginsAsync(userId),
@@ -276,6 +283,63 @@ namespace Gamedya.Controllers
             return View(model);
         }
 
+        // GET: /Manage/SetProfilImage
+        public ActionResult SetProfilImage()
+        {
+            var model = new SetProfilImageViewModel
+            {
+                HasProfilImage = HasProfilImage(),
+            };
+            return View(model);
+        }
+
+        //
+        // POST: /Manage/SetProfilImage
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult SetProfilImage(HttpPostedFileBase file)
+        {
+            SetProfilImageViewModel model = new SetProfilImageViewModel();
+            string fileName = string.Empty;
+            string extension = string.Empty;
+
+            if (file != null && file.ContentLength > 0 && file.ContentLength < 2 * 1024 * 1024)
+            {
+                extension = Path.GetExtension(file.FileName);
+
+                if (extension.Contains("pdf") || extension.Contains("doc") || extension.Contains("docx"))
+                {
+                    return RedirectToAction("index", new { Message = "dosya uzantısı uygun değil" });
+                }
+               
+                fileName = Guid.NewGuid() + ".png";
+                var path = Path.Combine(Server.MapPath("/Content/UserImages/"), fileName.Replace(".png", "-thumb.png"));
+
+                Image image = Image.FromStream(file.InputStream, true);
+                int imgWidth = 110;
+                int imgHeight = 95;
+                Image thumb = image.GetThumbnailImage(imgWidth, imgHeight, () => false, IntPtr.Zero);
+                thumb.Save(path);
+                model.ProfilImage = "/Content/UserImages/" + fileName.Replace(".png", "-thumb.png");
+            }
+            using (var uow = new UnitOfWork(new GameNewsDbContext()))
+            {
+                string userId = User.GetUserId();
+                if (ModelState.IsValid)
+                {
+                    var user = uow.NewsUser.Where(a=>a.Id==userId).FirstOrDefault();
+                    if (user != null)
+                    {                       
+                        user.Image = model.ProfilImage;
+                        uow.NewsUser.Update(user);
+                        uow.Complete();
+                        return RedirectToAction("Index");
+                    }
+                }
+                ViewBag.ErrorMessage = "Resim eklenemedi";
+                return View(model);
+            }            
+        }
         //
         // GET: /Manage/ManageLogins
         public async Task<ActionResult> ManageLogins(ManageMessageId? message)
@@ -359,6 +423,17 @@ namespace Gamedya.Controllers
             if (user != null)
             {
                 return user.PasswordHash != null;
+            }
+            return false;
+        }
+
+        //profil fotosu için eklendi
+        private bool HasProfilImage()
+        {
+            var user = UserManager.FindById(User.Identity.GetUserId());
+            if (user.Image != null && user.Image != "")
+            {
+                return true;
             }
             return false;
         }

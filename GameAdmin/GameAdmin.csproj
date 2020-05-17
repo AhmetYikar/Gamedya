@@ -261,6 +261,7 @@
     <Compile Include="Controllers\NewsCommentsController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\NewsUsersAdminController.cs" />
+    <Compile Include="Controllers\NotificationController.cs" />
     <Compile Include="Controllers\OrtakController.cs" />
     <Compile Include="Controllers\RolesAdminController.cs" />
     <Compile Include="Global.asax.cs">
@@ -7825,6 +7826,10 @@
     <Content Include="Views\GeneralArticle\Index.cshtml" />
     <Content Include="Views\NewsUsersAdmin\GetByRoleName.cshtml" />
     <Content Include="Views\NewsUsersAdmin\UsersWithOutRole.cshtml" />
+    <Content Include="Views\Notification\Create.cshtml" />
+    <Content Include="Views\Notification\Delete.cshtml" />
+    <Content Include="Views\Notification\Details.cshtml" />
+    <Content Include="Views\Notification\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -153,37 +153,7 @@ namespace Gamedya.Controllers
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model, HttpPostedFileBase file)
-        {
-            string fileName = string.Empty;
-            string extension = string.Empty;
-
-
-            if (file != null && file.ContentLength > 0 && file.ContentLength < 2 * 1024 * 1024)
-            {
-                extension = Path.GetExtension(file.FileName);
-
-                if (extension.Contains("pdf") || extension.Contains("doc") || extension.Contains("docx"))
-                {
-                    return RedirectToAction("index");
-                }
-                else
-                {
-
-                }
-                fileName = Guid.NewGuid() + ".png";
-
-                var path = Path.Combine(Server.MapPath("/Content/UserImages/"), fileName.Replace(".png", "-thumb.png"));
-
-                Image image = Image.FromStream(file.InputStream, true);
-
-                int imgWidth = 110;
-                int imgHeight = 95;
-
-                Image thumb = image.GetThumbnailImage(imgWidth, imgHeight, () => false, IntPtr.Zero);
-                thumb.Save(path);
-                model.Image = "/Content/UserImages/" + fileName.Replace(".png", "-thumb.png");
-            }
-
+        {            
 
             if (ModelState.IsValid)
             {
@@ -192,7 +162,6 @@ namespace Gamedya.Controllers
                     UserName = model.Email,
                     Email = model.Email,
                     FullName = model.FullName,
-                    Image = model.Image
                 };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)

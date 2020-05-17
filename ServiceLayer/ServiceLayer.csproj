@@ -79,8 +79,11 @@
     <Compile Include="Repository\GameRepository\IGameRepository.cs" />
     <Compile Include="Repository\GenericRepository.cs" />
     <Compile Include="Repository\IRepository.cs" />
+    <Compile Include="Repository\MessageRepository\IMessageRecipientRepository.cs" />
+    <Compile Include="Repository\MessageRepository\MessageRecipientRepository.cs" />
     <Compile Include="Repository\MessageRepository\MessageRepository.cs" />
     <Compile Include="Repository\MessageRepository\IMessageRepository.cs" />
+    <Compile Include="Repository\NotificationRepository\NotificationRepository.cs" />
     <Compile Include="Repository\NewsRepository\NewsVideoRepository.cs" />
     <Compile Include="Repository\NewsRepository\NewsCategoryRepository.cs" />
     <Compile Include="Repository\NewsRepository\NewsCommentRepository.cs" />
@@ -91,6 +94,7 @@
     <Compile Include="Repository\NewsRepository\INewsCommentRepository.cs" />
     <Compile Include="Repository\NewsRepository\INewsImageRepository.cs" />
     <Compile Include="Repository\NewsRepository\INewsRepository.cs" />
+    <Compile Include="Repository\NotificationRepository\INotificationRepostory.cs" />
     <Compile Include="Repository\StatusRepository\ILikeTableRepository.cs" />
     <Compile Include="Repository\StatusRepository\LikeTableRepository.cs" />
     <Compile Include="Repository\UserRepository\INewsUserRepository.cs" />

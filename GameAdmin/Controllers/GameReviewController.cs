@@ -7,7 +7,10 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using DAL;
+using DAL.Migrations;
 using Entites.Models.GameModels;
+using Entites.Models.UserModels;
+using Entities.Models;
 using ServiceLayer.Uow;
 
 namespace GameAdmin.Controllers
@@ -60,8 +63,37 @@ namespace GameAdmin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Date,Title,Content,GameId,ArticleType")] GameUpdate gameReview)
         {
+
             if (ModelState.IsValid)
             {
+                //ilgili kişilere bildirim göndermek için
+                Notification notification = new Notification();
+                IEnumerable<NewsUser> users = uow.NewsUser.UserWithGames();
+                var notifyUsers = new List<NewsUser>();
+                string gameName = "";
+                foreach (var user in users)
+                {
+                    IEnumerable<Game> games = user.MyFavouriteGames;
+                    foreach (var game in games)
+                    {
+                        if (game.Id == gameReview.GameId)
+                        {
+                            notifyUsers.Add(user);
+                            gameName = game.Name;
+                            break;
+                        }
+                    }
+                }
+
+                if (notifyUsers.Count()>0)
+                {
+                    notification.NewsUsers = notifyUsers.ToList();
+                    notification.Content = gameName + " oyunuyla ilgili '" + gameReview.Title + "' yazısı yayında";
+                    notification.Date = DateTime.Now;
+                    uow.Notification.Insert(notification);                 
+                }                
+
+                //game review kısmı
                 gameReview.Date = DateTime.Now;
                 uow.GameUpdate.Insert(gameReview);
                 uow.Complete();

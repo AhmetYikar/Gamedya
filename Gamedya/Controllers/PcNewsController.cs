@@ -46,7 +46,7 @@ namespace Gamedya.Controllers
 
         public ActionResult AllPcNews()
         {
-            IEnumerable<News> pcNews = uow.News.Where(a => a.NewsPlatform.ToString() == "Pc");
+            IEnumerable<News> pcNews = uow.News.Where(a => a.NewsPlatform == NewsPlatform.Pc);
             if (pcNews != null && pcNews.Count() > 0)
             {
                 return PartialView(pcNews);
