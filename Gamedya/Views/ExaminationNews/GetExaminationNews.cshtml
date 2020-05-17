@@ -1,0 +1,34 @@
+﻿@model  IEnumerable<Gamedya.Models.NewsViewWeb>
+@{ Layout = null;}
+
+<div class="container">
+    <div id="more_news_item" class="more_news_item">
+        <div class="more_news_heading"><h2><a href="@Url.Action("AllExaminationNews", "ExaminationNews")">İNCELEMELER/DUBLAJ</a></h2></div>
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-4">
+                    <div class="feature_news_item">
+                        <div class="item">
+                            <div class="item_wrapper">
+                                <div class="item_img">
+                                    <i class="fa fa-play"></i>
+                                    <a href="@Url.Action("Details", "NewsDetails",new {id=item.Id})">  <img class="img-responsive" src="@item.TinyImagePath" alt="@item.Title"> </a>
+                                </div><!--item_img-->
+                                <div class="item_title_date">
+                                    <div class="news_item_title">
+                                        <h3> <a href="@Url.Action("Details", "NewsDetails",new {id=item.Id})">@item.Title</a></h3>
+                                    </div><!--news_item_title-->
+                                    <div class="item_meta"><a href="@Url.Action("Details", "NewsDetails",new {id=item.Id})">@item.Date.ToLongDateString()</a></div>
+                                </div><!--item_title_date-->
+                            </div><!--item_wrapper-->
+                            <div class="item_content">
+                                <a href="@Url.Action("Details", "NewsDetails",new {id=item.Id})">    @item.Summary </a>
+                            </div><!--item_content-->
+                        </div><!--item-->
+                    </div><!--feature_news_item-->                   
+                </div><!--col-xs-4-->
+            }
+            </div><!--row-->
+    </div><!--more_news_item-->
+</div>

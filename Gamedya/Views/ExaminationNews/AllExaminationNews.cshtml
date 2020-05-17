@@ -1,9 +1,9 @@
 ﻿@model IEnumerable<Entites.Models.NewsModels.News>
 
-@{  Layout = "~/Views/Shared/_Layout.cshtml";}
+@{ Layout = "~/Views/Shared/_Layout.cshtml";}
 
-<div class="container"  style="margin-top:50px;">
-    <div class="col-md-9">
+<div class="container " style="margin-top:50px;">
+    <div class="col-md-9 ">
         <div class="row">
             @foreach (var item in Model)
             {
@@ -13,7 +13,8 @@
                             <hr />
                             <div class="item_wrapper">
                                 <div class="item_img">
-                                    <a href="@Url.Action("Details", "NewsDetails",new {id=item.Id})">    <img class="img-responsive" src="@item.TinyImagePath" alt="@item.Title"> </a>
+                                    <i class="fa fa-play"></i>
+                                    <a href="@Url.Action("Details", "NewsDetails",new {id=item.Id})">  <img class="img-responsive" src="@item.TinyImagePath" alt="@item.Title"></a>
                                 </div> <!--item_img-->
                                 <div class="item_title_date">
                                     <div class="news_item_title">
@@ -23,15 +24,15 @@
                                 </div><!--item_title_date-->
                             </div> <!--item_wrapper-->
                             <div class="item_content">
-                                <a href="@Url.Action("Details", "NewsDetails",new {id=item.Id})">@item.Summary </a>
+                                <a href="@Url.Action("Details", "NewsDetails",new {id=item.Id})">   @item.Summary </a>
                             </div>
-
                         </div><!--item-->
-                    </div><!--feature_news_item-->                    
+                    </div><!--feature_news_item-->
                 </div><!--col-md-6-->
             }
 
-            </div><!--row-->
+
+        </div><!--row-->
     </div>
     <div class="col-md-3">
         @Html.Action("GetLatestNews", "LatestNews")
@@ -39,3 +40,5 @@
         @Html.Action("MostComment", "MostCommentNews")
     </div>
 </div>
+
+
