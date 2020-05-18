@@ -8,6 +8,13 @@ using System.Threading.Tasks;
 
 namespace Entities.Models
 {
+    public enum NModule
+    {
+        News,
+        GameUpdate,
+        BlogPost,
+        ForumPost
+    }
     public class Notification
     {
         public int Id { get; set; }
@@ -17,6 +24,8 @@ namespace Entities.Models
         [DataType(DataType.Date)]
         public DateTime Date { get; set; }
         public ICollection<NewsUser> NewsUsers { get; set; }
+        public NModule Module { get; set; }
+        public int NModuleId { get; set; }
 
     }
 }

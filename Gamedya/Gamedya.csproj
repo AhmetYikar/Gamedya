@@ -181,7 +181,6 @@
     <Compile Include="Controllers\LikeUnlikeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MobilNewsController.cs" />
-    <Compile Include="Controllers\ExaminationNewsController.cs" />
     <Compile Include="Controllers\MostCommentNewsController.cs" />
     <Compile Include="Controllers\NewsCommentController.cs" />
     <Compile Include="Controllers\NewsDetailsController.cs" />
@@ -7336,7 +7335,6 @@
     <Content Include="Views\Manage\SetPassword.cshtml" />
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\MobilNews\GetMobilNews.cshtml" />
-    <Content Include="Views\ExaminationNews\GetExaminationNews.cshtml" />
     <Content Include="Views\MostCommentNews\MostComment.cshtml" />
     <Content Include="Views\NewsComment\Index.cshtml" />
     <Content Include="Views\NewsDetails\Details.cshtml" />
@@ -7356,7 +7354,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Slider\GetSlider.cshtml" />
     <Content Include="Views\Twitch\GetTwitch.cshtml" />
-    <Content Include="Views\VideoNews\GetVideoNews.cshtml" />
+    <Content Include="Views\VideoNews\VideoNews.cshtml" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\YouTube\GetYouTube.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
@@ -7367,7 +7365,8 @@
     <Content Include="Views\PcNews\AllPcNews.cshtml" />
     <Content Include="Views\MobilNews\AllMobileNews.cshtml" />
     <Content Include="Views\ScienceNews\AllScienceNews.cshtml" />
-    <Content Include="Views\ExaminationNews\AllExaminationNews.cshtml" />
+    <Content Include="Views\VideoNews\AllVideoNews.cshtml" />
+    <Content Include="Views\MoreNews.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

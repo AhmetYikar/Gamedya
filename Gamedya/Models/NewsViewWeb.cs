@@ -17,6 +17,8 @@ namespace Gamedya.Models
 
         public string TinyImagePath { get; set; }
         public string BigImagePath { get; set; }
+        public string VideoPath { get; set; }
+
         public DateTime Date { get; set; }
         public int CommentCount { get; set; }
 

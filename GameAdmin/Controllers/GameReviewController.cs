@@ -65,7 +65,13 @@ namespace GameAdmin.Controllers
         {
 
             if (ModelState.IsValid)
-            {
+            {                            
+
+                //game review kısmı
+                gameReview.Date = DateTime.Now;
+                uow.GameUpdate.Insert(gameReview);
+                uow.Complete();
+
                 //ilgili kişilere bildirim göndermek için
                 Notification notification = new Notification();
                 IEnumerable<NewsUser> users = uow.NewsUser.UserWithGames();
@@ -85,18 +91,15 @@ namespace GameAdmin.Controllers
                     }
                 }
 
-                if (notifyUsers.Count()>0)
+                if (notifyUsers.Count() > 0)
                 {
                     notification.NewsUsers = notifyUsers.ToList();
                     notification.Content = gameName + " oyunuyla ilgili '" + gameReview.Title + "' yazısı yayında";
                     notification.Date = DateTime.Now;
-                    uow.Notification.Insert(notification);                 
-                }                
-
-                //game review kısmı
-                gameReview.Date = DateTime.Now;
-                uow.GameUpdate.Insert(gameReview);
-                uow.Complete();
+                    notification.NModuleId = gameReview.Id;
+                    uow.Notification.Insert(notification);
+                    uow.Complete();
+                }
                 return RedirectToAction("Index");
             }
 

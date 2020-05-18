@@ -10,9 +10,20 @@
 <div class="col-md-9">
     <div class="single_content_layout">
         <div class="item feature_news_item">
+            @if (Model.NewsVideos.Count() > 0)
+            {
+                foreach (var item in Model.NewsVideos)
+                {
+                    <iframe style="height:368px;width:100%" src="@item.VideoPath" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+                }
+            }else
+            {
             <div class="item_img">
                 <img class="img-responsive" src="@Model.TinyImagePath" alt="@Model.Title">
             </div><!--item_img-->
+            }
+
             <div class="item_wrapper">
                 <div class="news_item_title">
                     <h2><a href="#">@Model.Title</a></h2>

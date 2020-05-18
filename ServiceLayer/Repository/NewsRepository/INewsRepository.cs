@@ -11,6 +11,8 @@ namespace ServiceLayer.Repository.NewsRepository
     public interface INewsRepository : IRepository<News>
     {
         IEnumerable<News> GetNewsWithImages(Expression<Func<News, bool>> predicate);
+        IEnumerable<News> GetNewsWithVideos(Expression<Func<News, bool>> predicate);
+
         IEnumerable<News> GetNewsWithComments(Expression<Func<News, bool>> predicate);
         IEnumerable<News> GetNewsWithCategory(Expression<Func<News, bool>> predicate);
 

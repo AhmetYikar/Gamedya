@@ -10,6 +10,6 @@ namespace ServiceLayer.Repository.NotificationRepository
 {
     public interface INotificationRepository: IRepository<Notification>
     {
-
+        IEnumerable<Notification> GetNotificationDetails();
     }
 }

@@ -8,6 +8,7 @@
 <div class="box box-primary">
     <div class="box-body box-profile">
         <h3 class="profile-username text-center">@ViewBag.Title</h3>
+
         <dt>
             @Html.DisplayNameFor(model => model.TinyImagePath)
         </dt>
@@ -16,8 +17,6 @@
             <img src="@Html.DisplayFor(model => model.TinyImagePath)" style="height:100px">
         </dd>
 
-
-        @*Burada detay sayfasına büyük resmi getirdim ama çok yer kaplıyor. Kaldırabiliriz.*@
         <dt>
             @Html.DisplayNameFor(model => model.NewsImages)
         </dt>
@@ -27,6 +26,22 @@
                 <img src="@item.ImagePath" style="height:100px">
             </dd>
         }
+
+
+        @if (Model.NewsVideos.Count() > 0)
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.NewsVideos)
+            </dt>
+            foreach (var item in Model.NewsVideos)
+            {
+                <dd>
+                    <iframe src="@item.VideoPath"></iframe>
+                </dd>
+            }
+
+        }
+
 
 
         <ul class="list-group list-group-unbordered">
@@ -75,7 +90,7 @@
                 </dt>
 
                 <dd>
-                    @Html.TextAreaFor(model => model.Content, new { @class = "ckeditor" })
+                    @Html.Raw(Model.Content)
                 </dd>
 
             </li>

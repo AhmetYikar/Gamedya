@@ -1,0 +1,34 @@
+﻿@model  IEnumerable<Gamedya.Models.NewsViewWeb>
+@{ Layout = null;}
+
+<!-- Feature Video Item -->
+<section id="feature_video_item" class="feature_video_item section_wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="feature_video_wrapper">
+                    <div class="feature_video_title"><h2><a href="@Url.Action("AllVideoNews", "VideoNews")">Video Haber</a></h2></div>
+
+                    <div id="feature_video_slider" class="owl-carousel">
+                        @foreach (var item in Model)
+                        {
+
+                            <div class="item">
+                                <div class="video_thumb"><img src="@item.TinyImagePath" alt="@item.Title"></div>
+                                <div class="video_info">
+                                    <div class="video_item_title"><h3><a href="@Url.Action("Details", "NewsDetails",new {id=item.Id})">@item.Title</a></h3></div><!--video_item_title-->
+                                    <div class="item_meta"><a >@item.Date</a></div><!--item_meta-->
+                                </div><!--video_info-->
+                            </div>
+
+                        }
+
+                    </div><!--feature_video_slider-->
+
+
+                </div><!--col-xs-12-->
+            </div><!--row-->
+        </div><!--feature_video_wrapper-->
+    </div><!--container-->
+</section>
+

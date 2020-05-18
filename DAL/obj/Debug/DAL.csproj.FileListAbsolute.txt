@@ -82,3 +82,4 @@ C:\Users\ahmet\source\repos\Gamedya\DAL\obj\Debug\DAL.Migrations.dn.resources
 C:\Users\ahmet\source\repos\Gamedya\DAL\obj\Debug\DAL.Migrations.notificationType_removed.resources
 C:\Users\ahmet\source\repos\Gamedya\DAL\obj\Debug\DAL.Migrations.notificationUser.resources
 C:\Users\ahmet\source\repos\Gamedya\DAL\obj\Debug\DAL.Migrations.dropTable.resources
+C:\Users\ahmet\source\repos\Gamedya\DAL\obj\Debug\DAL.Migrations.notificationModule.resources

@@ -7,37 +7,78 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using DAL;
+using DAL.Migrations;
+using Entites.Models.UserModels;
 using Entities.Models;
+using GameAdmin.Helper;
 using ServiceLayer.Uow;
 
 namespace GameAdmin.Controllers
 {
+    [Authorize]
     public class NotificationController : Controller
     {
         private UnitOfWork uow = new UnitOfWork(new GameNewsDbContext());
 
         // GET: Notification
+        [Authorize(Roles ="admin")]
         public ActionResult Index()
         {
             return View(uow.Notification.GetAll().ToList());
         }
 
-        // GET: Notification/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult UserNotification()
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Notification notification = uow.Notification.GetById(id);
-            if (notification == null)
-            {
-                return HttpNotFound();
-            }
-            return View(notification);
+            string id = User.GetUserId();
+            
+                IEnumerable<Notification> notifications = uow.Notification.GetNotificationDetails();
+                var getNotifications = new List<Notification>();
+                foreach (var notification in notifications)
+                {
+                    IEnumerable<NewsUser> users = notification.NewsUsers;
+                    foreach (var user in users)
+                    {
+                        if (user.Id == id)
+                        {
+                            getNotifications.Add(notification);
+                            break;
+                        }
+                    }
+                }
+                return View(getNotifications);
+            
         }
 
+        public ActionResult GetFourNotification()
+        {
+            string id = User.GetUserId();
+
+            List<Notification> notifications = uow.Notification.GetNotificationDetails().ToList();
+            if (notifications!=null)
+            {
+                List<Notification> getNotifications = new List<Notification>();
+                foreach (var notification in notifications)
+                {
+                    List<NewsUser> users = notification.NewsUsers.ToList();
+                    foreach (var user in users)
+                    {
+                        if (user.Id == id)
+                        {
+                            getNotifications.Add(notification);
+                            break;
+                        }
+                    }
+                }
+                return PartialView(getNotifications.OrderByDescending(a => a.Id).ToList());
+            }
+            return null;
+
+        }
+
+
+
         // GET: Notification/Create
+        [Authorize(Roles = "admin")]
         public ActionResult Create()
         {
             return View();

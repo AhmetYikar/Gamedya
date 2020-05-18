@@ -152,13 +152,28 @@ namespace GameAdmin.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
 
-        public ActionResult Create([Bind(Include = "Id,Title,Summary,Content,NewsCategoryId,Date,EditDate,IsActive,TinyImagePath,NewsUserId,NewsPlatform")] News news, HttpPostedFileBase file)
+        public ActionResult Create([Bind(Include = "Id,Title,Summary,Content,NewsCategoryId,Date,EditDate,IsActive,TinyImagePath,NewsUserId,NewsPlatform")] News news, HttpPostedFileBase file, string videoPath)
         {
+            if (ModelState.IsValid == false)
+            {
+                ViewBag.NewsCategoryId = new SelectList(uow.NewsCategory.GetAll(), "Id", "CategoryName");
+                return View(news);
+            }
 
             string fileName = string.Empty;
             string extension = string.Empty;
             NewsImage newsImage = new NewsImage();
-            newsImage.NewsId = news.Id;
+            newsImage.NewsId = news.Id;            
+            newsImage.ImagePath = news.TinyImagePath;
+            
+
+            if (videoPath!=null)
+            {
+                NewsVideo newsVideo = new NewsVideo();
+                newsVideo.NewsId = news.Id;
+                newsVideo.VideoPath = videoPath;
+                uow.NewsVideo.Insert(newsVideo);
+            }
 
             if (file != null && file.ContentLength > 0 && file.ContentLength < 2 * 1024 * 1024)
             {
@@ -166,23 +181,15 @@ namespace GameAdmin.Controllers
 
                 if (extension.Contains("pdf") || extension.Contains("doc") || extension.Contains("docx"))
                 {
-
                     return RedirectToAction("index");
                 }
-                else
-                {
-
-                }
+               
                 fileName = Guid.NewGuid() + ".png";
                 file.SaveAs(Path.Combine(Server.MapPath("/Content/BigImages/"), fileName));
 
                 var path = Path.Combine(Server.MapPath("/Content/TinyImages/"), fileName.Replace(".png", "-thumb.png"));
 
-
-
                 Image image = Image.FromStream(file.InputStream, true);
-
-
 
                 int imgWidth = 110;
                 int imgHeight = 95;
@@ -193,14 +200,9 @@ namespace GameAdmin.Controllers
                 news.TinyImagePath = "/Content/TinyImages/" + fileName.Replace(".png", "-thumb.png");
 
                 newsImage.ImagePath = "/Content/BigImages/" + fileName;
-
-                uow.NewsImage.Insert(newsImage);
-
             }
-
-            if (ModelState.IsValid)
+            try
             {
-                newsImage.ImagePath = news.TinyImagePath;
                 uow.NewsImage.Insert(newsImage);
                 news.Date = DateTime.Now;
                 news.EditDate = DateTime.Now;
@@ -209,8 +211,11 @@ namespace GameAdmin.Controllers
                 uow.Complete();
                 return RedirectToAction("Index");
             }
-            ViewBag.NewsCategoryId = new SelectList(uow.NewsCategory.GetAll(), "Id", "CategoryName");
-            return View(news);
+            catch (Exception)
+            {
+                ViewBag.NewsCategoryId = new SelectList(uow.NewsCategory.GetAll(), "Id", "CategoryName");
+                return View(news);
+            }                         
 
         }
 

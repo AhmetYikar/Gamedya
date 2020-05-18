@@ -34,6 +34,11 @@ namespace ServiceLayer.Repository.NewsRepository
         {
             return _context.Set<News>().Include(a => a.NewsImages).Where(predicate);
         }
+
+        public IEnumerable<News> GetNewsWithVideos(Expression<Func<News, bool>> predicate)
+        {
+            return _context.Set<News>().Include(a => a.NewsVideos).Where(predicate);
+        }
         public IEnumerable<News> GetNewsWithComments(Expression<Func<News, bool>> predicate)
         {
             return _context.Set<News>().Include(a => a.NewsComments).Where(predicate);

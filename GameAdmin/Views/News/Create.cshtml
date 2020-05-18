@@ -1,5 +1,4 @@
 ﻿@model Entites.Models.NewsModels.News
-@using GameAdmin.Helper
 @{
     ViewBag.Title = "Haber Ekle";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -86,11 +85,22 @@
                         <div class="input-group">
                             <div class="custom-file">
                                 <br />
-                                <input class="custom-file-input" name="file" id="exampleInputFile" type="file">
+                                <input class="custom-file-input" name="file" type="file">
                             </div>
                         </div>
                     </div>
                 </div>
+                <br />
+                <br />
+
+                <div class="form-group">
+                   
+                    <label class="control-label col-md-2">Video Url</label>
+                    <div class="col-md-12">
+                        <input name="videoPath" class="form-control" type="text">
+                    </div>
+                </div>
+
                 <div class="form-group">
                     <div class="col-md-10 text-center">
                         <div class="box-footer">

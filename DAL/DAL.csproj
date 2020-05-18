@@ -83,6 +83,10 @@
     <Compile Include="Migrations\202005161232442_dropTable.Designer.cs">
       <DependentUpon>202005161232442_dropTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202005172336582_notificationModule.cs" />
+    <Compile Include="Migrations\202005172336582_notificationModule.Designer.cs">
+      <DependentUpon>202005172336582_notificationModule.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -117,6 +121,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202005161232442_dropTable.resx">
       <DependentUpon>202005161232442_dropTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005172336582_notificationModule.resx">
+      <DependentUpon>202005172336582_notificationModule.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

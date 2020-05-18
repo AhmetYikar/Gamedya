@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Entity;
+using System.Linq.Expressions;
 
 namespace ServiceLayer.Repository.MessageRepository
 {
@@ -18,5 +20,11 @@ namespace ServiceLayer.Repository.MessageRepository
         }
 
         public GameNewsDbContext context { get { return _context as GameNewsDbContext; } }
+
+        public IEnumerable<Notification> GetNotificationDetails()
+        {
+            return _context.Set<Notification>()
+                .Include(a => a.NewsUsers);                
+        }
     }
 }
