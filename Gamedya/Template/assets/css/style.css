@@ -289,11 +289,13 @@ ul {
 .dropdown ul.dropdown-menu{
     background:#fff;
     padding:10px;
+    z-index:9999;
 }
-.dropdown ul.dropdown-menu li a{
-    padding:0;
-    line-height:32px;
-}
+    .dropdown ul.dropdown-menu li a {
+        padding: 0;
+        line-height: 32px;
+      
+    }
 
 @media (max-width : 991px) {
     .main-menu .nav li a {
@@ -586,7 +588,7 @@ ul {
    Feature Tab
     -------------------*/
 .sitebar {
-    background: transparent;
+    background: aquamarine;
     margin-bottom: 30px;
 }
 .tab .nav-tabs li {
@@ -596,7 +598,7 @@ ul {
     text-align: center;
 }
     .tab .nav-tabs li a {
-        background: transparent;
+        background: #000;
         color: dimgray;
         /*background: #000;
         color: #ff6102;*/
@@ -606,7 +608,7 @@ ul {
         font-family: "Oswald",sans-serif;
     }
     .tab .nav-tabs li.active a {
-        background: lightgray;
+        background: #ff6102;
         color: #000;
         /*background: #0094ff;*/
         /*background: #ff6102;
@@ -647,9 +649,9 @@ ul {
 .facebook{
     text-align: center;
 }
-.most_comment{
-    background:#fff;
-    padding:20px 15px;
+.most_comment {
+    background: aquamarine;
+    padding: 20px 15px;
 }
     .most_comment .media {
        
@@ -694,7 +696,7 @@ ul {
 
    
     }
-}
+
 @media (max-width: 768px) {
 
     .tab .tab-content{
@@ -1129,7 +1131,7 @@ ul {
     text-align: center;
     cursor: pointer;
     z-index: 333;
-    font-width:500;
+   
 }
 .crunchify-top .fa{
     color:#fff;
@@ -1198,3 +1200,47 @@ ul {
     color: #fff;
     font-size: medium;
 }
+
+
+.girisdüzenleme {
+    height:200px;
+    width:100px;
+    text-align:center;
+    margin-left:100px;
+    margin-right:100px;
+}
+
+
+
+
+
+
+
+
+.login-form11 {
+    width: 500px;
+    margin: 50px auto;
+    background: #f0ad4e !important;
+}
+
+.login-form11 form {
+    margin-bottom: 15px;
+    background: #f7f7f7;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    padding: 30px;
+}
+
+.login-form11 h2 {
+    margin: 0 0 15px;
+}
+
+.form-control11, .btn {
+    min-height: 38px;
+    border-radius: 2px;
+}
+
+.btn11 {
+    font-size: 15px;
+    font-weight: bold;
+}
+
