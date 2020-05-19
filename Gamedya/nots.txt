@@ -12,3 +12,4 @@
         *login register navbara gelecek.
         *bidirim için ikon konacak
         *login ve register tasarımı ve assetteki fazlalıklar atılacak.
+        *seoları unutmayalım.

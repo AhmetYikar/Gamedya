@@ -10,6 +10,7 @@ using DAL;
 using Entites.Models.NewsModels;
 using Gamedya.Models;
 using ServiceLayer.Uow;
+using PagedList;
 
 namespace Gamedya.Controllers
 {
@@ -44,15 +45,91 @@ namespace Gamedya.Controllers
             }
         }
 
-        public ActionResult AllPcNews()
+        public ActionResult AllPcNews(string ara, string siralama, string sonArananKelime, int? sayfaNo)
         {
-            IEnumerable<News> pcNews = uow.News.Where(a => a.NewsPlatform == NewsPlatform.Pc);
-            if (pcNews != null && pcNews.Count() > 0)
+
+            ViewBag.NewsCategoryId = new SelectList(uow.NewsCategory.GetAll(), "Id", "CategoryName");
+
+            ViewBag.SonSiralama1 = siralama;
+            //ViewBag.AdaGoreSirala = String.IsNullOrEmpty(siralama) ? "ZdenAya" : string.Empty;
+            //ViewBag.SoyadaGoreSirala = siralama == "SoyadAdanZye" ? "SoyadZdenAya" : "SoyadAdanZye";
+
+            if (ara != null)
             {
-                return PartialView(pcNews);
+                sayfaNo = 1;
             }
-            return null;
+            else
+            {
+                ara = sonArananKelime;
+            }
+
+
+
+            ViewBag.SonArananKelime1 = ara;
+
+
+
+
+
+            if (String.IsNullOrEmpty(siralama))
+            {
+                ViewBag.AdaGoreSirala2 = "ZdenAya";
+            }
+            else
+            {
+                ViewBag.AdaGoreSirala2 = string.Empty;
+            }
+
+
+            var liste = PcNews();
+
+            if (!string.IsNullOrWhiteSpace(ara))
+            {
+                liste = liste.Where(a => a.Title.Contains(ara));
+            }
+
+
+
+            int sayfaBuyuklugu = 10;
+            int sayfaNumarasi = (sayfaNo ?? 1);
+
+
+            return View(liste.ToPagedList(sayfaNumarasi, sayfaBuyuklugu));
         }
+
+        private IEnumerable<NewsViewWeb> PcNews()
+        {
+            using (var uow = new UnitOfWork(new GameNewsDbContext()))
+            {
+                IEnumerable<News> pcnews = uow.News.Where(a => a.NewsPlatform == NewsPlatform.Pc);
+                if (pcnews != null)
+                {
+                  
+                    IEnumerable<NewsViewWeb> newsView = pcnews.Select(a => new NewsViewWeb
+                    {
+                        Id = a.Id,
+                        Title = a.Title,
+                        Summary = a.Summary,
+                        TinyImagePath = a.TinyImagePath,
+                        Date = a.Date
+                    }).OrderByDescending(a => a.Id);
+                   
+                    return newsView.ToList();
+                }                      
+
+               
+                return null;
+            }
+
+            //IEnumerable<News> pcNews = uow.News.Where(a => a.NewsPlatform == NewsPlatform.Pc);
+            //if (pcNews != null && pcNews.Count() > 0)
+            //{
+            //    return PartialView(pcNews);
+            //}
+            //return null;
+
+        }
+
 
 
 

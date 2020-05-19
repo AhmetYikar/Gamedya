@@ -598,21 +598,19 @@ ul {
     text-align: center;
 }
     .tab .nav-tabs li a {
+       
         background: #000;
-        color: dimgray;
-        /*background: #000;
-        color: #ff6102;*/
+        color: #ff6102;
         margin-right: 0;
         border: 0px;
         border-radius: 0px;
         font-family: "Oswald",sans-serif;
     }
     .tab .nav-tabs li.active a {
+      
+      
         background: #ff6102;
         color: #000;
-        /*background: #0094ff;*/
-        /*background: #ff6102;
-        color: #000;*/
         border: 0px;
     }
 

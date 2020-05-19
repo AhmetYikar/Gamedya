@@ -268,3 +268,7 @@ C:\Users\SnmzŞti\Desktop\Gamedya\Gamedya\obj\Debug\Gamedya.csproj.CoreCompileIn
 C:\Users\SnmzŞti\Desktop\Gamedya\Gamedya\obj\Debug\Gamedya.csproj.CopyComplete
 C:\Users\SnmzŞti\Desktop\Gamedya\Gamedya\obj\Debug\Gamedya.dll
 C:\Users\SnmzŞti\Desktop\Gamedya\Gamedya\obj\Debug\Gamedya.pdb
+C:\Users\SnmzŞti\Desktop\Gamedya\Gamedya\bin\PagedList.dll
+C:\Users\SnmzŞti\Desktop\Gamedya\Gamedya\bin\PagedList.Mvc.dll
+C:\Users\SnmzŞti\Desktop\Gamedya\Gamedya\bin\PagedList.xml
+C:\Users\SnmzŞti\Desktop\Gamedya\Gamedya\bin\PagedList.Mvc.xml
