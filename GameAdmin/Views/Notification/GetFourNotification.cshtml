@@ -2,15 +2,14 @@
 
 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
     <i class="fa fa-bell"></i>
-    <span class="label label-success">@Model.Count()</span>
+    <span  class="label label-success">@ViewBag.unReadCount</span>
 </a>
 <ul class="dropdown-menu">
-    @for(int i=0; i<4; i++)
+    @foreach(var item in Model)
     {
-    <li>
-        
-            <a href="@Url.Action("Details","GameReview",new {id=Model[i].NModuleId })">
-                @Model[i].Content
+    <li>       
+            <a href="@Url.Action("Details","GameReview",new {id=item.NModuleId })">
+                @item.Content
 
             </a>
         </li>

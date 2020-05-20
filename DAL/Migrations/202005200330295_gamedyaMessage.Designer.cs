@@ -7,13 +7,13 @@ namespace DAL.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.0-30225")]
-    public sealed partial class kopyailk : IMigrationMetadata
+    public sealed partial class gamedyaMessage : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(kopyailk));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(gamedyaMessage));
         
         string IMigrationMetadata.Id
         {
-            get { return "202005111917485_kopyailk"; }
+            get { return "202005200330295_gamedyaMessage"; }
         }
         
         string IMigrationMetadata.Source

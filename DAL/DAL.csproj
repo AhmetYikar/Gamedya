@@ -55,37 +55,29 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context\GameNewsDbContext.cs" />
-    <Compile Include="Migrations\202005111917485_kopyailk.cs" />
-    <Compile Include="Migrations\202005111917485_kopyailk.Designer.cs">
-      <DependentUpon>202005111917485_kopyailk.cs</DependentUpon>
+    <Compile Include="Migrations\202005191719047_yeniden.cs" />
+    <Compile Include="Migrations\202005191719047_yeniden.Designer.cs">
+      <DependentUpon>202005191719047_yeniden.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202005160859538_notification.cs" />
-    <Compile Include="Migrations\202005160859538_notification.Designer.cs">
-      <DependentUpon>202005160859538_notification.cs</DependentUpon>
+    <Compile Include="Migrations\202005191935296_messageReceiver.cs" />
+    <Compile Include="Migrations\202005191935296_messageReceiver.Designer.cs">
+      <DependentUpon>202005191935296_messageReceiver.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202005160955398_notificationFix.cs" />
-    <Compile Include="Migrations\202005160955398_notificationFix.Designer.cs">
-      <DependentUpon>202005160955398_notificationFix.cs</DependentUpon>
+    <Compile Include="Migrations\202005200330295_gamedyaMessage.cs" />
+    <Compile Include="Migrations\202005200330295_gamedyaMessage.Designer.cs">
+      <DependentUpon>202005200330295_gamedyaMessage.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202005161003173_dn.cs" />
-    <Compile Include="Migrations\202005161003173_dn.Designer.cs">
-      <DependentUpon>202005161003173_dn.cs</DependentUpon>
+    <Compile Include="Migrations\202005201003097_receiver.cs" />
+    <Compile Include="Migrations\202005201003097_receiver.Designer.cs">
+      <DependentUpon>202005201003097_receiver.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202005161115136_notificationType_removed.cs" />
-    <Compile Include="Migrations\202005161115136_notificationType_removed.Designer.cs">
-      <DependentUpon>202005161115136_notificationType_removed.cs</DependentUpon>
+    <Compile Include="Migrations\202005201014096_messageSenderName.cs" />
+    <Compile Include="Migrations\202005201014096_messageSenderName.Designer.cs">
+      <DependentUpon>202005201014096_messageSenderName.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202005161151501_notificationUser.cs" />
-    <Compile Include="Migrations\202005161151501_notificationUser.Designer.cs">
-      <DependentUpon>202005161151501_notificationUser.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202005161232442_dropTable.cs" />
-    <Compile Include="Migrations\202005161232442_dropTable.Designer.cs">
-      <DependentUpon>202005161232442_dropTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202005172336582_notificationModule.cs" />
-    <Compile Include="Migrations\202005172336582_notificationModule.Designer.cs">
-      <DependentUpon>202005172336582_notificationModule.cs</DependentUpon>
+    <Compile Include="Migrations\202005201801102_messageDel.cs" />
+    <Compile Include="Migrations\202005201801102_messageDel.Designer.cs">
+      <DependentUpon>202005201801102_messageDel.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -101,29 +93,23 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202005111917485_kopyailk.resx">
-      <DependentUpon>202005111917485_kopyailk.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202005191719047_yeniden.resx">
+      <DependentUpon>202005191719047_yeniden.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202005160859538_notification.resx">
-      <DependentUpon>202005160859538_notification.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202005191935296_messageReceiver.resx">
+      <DependentUpon>202005191935296_messageReceiver.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202005160955398_notificationFix.resx">
-      <DependentUpon>202005160955398_notificationFix.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202005200330295_gamedyaMessage.resx">
+      <DependentUpon>202005200330295_gamedyaMessage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202005161003173_dn.resx">
-      <DependentUpon>202005161003173_dn.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202005201003097_receiver.resx">
+      <DependentUpon>202005201003097_receiver.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202005161115136_notificationType_removed.resx">
-      <DependentUpon>202005161115136_notificationType_removed.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202005201014096_messageSenderName.resx">
+      <DependentUpon>202005201014096_messageSenderName.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202005161151501_notificationUser.resx">
-      <DependentUpon>202005161151501_notificationUser.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202005161232442_dropTable.resx">
-      <DependentUpon>202005161232442_dropTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202005172336582_notificationModule.resx">
-      <DependentUpon>202005172336582_notificationModule.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202005201801102_messageDel.resx">
+      <DependentUpon>202005201801102_messageDel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

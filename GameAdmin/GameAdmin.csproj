@@ -270,6 +270,7 @@
     <Compile Include="Helper\CkeditorHtmlHelpers.cs" />
     <Compile Include="Helper\ClaimsPrincipalExtension.cs" />
     <Compile Include="Helper\ImageThumbnail.cs" />
+    <Compile Include="Helper\Subs.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminViewModels.cs" />
     <Compile Include="Models\BlogViewModel.cs" />
@@ -7635,6 +7636,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\Message.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\src\index.js" />
     <Content Include="Scripts\src\methods\defaults.js" />
@@ -7781,10 +7783,6 @@
     <Content Include="Views\GameReview\Details.cshtml" />
     <Content Include="Views\GameReview\Edit.cshtml" />
     <Content Include="Views\GameReview\Index.cshtml" />
-    <Content Include="Views\Message\Create.cshtml" />
-    <Content Include="Views\Message\Delete.cshtml" />
-    <Content Include="Views\Message\Details.cshtml" />
-    <Content Include="Views\Message\Index.cshtml" />
     <Content Include="Views\News\Create.cshtml" />
     <Content Include="Views\News\Delete.cshtml" />
     <Content Include="Views\News\Details.cshtml" />
@@ -7824,7 +7822,6 @@
     <Content Include="Views\GeneralArticle\Details.cshtml" />
     <Content Include="Views\GeneralArticle\Edit.cshtml" />
     <Content Include="Views\GeneralArticle\Index.cshtml" />
-    <Content Include="Views\NewsUsersAdmin\GetByRoleName.cshtml" />
     <Content Include="Views\NewsUsersAdmin\UsersWithOutRole.cshtml" />
     <Content Include="Views\Notification\Create.cshtml" />
     <Content Include="Views\Notification\Delete.cshtml" />
@@ -7832,6 +7829,15 @@
     <Content Include="Views\Notification\Index.cshtml" />
     <Content Include="Views\Notification\UserNotification.cshtml" />
     <Content Include="Views\Notification\GetFourNotification.cshtml" />
+    <Content Include="Views\Message\Create.cshtml" />
+    <Content Include="Views\Message\MessageContent.cshtml" />
+    <Content Include="Views\NewsUsersAdmin\GetByRoleName.cshtml" />
+    <Content Include="Views\Message\MyMessages.cshtml" />
+    <Content Include="Views\Message\Details.cshtml" />
+    <Content Include="Views\Message\GetFourMessage.cshtml" />
+    <Content Include="Views\Message\Delete.cshtml" />
+    <Content Include="Views\Message\MySentMessages.cshtml" />
+    <Content Include="Views\Message\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

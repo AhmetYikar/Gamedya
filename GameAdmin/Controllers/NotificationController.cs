@@ -7,7 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using DAL;
-using DAL.Migrations;
+using Entites.Models.MessageModels;
 using Entites.Models.UserModels;
 using Entities.Models;
 using GameAdmin.Helper;
@@ -52,7 +52,6 @@ namespace GameAdmin.Controllers
         public ActionResult GetFourNotification()
         {
             string id = User.GetUserId();
-
             List<Notification> notifications = uow.Notification.GetNotificationDetails().ToList();
             if (notifications!=null)
             {
@@ -64,17 +63,32 @@ namespace GameAdmin.Controllers
                     {
                         if (user.Id == id)
                         {
-                            getNotifications.Add(notification);
+                            getNotifications.Add(notification);                           
                             break;
                         }
                     }
                 }
-                return PartialView(getNotifications.OrderByDescending(a => a.Id).ToList());
+                IEnumerable<Notification> unReadNotifications = getNotifications.Where(a => a.IsRead == false);
+                int unReadCount = unReadNotifications.Count();
+                ViewBag.unReadCount = unReadCount;
+                return PartialView(getNotifications.OrderByDescending(a => a.Id).Take(4).ToList());
             }
             return null;
 
         }
 
+
+
+        public ActionResult Details(int? id)
+        {
+            if (id!=null)
+            {
+                Notification notification = uow.Notification.Where(a => a.Id == id).FirstOrDefault();
+                return View(notification);               
+            }
+            return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+        }
 
 
         // GET: Notification/Create
@@ -101,7 +115,43 @@ namespace GameAdmin.Controllers
             return View(notification);
         }
 
-        
+        //bildirim okunduğunda isRead 
+        [HttpPost]
+        public JsonResult NotificationRead(int? id)
+        {
+            if (id!=null)
+            {
+                Notification notification = uow.Notification.GetById(id);
+                notification.IsRead = true;
+                uow.Notification.Update(notification);
+                uow.Complete();
+                return Json(JsonRequestBehavior.AllowGet);
+            }            
+            return Json( JsonRequestBehavior.AllowGet);
+        }
+
+        // DeleteMyNotif
+        [HttpPost]
+        public JsonResult DeleteMyNotif(int id)
+        {
+            bool result = false;
+            try
+            {
+                Notification notification = uow.Notification.GetById(id);
+
+                uow.Notification.Delete(notification);
+                uow.Complete();
+                result = true;
+                return Json(result, JsonRequestBehavior.AllowGet);
+            }
+            catch
+            {
+                return Json(result, JsonRequestBehavior.AllowGet);
+            }                        
+
+        }
+
+
         // GET: Notification/Delete/5
         public ActionResult Delete(int? id)
         {
@@ -122,10 +172,12 @@ namespace GameAdmin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Notification notification = uow.Notification.GetById(id);
-            uow.Notification.Delete(notification);
-            uow.Complete();
-            return RedirectToAction("Index");
+            
+                Notification notification = uow.Notification.GetById(id);
+                uow.Notification.Delete(notification);
+                uow.Complete();
+                return RedirectToAction("Index");
+         
         }
 
         protected override void Dispose(bool disposing)

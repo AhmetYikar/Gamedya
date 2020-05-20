@@ -1,6 +1,4 @@
-﻿
-
-function UsersByRole(data) {
+﻿function UsersByRole(data) {
 
     $.ajax({
         url: '/NewsUsersAdmin/GetByRoleName/',

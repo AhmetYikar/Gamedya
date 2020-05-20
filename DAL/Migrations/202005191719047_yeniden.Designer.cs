@@ -7,13 +7,13 @@ namespace DAL.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.0-30225")]
-    public sealed partial class dropTable : IMigrationMetadata
+    public sealed partial class yeniden : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(dropTable));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(yeniden));
         
         string IMigrationMetadata.Id
         {
-            get { return "202005161232442_dropTable"; }
+            get { return "202005191719047_yeniden"; }
         }
         
         string IMigrationMetadata.Source

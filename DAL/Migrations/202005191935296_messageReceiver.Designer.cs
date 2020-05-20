@@ -7,13 +7,13 @@ namespace DAL.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.0-30225")]
-    public sealed partial class notification : IMigrationMetadata
+    public sealed partial class messageReceiver : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(notification));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(messageReceiver));
         
         string IMigrationMetadata.Id
         {
-            get { return "202005160859538_notification"; }
+            get { return "202005191935296_messageReceiver"; }
         }
         
         string IMigrationMetadata.Source
