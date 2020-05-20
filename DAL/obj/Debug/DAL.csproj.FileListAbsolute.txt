@@ -68,7 +68,6 @@ C:\Users\SnmzŞti\Desktop\Gamedya\DAL\bin\Debug\tr\System.Web.WebPages.Razor.res
 C:\Users\SnmzŞti\Desktop\Gamedya\DAL\bin\Debug\tr\System.Web.Razor.resources.dll
 C:\Users\SnmzŞti\Desktop\Gamedya\DAL\bin\Debug\tr\System.Web.WebPages.Deployment.resources.dll
 C:\Users\SnmzŞti\Desktop\Gamedya\DAL\obj\Debug\DAL.csprojAssemblyReference.cache
-C:\Users\SnmzŞti\Desktop\Gamedya\DAL\obj\Debug\DAL.Migrations.kopyailk.resources
 C:\Users\SnmzŞti\Desktop\Gamedya\DAL\obj\Debug\DAL.csproj.GenerateResource.cache
 C:\Users\SnmzŞti\Desktop\Gamedya\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
 C:\Users\SnmzŞti\Desktop\Gamedya\DAL\obj\Debug\DAL.csproj.CopyComplete
@@ -81,3 +80,6 @@ C:\Users\ahmet\source\repos\Gamedya\DAL\obj\Debug\DAL.Migrations.gamedyaMessage.
 C:\Users\ahmet\source\repos\Gamedya\DAL\obj\Debug\DAL.Migrations.receiver.resources
 C:\Users\ahmet\source\repos\Gamedya\DAL\obj\Debug\DAL.Migrations.messageSenderName.resources
 C:\Users\ahmet\source\repos\Gamedya\DAL\obj\Debug\DAL.Migrations.messageDel.resources
+C:\Users\SnmzŞti\Desktop\Gamedya\DAL\obj\Debug\DAL.Migrations.ilk.resources
+C:\Users\SnmzŞti\Desktop\Gamedya\DAL\obj\Debug\DAL.Migrations.iki.resources
+C:\Users\SnmzŞti\Desktop\Gamedya\DAL\obj\Debug\DAL.Migrations.uc.resources

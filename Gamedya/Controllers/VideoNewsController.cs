@@ -18,7 +18,7 @@ namespace Gamedya.Controllers
         // GET: 4 VideoNews
         public ActionResult VideoNews()
         {
-            IEnumerable<News> videoNews = uow.News.GetNewsWithVideos(a => a.NewsPlatform == NewsPlatform.VideoNews).ToList()
+            IEnumerable<News> videoNews = uow.News.GetNewsWithVideos(a => a.NewsPart == NewsPart.VideoNews).ToList()
                                                                     .OrderByDescending(a => a.Id).Take(4);
 
             if (videoNews != null && videoNews.Count() > 0)
@@ -95,7 +95,7 @@ namespace Gamedya.Controllers
         {
             using (var uow = new UnitOfWork(new GameNewsDbContext()))
             {
-                IEnumerable<News> getvideonews = uow.News.Where(a => a.NewsPlatform == NewsPlatform.VideoNews);
+                IEnumerable<News> getvideonews = uow.News.Where(a => a.NewsPart == NewsPart.VideoNews);
                 if (getvideonews != null)
                 {
 

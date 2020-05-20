@@ -18,7 +18,7 @@ namespace Gamedya.Controllers
         // GET: ScienceNews
         public ActionResult GetScienceNews()
         {
-            IEnumerable<News> scienceNews = uow.News.GetNewsDetails(a => a.NewsPlatform == NewsPlatform.Science).ToList()
+            IEnumerable<News> scienceNews = uow.News.GetNewsDetails(a => a.NewsPart == NewsPart.Science).ToList()
                                                                     .OrderByDescending(a => a.Id).Take(4);
 
             if (scienceNews != null && scienceNews.Count()>0)
@@ -97,7 +97,7 @@ namespace Gamedya.Controllers
         {
             using (var uow = new UnitOfWork(new GameNewsDbContext()))
             {
-                IEnumerable<News> sciencenews = uow.News.Where(a => a.NewsPlatform == NewsPlatform.Science);
+                IEnumerable<News> sciencenews = uow.News.Where(a => a.NewsPart == NewsPart.Science);
                 if (sciencenews != null)
                 {
 

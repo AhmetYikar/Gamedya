@@ -27,6 +27,7 @@ namespace Entites.Models.NewsModels
        Science,
        VideoNews
     }
+
     public class News
     {
         public int Id { get; set; }
@@ -70,7 +71,7 @@ namespace Entites.Models.NewsModels
         public virtual ICollection<NewsVideo> NewsVideos { get; set; }
 
         public NewsPlatform NewsPlatform { get; set; }
-
+        public NewsPart NewsPart { get; set; }
 
     }
 }

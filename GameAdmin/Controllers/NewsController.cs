@@ -152,7 +152,7 @@ namespace GameAdmin.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
 
-        public ActionResult Create([Bind(Include = "Id,Title,Summary,Content,NewsCategoryId,Date,EditDate,IsActive,TinyImagePath,NewsUserId,NewsPlatform")] News news, HttpPostedFileBase file, string videoPath)
+        public ActionResult Create([Bind(Include = "Id,Title,Summary,Content,NewsCategoryId,Date,EditDate,IsActive,TinyImagePath,NewsUserId,NewsPlatform,NewsPart")] News news, HttpPostedFileBase file, string videoPath)
         {
             if (ModelState.IsValid == false)
             {

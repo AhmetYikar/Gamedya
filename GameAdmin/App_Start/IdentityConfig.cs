@@ -11,10 +11,10 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using GameAdmin.Models;
-using Entites.Models.UserModels;
-using DAL;
 using System.Net.Mail;
 using System.Net;
+using Entites.Models.UserModels;
+using DAL;
 
 namespace GameAdmin
 {

@@ -44,98 +44,108 @@
 
 
 
-        <ul class="list-group list-group-unbordered">
+    <ul class="list-group list-group-unbordered">
 
-            <li class="list-group-item">
-                <dt>
-                    @Html.DisplayNameFor(model => model.NewsCategory.CategoryName)
-                </dt>
+        <li class="list-group-item">
+            <dt>
+                @Html.DisplayNameFor(model => model.NewsCategory.CategoryName)
+            </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.NewsCategory.CategoryName)
-                </dd>
-            </li>
-            <li class="list-group-item">
-                <dt>
-                    @Html.DisplayNameFor(model => model.NewsPlatform)
-                </dt>
+            <dd>
+                @Html.DisplayFor(model => model.NewsCategory.CategoryName)
+            </dd>
+        </li>
+        <li class="list-group-item">
+            <dt>
+                @Html.DisplayNameFor(model => model.NewsPlatform)
+            </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.NewsPlatform)
-                </dd>
-            </li>
-            <li class="list-group-item">
-                <dt>
-                    @Html.DisplayNameFor(model => model.Title)
-                </dt>
+            <dd>
+                @Html.DisplayFor(model => model.NewsPlatform)
+            </dd>
+        </li>
+        <li class="list-group-item">
+            <dt>
+                @Html.DisplayNameFor(model => model.NewsPart)
+            </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.Title)
-                </dd>
+            <dd>
+                @Html.DisplayFor(model => model.NewsPart)
+            </dd>
+        </li>
 
-            </li>
-            <li class="list-group-item">
-                <dt>
-                    @Html.DisplayNameFor(model => model.Summary)
-                </dt>
+        <li class="list-group-item">
+            <dt>
+                @Html.DisplayNameFor(model => model.Title)
+            </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.Summary)
-                </dd>
-            </li>
+            <dd>
+                @Html.DisplayFor(model => model.Title)
+            </dd>
 
-            <li class="list-group-item">
-                <dt>
-                    @Html.DisplayNameFor(model => model.Content)
-                </dt>
+        </li>
+        <li class="list-group-item">
+            <dt>
+                @Html.DisplayNameFor(model => model.Summary)
+            </dt>
 
-                <dd>
-                    @Html.Raw(Model.Content)
-                </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Summary)
+            </dd>
+        </li>
 
-            </li>
+        <li class="list-group-item">
+            <dt>
+                @Html.DisplayNameFor(model => model.Content)
+            </dt>
 
-            <li class="list-group-item">
-                <dt>
-                    @Html.DisplayNameFor(model => model.Date)
-                </dt>
+            <dd>
+                @Html.Raw(Model.Content)
+            </dd>
 
-                <dd>
-                    @Model.Date.ToString()
-                </dd>
+        </li>
 
-            </li>
-            <li class="list-group-item">
+        <li class="list-group-item">
+            <dt>
+                @Html.DisplayNameFor(model => model.Date)
+            </dt>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.EditDate)
-                </dt>
+            <dd>
+                @Model.Date.ToString()
+            </dd>
 
-                <dd>
-                    @Model.EditDate.ToString()
-                </dd>
-            </li>
+        </li>
+        <li class="list-group-item">
 
-            <li class="list-group-item">
-                <dt>
-                    @Html.DisplayNameFor(model => model.IsActive)
-                </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.EditDate)
+            </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.IsActive)
-                </dd>
-            </li>
+            <dd>
+                @Model.EditDate.ToString()
+            </dd>
+        </li>
 
-            <li class="list-group-item">
-                <dt>
-                    @Html.DisplayNameFor(model => model.ViewCount)
-                </dt>
+        <li class="list-group-item">
+            <dt>
+                @Html.DisplayNameFor(model => model.IsActive)
+            </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.ViewCount)
-                </dd>
-            </li>
-        </ul>
+            <dd>
+                @Html.DisplayFor(model => model.IsActive)
+            </dd>
+        </li>
+
+        <li class="list-group-item">
+            <dt>
+                @Html.DisplayNameFor(model => model.ViewCount)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ViewCount)
+            </dd>
+        </li>
+    </ul>
     </div>
 
 </div>

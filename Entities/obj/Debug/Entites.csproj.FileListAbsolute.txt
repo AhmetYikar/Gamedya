@@ -67,7 +67,6 @@ C:\Users\SnmzŞti\Desktop\Gamedya\Entities\bin\Debug\tr\System.Web.Razor.resourc
 C:\Users\SnmzŞti\Desktop\Gamedya\Entities\bin\Debug\tr\System.Web.WebPages.resources.dll
 C:\Users\SnmzŞti\Desktop\Gamedya\Entities\bin\Debug\tr\System.Web.WebPages.Deployment.resources.dll
 C:\Users\SnmzŞti\Desktop\Gamedya\Entities\bin\Debug\tr\System.Web.WebPages.Razor.resources.dll
-C:\Users\SnmzŞti\Desktop\Gamedya\Entities\obj\Debug\Entites.csprojAssemblyReference.cache
 C:\Users\SnmzŞti\Desktop\Gamedya\Entities\obj\Debug\Entites.csproj.CoreCompileInputs.cache
 C:\Users\SnmzŞti\Desktop\Gamedya\Entities\obj\Debug\Entites.csproj.CopyComplete
 C:\Users\SnmzŞti\Desktop\Gamedya\Entities\obj\Debug\Entities.dll
