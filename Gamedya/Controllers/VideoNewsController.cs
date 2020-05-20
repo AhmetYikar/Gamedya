@@ -1,6 +1,7 @@
 ﻿using DAL;
 using Entites.Models.NewsModels;
 using Gamedya.Models;
+using PagedList;
 using ServiceLayer.Uow;
 using System;
 using System.Collections.Generic;
@@ -17,8 +18,8 @@ namespace Gamedya.Controllers
         // GET: 4 VideoNews
         public ActionResult VideoNews()
         {
-            IEnumerable<News> videoNews = uow.News.GetNewsWithVideos(a => a.NewsVideos.Count() > 0).ToList()
-                                                        .OrderByDescending(a => a.Id).Take(4);
+            IEnumerable<News> videoNews = uow.News.GetNewsWithVideos(a => a.NewsPlatform == NewsPlatform.VideoNews).ToList()
+                                                                    .OrderByDescending(a => a.Id).Take(4);
 
             if (videoNews != null && videoNews.Count() > 0)
             {
@@ -39,14 +40,87 @@ namespace Gamedya.Controllers
             }
         }
 
-        public ActionResult AllVideoNews()
+        public ActionResult AllVideoNews(string ara, string siralama, string sonArananKelime, int? sayfaNo)
         {
-            IEnumerable<News> videoNews = uow.News.GetNewsWithVideos(a => a.NewsVideos.Count() > 0);
-            if (videoNews != null && videoNews.Count() > 0)
+            ViewBag.NewsCategoryId = new SelectList(uow.NewsCategory.GetAll(), "Id", "CategoryName");
+
+            ViewBag.SonSiralama1 = siralama;
+            //ViewBag.AdaGoreSirala = String.IsNullOrEmpty(siralama) ? "ZdenAya" : string.Empty;
+            //ViewBag.SoyadaGoreSirala = siralama == "SoyadAdanZye" ? "SoyadZdenAya" : "SoyadAdanZye";
+
+            if (ara != null)
             {
-                return PartialView(videoNews);
+                sayfaNo = 1;
             }
-            return null;
+            else
+            {
+                ara = sonArananKelime;
+            }
+
+
+
+            ViewBag.SonArananKelime1 = ara;
+
+
+
+
+
+            if (String.IsNullOrEmpty(siralama))
+            {
+                ViewBag.AdaGoreSirala2 = "ZdenAya";
+            }
+            else
+            {
+                ViewBag.AdaGoreSirala2 = string.Empty;
+            }
+
+
+            var liste = GetVideoNews();
+
+            if (!string.IsNullOrWhiteSpace(ara))
+            {
+                liste = liste.Where(a => a.Title.Contains(ara));
+            }
+
+
+
+            int sayfaBuyuklugu = 10;
+            int sayfaNumarasi = (sayfaNo ?? 1);
+
+
+            return View(liste.ToPagedList(sayfaNumarasi, sayfaBuyuklugu));
+        }
+
+        private IEnumerable<NewsViewWeb> GetVideoNews()
+        {
+            using (var uow = new UnitOfWork(new GameNewsDbContext()))
+            {
+                IEnumerable<News> getvideonews = uow.News.Where(a => a.NewsPlatform == NewsPlatform.VideoNews);
+                if (getvideonews != null)
+                {
+
+                    IEnumerable<NewsViewWeb> newsView = getvideonews.Select(a => new NewsViewWeb
+                    {
+                        Id = a.Id,
+                        Title = a.Title,
+                        Summary = a.Summary,
+                        TinyImagePath = a.TinyImagePath,
+                        Date = a.Date
+                    }).OrderByDescending(a => a.Id);
+
+                    return newsView.ToList();
+                }
+
+
+                return null;
+            }
+
+            //IEnumerable<News> videoNews = uow.News.GetNewsWithVideos(a => a.NewsVideos.Count() > 0);
+            //if (videoNews != null && videoNews.Count() > 0)
+            //{
+            //    return PartialView(videoNews);
+            //}
+            //return null;
         }
 
         protected override void Dispose(bool disposing)

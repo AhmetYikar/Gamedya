@@ -1,6 +1,7 @@
 ﻿using DAL;
 using Entites.Models.NewsModels;
 using Gamedya.Models;
+using PagedList;
 using ServiceLayer.Uow;
 using System;
 using System.Collections.Generic;
@@ -17,8 +18,8 @@ namespace Gamedya.Controllers
         // GET: ScienceNews
         public ActionResult GetScienceNews()
         {
-            IEnumerable<News> scienceNews = uow.News.GetNewsDetails(a => a.NewsCategory.CategoryName=="Bilim" ).ToList()                                                       
-                                                        .OrderByDescending(a => a.Id).Take(4);
+            IEnumerable<News> scienceNews = uow.News.GetNewsDetails(a => a.NewsPlatform == NewsPlatform.Science).ToList()
+                                                                    .OrderByDescending(a => a.Id).Take(4);
 
             if (scienceNews != null && scienceNews.Count()>0)
             {
@@ -41,14 +42,97 @@ namespace Gamedya.Controllers
         }
 
 
-        public ActionResult AllScienceNews()
+        public ActionResult AllScienceNews(string ara, string siralama, string sonArananKelime, int? sayfaNo)
         {
-            IEnumerable<News> scienceNews = uow.News.GetNewsWithCategory(a => a.NewsCategory.CategoryName == "Bilim");
-            if (scienceNews != null && scienceNews.Count() > 0)
+            ViewBag.NewsCategoryId = new SelectList(uow.NewsCategory.GetAll(), "Id", "CategoryName");
+
+            ViewBag.SonSiralama1 = siralama;
+            //ViewBag.AdaGoreSirala = String.IsNullOrEmpty(siralama) ? "ZdenAya" : string.Empty;
+            //ViewBag.SoyadaGoreSirala = siralama == "SoyadAdanZye" ? "SoyadZdenAya" : "SoyadAdanZye";
+
+            if (ara != null)
             {
-                return PartialView(scienceNews);
+                sayfaNo = 1;
             }
-            return null;
+            else
+            {
+                ara = sonArananKelime;
+            }
+
+
+
+            ViewBag.SonArananKelime1 = ara;
+
+
+
+
+
+            if (String.IsNullOrEmpty(siralama))
+            {
+                ViewBag.AdaGoreSirala2 = "ZdenAya";
+            }
+            else
+            {
+                ViewBag.AdaGoreSirala2 = string.Empty;
+            }
+
+
+            var liste = ScienceNews();
+
+            if (!string.IsNullOrWhiteSpace(ara))
+            {
+                liste = liste.Where(a => a.Title.Contains(ara));
+            }
+
+
+
+            int sayfaBuyuklugu = 10;
+            int sayfaNumarasi = (sayfaNo ?? 1);
+
+
+            return View(liste.ToPagedList(sayfaNumarasi, sayfaBuyuklugu));
+        }
+
+        private IEnumerable<NewsViewWeb> ScienceNews()
+        {
+            using (var uow = new UnitOfWork(new GameNewsDbContext()))
+            {
+                IEnumerable<News> sciencenews = uow.News.Where(a => a.NewsPlatform == NewsPlatform.Science);
+                if (sciencenews != null)
+                {
+
+                    IEnumerable<NewsViewWeb> newsView = sciencenews.Select(a => new NewsViewWeb
+                    {
+                        Id = a.Id,
+                        Title = a.Title,
+                        Summary = a.Summary,
+                        TinyImagePath = a.TinyImagePath,
+                        Date = a.Date
+                    }).OrderByDescending(a => a.Id);
+
+                    return newsView.ToList();
+                }
+
+
+                return null;
+            }
+
+            //IEnumerable<News> scienceNews = uow.News.GetNewsWithCategory(a => a.NewsCategory.CategoryName == "Bilim");
+            //if (scienceNews != null && scienceNews.Count() > 0)
+            //{
+            //    return PartialView(scienceNews);
+            //}
+            //return null;
+        }
+
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                uow.Dispose();
+            }
+            base.Dispose(disposing);
         }
     }
 }

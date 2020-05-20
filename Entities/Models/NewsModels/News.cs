@@ -20,10 +20,13 @@ namespace Entites.Models.NewsModels
         Playstation,
         Mobile,
         Nintendo,
-        VR
+        VR       
     }
-
-
+    public enum NewsPart : byte
+    {
+       Science,
+       VideoNews
+    }
     public class News
     {
         public int Id { get; set; }

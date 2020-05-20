@@ -1,6 +1,7 @@
 ﻿using DAL;
 using Entites.Models.NewsModels;
 using Gamedya.Models;
+using PagedList;
 using ServiceLayer.Uow;
 using System;
 using System.Collections.Generic;
@@ -42,14 +43,87 @@ namespace Gamedya.Controllers
             
         }
 
-        public ActionResult AllMobileNews()
+        public ActionResult AllMobileNews(string ara, string siralama, string sonArananKelime, int? sayfaNo)
         {
-            IEnumerable<News> mobileNews = uow.News.Where(a => a.NewsPlatform.ToString() == "Mobile");
-            if (mobileNews != null && mobileNews.Count() > 0)
+            ViewBag.NewsCategoryId = new SelectList(uow.NewsCategory.GetAll(), "Id", "CategoryName");
+
+            ViewBag.SonSiralama1 = siralama;
+            //ViewBag.AdaGoreSirala = String.IsNullOrEmpty(siralama) ? "ZdenAya" : string.Empty;
+            //ViewBag.SoyadaGoreSirala = siralama == "SoyadAdanZye" ? "SoyadZdenAya" : "SoyadAdanZye";
+
+            if (ara != null)
             {
-                return PartialView(mobileNews);
+                sayfaNo = 1;
             }
-            return null;
+            else
+            {
+                ara = sonArananKelime;
+            }
+
+
+
+            ViewBag.SonArananKelime1 = ara;
+
+
+
+
+
+            if (String.IsNullOrEmpty(siralama))
+            {
+                ViewBag.AdaGoreSirala2 = "ZdenAya";
+            }
+            else
+            {
+                ViewBag.AdaGoreSirala2 = string.Empty;
+            }
+
+
+            var liste = MobileNews();
+
+            if (!string.IsNullOrWhiteSpace(ara))
+            {
+                liste = liste.Where(a => a.Title.Contains(ara));
+            }
+
+
+
+            int sayfaBuyuklugu = 10;
+            int sayfaNumarasi = (sayfaNo ?? 1);
+
+
+            return View(liste.ToPagedList(sayfaNumarasi, sayfaBuyuklugu));
+        }
+
+        private IEnumerable<NewsViewWeb> MobileNews()
+        {
+            using (var uow = new UnitOfWork(new GameNewsDbContext()))
+            {
+                IEnumerable<News> mobilnews = uow.News.Where(a => a.NewsPlatform == NewsPlatform.Mobile);
+                if (mobilnews != null)
+                {
+
+                    IEnumerable<NewsViewWeb> newsView = mobilnews.Select(a => new NewsViewWeb
+                    {
+                        Id = a.Id,
+                        Title = a.Title,
+                        Summary = a.Summary,
+                        TinyImagePath = a.TinyImagePath,
+                        Date = a.Date
+                    }).OrderByDescending(a => a.Id);
+
+                    return newsView.ToList();
+                }
+
+
+                return null;
+            }
+
+            //IEnumerable<News> mobileNews = uow.News.Where(a => a.NewsPlatform.ToString() == "Mobile");
+            //if (mobileNews != null && mobileNews.Count() > 0)
+            //{
+            //    return PartialView(mobileNews);
+            //}
+            //return null;
         }
     }
 }

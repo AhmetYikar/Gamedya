@@ -1,4 +1,6 @@
-﻿@model IEnumerable<Entites.Models.NewsModels.News>
+﻿@model PagedList.IPagedList<Gamedya.Models.NewsViewWeb>
+@using PagedList.Mvc;
+@using PagedList;
 
 @{ Layout = "~/Views/Shared/_Layout.cshtml";}
 
@@ -42,3 +44,11 @@
 </div>
 
 
+
+<div class="container">
+    Sayfa @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) - @Model.PageCount
+    @Html.PagedListPager(Model, sayfaNo => Url.Action("AllVideoNews", "VideoNews",
+    new { sayfaNo, siralama = ViewBag.SonSiralama1, SonArananKelime = ViewBag.sonArananKelime1, @class = "page-numbers current bg-border-color" }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
+
+
+</div>

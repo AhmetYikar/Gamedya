@@ -55,9 +55,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context\GameNewsDbContext.cs" />
-    <Compile Include="Migrations\202005182209417_ilk.cs" />
-    <Compile Include="Migrations\202005182209417_ilk.Designer.cs">
-      <DependentUpon>202005182209417_ilk.cs</DependentUpon>
+    <Compile Include="Migrations\202005202043085_ilk.cs" />
+    <Compile Include="Migrations\202005202043085_ilk.Designer.cs">
+      <DependentUpon>202005202043085_ilk.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -73,8 +73,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202005182209417_ilk.resx">
-      <DependentUpon>202005182209417_ilk.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202005202043085_ilk.resx">
+      <DependentUpon>202005202043085_ilk.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
