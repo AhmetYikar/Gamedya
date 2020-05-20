@@ -21,7 +21,7 @@ namespace Gamedya.Models
 
         public DateTime Date { get; set; }
         public int CommentCount { get; set; }
-
+        
         public string GenerateSlug()
         {
             string phrase = string.Format("{0}-{1}-{2}", Id, Title, Date.ToShortDateString());
