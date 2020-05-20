@@ -51,7 +51,7 @@ namespace Entites.Models.UserModels
         public ICollection<ForumReply> ForumReplies { get; set; }
         public ICollection<NewsComment> NewsComments { get; set; }
         public ICollection<Game> MyFavouriteGames { get; set; }
-        public ICollection<Message> Messages { get; set; }
+        public ICollection<GamedyaMessage> GamedyaMessages { get; set; }
         public ICollection<MessageRecipient> MessageRecipients { get; set; }
         public ICollection<Notification> Notifications { get; set; }
 

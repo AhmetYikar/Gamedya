@@ -11,10 +11,8 @@ namespace Entities.Models
     public class MessageRecipient
     {
         public int Id { get; set; }
-        public bool IsRead { get; set; }
-        public int MessageId { get; set; }
-        public Message Message { get; set; }
         public string NewsUserId { get; set; }
         public NewsUser NewsUser { get; set; }
+        public ICollection<GamedyaMessage> GamedyaMessages { get; set; }
     }
 }

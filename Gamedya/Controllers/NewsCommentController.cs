@@ -56,7 +56,10 @@ namespace Gamedya.Controllers
                 uow.Complete();                
                 return Json(false, JsonRequestBehavior.AllowGet);
             }
-            return Json(true, JsonRequestBehavior.AllowGet);
+            else
+            {
+                return Json(true, JsonRequestBehavior.AllowGet);
+            }
 
 
         }

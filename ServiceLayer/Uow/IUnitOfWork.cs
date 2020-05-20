@@ -38,7 +38,7 @@ namespace ServiceLayer.Uow
         ILikeTableRepository LikeTable { get; }
 
         INewsUserRepository NewsUser { get; }
-        IMessageRepository Message { get; }
+        IMessageRepository GamedyaMessage { get; }
         IMessageRecipientRepository MessageRecipient { get; }
 
         INotificationRepository Notification { get; }

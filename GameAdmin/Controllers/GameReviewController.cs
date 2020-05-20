@@ -7,7 +7,6 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using DAL;
-using DAL.Migrations;
 using Entites.Models.GameModels;
 using Entites.Models.UserModels;
 using Entities.Models;

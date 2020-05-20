@@ -1,41 +1,62 @@
-﻿@model Entites.Models.MessageModels.Message
+﻿@model Entites.Models.MessageModels.GamedyaMessage
 
 @{
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+    <body onload="PageLoad()">
 
-<div>
-    <h4>Message</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.NewsUser.FullName)
-        </dt>
+        <h2>Mesaj Detayı</h2>
 
-        <dd>
-            @Html.DisplayFor(model => model.NewsUser.FullName)
-        </dd>
+        <div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Content)
-        </dt>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Content)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Content)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Content)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Date)
-        </dt>
+                <dt>
+                    Gönderen
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Date)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.NewsUser.FullName)
+                </dd>
 
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Date)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Date)
+                </dd>
+
+
+
+            </dl>
+        </div>
+        <p>
+            @Html.ActionLink("Back to List", "MyMessages")
+        </p>
+        @section scripts{
+            <script>
+            function PageLoad() {
+
+                $.ajax({
+                    url: '/Message/MessageRead/',
+                    data: { id: @Model.Id },
+                    type: 'POST',
+                    dataType: 'json'
+
+                });
+            }
+
+            </script>
+        }
+    </body>

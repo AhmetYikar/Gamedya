@@ -85,11 +85,10 @@ namespace GameAdmin.Controllers
 
 
             try
-            {
-                
+            {                
                 return PartialView(users);
             }
-            catch (Exception)
+            catch
             {
                 return RedirectToAction("Index");
             }
