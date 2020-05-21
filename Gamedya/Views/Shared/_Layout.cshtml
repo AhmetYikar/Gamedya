@@ -24,13 +24,13 @@
                 <div class="container">
                     <div class="header-section ">
 
-                        <div class="col-md-2 navbar-left">                          
-                                <div class="logo">
-                                    <a href="@Url.Action("Index", "Home")"><img class="img-responsive" src="~/Template/assets/img/gamedya-logo.png" alt="logo" ></a>
-                                </div><!--logo-->
-                                                    
+                        <div class="col-md-2 navbar-left">
+                            <div class="logo">
+                                <a href="@Url.Action("Index", "Home")"><img class="img-responsive" src="~/Template/assets/img/gamedya-logo.png" alt="logo"></a>
+                            </div><!--logo-->
+
                         </div><!--col-md-3-->
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <ul class="nav navbar-nav anabaslik m-t-2">
                                 <li class="hidden"><a href="#page-top"></a></li>
                                 <li><a class="page-scroll" href="category.html">Oyun</a></li>
@@ -51,27 +51,43 @@
                                     </ul>
                                 </li>
                                 <li><a class="page-scroll" href="category.html">Galeriler</a></li>
+
                             </ul>
 
                         </div><!--col-md-6-->
-                        <div class="col-md-2">
+                        <div class="col-md-4">
                             <div class="social_icon1">
-                                <a class="icons-sm fb-ic"><i class="fa fa-facebook"></i></a>                              
+                                <a class="icons-sm fb-ic"><i class="fa fa-facebook"></i></a>
                                 <a class="icons-sm gplus-ic"><i class="fa fa-youtube-play"></i></a>
                                 <a class="icons-sm gplus-ic"><i class="fa fa-instagram"></i></a>
                             </div> <!--social_icon1-->
+                            <ul class="bildirim">
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Bildirim <b class="caret"></b></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">Etkinlik</a></li>
+                                        <li><a href="#">Bilim/Teknoloji</a></li>
+                                        <li><a href="#">Oyun İncelemeleri</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+
                         </div><!--col-md-3-->
 
-                        <ul class="nav navbar-right anabaslik m-t-2">
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Üyelik<b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    <li class=" btn-danger text-center" ><a href="@Url.Action("Login", "Account")">Giriş Yap</a></li>
-                                    <li class="text-center" style="margin-top:10px;">veya </li>
-                                    <li class="btn-warning text-center"><a href="@Url.Action("Register", "Account")">Üye Ol</a></li>
-                                </ul>
-                            </li>
-                        </ul>
+                        <div class="col-md-2">
+                            <ul class="nav navbar-right uyelik">
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Üyelik<b class="caret"></b></a>
+                                    <ul class="dropdown-menu">
+                                        <li class=" btn-danger text-center"><a href="@Url.Action("Login", "Account")">Giriş Yap</a></li>
+                                        <li class="text-center" style="margin-top:10px;">veya </li>
+                                        <li class="btn-warning text-center"><a href="@Url.Action("Register", "Account")">Üye Ol</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+
+                        </div>
+
                     </div><!--header-section-->
                 </div>
             </div><!-- /.container -->

@@ -190,6 +190,7 @@
     <Compile Include="Controllers\MostCommentNewsController.cs" />
     <Compile Include="Controllers\NewsCommentController.cs" />
     <Compile Include="Controllers\NewsDetailsController.cs" />
+    <Compile Include="Controllers\NotificationController.cs" />
     <Compile Include="Controllers\PcNewsController.cs" />
     <Compile Include="Controllers\ScienceNewsController.cs" />
     <Compile Include="Controllers\SliderController.cs" />
@@ -508,6 +509,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Notification\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

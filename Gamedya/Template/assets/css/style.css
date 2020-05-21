@@ -204,7 +204,7 @@ ul {
 }   
 .header-section .social_icon1{
     padding-top: 25px;
-    float: right;
+    float: left;
 
 }
 .header-section .social_icon1 .fa{
@@ -1242,3 +1242,12 @@ ul {
     font-weight: bold;
 }
 
+.bildirim{
+   
+    margin-left: 175px;
+   
+}
+
+.uyelik {
+    margin-top:25px;
+}
