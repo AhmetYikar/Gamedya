@@ -83,3 +83,5 @@ C:\Users\ahmet\source\repos\Gamedya\DAL\obj\Debug\DAL.Migrations.messageDel.reso
 C:\Users\SnmzŞti\Desktop\Gamedya\DAL\obj\Debug\DAL.Migrations.ilk.resources
 C:\Users\SnmzŞti\Desktop\Gamedya\DAL\obj\Debug\DAL.Migrations.iki.resources
 C:\Users\SnmzŞti\Desktop\Gamedya\DAL\obj\Debug\DAL.Migrations.uc.resources
+C:\Users\SnmzŞti\Desktop\Gamedya\DAL\obj\Debug\DAL.Migrations.dort.resources
+C:\Users\SnmzŞti\Desktop\Gamedya\DAL\obj\Debug\DAL.Migrations.bes.resources

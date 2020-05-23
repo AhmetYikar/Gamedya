@@ -30,7 +30,7 @@
                             </div><!--logo-->
 
                         </div><!--col-md-3-->
-                        <div class="col-md-6">
+                        <div class="col-xs-6">
                             <ul class="nav navbar-nav anabaslik m-t-2" style="margin-left:65px;">
                                 <li class="hidden"><a href="#page-top"></a></li>
                                 <li><a class="page-scroll" href="category.html">Oyun</a></li>
@@ -57,14 +57,11 @@
                         </div><!--col-md-6-->
 
                         <div class="col-md-4">
-                            <div class="social_icon1">
-                                <a class="icons-sm fb-ic"><i class="fa fa-facebook"></i></a>
-                                <a class="icons-sm gplus-ic"><i class="fa fa-youtube-play"></i></a>
-                                <a class="icons-sm gplus-ic"><i class="fa fa-instagram"></i></a>
-                            </div> <!--social_icon1-->
+
 
                             <ul class="nav navbar-nav anabaslik m-t-2 ">
-                                
+                                @if (User.Identity.IsAuthenticated)
+                                {
                                     <li class="dropdown">
                                         @Html.Action("GetFourMessage", "Message")
 
@@ -72,17 +69,20 @@
 
                                     <li class="dropdown">
                                         @Html.Action("GetFourNotification", "Notification")
+
                                     </li>
 
-                                    @*<li>
-                                         User Account: style can be found in dropdown.less 
-                                        @Html.Partial("_LoginPartial")
-                                         Control Sidebar Toggle Button 
-                                    </li>*@
-                                
+                                    <li>
 
-                             
-                                   <li class="dropdown">
+                                        @Html.Partial("_LoginPartial")
+
+                                    </li>
+
+                                }
+                                else
+                                {
+
+                                    <li class="dropdown">
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Üyelik<b class="caret"></b></a>
                                         <ul class="dropdown-menu">
                                             <li class=" btn-danger text-center"><a href="@Url.Action("Login", "Account")">Giriş Yap</a></li>
@@ -90,9 +90,9 @@
                                             <li class="btn-warning text-center"><a href="@Url.Action("Register", "Account")">Üye Ol</a></li>
                                         </ul>
                                     </li>
-                               
-                                </ul>
-                               
+                                }
+
+                            </ul>
 
                         </div><!--col-md-3-->
 
@@ -122,11 +122,17 @@
                             <li><a class="page-scroll" href="category.html">MOBİL</a></li>
                             <li><a class="page-scroll" href="category.html">POPÜLER OYUNLAR</a></li>
                             <li><a class="page-scroll" href="category.html">E-SPOR</a></li>
+
+                            <li class="sosyalikon"> <a class="icons-sm fb-ic"><i class="fa fa-facebook"></i></a> </liclass="sosyalikon">
+                            <li> <a class="icons-sm gplus-ic"><i class="fa fa-youtube-play"></i></a> </li>
+                            <li>  <a class="icons-sm gplus-ic"><i class="fa fa-instagram"></i></a> </li>
+                            <li>   <a class="icons-sm gplus-ic"><i class="fa fa-twitter"></i></a></li>
+
                         </ul>
-
-
+                       
 
                         <div class="pull-right">
+
                             <form class="navbar-form" role="search">
                                 <div class="input-group">
                                     <input class="form-control" placeholder="Arama.." name="q" type="text">
