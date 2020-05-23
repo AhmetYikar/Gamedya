@@ -262,12 +262,12 @@ ul {
     background: #000;
 }
 .main-menu .nav li a {
-    color       : #000000;
-    font-weight : 400;
-    padding     : 15px 15px 15px 0px;
-    font-size   : 14px;
-    font-family: 'Oswald', sans-serif;
-    }
+    color: #000000;
+    font-weight: 400;
+    padding: 15px 15px 15px 0px;
+    font-size: 12px;
+    font-family: 'Arial Narrow Bold', sans-serif;
+}
 
 .main-menu .nav li a:hover,
 .main-menu .nav li.active a {
@@ -1195,8 +1195,9 @@ ul {
 }
 
 .anabaslik a {
-    color: #fff;
-    font-size: medium;
+    color: #ff6102;
+    font-size: small;
+    
 }
 
 
@@ -1242,12 +1243,11 @@ ul {
     font-weight: bold;
 }
 
-.bildirim{
-   
-    margin-left: 175px;
-   
+.bildirimveuyelik {
+    color: #ff6102;
+    font-size: small;
 }
 
 .uyelik {
-    margin-top:25px;
+   
 }

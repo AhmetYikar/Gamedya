@@ -39,6 +39,10 @@ veriyor.
 
 *ckeditor editlerde çalışmıyor
 
+*Game de GameGenre  Id boş geçince hata veriyor.
+
+*GameRiew de artciletype ı general ve review seçince hata veriyor.
+
 
 -------------------------------------------
 -------------------------------------------

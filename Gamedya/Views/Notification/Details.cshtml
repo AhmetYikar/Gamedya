@@ -1,0 +1,51 @@
+﻿@model  Entities.Models.Notification
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<body onload="PageLoad()">
+
+
+    <h2>Details</h2>
+
+    <div>
+        <h4>Notification</h4>
+        <hr />
+        <dl class="dl-horizontal">
+
+            <dd>
+                @Html.DisplayFor(model => model.Content)
+            </dd>
+
+
+
+            <dd>
+                @Html.DisplayFor(model => model.Date)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Delete", "Delete", new { id = Model.Id }) |
+    </p>
+    <p>
+        @Html.ActionLink("Back to List", "UserNotification")
+    </p>
+
+    @section scripts{
+        <script>
+            function PageLoad() {
+
+                $.ajax({
+                    url: '/Notification/NotificationRead/',
+                    data: { id: @Model.Id },
+                    type: 'POST',
+                    dataType: 'json'
+
+                });
+            }
+
+        </script>
+    }
+</body>

@@ -186,6 +186,7 @@
     <Compile Include="Controllers\LatestNewsController.cs" />
     <Compile Include="Controllers\LikeUnlikeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MessageController.cs" />
     <Compile Include="Controllers\MobilNewsController.cs" />
     <Compile Include="Controllers\MostCommentNewsController.cs" />
     <Compile Include="Controllers\NewsCommentController.cs" />
@@ -202,6 +203,7 @@
     </Compile>
     <Compile Include="Helper\ClaimsPrincipalExtension.cs" />
     <Compile Include="Helper\SeoUrlHelper.cs" />
+    <Compile Include="Helper\Subs.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\NewsViewWeb.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -506,10 +508,22 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\Notification\Index.cshtml" />
+    <Content Include="Views\Notification\GetFourNotification.cshtml" />
+    <Content Include="Views\Notification\UserNotification.cshtml" />
+    <Content Include="Views\Notification\Details.cshtml" />
+    <Content Include="Views\Notification\Delete.cshtml" />
+    <Content Include="Views\Message\Index.cshtml" />
+    <Content Include="Views\Message\Create.cshtml" />
+    <Content Include="Views\Message\Delete.cshtml" />
+    <Content Include="Views\Message\Details.cshtml" />
+    <Content Include="Views\Message\GetFourMessage.cshtml" />
+    <Content Include="Views\Message\MessageContent.cshtml" />
+    <Content Include="Views\Message\MyMessages.cshtml" />
+    <Content Include="Views\Message\MySentMessages.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Notification\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

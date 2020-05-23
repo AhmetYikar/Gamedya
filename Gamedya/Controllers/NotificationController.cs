@@ -13,13 +13,13 @@ using Gamedya.Helper;
 namespace Gamedya.Controllers
 {
 
-    [Authorize]
+    //[Authorize]
     public class NotificationController : Controller
     {
         private UnitOfWork uow = new UnitOfWork(new GameNewsDbContext());
 
         // GET: Notification
-        [Authorize(Roles = "admin,yazar,kullanici")]
+        //[Authorize(Roles = "admin,yazar,kullanici")]
         public ActionResult Index()
         {
             return View(uow.Notification.GetAll().ToList());

@@ -173,6 +173,23 @@
                             <li><a href="@Url.Action("Index", "Game")"><i class="fa fa-circle-o"></i> Game Listele</a></li>
                         </ul>
                     </li>
+
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-laptop"></i>
+                            <span>Game Review</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="@Url.Action("Create", "GameReview")"><i class="fa fa-circle-o"></i> Game Review Ekle</a></li>
+                            <li><a href="@Url.Action("Index", "GameReview")"><i class="fa fa-circle-o"></i> Game  Review Listele</a></li>
+                        </ul>
+                    </li>
+
+
+
                     <li class="treeview">
                         <a href="#">
                             <i class="fa fa-edit"></i> <span>Haber Kategorileri</span>
@@ -249,7 +266,7 @@
                         <ul class="treeview-menu">
                             <li><a href="@Url.Action("Create", "Notification")"><i class="fa fa-circle-o"></i>Bildirim Gönder </a></li>
                             <li><a href="@Url.Action("Index", "Notification")"><i class="fa fa-circle-o"></i>Bildirimler</a></li>
-                            
+
                         </ul>
                     </li>
                     @if (User.IsInRole("admin"))
