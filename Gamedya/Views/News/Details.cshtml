@@ -126,10 +126,9 @@
             @Html.Action("Index", "NewsComment", new { id = Model.Id })
         </p>
 
-        <div class="add_a_comment">
+        <div class="add_a_comment" >
             <div class="single_media_title"><h2>Yorum Ekle </h2></div>
-            <div style="background:green" id="back" >
-            
+            <div style="color:coral" id="back" >
             </div>
            
             <div class="comment_form">
@@ -154,7 +153,7 @@
                     <div class="form-group comment">
                         <textarea class="form-control" id="comment" placeholder="Yorumunuz..."></textarea>
                     </div>
-                    <button type="button" onclick="AddComment(@Model.Id)" class="btn btn-submit red"> Yorum ekle </button>
+                    <button type="button" onclick="AddComment(@Model.Id)" onmouseout="ClearMesajBack()" class="btn btn-submit red"> Yorum ekle </button>
                 </form>
             </div><!--comment_form-->
         </div><!--add_a_comment-->

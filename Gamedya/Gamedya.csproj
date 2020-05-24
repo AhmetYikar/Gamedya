@@ -184,12 +184,12 @@
     <Compile Include="Controllers\GeneralArticleController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LatestNewsController.cs" />
-    <Compile Include="Controllers\LikeUnlikeController.cs" />
+    <Compile Include="Controllers\LikeDislikeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MobilNewsController.cs" />
     <Compile Include="Controllers\MostCommentNewsController.cs" />
     <Compile Include="Controllers\NewsCommentController.cs" />
-    <Compile Include="Controllers\NewsDetailsController.cs" />
+    <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\PcNewsController.cs" />
     <Compile Include="Controllers\ScienceNewsController.cs" />
     <Compile Include="Controllers\SliderController.cs" />
@@ -455,7 +455,6 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\LatestNews\GetLatestNews.cshtml" />
     <Content Include="Views\LatestNews\GetPopularNews.cshtml" />
-    <Content Include="Views\LikeUnlike\Like.cshtml" />
     <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
     <Content Include="Views\Manage\ChangePassword.cshtml" />
     <Content Include="Views\Manage\Index.cshtml" />
@@ -465,7 +464,7 @@
     <Content Include="Views\MobilNews\GetMobilNews.cshtml" />
     <Content Include="Views\MostCommentNews\MostComment.cshtml" />
     <Content Include="Views\NewsComment\Index.cshtml" />
-    <Content Include="Views\NewsDetails\Details.cshtml" />
+    <Content Include="Views\News\Details.cshtml" />
     <Content Include="Views\PcNews\GetPcNews.cshtml" />
     <Content Include="Views\ScienceNews\GetScienceNews.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\CanonicalHelperModel.cshtml" />

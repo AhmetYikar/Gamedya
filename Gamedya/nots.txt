@@ -13,3 +13,4 @@
         *bidirim için ikon konacak
         *login ve register tasarımı ve assetteki fazlalıklar atılacak.
         *seoları unutmayalım.
+        *Bir kullanıcı aynı yorumu 1'den fazla kez like ya da unlike yapamamalı

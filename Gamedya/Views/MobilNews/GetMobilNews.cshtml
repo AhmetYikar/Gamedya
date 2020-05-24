@@ -10,19 +10,19 @@
             <div class="item active feature_news_item">
                 <div class="item_wrapper">
                     <div class="item_img">
-                        <a href="@Url.Action("Details", "NewsDetails",new {id=Model.First().Id})">   <img class="img-responsive" src="@Model.First().BigImagePath"> </a>
+                        <a href="@Url.Action("Details", "News", new { id = Model.First().GenerateSlug()})">   <img class="img-responsive" src="@Model.First().BigImagePath"> </a>
                     </div><!--item_img-->
                     <div class="item_title_date">
                         <div class="news_item_title">
                             <h2>
-                                <a href="@Url.Action("Details", "NewsDetails",new {id=Model.First().Id})">@Model.First().Title</a>
+                                <a href="@Url.Action("Details", "News",new {id=Model.First().GenerateSlug()})">@Model.First().Title</a>
                             </h2>
                         </div><!--news_item_title-->
                         <div class="item_meta"><a href="#">@Model.First().Date.ToLongDateString()</a></div>
                     </div><!--item_title_date-->
                 </div><!--item_wrapper-->
                 <div class="item_content">
-                    <a href="@Url.Action("Details", "NewsDetails",new {id=Model.First().Id})">   @Model.First().Summary</a>
+                    <a href="@Url.Action("Details", "News",new {id=Model.First().GenerateSlug()})">   @Model.First().Summary</a>
                 </div>
             </div><!--feature_news_item-->
         </div><!--col-md-7-->
@@ -34,17 +34,17 @@
 
                 <div class="media">
                     <div class="media-left">
-                        <a href="@Url.Action("Details", "NewsDetails",new {id=Model[i].Id})"><img class="media-object" src="@Model[i].TinyImagePath" alt="Generic placeholder image" style="height:80px"></a>
+                        <a href="@Url.Action("Details", "News",new {id=Model[i].GenerateSlug()})"><img class="media-object" src="@Model[i].TinyImagePath" alt="Generic placeholder image" style="height:80px"></a>
                     </div><!--media-left-->
 
                     <h3 class="media-heading">
-                        <a href="@Url.Action("Details", "NewsDetails",new {id=Model[i].Id})">
+                        <a href="@Url.Action("Details", "News",new {id=Model[i].Id})">
                             @Model[i].Title
                         </a>
                     </h3>
                     @if (@Model[i].Summary.Count() > 50)
                     {
-                        <a href="@Url.Action("Details", "NewsDetails",new {id=Model[i].Id})">
+                        <a href="@Url.Action("Details", "News",new {id=Model[i].GenerateSlug()})">
                             <p>@Model[i].Summary.Substring(0, 50)</p> </a>
                             }
                     </div><!--media-->
