@@ -1,4 +1,5 @@
-﻿
+﻿@model List<Gamedya.Models.NewsViewWeb>
+@using Gamedya.Helper
 @{ Layout = null;}
 
 <div class="col-md-7">
@@ -9,44 +10,47 @@
                 <div class="item active feature_news_item">
                     <div class="item_wrapper">
                         <div class="item_img">
-                            <img class="img-responsive" src="~/Template/assets/img/callofduty.jpg" alt="Chania">
+                            <img class="img-responsive" src="@Model.First().TinyImagePath" alt="@Model.First().Title">
                         </div> <!--item_img-->
                         <div class="item_title_date">
                             <div class="news_item_title">
-                                <h2><a href="single.html">CALL OF DUTY'NİN SON MOBİL OYUNU PİYASAYA ÇIKTI.</a></h2>
+                                <h2><a href="single.html">@Model.First().Title.ToUpper()</a></h2>
                             </div>
+                            <div class="item_meta"><a href="#">@Model.First().Date.ToShortDateString()</a> by:<a href="#"> Yazar adı gelecek</a></div>
+
                         </div> <!--item_title_date-->
                     </div>	<!--item_wrapper-->
                     <div class="item_content">
-                        Yapılan açıklamalara göre son sürümde herşey olacak.lmuş, başta Kirmanî
-                        olmak üzere birçok üstaddan istifade etmiştir. O dönemde Bağdat'ın ilim ve irfan merkezi olması,
-                        Yapılan açıklamalara göre son sürümde herşey olacak.lmuş, başta Kirmanî
-                        olmak üzere birçok üstaddan istifade etmiştir. O dönemde Bağdat'ın ilim ve irfan merkezi olması,
+                        @Model.First().Summary
                     </div>
 
-                </div><!--feature_news_item-->
+                </div>
+                <!--feature_news_item-->
 
-                <div class="item feature_news_item">
-                    <div class="item_wrapper">
-                        <div class="item_img">
-                            <img class="img-responsive" src="~/Template/assets/img/lol.jpg" alt="Chania">
-                        </div> <!--item_img-->
-                        <div class="item_title_date">
-                            <div class="news_item_title">
-                                <h2><a href="#">LOL 'NİN SON MOBİL OYUNU PİYASAYA ÇIKTI.</a></h2>
-                            </div>
-                            <div class="item_meta"><a href="#">20Aug- 2015,</a> by:<a href="#">Jhonson</a></div>
-                        </div> <!--item_title_date-->
-                    </div> <!--item_wrapper-->
+                @for (int i = 1; i < Model.Count(); i++)
+                {
+                    <div class="item feature_news_item">
+                        <div class="item_wrapper">
+                            <div class="item_img">
+                                <img class="img-responsive" src="@Model[i].TinyImagePath" alt="Chania">
+                            </div> <!--item_img-->
+                            <div class="item_title_date">
+                                <div class="news_item_title">
+                                    <h2><a href="#">@Subs.Sub(Model[i].Title,30).ToUpper()</a></h2>
+                                </div>
+                                <div class="item_meta"><a href="#">@Model[i].Date.ToShortDateString()</a> by:<a href="#"> Yazar adı gelecek</a></div>
+                            </div> <!--item_title_date-->
+                        </div> <!--item_wrapper-->
 
-                    <div class="item_content">
-                        Yapılan açıklamalara göre son sürümde hYapılan açıklamalara göre son sürümde herşey olacak.lmuş, başta Kirmanî
-                        olmak üzere birçok üstaddan istifade etmiştir. O dönemde Bağdat'ın ilim ve irfan merkezi olması,
-                        Yapılan açıklamalara göre son sürümde herşey olacak.lmuş, başta Kirmanî
-                        olmak üzere birçok üstaddan istifade etmiştir.
+                        <div class="item_content">
+                           @Subs.Sub(Model[i].Summary,150)
+                        </div>
+
                     </div>
 
-                </div><!--feature_news_item-->
+                }
+
+                <!--feature_news_item-->
                 <!-- Left and right controls -->
                 <div class="control-wrapper">
                     <a class="left carousel-control" href="#featured-news-carousal" role="button" data-slide="prev">

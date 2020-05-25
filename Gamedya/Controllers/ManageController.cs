@@ -289,6 +289,7 @@ namespace Gamedya.Controllers
             var model = new SetProfilImageViewModel
             {
                 HasProfilImage = HasProfilImage(),
+                ProfilImage=User.GetUserImage()
             };
             return View(model);
         }
@@ -311,25 +312,25 @@ namespace Gamedya.Controllers
                 {
                     return RedirectToAction("index", new { Message = "dosya uzantısı uygun değil" });
                 }
-               
+
                 fileName = Guid.NewGuid() + ".png";
-                var path = Path.Combine(Server.MapPath("/Content/UserImages/"), fileName.Replace(".png", "-thumb.png"));
+                var path = Path.Combine(Server.MapPath("/Content/ProfilPhoto/"), fileName.Replace(".png", "-thumb.png"));
 
                 Image image = Image.FromStream(file.InputStream, true);
                 int imgWidth = 110;
                 int imgHeight = 95;
                 Image thumb = image.GetThumbnailImage(imgWidth, imgHeight, () => false, IntPtr.Zero);
                 thumb.Save(path);
-                model.ProfilImage = "/Content/UserImages/" + fileName.Replace(".png", "-thumb.png");
+                model.ProfilImage = "/Content/ProfilPhoto/" + fileName.Replace(".png", "-thumb.png");
             }
             using (var uow = new UnitOfWork(new GameNewsDbContext()))
             {
                 string userId = User.GetUserId();
                 if (ModelState.IsValid)
                 {
-                    var user = uow.NewsUser.Where(a=>a.Id==userId).FirstOrDefault();
+                    var user = uow.NewsUser.Where(a => a.Id == userId).FirstOrDefault();
                     if (user != null)
-                    {                       
+                    {
                         user.Image = model.ProfilImage;
                         uow.NewsUser.Update(user);
                         uow.Complete();
@@ -338,7 +339,7 @@ namespace Gamedya.Controllers
                 }
                 ViewBag.ErrorMessage = "Resim eklenemedi";
                 return View(model);
-            }            
+            }
         }
         //
         // GET: /Manage/ManageLogins

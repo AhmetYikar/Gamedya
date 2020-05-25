@@ -219,6 +219,14 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\PagedList.css" />
+    <Content Include="Content\ProfilPhoto\33bbc1d5-ba4a-4b4a-a1a1-64ca8f0bcedb-thumb.png" />
+    <Content Include="Content\ProfilPhoto\34183fde-9b17-4edb-b175-74d6cfc73234-thumb.png" />
+    <Content Include="Content\ProfilPhoto\51300ec1-23cb-434b-8eeb-da50b1f4a3ce-thumb.png" />
+    <Content Include="Content\ProfilPhoto\5222814e-92a7-4059-87a0-8a4c650d35c1-thumb.png" />
+    <Content Include="Content\ProfilPhoto\725a7132-2ae0-4470-8345-0476cd18ab1c-thumb.png" />
+    <Content Include="Content\ProfilPhoto\8a9bf806-5402-40b4-b264-fae8412df35a-thumb.png" />
+    <Content Include="Content\ProfilPhoto\d4696de9-2b4c-4d89-9ed1-1b5bdc9ba5a5-thumb.png" />
+    <Content Include="Content\ProfilPhoto\f1a64633-a8a9-4fc5-93a0-1bdc17c07492-thumb.png" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />

@@ -22,7 +22,8 @@ namespace Gamedya.Helper
 
         public static string Sub(string text,int length)
         {
-            if (text.Length < length)
+           
+            if (text.Length < length || text == "" || text==null)
             {
                 return text;
             }

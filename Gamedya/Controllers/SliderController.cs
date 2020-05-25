@@ -17,7 +17,7 @@ namespace Gamedya.Controllers
         public ActionResult GetSlider()
         {
 
-            IEnumerable<News> latestNews = uow.News.GetAll().Take(3).ToList().OrderByDescending(a => a.Id);
+            IEnumerable<News> latestNews = uow.News.GetAll().Take(5).ToList().OrderByDescending(a => a.Id);
 
             if (latestNews != null && latestNews.Count() > 0)
             {
@@ -25,10 +25,13 @@ namespace Gamedya.Controllers
                 {
                     Id = a.Id,
                     Title = a.Title,
-                    TinyImagePath = a.TinyImagePath
+                    TinyImagePath = a.TinyImagePath,
+                    Date = a.Date,
+                    Summary=a.Summary
+
                 });
                 uow.Dispose();
-                return PartialView(newsView);
+                return PartialView(newsView.ToList());
 
             }
             else
