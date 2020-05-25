@@ -73,7 +73,9 @@ a {
     a:focus,
     a:active {
         text-decoration: none;
-        outline: none
+        outline: none;
+        font-family: fantasy;
+        letter-spacing: 1px;
     }
 
         a:hover,
@@ -1396,3 +1398,4 @@ ul {
 .sosyalikon {
     margin-left: 100px;    
    }
+

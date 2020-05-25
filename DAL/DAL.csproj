@@ -55,6 +55,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context\GameNewsDbContext.cs" />
+    <Compile Include="Migrations\202005251009094_ilk.cs" />
+    <Compile Include="Migrations\202005251009094_ilk.Designer.cs">
+      <DependentUpon>202005251009094_ilk.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -66,6 +71,11 @@
       <Project>{95689E0C-F32A-477B-92DC-CADEF9AEDFF4}</Project>
       <Name>Entites</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202005251009094_ilk.resx">
+      <DependentUpon>202005251009094_ilk.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

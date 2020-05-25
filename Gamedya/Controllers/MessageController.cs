@@ -51,7 +51,7 @@ namespace Gamedya.Controllers
 
             IEnumerable<GamedyaMessage> messages = uow.GamedyaMessage
                                                   .GetMessageDetails(a => a.MessageRecipient.NewsUserId == id && a.ReceiverDel == false);
-            if (messages != null && messages.Count()>0)
+            if (messages != null)
             {
                 IEnumerable<GamedyaMessage> unReadMessages = messages.Where(a => a.IsRead == false);
                 int unReadCount = unReadMessages.Count();

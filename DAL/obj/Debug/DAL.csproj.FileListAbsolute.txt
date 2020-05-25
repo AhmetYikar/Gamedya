@@ -68,13 +68,11 @@ C:\Users\SnmzŞti\Desktop\Gamedya\DAL\bin\Debug\tr\System.Web.WebPages.Razor.res
 C:\Users\SnmzŞti\Desktop\Gamedya\DAL\bin\Debug\tr\System.Web.Razor.resources.dll
 C:\Users\SnmzŞti\Desktop\Gamedya\DAL\bin\Debug\tr\System.Web.WebPages.Deployment.resources.dll
 C:\Users\SnmzŞti\Desktop\Gamedya\DAL\obj\Debug\DAL.csprojAssemblyReference.cache
-C:\Users\SnmzŞti\Desktop\Gamedya\DAL\obj\Debug\DAL.csproj.GenerateResource.cache
 C:\Users\SnmzŞti\Desktop\Gamedya\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
 C:\Users\SnmzŞti\Desktop\Gamedya\DAL\obj\Debug\DAL.csproj.CopyComplete
 C:\Users\SnmzŞti\Desktop\Gamedya\DAL\obj\Debug\DAL.dll
 C:\Users\SnmzŞti\Desktop\Gamedya\DAL\obj\Debug\DAL.pdb
 C:\Users\ahmet\source\repos\Gamedya\DAL\obj\Debug\DAL.csproj.GenerateResource.cache
-C:\Users\SnmzŞti\Desktop\Gamedya\DAL\obj\Debug\DAL.Migrations.ilk.resources
-C:\Users\SnmzŞti\Desktop\Gamedya\DAL\obj\Debug\DAL.Migrations.iki.resources
-C:\Users\SnmzŞti\Desktop\Gamedya\DAL\obj\Debug\DAL.Migrations.uc.resources
 C:\Users\ahmet\source\repos\Gamedya\DAL\obj\Debug\DAL.Migrations.uc.resources
+C:\Users\SnmzŞti\Desktop\Gamedya\DAL\obj\Debug\DAL.Migrations.ilk.resources
+C:\Users\SnmzŞti\Desktop\Gamedya\DAL\obj\Debug\DAL.csproj.GenerateResource.cache

@@ -4,45 +4,71 @@
     ViewBag.Title = "SetProfilImage";
 }
 
+
+    
+      
+
     <div class="container">
-        @if (Model.HasProfilImage)
-        {
-            <h2>Profil resmini değiştir</h2>
-        }
-        else
-        {
-            <h2>Profil resmi ekle</h2>
-        }
+        <div class="login-form11">
+            <div class="panel-body" style="background-color:#ff6102;">
 
-        @using (Html.BeginForm("SetProfilImage", "Manage", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
-        {
-            @Html.AntiForgeryToken()
 
-            <div class="form-horizontal">
+                @if (Model.HasProfilImage)
+                {
+                    <h2>Profil resmini değiştir</h2>
+                }
+                else
+                {
+                    <h2>Profil resmi ekle</h2>
+                }
 
-                <h4>Profil resmi</h4>
 
-                <div class="input-group mb-3">
-                    <div class="input-group">
-                        <div class="custom-file">
-                            <input class="custom-file-input" id="profilResmi" name="file" type="file">
+                <dt>
+                    @Html.DisplayNameFor(model => model.ProfilImage)
+                </dt>
+
+                <dd>
+                    <img src="@Html.DisplayFor(model => model.ProfilImage)" style="height:100px">
+                </dd>
+
+                @using (Html.BeginForm("SetProfilImage", "Manage", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal">
+
+                        <h4>Profil resmi</h4>
+
+                        <div class="input-group mb-3">
+                            <div class="input-group">
+                                <div class="custom-file">
+                                    <input class="custom-file-input" id="profilResmi" name="file" type="file">
+                                </div>
+
+                            </div>
                         </div>
 
-                    </div>
-                </div>
+                        <hr />
 
-                <hr />
 
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Ekle" class="btn btn-default" />
+
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Kaydet" class="btn btn btn-warning btn-block" />
+                            </div>
+                        </div>
                     </div>
-                </div>
+
+                }
             </div>
-        }
 
-        <div>
-            @Html.ActionLink("Back to List", "Index")
         </div>
 
     </div>
+        <div>
+            @Html.ActionLink("Düzenlemeye Geri Dön", "Index")
+        </div>
+
+
+

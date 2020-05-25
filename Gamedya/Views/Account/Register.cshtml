@@ -9,7 +9,7 @@
 
 
 <div class="login-form11">
-    <div class="panel-body">
+    <div class="panel-body" style="background-color:#000000;">
         @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
         {
             @Html.AntiForgeryToken()
