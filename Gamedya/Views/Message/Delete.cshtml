@@ -1,30 +1,34 @@
-﻿@model Entities.Models.Notification
+﻿@model Entites.Models.MessageModels.GamedyaMessage
 
 @{
     ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 }
 
 <h2>Delete</h2>
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>Notification</h4>
+    <h4>GamedyaMessage</h4>
     <hr />
     <dl class="dl-horizontal">
+
+
+        <dt>
+            Gönderen
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NewsUser.FullName)
+        </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.Content)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Content)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.IsRead)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.IsRead)
         </dd>
 
         <dt>
@@ -35,14 +39,18 @@
             @Html.DisplayFor(model => model.Date)
         </dd>
 
+
+
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
             <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Listeye Geri Dön", "Index")
+            @Html.ActionLink("Back to List", "MyMessages")
         </div>
     }
 </div>
+

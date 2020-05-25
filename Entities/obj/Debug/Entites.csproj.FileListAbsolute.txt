@@ -71,3 +71,4 @@ C:\Users\SnmzŞti\Desktop\Gamedya\Entities\obj\Debug\Entites.csproj.CoreCompileI
 C:\Users\SnmzŞti\Desktop\Gamedya\Entities\obj\Debug\Entites.csproj.CopyComplete
 C:\Users\SnmzŞti\Desktop\Gamedya\Entities\obj\Debug\Entities.dll
 C:\Users\SnmzŞti\Desktop\Gamedya\Entities\obj\Debug\Entities.pdb
+C:\Users\SnmzŞti\Desktop\Gamedya\Entities\obj\Debug\Entites.csprojAssemblyReference.cache
