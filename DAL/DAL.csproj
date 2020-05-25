@@ -55,27 +55,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context\GameNewsDbContext.cs" />
-    <Compile Include="Migrations\202005202043085_ilk.cs" />
-    <Compile Include="Migrations\202005202043085_ilk.Designer.cs">
-      <DependentUpon>202005202043085_ilk.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202005202221500_iki.cs" />
-    <Compile Include="Migrations\202005202221500_iki.Designer.cs">
-      <DependentUpon>202005202221500_iki.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202005202225479_uc.cs" />
-    <Compile Include="Migrations\202005202225479_uc.Designer.cs">
-      <DependentUpon>202005202225479_uc.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202005232106542_dort.cs" />
-    <Compile Include="Migrations\202005232106542_dort.Designer.cs">
-      <DependentUpon>202005232106542_dort.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202005232134215_bes.cs" />
-    <Compile Include="Migrations\202005232134215_bes.Designer.cs">
-      <DependentUpon>202005232134215_bes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -87,23 +66,6 @@
       <Project>{95689E0C-F32A-477B-92DC-CADEF9AEDFF4}</Project>
       <Name>Entites</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\202005202043085_ilk.resx">
-      <DependentUpon>202005202043085_ilk.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202005202221500_iki.resx">
-      <DependentUpon>202005202221500_iki.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202005202225479_uc.resx">
-      <DependentUpon>202005202225479_uc.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202005232106542_dort.resx">
-      <DependentUpon>202005232106542_dort.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202005232134215_bes.resx">
-      <DependentUpon>202005232134215_bes.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

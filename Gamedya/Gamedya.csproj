@@ -194,6 +194,7 @@
     <Compile Include="Controllers\NotificationController.cs" />
     <Compile Include="Controllers\PcNewsController.cs" />
     <Compile Include="Controllers\ScienceNewsController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\SliderController.cs" />
     <Compile Include="Controllers\TwitchController.cs" />
     <Compile Include="Controllers\VideoNewsController.cs" />
@@ -524,6 +525,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Search\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
