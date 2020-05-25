@@ -1,50 +1,59 @@
 ﻿function AddComment(data) {
     var yourComment = $("#comment").val();
     var yourName = $("#guestName").val();
+    var messageDiv = $("#back");
 
     $.ajax({
-        
+
         url: '/NewsComment/AddComment/',
         data: { comment: yourComment, guestName: yourName, newsId: data },
         type: 'POST',
         dataType: 'json',
-        success: function () {
-            $("#back").empty(),
-            $("#back").append("Yorumunuz onaylandıktan sonra yayınlanacak");                  
+        success: function (mesaj) {
+            $(messageDiv).empty(),
+                $(messageDiv).append(mesaj);
         }
-    })
-    setInterval(function () {
-        $("#back").fadeOut(3000);
-    }, 5000); 
+    });    
 }
 
+function ClearMesajBack() {
+    var messageDiv = $("#back");
+    $(messageDiv).empty();
+}
 
 
 function AddLike(id) {
     $.ajax({
-        url: '/LikeUnlike/Like/',
+        url: '/LikeDislike/Like/',
         data: { commentId: id },
         type: 'POST',
         dataType: 'json',
         success: function (data) {
-           
-            $("#" + id).empty(),
-            $("#" + id).append(data);        
-        }          
-
+            if (data>0) {
+                $("#" + id).empty(),
+                    $("#" + id).append(data),
+                    $("#" + id).css('color', 'green'),
+                    $("#" + id).css('font-size', '16px');
+            }     
+          
+        } 
     })
 }
 
-function AddUnLike(id) {
+function AddDislike(id) {
 
     $.ajax({
-        url: '/LikeUnlike/UnLike/',
+        url: '/LikeDislike/Dislike/',
         data: { commentId: id },
         type: 'POST',
         dataType: 'json',
         success: function (data) {
-            $("#un"+id).empty(),
-            $("#un"+id).append(data);
+            if (data>0) {
+                $("#dis" + id).empty(),
+                    $("#dis" + id).append(data),
+                    $("#dis" + id).css('color', 'maroon'),
+                    $("#dis" + id).css('font-size', '16px');
+            }                     
         }
     })
 }

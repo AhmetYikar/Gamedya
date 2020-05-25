@@ -1,4 +1,5 @@
-﻿using DAL;
+﻿
+using DAL;
 using Entites.Models.MessageModels;
 using Entites.Models.NewsModels;
 using Entites.Models.UserModels;
@@ -34,10 +35,21 @@ namespace Gamedya.Controllers
         [HttpPost]
         public JsonResult AddComment(string comment,string guestName, int newsId)
         {
-            if (comment!="")
+            string mesaj;
+
+            if (guestName == "")
             {
-                NewsComment newsComment = new NewsComment();
-                
+                mesaj = "Lütfen adınızı giriniz";
+                return Json(mesaj, JsonRequestBehavior.AllowGet);
+            }
+
+            if (comment.Length < 2)
+            {
+                mesaj = "Yorum 2 karakterden kısa olamaz";
+                return Json(mesaj, JsonRequestBehavior.AllowGet);
+            }
+            
+                NewsComment newsComment = new NewsComment();                
                              
                 newsComment.Content = comment;
                 newsComment.NewsId = newsId;
@@ -53,15 +65,10 @@ namespace Gamedya.Controllers
                 }
 
                 uow.NewsComment.Insert(newsComment);
-                uow.Complete();                
-                return Json(false, JsonRequestBehavior.AllowGet);
-            }
-            else
-            {
-                return Json(true, JsonRequestBehavior.AllowGet);
-            }
-
-
+                uow.Complete();
+                mesaj = "Yorumunuz gönderilmiştir. Onaylandıktan sonra yayınlanacaktır.";
+                return Json(mesaj, JsonRequestBehavior.AllowGet);
+                      
         }
     }
 }

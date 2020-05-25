@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace Gamedya.Controllers
 {
-    public class NewsDetailsController : Controller
+    public class NewsController : Controller
     {
         private UnitOfWork uow = new UnitOfWork(new GameNewsDbContext());
         // GET: NewsDetails

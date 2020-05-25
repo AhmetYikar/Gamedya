@@ -272,3 +272,7 @@ C:\Users\SnmzŞti\Desktop\Gamedya\Gamedya\bin\PagedList.dll
 C:\Users\SnmzŞti\Desktop\Gamedya\Gamedya\bin\PagedList.Mvc.dll
 C:\Users\SnmzŞti\Desktop\Gamedya\Gamedya\bin\PagedList.xml
 C:\Users\SnmzŞti\Desktop\Gamedya\Gamedya\bin\PagedList.Mvc.xml
+C:\Users\ahmet\source\repos\Gamedya\Gamedya\bin\PagedList.dll
+C:\Users\ahmet\source\repos\Gamedya\Gamedya\bin\PagedList.Mvc.dll
+C:\Users\ahmet\source\repos\Gamedya\Gamedya\bin\PagedList.xml
+C:\Users\ahmet\source\repos\Gamedya\Gamedya\bin\PagedList.Mvc.xml

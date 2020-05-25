@@ -16,7 +16,7 @@
                             <div class="item">
                                 <div class="video_thumb"><img src="@item.TinyImagePath" alt="@item.Title"></div>
                                 <div class="video_info">
-                                    <div class="video_item_title"><h3><a href="@Url.Action("Details", "NewsDetails",new {id=item.Id})">@item.Title</a></h3></div><!--video_item_title-->
+                                    <div class="video_item_title"><h3><a href="@Url.Action("Details", "News",new {id=item.GenerateSlug()})">@item.Title</a></h3></div><!--video_item_title-->
                                     <div class="item_meta"><a >@item.Date</a></div><!--item_meta-->
                                 </div><!--video_info-->
                             </div>

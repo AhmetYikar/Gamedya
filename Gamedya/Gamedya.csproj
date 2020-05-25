@@ -184,14 +184,12 @@
     <Compile Include="Controllers\GeneralArticleController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LatestNewsController.cs" />
-    <Compile Include="Controllers\LikeUnlikeController.cs" />
+    <Compile Include="Controllers\LikeDislikeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\MessageController.cs" />
     <Compile Include="Controllers\MobilNewsController.cs" />
     <Compile Include="Controllers\MostCommentNewsController.cs" />
     <Compile Include="Controllers\NewsCommentController.cs" />
-    <Compile Include="Controllers\NewsDetailsController.cs" />
-    <Compile Include="Controllers\NotificationController.cs" />
+    <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\PcNewsController.cs" />
     <Compile Include="Controllers\ScienceNewsController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
@@ -204,7 +202,6 @@
     </Compile>
     <Compile Include="Helper\ClaimsPrincipalExtension.cs" />
     <Compile Include="Helper\SeoUrlHelper.cs" />
-    <Compile Include="Helper\Subs.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\NewsViewWeb.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -459,7 +456,6 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\LatestNews\GetLatestNews.cshtml" />
     <Content Include="Views\LatestNews\GetPopularNews.cshtml" />
-    <Content Include="Views\LikeUnlike\Like.cshtml" />
     <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
     <Content Include="Views\Manage\ChangePassword.cshtml" />
     <Content Include="Views\Manage\Index.cshtml" />
@@ -469,7 +465,7 @@
     <Content Include="Views\MobilNews\GetMobilNews.cshtml" />
     <Content Include="Views\MostCommentNews\MostComment.cshtml" />
     <Content Include="Views\NewsComment\Index.cshtml" />
-    <Content Include="Views\NewsDetails\Details.cshtml" />
+    <Content Include="Views\News\Details.cshtml" />
     <Content Include="Views\PcNews\GetPcNews.cshtml" />
     <Content Include="Views\ScienceNews\GetScienceNews.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\CanonicalHelperModel.cshtml" />
@@ -509,19 +505,6 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\Notification\Index.cshtml" />
-    <Content Include="Views\Notification\GetFourNotification.cshtml" />
-    <Content Include="Views\Notification\UserNotification.cshtml" />
-    <Content Include="Views\Notification\Details.cshtml" />
-    <Content Include="Views\Notification\Delete.cshtml" />
-    <Content Include="Views\Message\Index.cshtml" />
-    <Content Include="Views\Message\Create.cshtml" />
-    <Content Include="Views\Message\Delete.cshtml" />
-    <Content Include="Views\Message\Details.cshtml" />
-    <Content Include="Views\Message\GetFourMessage.cshtml" />
-    <Content Include="Views\Message\MessageContent.cshtml" />
-    <Content Include="Views\Message\MyMessages.cshtml" />
-    <Content Include="Views\Message\MySentMessages.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

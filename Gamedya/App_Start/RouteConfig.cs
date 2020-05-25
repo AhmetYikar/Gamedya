@@ -12,8 +12,10 @@ namespace Gamedya
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
+            
+
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-            routes.Add("NewsDetails", new SeoFriendlyRoute("news-{id}",
+            routes.Add("NewsDetails", new SeoFriendlyRoute("news/details/{id}",
             new RouteValueDictionary(new { controller = "news", action = "Details" }),
             new MvcRouteHandler()));
 
