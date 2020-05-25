@@ -1,5 +1,5 @@
 ﻿@model Entites.Models.MessageModels.GamedyaMessage
-
+@{Layout = null;}
 <h4>Message</h4>
 <hr />
 <div class="form-group">
@@ -11,12 +11,12 @@
 <div class="form-group">
     @Html.LabelFor(model => model.Content, htmlAttributes: new { @class = "control-label col-md-2" })
     <div class="col-md-10">
-        @Html.TextAreaFor(model => model.Content, new { @class = "form-control" })
+        @Html.TextAreaFor(model => model.Content, new { @class = "form-control",style= "border:ridge" })
         @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
     </div>
 </div>
-@Html.HiddenFor(model => model.MessageRecipientId);
-@Html.HiddenFor(model => model.ReceiverName);
+@Html.HiddenFor(model => model.MessageRecipientId)
+@Html.HiddenFor(model => model.ReceiverName)
 
 
 <div class="form-group">

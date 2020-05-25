@@ -261,6 +261,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\Message.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\popper-utils.js" />
     <Content Include="Scripts\popper-utils.min.js" />
@@ -512,14 +513,12 @@
     <Content Include="Views\Message\Delete.cshtml" />
     <Content Include="Views\Message\Details.cshtml" />
     <Content Include="Views\Message\GetFourMessage.cshtml" />
-    <Content Include="Views\Message\Index.cshtml" />
     <Content Include="Views\Message\MessageContent.cshtml" />
     <Content Include="Views\Message\MyMessages.cshtml" />
     <Content Include="Views\Message\MySentMessages.cshtml" />
     <Content Include="Views\Notification\Delete.cshtml" />
     <Content Include="Views\Notification\Details.cshtml" />
     <Content Include="Views\Notification\GetFourNotification.cshtml" />
-    <Content Include="Views\Notification\Index.cshtml" />
     <Content Include="Views\Notification\UserNotification.cshtml" />
     <Content Include="Views\Search\Index.cshtml" />
     <Content Include="Views\Manage\SetProfilImage.cshtml" />

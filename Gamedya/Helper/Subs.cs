@@ -19,5 +19,17 @@ namespace Gamedya.Helper
                 return text.Substring(0, 30);
             }
         }
+
+        public static string Sub(string text,int length)
+        {
+            if (text.Length < length)
+            {
+                return text;
+            }
+            else
+            {
+                return text.Substring(0, length);
+            }
+        }
     }
 }

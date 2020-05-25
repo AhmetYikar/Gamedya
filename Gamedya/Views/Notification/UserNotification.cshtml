@@ -2,62 +2,63 @@
 
 @{
     ViewBag.Title = "UserNotification";
-    Layout = null;
 }
-<h2>Bildirimler</h2>
+
+    <div class="container">
+        <h2>Bildirimler</h2>
 
 
-@*Aşağıdaki tablonun "tr" tagleri alttaki scriptle ilişkilidir. Değişiklik yaparken dikkat ediniz*@
+        @*Aşağıdaki tablonun "tr" tagleri alttaki scriptle ilişkilidir. Değişiklik yaparken dikkat ediniz*@
 
-<br />
-<hr />
+        <br />
+        <hr />
 
-<table class="table">
-
-
-    @foreach (var item in Model)
-    {
-        if (item.IsRead == true)
-        {
-            <tr style="border-bottom:solid;border-color:#E0EEEE; color:gray">
-
-                <td>
-                    @Html.DisplayFor(modelItem => item.Date)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Content)
-                </td>
-                <td>
-                    <a href="@Url.Action("Details", new { id = item.Id })" class="btn btn-primary"> bildirime git   </a>
+        <table class="table">
 
 
-                    <a class="btn btn-danger" data-id="@item.Id">sil</a>
-                </td>
+            @foreach (var item in Model)
+            {
+                if (item.IsRead == true)
+                {
+                    <tr style="border-bottom:solid;border-color:#E0EEEE; color:gray">
 
-            </tr>
-        }
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Date)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Content)
+                        </td>
+                        <td>
+                            <a href="@Url.Action("Details", new { id = item.Id })" class="btn btn-primary"> bildirime git   </a>
 
-        else
-        {
-            <tr style="border-bottom:solid;border-color:#E0EEEE;font-weight:bold">
 
-                <td>
-                    @Html.DisplayFor(modelItem => item.Date)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Content)
-                </td>
-                <td>
-                    <a href="@Url.Action("Details", new { id = item.Id })" class="btn btn-primary"> bildirime git   </a>
+                            <a class="btn btn-danger" data-id="@item.Id">sil</a>
+                        </td>
 
-                    <a class="btn btn-danger" data-id="@item.Id">sil</a>
-                </td>
+                    </tr>
+                }
 
-            </tr>
-        }
-    }
-</table>
+                else
+                {
+                    <tr style="border-bottom:solid;border-color:#E0EEEE;font-weight:bold">
 
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Date)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Content)
+                        </td>
+                        <td>
+                            <a href="@Url.Action("Details", new { id = item.Id })" class="btn btn-primary"> bildirime git   </a>
+
+                            <a class="btn btn-danger" data-id="@item.Id">sil</a>
+                        </td>
+
+                    </tr>
+                }
+            }
+        </table>
+    </div>
 
 
 @section scripts{
