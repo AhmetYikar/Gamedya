@@ -264,7 +264,8 @@
     <Compile Include="Controllers\NotificationController.cs" />
     <Compile Include="Controllers\OrtakController.cs" />
     <Compile Include="Controllers\RolesAdminController.cs" />
-    <Compile Include="Controllers\TwitchYoutubeController.cs" />
+    <Compile Include="Controllers\TwitchController.cs" />
+    <Compile Include="Controllers\YoutubeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -7839,11 +7840,16 @@
     <Content Include="Views\Message\Delete.cshtml" />
     <Content Include="Views\Message\MySentMessages.cshtml" />
     <Content Include="Views\Message\Index.cshtml" />
-    <Content Include="Views\TwitchYoutube\Index.cshtml" />
-    <Content Include="Views\TwitchYoutube\Details.cshtml" />
-    <Content Include="Views\TwitchYoutube\Create.cshtml" />
-    <Content Include="Views\TwitchYoutube\Edit.cshtml" />
-    <Content Include="Views\TwitchYoutube\Delete.cshtml" />
+    <Content Include="Views\Youtube\Index.cshtml" />
+    <Content Include="Views\Youtube\Details.cshtml" />
+    <Content Include="Views\Youtube\Create.cshtml" />
+    <Content Include="Views\Youtube\Edit.cshtml" />
+    <Content Include="Views\Youtube\Delete.cshtml" />
+    <Content Include="Views\Twitch\Create.cshtml" />
+    <Content Include="Views\Twitch\Delete.cshtml" />
+    <Content Include="Views\Twitch\Details.cshtml" />
+    <Content Include="Views\Twitch\Edit.cshtml" />
+    <Content Include="Views\Twitch\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

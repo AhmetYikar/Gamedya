@@ -12,14 +12,15 @@ using ServiceLayer.Uow;
 
 namespace GameAdmin.Controllers
 {
-    public class TwitchYoutubeController : Controller
+    public class TwitchController : Controller
     {
         private UnitOfWork uow = new UnitOfWork(new GameNewsDbContext());
 
         // GET: TwitchYoutube
         public ActionResult Index()
         {
-            return View(uow.TwitchYoutube.GetAll());
+            IEnumerable<TwitchYoutube> twitch = uow.TwitchYoutube.GetAll().Where(a => a.VideoPlatform == VideoPlatform.Twitch);
+            return View(twitch);
         }
 
         // GET: TwitchYoutube/Details/5
@@ -30,13 +31,14 @@ namespace GameAdmin.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
           
-            var twitchYoutube = uow.TwitchYoutube.GetTwitchYoutubeDetails(a => a.Id == id).FirstOrDefault();
+            var twitch = uow.TwitchYoutube.GetTwitchYoutubeDetails(a => a.Id == id)
+                                                                    .FirstOrDefault();
           
-            if (twitchYoutube == null)
+            if (twitch == null)
             {
                 return HttpNotFound();
             }
-            return View(twitchYoutube);
+            return View(twitch);
         }
 
         // GET: TwitchYoutube/Create
@@ -51,16 +53,17 @@ namespace GameAdmin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Title,VideoPath,CoverImage,Date,ViewCount,IsActive,VideoPlatform")] TwitchYoutube twitchYoutube)
+        public ActionResult Create([Bind(Include = "Id,Title,VideoPath,CoverImage,ViewCount,IsActive,VideoPlatform")] TwitchYoutube twitch)
         {
             if (ModelState.IsValid)
             {
-                uow.TwitchYoutube.Insert(twitchYoutube);
+                twitch.Date = DateTime.Now;
+                uow.TwitchYoutube.Insert(twitch);
                 uow.Complete();
                 return RedirectToAction("Index");
             }
 
-            return View(twitchYoutube);
+            return View(twitch);
         }
 
         // GET: TwitchYoutube/Edit/5
@@ -70,37 +73,33 @@ namespace GameAdmin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }        
-            var twitchYoutube = uow.TwitchYoutube.GetById(id);
+            var twitch = uow.TwitchYoutube.GetById(id);
 
-            if (twitchYoutube == null)
+            if (twitch == null)
             {
                 return HttpNotFound();
             }
-            return View(twitchYoutube);
+            return View(twitch);
         }
 
-        // POST: TwitchYoutube/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Title,VideoPath,CoverImage,Date,ViewCount,IsActive,VideoPlatform")] TwitchYoutube twitchYoutube)
+        public ActionResult Edit([Bind(Include = "Id,Title,VideoPath,CoverImage,Date,ViewCount,IsActive,VideoPlatform")] TwitchYoutube twitch)
         {
-
-            var twitchYoutubedb = uow.TwitchYoutube.GetById(twitchYoutube.Id);
-            twitchYoutubedb.VideoPlatform = twitchYoutubedb.VideoPlatform;
-            twitchYoutubedb.Title = twitchYoutubedb.Title;
-            twitchYoutubedb.VideoPath = twitchYoutubedb.VideoPath;
-            twitchYoutubedb.CoverImage = twitchYoutubedb.CoverImage;
-            twitchYoutubedb.IsActive = twitchYoutubedb.IsActive;
-
+            
             if (ModelState.IsValid)
             {
-                uow.TwitchYoutube.Update(twitchYoutube);
+                var twitchdb = uow.TwitchYoutube.GetById(twitch.Id);
+                twitchdb.VideoPlatform = twitch.VideoPlatform;
+                twitchdb.Title = twitch.Title;
+                twitchdb.VideoPath = twitch.VideoPath;
+                twitchdb.CoverImage = twitch.CoverImage;
+                twitchdb.IsActive = twitch.IsActive;
+                uow.TwitchYoutube.Update(twitchdb);
                 uow.Complete();
                 return RedirectToAction("Index");
             }
-            return View(twitchYoutube);
+            return View(twitch);
         }
 
         // GET: TwitchYoutube/Delete/5
@@ -110,13 +109,13 @@ namespace GameAdmin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TwitchYoutube twitchYoutube = uow.TwitchYoutube.GetById(id);
+            TwitchYoutube twitch = uow.TwitchYoutube.GetById(id);
            
-            if (twitchYoutube == null)
+            if (twitch == null)
             {
                 return HttpNotFound();
             }
-            return View(twitchYoutube);
+            return View(twitch);
         }
 
         // POST: TwitchYoutube/Delete/5
@@ -127,9 +126,9 @@ namespace GameAdmin.Controllers
 
             using (var uow = new UnitOfWork(new GameNewsDbContext()))
             {
-                TwitchYoutube twitchYoutube = uow.TwitchYoutube.GetById(id);
+                TwitchYoutube twitch = uow.TwitchYoutube.GetById(id);
 
-                uow.TwitchYoutube.Delete(twitchYoutube);
+                uow.TwitchYoutube.Delete(twitch);
                 uow.Complete();
                 return RedirectToAction("Index");
             }

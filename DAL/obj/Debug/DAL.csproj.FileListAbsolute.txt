@@ -74,3 +74,5 @@ C:\Users\SnmzŞti\Desktop\Gamedya\DAL\obj\Debug\DAL.dll
 C:\Users\SnmzŞti\Desktop\Gamedya\DAL\obj\Debug\DAL.pdb
 C:\Users\SnmzŞti\Desktop\Gamedya\DAL\obj\Debug\DAL.Migrations.ilk.resources
 C:\Users\SnmzŞti\Desktop\Gamedya\DAL\obj\Debug\DAL.csproj.GenerateResource.cache
+C:\Users\ahmet\source\repos\Gamedya\DAL\obj\Debug\DAL.Migrations.ilk.resources
+C:\Users\ahmet\source\repos\Gamedya\DAL\obj\Debug\DAL.csproj.GenerateResource.cache
