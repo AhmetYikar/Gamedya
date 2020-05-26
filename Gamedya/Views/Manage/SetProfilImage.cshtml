@@ -1,5 +1,5 @@
 ﻿@model Gamedya.Models.SetProfilImageViewModel
-
+@using Gamedya.Helper
 @{
     ViewBag.Title = "SetProfilImage";
 }
@@ -26,10 +26,9 @@
                 <dt>
                     @Html.DisplayNameFor(model => model.ProfilImage)
                 </dt>
-
-                <dd>
-                    <img src="@Html.DisplayFor(model => model.ProfilImage)" style="height:100px">
-                </dd>
+                <td>
+                    <img src="@Model.ProfilImage" class="img-circle" alt="User Image" style="height:80px;">
+                </td>
 
                 @using (Html.BeginForm("SetProfilImage", "Manage", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
                 {

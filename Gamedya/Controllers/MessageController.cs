@@ -13,16 +13,12 @@ using System.Web.Mvc;
 
 namespace Gamedya.Controllers
 {
+    [Authorize]
     public class MessageController : Controller
     {
         private UnitOfWork uow = new UnitOfWork(new GameNewsDbContext());
 
-        public ActionResult Index()
-        {
-            IEnumerable<GamedyaMessage> messages = uow.GamedyaMessage.GetAll();
-
-            return View(messages);
-        }
+        
 
         public ActionResult MyMessages()
         {
@@ -196,20 +192,12 @@ namespace Gamedya.Controllers
                 uow.GamedyaMessage.Update(message);
             }
 
-            //bu silme işlemini kullanan kişi admin ise ise
-            //mesaj veri tabanından tamamen silinir
-            else if (who == "admin")
-            {
-                uow.GamedyaMessage.Delete(message);
-            }
 
             uow.GamedyaMessage.Update(message);
             uow.Complete();
             return RedirectToAction("MyMessages");
 
         }
-
-
 
 
         protected override void Dispose(bool disposing)
