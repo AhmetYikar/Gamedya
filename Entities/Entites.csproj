@@ -95,6 +95,7 @@
     <Compile Include="Models\NewsModels\NewsVideo.cs" />
     <Compile Include="Models\NotificationModels\Notification.cs" />
     <Compile Include="Models\Status\Status.cs" />
+    <Compile Include="Models\TwitchYoutubeModels\TwitchYoutube.cs" />
     <Compile Include="Models\UserModels\NewsUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

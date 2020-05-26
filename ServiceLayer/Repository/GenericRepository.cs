@@ -51,6 +51,8 @@ namespace ServiceLayer.Repository
             _context.Configuration.ProxyCreationEnabled = false;
 
             _context.Entry(entity).State = EntityState.Modified;
+        
+            
         }
 
         public void Delete(TEntity entity)

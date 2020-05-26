@@ -97,6 +97,8 @@
     <Compile Include="Repository\NotificationRepository\INotificationRepostory.cs" />
     <Compile Include="Repository\StatusRepository\ILikeTableRepository.cs" />
     <Compile Include="Repository\StatusRepository\LikeTableRepository.cs" />
+    <Compile Include="Repository\TwitchYoutubes\ITwitchYoutubeRepository.cs" />
+    <Compile Include="Repository\TwitchYoutubes\TwitchYoutubeRepository.cs" />
     <Compile Include="Repository\UserRepository\INewsUserRepository.cs" />
     <Compile Include="Repository\UserRepository\NewsUserRepository.cs" />
     <Compile Include="Uow\IUnitOfWork.cs" />

@@ -1,0 +1,88 @@
+﻿@model Entities.Models.TwitchYoutube.TwitchYoutube
+
+@{
+    ViewBag.Title = "Düzenle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <h3 class="box-title">@ViewBag.Title</h3>
+        </div>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+    <form role="form">
+        <div class="box-body">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.Id)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-12">
+                    @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.VideoPath, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-12">
+                    <video width="250" height="250" controls="controls">
+
+                        <source src="@Html.DisplayFor(model => model.VideoPath)" type="video/mp4">
+
+                        <source src="movie.ogg" type="video/ogg">
+
+                        Tarayıcınız video etiketini desteklemiyor.
+
+                    </video>
+                    @Html.EditorFor(model => model.VideoPath, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.VideoPath, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.CoverImage, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-12">
+                    <img src="@Html.DisplayFor(model => model.CoverImage)" style="height:250px;">
+                    <hr />
+                    @Html.EditorFor(model => model.CoverImage, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.CoverImage, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.IsActive, htmlAttributes: new { @class = "control-label col-md-2 " })
+                <div class="col-md-12">
+                    @Html.EditorFor(model => model.IsActive)
+                    @Html.ValidationMessageFor(model => model.IsActive, "", new { @class = "text-danger" })
+                    <div class="checkbox">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.VideoPlatform, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-12">
+                    @Html.EnumDropDownListFor(model => model.VideoPlatform, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.VideoPlatform, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-10 text-center">
+                    <div class="box-footer">
+                        <input type="submit" value="Düzenlemeyi Kaydet" class="btn btn-primary" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+        }
+</div>
+        <div>
+            @Html.ActionLink("Listeye Geri Dön", "Index")
+        </div>

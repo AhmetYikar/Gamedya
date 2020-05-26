@@ -12,6 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Entities.Models;
+using Entities.Models.TwitchYoutube;
 
 namespace DAL
 {
@@ -58,6 +59,6 @@ namespace DAL
         public System.Data.Entity.DbSet<GamedyaMessage> GamedyaMessages { get; set; }
         public System.Data.Entity.DbSet<MessageRecipient> MessageRecipients { get; set; }
         public System.Data.Entity.DbSet<Notification> Notifications { get; set; }
-
+        public System.Data.Entity.DbSet<TwitchYoutube> TwitchYoutubes { get; set; }
     }
 }
