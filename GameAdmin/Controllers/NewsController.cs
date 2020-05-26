@@ -245,7 +245,7 @@ namespace GameAdmin.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
 
-        public ActionResult Edit([Bind(Include = "Id,Title,Summary,Content,NewsCategoryId,Date,EditDate,IsActive,ViewCount,TinyImagePath")] News news, HttpPostedFileBase file)
+        public ActionResult Edit([Bind(Include = "Id,Title,Summary,Content,NewsCategoryId,Date,EditDate,IsActive,ViewCount,TinyImagePath,NewsPlatform,NewsPart")] News news, HttpPostedFileBase file)
         {
             var newsdb = uow.News.GetById(news.Id);
 
@@ -287,6 +287,8 @@ namespace GameAdmin.Controllers
             newsdb.NewsCategoryId = news.NewsCategoryId;
             newsdb.EditDate = DateTime.Now;
             newsdb.IsActive = news.IsActive;
+            newsdb.NewsPart = news.NewsPart;
+            newsdb.NewsPlatform = news.NewsPlatform;
 
 
             if (ModelState.IsValid)

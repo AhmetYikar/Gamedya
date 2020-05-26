@@ -60,6 +60,7 @@ namespace Entites.Models.NewsModels
 
         [Display(Name = "Aktif Mi?")]
         public bool IsActive { get; set; }
+
         [Display(Name = "Görüntülenmes Sayısı")]
         public int ViewCount { get; set; }
 

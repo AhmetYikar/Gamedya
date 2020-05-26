@@ -1,4 +1,4 @@
-﻿﻿*blog create de boş geçince dropdown htası veriyor.
+﻿﻿*blog create de resim ekleyince  hata veriyor.
 
 *forum create de resim ve content boş geçince dropdown hatası 
 alınıyor ancak diğerleri 
@@ -43,6 +43,7 @@ veriyor.
 
 *GameRiew de artciletype ı general ve review seçince hata veriyor.
 
+*TwitchYoutube controller da haberi düzenlerken videoplatfor mu değiştirince genericreporsityory de hata veriyor.
 
 -------------------------------------------
 -------------------------------------------

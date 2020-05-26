@@ -1,11 +1,13 @@
 ﻿using DAL;
 using Entities.Models;
+using Entities.Models.TwitchYoutube;
 using ServiceLayer.Repository.BlogRepository;
 using ServiceLayer.Repository.ForumRepository;
 using ServiceLayer.Repository.GameRepository;
 using ServiceLayer.Repository.MessageRepository;
 using ServiceLayer.Repository.NewsRepository;
 using ServiceLayer.Repository.NotificationRepository;
+using ServiceLayer.Repository.TwitchYoutubes;
 using ServiceLayer.Repository.UserRepository;
 using System;
 using System.Collections.Generic;
@@ -50,6 +52,7 @@ namespace ServiceLayer.Uow
             GamedyaMessage = new MessageRepository(_context);
             MessageRecipient = new MessageRecipientRepository(_context);
             Notification = new NotificationRepository(_context);
+            TwitchYoutube = new TwitchYoutubeRepository(_context);
 
 
         }
@@ -84,7 +87,7 @@ namespace ServiceLayer.Uow
 
         public INotificationRepository Notification { get; private set; }
 
-
+        public ITwitchYoutubeRepository TwitchYoutube { get; private set; }
 
         public int Complete()
         {
