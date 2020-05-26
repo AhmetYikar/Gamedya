@@ -34,6 +34,9 @@
                                     @Html.DisplayNameFor(model => model.First().Title)
                                 </th>
                                 <th>
+                                    Blog Yazarı
+                                </th>
+                                <th>
                                     @Html.DisplayNameFor(model => model.First().Date)
                                 </th>
                             </tr>
@@ -43,10 +46,13 @@
                             {
                                 <tr>
                                     <td>
-                                        <img src="@Html.DisplayFor(modelItem => item.TinyImagePath)">
+                                        <img src="@Html.DisplayFor(modelItem => item.TinyImagePath)" style="height:80px;">
                                     </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.Title)
+                                    </td>
+                                     <td>
+                                        @Html.DisplayFor(modelItem => item.BloggerName)
                                     </td>
                                     <td>
                                         @item.Date.ToString()

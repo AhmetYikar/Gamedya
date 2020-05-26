@@ -11,7 +11,9 @@ namespace ServiceLayer.Repository.BlogRepository
     public interface IBlogPostRepository : IRepository<BlogPost>
     {
         IEnumerable<BlogPost> GetBlogDetails(Expression<Func<BlogPost, bool>> predicate);
+        IEnumerable<BlogPost> BlogWithCommentsAndUsers();
         IEnumerable<BlogPost> GetBlogWithComments(Expression<Func<BlogPost, bool>> predicate);
 
+        
     }
 }

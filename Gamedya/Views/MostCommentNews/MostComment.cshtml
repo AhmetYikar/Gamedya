@@ -2,7 +2,7 @@
 
 
     <div class="most_comment">
-        <div class="sidebar_title text-center" style="background:#ff6102;">
+        <div class="sidebar_title text-center">
             <h2>En Çok Yorumlananlar</h2>
         </div>
         @foreach (var item in Model)
@@ -14,8 +14,8 @@
                 <div class="media-body">
                     <h3 class="media-heading"><a href="@Url.Action("Details", "News",new {id=item.GenerateSlug()})">@item.Title</a></h3>
                     <div class="comment_box">
-                        <div class="comments_icon" > <i style="color:#ff6102" class="fa fa-comments" aria-hidden="true"></i></div>
-                        <div class="comments"><a style="color:#ff6102" href="#">@item.CommentCount</a></div>
+                        <div class="comments_icon" > <i class="fa fa-comments" aria-hidden="true"></i></div>
+                        <div class="comments"><a href="#">@item.CommentCount</a></div>
                     </div><!--comment_box-->
                 </div><!--media-body-->
             </div><!--media-->

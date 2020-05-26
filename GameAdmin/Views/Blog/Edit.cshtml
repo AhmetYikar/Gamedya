@@ -1,12 +1,14 @@
 ﻿@model Entites.Models.BlogModels.BlogPost
+@using GameAdmin.Helper
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Blog Düzenle";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 <div class="box box-primary">
     <div class="box-header with-border">
-        <h3 class="box-title">Blog Düzenle</h3>
+        <h3 class="box-title">@ViewBag.Title</h3>
     </div>
     @using (Html.BeginForm("Edit", "Blog", FormMethod.Post, new { enctype = "multipart/form-data", role = "form" }))
     {
@@ -24,7 +26,6 @@
                         @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
                     </div>
                 </div>
-
                 <div class="form-group">
                     @Html.LabelFor(model => model.Summary, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-12">
@@ -42,10 +43,18 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.BlogCategoryId, "BlogCategoryId", htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.LabelFor(model => model.BlogCategoryId, "Kategoriler", htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-12">
                         @Html.DropDownList("BlogCategoryId", null, htmlAttributes: new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.BlogCategoryId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.TinyImagePath, "Resim Url", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.TinyImagePath, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.TinyImagePath, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
@@ -53,42 +62,27 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.TinyImagePath, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-12">
-                        <img src="@Html.DisplayFor(model => model.TinyImagePath)">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-12">
-                        <div class="input-group">
-                            <div class="custom-file-input">
-                                <input class="custom-file-input" name="file" id="exampleInputFile" type="file">
-                            </div>
-                        </div>
+                        <img src="@Html.DisplayFor(model => model.TinyImagePath)" style="height:100px;">
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="col-md-10 text-center">
                         <div class="box-footer">
-                            <input type="submit" value="Blog Düzenlemeyi Kaydet" class="btn btn-primary" />
+                            <input type="submit" value="Kaydet" class="btn btn-primary" />
                         </div>
                     </div>
                 </div>
 
             </div>
         </form>
-    }
 
+    }
 </div>
 <div>
     @Html.ActionLink("Listeye Geri Dön", "Index")
 </div>
 
-
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
-
-
-
-
-

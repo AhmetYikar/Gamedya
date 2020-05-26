@@ -31,12 +31,14 @@
                             </div><!--logo-->
                         </div><!--col-md-3-->
                         <div class="col-xs-5">
-                            <ul class="nav navbar-nav anabaslik m-t-2" style="margin-left:65px;">
+                            <ul class="nav navbar-nav anabaslik m-t-2" style="margin-left:35px;">
                                 <li class="hidden"><a href="#page-top"></a></li>
-                                <li><a class="page-scroll" href="category.html">Oyun</a></li>
+                                <li><a class="page-scroll" href="category.html">BLOG</a></li>
+                                <li><a class="page-scroll" href="category.html">FORUM</a></li>
+
                                 <li class="dropdown">
-                                    <a href="#"  class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Kategoriler <b class="caret"></b></a>
-                                    <ul  class="dropdown-menu">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Kategoriler <b class="caret"></b></a>
+                                    <ul class="dropdown-menu">
                                         <li><a href="#">Oyun Haber</a></li>
                                         <li><a href="#">Etkinlik</a></li>
                                         <li><a href="#">Bilim/Teknoloji</a></li>
@@ -50,16 +52,15 @@
                                         <li><a href="#">Genel makaleler</a></li>
                                     </ul>
                                 </li>
-                                <li><a class="page-scroll" href="category.html">Galeriler</a></li>
 
                             </ul>
 
                         </div><!--col-md-6-->
 
-                        <div class="col-md-5">
+                        <div  class="col-md-5">
 
 
-                            <ul class="nav navbar-nav anabaslik m-t-2 ">
+                            <ul style="float:right" class="nav navbar-nav anabaslik m-t-2 ">
                                 @if (User.Identity.IsAuthenticated)
                                 {
                                     <li class="dropdown">
@@ -121,7 +122,6 @@
                             <li><a class="page-scroll" href="category.html">VR GÖZLÜK</a></li>
                             <li><a class="page-scroll" href="category.html">MOBİL</a></li>
                             <li><a class="page-scroll" href="category.html">POPÜLER OYUNLAR</a></li>
-                            <li><a class="page-scroll" href="category.html">E-SPOR</a></li>
 
                             <li class="sosyalikon"> <a class="icons-sm fb-ic"><i class="fa fa-facebook"></i></a> </li>
                             <li> <a class="icons-sm gplus-ic"><i class="fa fa-youtube-play"></i></a> </li>
@@ -129,21 +129,19 @@
                             <li>   <a class="icons-sm gplus-ic"><i class="fa fa-twitter"></i></a></li>
 
                         </ul>
+                            <div style="float:right;margin-right:36px">
+                                <div class="input-group" style="margin-top: -20px;">
 
-                        <div class="pull-right">
-                            <div class="input-group" style="margin-top: -20px;">
+                                    @using (Html.BeginForm("Index", "Search", FormMethod.Get, new { @class = "navbar - form", role = "search" }))
+                                    {
 
-                                @using (Html.BeginForm("Index", "Search", FormMethod.Get, new { @class = "navbar - form", role = "search" }))
-                                {
-
-                                    <div class="input-group-btn">
-                                        <input class="form-control" id="ara" name="ara" placeholder="Arama.." type="text">
-                                        <button class="btn btn-default" type="submit"><i class="fa fa-search" aria-hidden="true"></i>  </button>
-                                    </div>
-                                }
+                                        <div class="input-group-btn">
+                                            <input class="form-control" id="ara" name="ara" placeholder="Arama.." type="text">
+                                            <button class="btn btn-default" type="submit"><i class="fa fa-search" aria-hidden="true"></i>  </button>
+                                        </div>
+                                    }
+                                </div>
                             </div>
-                        </div>
-
                     </div>
                 </div>
             </nav>

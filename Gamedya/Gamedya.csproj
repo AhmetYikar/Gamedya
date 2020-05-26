@@ -179,6 +179,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\GameReviewController.cs" />
     <Compile Include="Controllers\GameUpdateController.cs" />
     <Compile Include="Controllers\GeneralArticleController.cs" />
@@ -206,6 +207,7 @@
     <Compile Include="Helper\SeoUrlHelper.cs" />
     <Compile Include="Helper\Subs.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\BlogViewModel.cs" />
     <Compile Include="Models\NewsViewWeb.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -530,9 +532,11 @@
     <Content Include="Views\Notification\UserNotification.cshtml" />
     <Content Include="Views\Search\Index.cshtml" />
     <Content Include="Views\Manage\SetProfilImage.cshtml" />
+    <Content Include="Views\YouTube\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Blog\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

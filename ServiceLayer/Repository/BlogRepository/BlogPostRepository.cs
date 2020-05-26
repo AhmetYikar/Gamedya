@@ -29,12 +29,19 @@ namespace ServiceLayer.Repository.BlogRepository
                 .Include(a => a.BlogCategory).Where(predicate);
         }
 
+        public IEnumerable<BlogPost> GetBlogWithComments(Expression<Func<BlogPost, bool>> predicate)
+        {
+            return _context.Set<BlogPost>()                
+                .Include(a => a.BlogComments).Where(predicate);
+        }
 
 
-        IEnumerable<BlogPost> IBlogPostRepository.GetBlogWithComments(Expression<Func<BlogPost, bool>> predicate)
+
+        IEnumerable<BlogPost> IBlogPostRepository.BlogWithCommentsAndUsers()
         {
             return _context.Set<BlogPost>()
-                           .Include(a => a.BlogComments).Where(predicate);
+                           .Include(a => a.NewsUser)
+                           .Include(a => a.BlogComments);
         }
     }
 }

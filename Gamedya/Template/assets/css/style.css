@@ -651,8 +651,8 @@ ul {
    Feature Tab
     -------------------*/
 .sitebar {
-    background: aquamarine;
-    margin-bottom: 30px;
+        background: #fff;
+        margin-bottom: 30px;
 }
 
 .tab .nav-tabs li {
@@ -717,8 +717,8 @@ ul {
 }
 
 .most_comment {
-    background: aquamarine;
-    padding: 20px 15px;
+        background: #fff;
+        padding: 20px 15px;
 }
 
     .most_comment .media {

@@ -11,10 +11,18 @@
 
             <p class="text-success">@ViewBag.StatusMessage</p>
             <div>
+                <dl class="dl-horizontal">
+                    <dt>
+                        <img src="@User.GetUserImage()" class="img-circle align-content-center" alt="User Image" style="height:100px;">
+                    </dt>
+                    <dd>
+                        @Html.ActionLink("Mesajlar", "MyMessages","Message")
+                        <br />
+                        <hr />
+                        @Html.ActionLink("Bildirimler", "UserNotification", "Notification")
 
-                <td>
-                    <img src="@User.GetUserImage()" class="img-circle align-content-center" alt="User Image" style="height:80px;">
-                </td>
+                    </dd>
+                </dl>
                 <hr />
                 <dl class="dl-horizontal">
                     <dt>Şifre:</dt>

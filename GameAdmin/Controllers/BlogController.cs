@@ -13,14 +13,13 @@ using System.IO;
 using Microsoft.Azure.Amqp.Framing;
 using System.Drawing;
 using PagedList;
+using System.Web.Security;
 
 namespace GameAdmin.Controllers
 {
     [Authorize]
-
     public class BlogController : Controller
     {
-
 
         private UnitOfWork uow = new UnitOfWork(new GameNewsDbContext());
         // GET: Blog
@@ -28,8 +27,6 @@ namespace GameAdmin.Controllers
 
         public ActionResult Index(string ara, string siralama, string sonArananKelime, int? sayfaNo)
         {
-            ViewBag.BlogCategoryId = new SelectList(uow.BlogCategory.GetAll(), "Id", "CategoryName");
-
             ViewBag.SonSiralama1 = siralama;
             //ViewBag.AdaGoreSirala = String.IsNullOrEmpty(siralama) ? "ZdenAya" : string.Empty;
             //ViewBag.SoyadaGoreSirala = siralama == "SoyadAdanZye" ? "SoyadZdenAya" : "SoyadAdanZye";
@@ -44,11 +41,7 @@ namespace GameAdmin.Controllers
             }
 
 
-
             ViewBag.SonArananKelime1 = ara;
-
-
-
 
 
             if (String.IsNullOrEmpty(siralama))
@@ -62,22 +55,12 @@ namespace GameAdmin.Controllers
 
 
             var liste = GetBlog().ToList();
-
-            //indexte her bir blogun yorum sayısı gelsin diye yapıldı
-            foreach (var item in liste)
-            {
-                List<BlogComment> comments = uow.BlogComment.Where(a => a.BlogPostId == item.Id).ToList();
-                if (comments != null && comments.Count() > 0)
-                {
-                    item.CommentCount = comments.Count();
-                }
-            }
+            
 
             if (!string.IsNullOrWhiteSpace(ara))
             {
                 liste = liste.Where(a => a.Title.Contains(ara)).ToList();
             }
-
 
 
             int sayfaBuyuklugu = 10;
@@ -91,8 +74,10 @@ namespace GameAdmin.Controllers
         {
             using (var uow = new UnitOfWork(new GameNewsDbContext()))
             {
-                IEnumerable<BlogViewModel> blogpost = uow.BlogPost.GetAll().ToList()
-                                                          .Select(a => new BlogViewModel { Id = a.Id, Title = a.Title, Date = a.Date, NewsUserId = a.NewsUserId, TinyImagePath = a.TinyImagePath })
+                IEnumerable<BlogViewModel> blogpost = uow.BlogPost.BlogWithCommentsAndUsers().ToList()
+                                                          .Select(a => new BlogViewModel { Id = a.Id, Title = a.Title, Date = a.Date,NewsUserId=a.NewsUserId,
+                                                              BloggerName = a.NewsUser.FullName,TinyImagePath = a.TinyImagePath, CommentCount=a.BlogComments.Count()
+                                                          })
                                                           .OrderByDescending(a => a.Id);
 
                 if (blogpost != null)
@@ -100,6 +85,7 @@ namespace GameAdmin.Controllers
                     uow.Dispose();
                     return blogpost;
                 }
+
                 return null;
             }
         }
@@ -108,27 +94,23 @@ namespace GameAdmin.Controllers
 
         #region Details
 
-
-        [Route("{id}-{title}")]
         public ActionResult Details(int? id)
         {
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+            var blogPost = uow.BlogPost.GetBlogDetails(a => a.Id == id).FirstOrDefault();
 
-            var blogpost = uow.BlogPost.GetBlogDetails(a => a.Id == id).FirstOrDefault();
-
-            if (blogpost == null)
+            if (blogPost == null)
             {
                 return HttpNotFound();
             }
 
-            return View(blogpost);
+            return View(blogPost);
 
         }
-
-
         #endregion
 
         #region CreateBlog
@@ -144,71 +126,37 @@ namespace GameAdmin.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
 
-        public ActionResult Create([Bind(Include = "Id,Title,Summary,Content,BlogCategoryId,Date,ViewCount")] BlogPost blogpost, HttpPostedFileBase file)
+        public ActionResult Create([Bind(Include = "Id,Title,Summary,Content,BlogCategoryId,TinyImagePath")] BlogPost blogpost)
         {
 
-
-            string fileName = string.Empty;
-            string extension = string.Empty;
-
-
-            if (file != null && file.ContentLength > 0 && file.ContentLength < 2 * 1024 * 1024)
+            if (ModelState.IsValid == false)
             {
-                extension = Path.GetExtension(file.FileName);
-
-                if (extension.Contains("pdf") || extension.Contains("doc") || extension.Contains("docx"))
-                {
-
-                    return RedirectToAction("index");
-                }
-                else
-                {
-
-                }
-
-                fileName = Guid.NewGuid() + ".png";
-
-                var path = Path.Combine(Server.MapPath("/Content/BlogImages/"), fileName.Replace(".png", "-thumb.png"));
-
-                Image image = Image.FromStream(file.InputStream, true);
-
-                int imgWidth = 110;
-                int imgHeight = 95;
-
-                Image thumb = image.GetThumbnailImage(imgWidth, imgHeight, () => false, IntPtr.Zero);
-                thumb.Save(path);
-                blogpost.TinyImagePath = "/Content/BlogImages/" + fileName.Replace(".png", "-thumb.png");
+                ViewBag.BlogCategoryId = new SelectList(uow.BlogCategory.GetAll(), "Id", "CategoryName");
+                return View(blogpost);
             }
 
+           
+            BlogImage blogImage = new BlogImage();
+            blogImage.BlogPostId = blogpost.Id;
+            blogImage.ImagePath = blogpost.TinyImagePath;
 
-
-            if (ModelState.IsValid)
+            try
             {
-
-                uow.BlogPost.Insert(new BlogPost
-                {
-                    Title = blogpost.Title,
-                    Summary = blogpost.Summary,
-                    Content = blogpost.Content,
-                    BlogCategoryId = blogpost.BlogCategoryId,
-                    Date = DateTime.Now,
-                    EditDate = DateTime.Now,
-                    ViewCount = blogpost.ViewCount,
-                    TinyImagePath = blogpost.TinyImagePath,
-                    NewsUserId = User.GetUserId()
-                });
-
+                uow.BlogImage.Insert(blogImage);
+                blogpost.Date = DateTime.Now;
+                blogpost.EditDate = DateTime.Now;
+                blogpost.NewsUserId = User.GetUserId();
+                uow.BlogPost.Insert(blogpost);
                 uow.Complete();
-
                 return RedirectToAction("Index");
-
             }
-            ViewBag.BlogCategoryId = new SelectList(uow.BlogCategory.GetAll(), "Id", "CategoryName");
-            return View(blogpost);
+            catch (Exception)
+            {
+                ViewBag.BlogCategoryId = new SelectList(uow.BlogCategory.GetAll(), "Id", "CategoryName");
+                return View(blogpost);
+            }
 
         }
-
-
 
         #endregion
 
@@ -228,74 +176,42 @@ namespace GameAdmin.Controllers
 
         }
 
-        // POST: NewsCategory/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
-
-        public ActionResult Edit([Bind(Include = "Id,Title,Summary,Content,BlogCategoryId,Date,ViewCount,EditDate")] BlogPost blogpost, HttpPostedFileBase file)
+        public ActionResult Edit([Bind(Include = "Id,Title,Summary,Content,BlogCategoryId,Date,ViewCount,EditDate,TinyImagePath")] BlogPost blogpost)
         {
+            if (!ModelState.IsValid)
+            {
+                ViewBag.BlogCategoryId = new SelectList(uow.BlogCategory.GetAll(), "Id", "CategoryName", blogpost.BlogCategoryId);
+                return View(blogpost);
+            }
             var blogdb = uow.BlogPost.GetById(blogpost.Id);
 
-
-
-
-            string fileName = string.Empty;
-            string extension = string.Empty;
-
-            if (file != null && file.ContentLength > 0 && file.ContentLength < 2 * 1024 * 1024)
-            {
-                extension = Path.GetExtension(file.FileName);
-
-                if (extension.Contains("pdf") || extension.Contains("doc") || extension.Contains("docx"))
-                {
-
-                    return RedirectToAction("index");
-                }
-                else
-                {
-
-                }
-                fileName = Guid.NewGuid() + ".png";
-
-                var path = Path.Combine(Server.MapPath("/Content/BlogImages/"), fileName.Replace(".png", "-thumb.png"));
-
-                Image image = Image.FromStream(file.InputStream, true);
-
-                int imgWidth = 110;
-                int imgHeight = 95;
-
-                Image thumb = image.GetThumbnailImage(imgWidth, imgHeight, () => false, IntPtr.Zero);
-                thumb.Save(path);
-                blogdb.TinyImagePath = "/Content/BlogImages/" + fileName.Replace(".png", "-thumb.png");
-            }
-
             blogdb.Title = blogpost.Title;
+            blogdb.TinyImagePath = blogpost.TinyImagePath;
             blogdb.Summary = blogpost.Summary;
             blogdb.Content = blogpost.Content;
             blogdb.BlogCategoryId = blogpost.BlogCategoryId;
             blogdb.EditDate = DateTime.Now;
-            blogdb.ViewCount = blogpost.ViewCount;
-
-            if (ModelState.IsValid)
+            try
             {
-
                 uow.BlogPost.Update(blogdb);
                 uow.Complete();
                 return RedirectToAction("Index");
             }
-            ViewBag.BlogCategoryId = new SelectList(uow.BlogCategory.GetAll(), "Id", "CategoryName", blogpost.BlogCategoryId);
-            return View(blogpost);
+            catch
+            {
+                ViewBag.BlogCategoryId = new SelectList(uow.BlogCategory.GetAll(), "Id", "CategoryName", blogpost.BlogCategoryId);
+                return View(blogpost);
+            }
+                          
         }
-
-
-
 
         #endregion
 
 
-        #region DeleteBlog
+        #region Delete
 
         public ActionResult Delete(int? id)
         {
@@ -307,7 +223,7 @@ namespace GameAdmin.Controllers
             ViewBag.BlogCategoryId = new SelectList(uow.BlogCategory.GetAll(), "Id", "CategoryName", blogpost.BlogCategoryId);
             if (blogpost == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return HttpNotFound();
             }
             return View(blogpost);
 
@@ -321,10 +237,10 @@ namespace GameAdmin.Controllers
             using (var uow = new UnitOfWork(new GameNewsDbContext()))
             {
                 BlogPost blogpost = uow.BlogPost.GetById(id);
-
-                uow.BlogPost.Delete(blogpost);
-                uow.Complete();
-                return RedirectToAction("Index");
+                
+                    uow.BlogPost.Delete(blogpost);
+                    uow.Complete();
+                    return RedirectToAction("Index");               
             }
 
         }

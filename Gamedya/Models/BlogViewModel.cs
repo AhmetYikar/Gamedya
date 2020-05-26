@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
 
-namespace GameAdmin.Models
+namespace Gamedya.Models
 {
     public class BlogViewModel
     {
@@ -23,7 +23,6 @@ namespace GameAdmin.Models
         public string NewsUserId { get; set; }
 
         public string BloggerName { get; set; }
-
         public int CommentCount { get; set; }
 
     }
