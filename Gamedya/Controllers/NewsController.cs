@@ -1,4 +1,5 @@
 ﻿using DAL;
+using Entites.Models.NewsModels;
 using ServiceLayer.Uow;
 using System;
 using System.Collections.Generic;
@@ -29,6 +30,25 @@ namespace Gamedya.Controllers
 
 
             return View(news);
+        }
+
+        //News viewCount ekle. (Okuyan sayısı)
+        [HttpPost]
+        public JsonResult NewsRead(int? id)
+        {
+            if (id != null)
+            {
+                News news = uow.News.GetById(id);
+                if (news != null)
+                {
+                    news.ViewCount++;
+                    uow.News.Update(news);
+                    uow.Complete();
+                    return Json(JsonRequestBehavior.AllowGet);
+                }
+
+            }
+            return Json(JsonRequestBehavior.AllowGet);
         }
     }
 }

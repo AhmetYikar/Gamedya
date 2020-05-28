@@ -6,6 +6,8 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Entity;
+
 
 namespace ServiceLayer.Repository.BlogRepository
 {
@@ -20,7 +22,11 @@ namespace ServiceLayer.Repository.BlogRepository
 
         public GameNewsDbContext context { get { return _context as GameNewsDbContext; } }
 
-
+        public IEnumerable<BlogComment> GetDetails(Expression<Func<BlogComment, bool>> predicate)
+        {
+            return _context.Set<BlogComment>()
+                .Include(a => a.NewsUser).Where(predicate);
+        }
 
     }
 }

@@ -1,0 +1,117 @@
+﻿@model Entites.Models.BlogModels.BlogPost
+@{
+    ViewBag.Title = "Details";
+}
+@using Gamedya.Helper
+
+<div class="container">
+
+    <div class="col-md-9">
+        <div class="single_content_layout">
+            <div class="item feature_news_item">
+
+                <div class="item_img">
+                    <img class="img-responsive" src="@Model.TinyImagePath" alt="@Model.Title">
+                </div><!--item_img-->
+
+
+                <div class="item_wrapper">
+                    <div class="news_item_title">
+                        <h2><a href="#">@Model.Title</a></h2>
+                    </div><!--news_item_title-->
+                    <div class="item_meta"><a href="#">@Model.Date.ToString()</a> by:<a href="#">@Model.NewsUser.FullName</a></div>
+
+                    <span class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-half-full"></i>
+                    </span>
+
+                    <div class="single_social_icon">
+                        <a class="icons-sm fb-ic" href="#"><i class="fa fa-facebook"></i><span>Facebook</span></a>
+                        <!--Twitter-->
+                        <a class="icons-sm tw-ic" href="#"><i class="fa fa-twitter"></i><span>Twitter</span></a>
+                        <!--Google +-->
+                        <a class="icons-sm gplus-ic" href="#"><i class="fa fa-google-plus"></i><span>Google Plus</span></a>
+                        <!--Linkedin-->
+                        <a class="icons-sm li-ic" href="#"><i class="fa fa-linkedin"></i><span>Linkedin</span></a>
+
+                    </div> <!--social_icon1-->
+
+                    <div class="item_content">
+                        @Html.Raw(@Model.Content)
+                    </div><!--item_content-->
+                    <p class="fa fa-eye"> </p> @Model.ViewCount
+
+                </div><!--item_wrapper-->
+            </div><!--feature_news_item-->
+
+
+            <p>
+                @Html.Action("Index", "BlogComment", new { id = Model.Id })
+            </p>
+
+            <div class="add_a_comment">
+                <div class="single_media_title"><h2>Yorum Ekle </h2></div>
+                <div style="color:coral" id="back">
+                </div>
+
+                <div class="comment_form">
+                    <form>
+                        <div class="form-group">
+
+
+                            @if (User.GetFullName() != "")
+                            {
+                                <p>@User.GetFullName()</p>
+                            }
+                            else
+                            {
+                                <input type="text" class="form-control" id="guestName" placeholder="Adınız">
+
+                            }
+
+                        </div>
+                        @*<div class="form-group">
+                                <input type="text" class="form-control" id="inputEmail" placeholder="Email">
+                            </div>*@
+                        <div class="form-group comment">
+                            <textarea class="form-control" id="comment" placeholder="Yorumunuz..."></textarea>
+                        </div>
+                        <button type="button" onclick="AddComment(@Model.Id)" onmouseout="ClearMesajBack()" class="btn btn-submit red"> Yorum ekle </button>
+                    </form>
+                </div><!--comment_form-->
+            </div><!--add_a_comment-->
+
+        </div><!--single_content_layout-->
+    </div>
+
+
+    <div class="col-md-3">
+        @*@Html.Action("GetLatestBlogs", "LatestBlogs")*@
+
+        @*@Html.Action("MostComment", "MostCommentBlogs")*@
+    </div>
+</div>
+@section scripts{
+    @*sayfayı ziyaret edenlerin sayısını ekle*@
+    <script>            
+                $.ajax({
+                    url: '/Blog/BlogRead/',
+                    data: { id: @Model.Id },
+                    type: 'POST',
+                    dataType: 'json'
+
+                });          
+
+    </script>
+
+
+    <script src="~/Scripts/BlogScripts.js"></script>
+}
+
+
+
+

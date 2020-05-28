@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Entites.Models.BlogModels.BlogComment>
+
+<div class="readers_comment">
+    <div class="single_media_title"><h2>Yorumlar</h2></div>
+
+    @foreach (var item in Model)
+    {
+        string dislikeId = "dis" + item.Id;
+        <div class="media">
+            <div class="media-left">
+                <a href="#">
+                    <img alt="64x64" class="media-object" data-src="~Template/assets/img/img-author1.jpg" src="~Template/assets/img/img-author1.jpg" data-holder-rendered="true">
+                </a>
+            </div>
+            <div class="media-body">
+                <h2 class="media-heading">@item.CommenterName</h2>
+                @item.Content
+
+                <div class="comment_article_social">
+
+                    <p id="@item.Id" onclick="AddLike(@item.Id)" style="cursor:pointer" class="fa fa-thumbs-o-up">@item.LikeCount.ToString() </p>&nbsp
+                    <p id="@dislikeId" onclick="AddDislike(@item.Id)" style="cursor:pointer" class="fa fa-thumbs-o-down"> @item.UnLikeCount.ToString()</p>
+                    <br />
+                    <div class="item_meta">
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    }
+</div><!--readers_comment-->

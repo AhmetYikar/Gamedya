@@ -60,5 +60,6 @@ namespace DAL
         public System.Data.Entity.DbSet<MessageRecipient> MessageRecipients { get; set; }
         public System.Data.Entity.DbSet<Notification> Notifications { get; set; }
         public System.Data.Entity.DbSet<TwitchYoutube> TwitchYoutubes { get; set; }
+
     }
 }

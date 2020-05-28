@@ -10,7 +10,7 @@ namespace Gamedya.Helper
         public static string Sub30(string text)
         {
             int finish = 30;
-            if (text.Length < finish)
+            if (text == null || text.Length < finish)
             {
                 return text;
             }
@@ -23,7 +23,7 @@ namespace Gamedya.Helper
         public static string Sub(string text,int length)
         {
            
-            if (text.Length < length || text == "" || text==null)
+            if (text == null || text.Length < length)
             {
                 return text;
             }

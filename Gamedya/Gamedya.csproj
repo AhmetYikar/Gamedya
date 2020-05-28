@@ -179,6 +179,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BlogCommentController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\GameReviewController.cs" />
     <Compile Include="Controllers\GameUpdateController.cs" />
@@ -233,6 +234,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="nots.txt" />
+    <Content Include="Scripts\BlogScripts.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -533,10 +535,16 @@
     <Content Include="Views\Search\Index.cshtml" />
     <Content Include="Views\Manage\SetProfilImage.cshtml" />
     <Content Include="Views\YouTube\Index.cshtml" />
+    <Content Include="Views\Blog\Index.cshtml" />
+    <Content Include="Views\Blog\BloggerBlogs.cshtml" />
+    <Content Include="Views\Blog\Details.cshtml" />
+    <Content Include="Views\Blog\LatestBlogs.cshtml" />
+    <Content Include="Views\Blog\Popular.cshtml" />
+    <Content Include="Views\Blog\MostCommented.cshtml" />
+    <Content Include="Views\BlogComment\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Blog\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

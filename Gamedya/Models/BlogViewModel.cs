@@ -13,6 +13,7 @@ namespace Gamedya.Models
         [Required, MaxLength(255, ErrorMessage = "Başlık 255 karakterden fazla olamaz")]
         [Display(Name = "Blog Başlığı")]
         public string Title { get; set; }
+        public string Summary { get; set; }
 
         [DataType(DataType.Date)]
         [Display(Name = "Yayın Tarihi")]

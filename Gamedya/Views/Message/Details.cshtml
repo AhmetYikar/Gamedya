@@ -6,7 +6,6 @@
 }
 
     
-    <body onload="PageLoad()">
         <div class="container">
 
             <h2>Mesaj Detayı</h2>
@@ -47,10 +46,11 @@
             <p>
                 @Html.ActionLink("Back to List", "MyMessages")
             </p>
-            @section scripts{
-                <script>
-            function PageLoad() {
 
+        </div>
+        @section scripts{
+            <script>
+           
                 $.ajax({
                     url: '/Message/MessageRead/',
                     data: { id: @Model.Id },
@@ -58,9 +58,7 @@
                     dataType: 'json'
 
                 });
-            }
+            
 
-                </script>
-            }
-        </div>
-    </body>
+            </script>
+        }
