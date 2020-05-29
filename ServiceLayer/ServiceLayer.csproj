@@ -65,11 +65,9 @@
     <Compile Include="Repository\BlogRepository\IBlogPostRepository.cs" />
     <Compile Include="Repository\ForumRepository\ForumCategoryRepository.cs" />
     <Compile Include="Repository\ForumRepository\ForumReplyRepository.cs" />
-    <Compile Include="Repository\ForumRepository\ForumImageRepository.cs" />
     <Compile Include="Repository\ForumRepository\ForumPostRepository.cs" />
     <Compile Include="Repository\ForumRepository\IForumCategoryRepository.cs" />
     <Compile Include="Repository\ForumRepository\IForumReplyRepository.cs" />
-    <Compile Include="Repository\ForumRepository\IForumImageRepository.cs" />
     <Compile Include="Repository\ForumRepository\IForumPostRepository.cs" />
     <Compile Include="Repository\GameRepository\GameGenreRepository.cs" />
     <Compile Include="Repository\GameRepository\GameUpdateRepository.cs" />

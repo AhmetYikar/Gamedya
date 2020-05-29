@@ -118,3 +118,4 @@ C:\Users\SnmzŞti\source\repos\Gamedya\DAL\obj\Debug\DAL.pdb
 C:\Users\SnmzŞti\source\repos\Gamedya\DAL\obj\Debug\DAL.Migrations.ilk.resources
 C:\Users\SnmzŞti\source\repos\Gamedya\DAL\obj\Debug\DAL.csproj.GenerateResource.cache
 C:\Users\SnmzŞti\source\repos\Gamedya\DAL\obj\Debug\DAL.Migrations.iki.resources
+C:\Users\SnmzŞti\source\repos\Gamedya\DAL\obj\Debug\DAL.Migrations.uc.resources

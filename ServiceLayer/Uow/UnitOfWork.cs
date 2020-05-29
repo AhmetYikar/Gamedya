@@ -31,7 +31,7 @@ namespace ServiceLayer.Uow
 
 
             ForumCategory = new ForumCategoryRepository(_context);
-            ForumImage = new ForumImageRepository(_context);
+          
             ForumPost = new ForumPostRepository(_context);
             ForumReply = new ForumReplyRepository(_context);
 
@@ -66,7 +66,7 @@ namespace ServiceLayer.Uow
 
 
         public IForumCategoryRepository ForumCategory { get; private set; }
-        public IForumImageRepository ForumImage { get; private set; }
+       
         public IForumPostRepository ForumPost { get; private set; }
         public IForumReplyRepository ForumReply { get; private set; }
 

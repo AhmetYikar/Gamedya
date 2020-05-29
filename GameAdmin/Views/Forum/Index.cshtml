@@ -28,9 +28,7 @@
                     <table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
                         <thead>
                             <tr>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.First().TinyImagePath)
-                                </th>
+                              
                                 <th>
                                     @Html.DisplayNameFor(model => model.First().ForumTitle)
                                 </th>
@@ -43,9 +41,7 @@
                             @foreach (var item in Model)
                             {
                                 <tr>
-                                    <td>
-                                        <img src="@Html.DisplayFor(modelItem => item.TinyImagePath)">
-                                    </td>
+                                  
                                     <td>
                                         @Html.DisplayFor(modelItem => item.ForumTitle)
                                     </td>
@@ -63,10 +59,7 @@
                         </tbody>
                         <tfoot>
                         <tfoot>
-                            <tr>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.First().TinyImagePath)
-                                </th>
+                            <tr>                             
                                 <th>
                                     @Html.DisplayNameFor(model => model.First().ForumTitle)
                                 </th>

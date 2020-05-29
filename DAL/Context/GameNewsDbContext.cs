@@ -42,7 +42,7 @@ namespace DAL
         public System.Data.Entity.DbSet<BlogComment> BlogComments { get; set; }
 
         public System.Data.Entity.DbSet<ForumCategory> ForumCategories { get; set; }
-        public System.Data.Entity.DbSet<ForumImage> ForumImages { get; set; }
+      
         public System.Data.Entity.DbSet<ForumPost> ForumPosts { get; set; }
         public System.Data.Entity.DbSet<ForumReply> ForumReplies { get; set; }
 

@@ -7854,6 +7854,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="files\" />
+    <Folder Include="Images\ForumImages\" />
     <Folder Include="Images\UserImages\" />
   </ItemGroup>
   <ItemGroup>

@@ -22,8 +22,7 @@ namespace ServiceLayer.Repository.ForumRepository
 
         public IEnumerable<ForumPost> GetForumDetail(Expression<Func<ForumPost, bool>> predicate)
         {
-            return _context.Set<ForumPost>()
-                .Include(a => a.ForumImages)
+            return _context.Set<ForumPost>()                
                 .Include(a => a.ForumCategory)
                 .Include(a => a.ForumReply).Where(predicate);
         }
@@ -32,6 +31,13 @@ namespace ServiceLayer.Repository.ForumRepository
         {
             return _context.Set<ForumPost>()
                            .Include(a => a.ForumReply).Where(predicate);
+        }
+
+        IEnumerable<ForumPost> IForumPostRepository.GetForumWithReplysAndUsers()
+        {
+            return _context.Set<ForumPost>()
+                           .Include(a => a.NewsUser)
+                           .Include(a => a.ForumReply);
         }
     }
 }

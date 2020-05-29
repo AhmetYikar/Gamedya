@@ -17,27 +17,19 @@ namespace Entites.Models.ForumModels
         [Display(Name = "Forum Başlığı")]
         public string ForumTitle { get; set; }
 
-        [Required(ErrorMessage = "Boş Geçilemez")]
-        [Display(Name = "Forum Özeti")]
-        public string Summary { get; set; }
-        [Required(ErrorMessage = "Boş Geçilemez")]
-
         [Display(Name = "Forum İçeriği")]
         [AllowHtml]
         public string Content { get; set; }
 
+        [Display(Name = "Görüntülenme Sayısı")]
         public int ViewCount { get; set; }
 
         public virtual ICollection<ForumReply> ForumReply { get; set; }
-        public virtual ICollection<ForumImage> ForumImages { get; set; }
-
+      
         [DataType(DataType.DateTime)]
         public DateTime Date { get; set; }
 
-        [Display(Name = "Son düzenleme Tarihi")]
-        [DataType(DataType.Date)]
-        public DateTime EditDate { get; set; }
-
+      
         [Display(Name = "Aktif Mi?")]
         public bool IsActive { get; set; }
 
@@ -46,10 +38,7 @@ namespace Entites.Models.ForumModels
 
         public string NewsUserId { get; set; }
         public NewsUser NewsUser { get; set; }
-
-        [Display(Name = "Kapak resmi")]
-        public string TinyImagePath { get; set; }
-
+     
         public int ForumCategoryId { get; set; }
         public virtual ForumCategory ForumCategory { get; set; }
 

@@ -181,6 +181,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BlogCommentController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
+    <Compile Include="Controllers\ForumController.cs" />
     <Compile Include="Controllers\GameReviewController.cs" />
     <Compile Include="Controllers\GameUpdateController.cs" />
     <Compile Include="Controllers\GeneralArticleController.cs" />
@@ -209,6 +210,7 @@
     <Compile Include="Helper\Subs.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BlogViewModel.cs" />
+    <Compile Include="Models\ForumViewModel.cs" />
     <Compile Include="Models\NewsViewWeb.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -542,6 +544,7 @@
     <Content Include="Views\Blog\Popular.cshtml" />
     <Content Include="Views\Blog\MostCommented.cshtml" />
     <Content Include="Views\BlogComment\Index.cshtml" />
+    <Content Include="Views\Forum\LatestForums.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
