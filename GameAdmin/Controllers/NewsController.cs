@@ -145,9 +145,10 @@ namespace GameAdmin.Controllers
 
         public ActionResult Create()
         {
-            ViewBag.NewsCategoryId = new SelectList(uow.NewsCategory.GetAll(), "Id", "CategoryName");
+            ViewBag.NewsCategoryId = new SelectList(uow.NewsCategory.GetAll(), "Id", "CategoryName", string.Empty);
+            ViewBag.NewsPart = string.Empty;
+            ViewBag.NewsPlatform = string.Empty;
             return View();
-
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -156,18 +157,18 @@ namespace GameAdmin.Controllers
         {
             if (ModelState.IsValid == false)
             {
-                ViewBag.NewsCategoryId = new SelectList(uow.NewsCategory.GetAll(), "Id", "CategoryName");
+                ViewBag.NewsCategoryId = new SelectList(uow.NewsCategory.GetAll(), "Id", "CategoryName");                
                 return View(news);
             }
 
             string fileName = string.Empty;
             string extension = string.Empty;
             NewsImage newsImage = new NewsImage();
-            newsImage.NewsId = news.Id;            
+            newsImage.NewsId = news.Id;
             newsImage.ImagePath = news.TinyImagePath;
-            
 
-            if (videoPath!=null)
+
+            if (videoPath != null)
             {
                 NewsVideo newsVideo = new NewsVideo();
                 newsVideo.NewsId = news.Id;
@@ -183,7 +184,7 @@ namespace GameAdmin.Controllers
                 {
                     return RedirectToAction("index");
                 }
-               
+
                 fileName = Guid.NewGuid() + ".png";
                 file.SaveAs(Path.Combine(Server.MapPath("/Content/BigImages/"), fileName));
 
@@ -214,8 +215,9 @@ namespace GameAdmin.Controllers
             catch (Exception)
             {
                 ViewBag.NewsCategoryId = new SelectList(uow.NewsCategory.GetAll(), "Id", "CategoryName");
+               
                 return View(news);
-            }                         
+            }
 
         }
 

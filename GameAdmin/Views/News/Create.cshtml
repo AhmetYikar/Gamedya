@@ -47,7 +47,7 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.NewsCategoryId, "Kategoriler", htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-12">
-                        @Html.DropDownList("NewsCategoryId", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.DropDownList("NewsCategoryId", null, "Seçiniz", htmlAttributes: new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.NewsCategoryId, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -55,7 +55,7 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.NewsPlatform, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-12">
-                        @Html.EnumDropDownListFor(model => model.NewsPlatform, htmlAttributes: new { @class = "form-control" })
+                        @Html.EnumDropDownListFor(model => model.NewsPlatform, "Seçiniz", htmlAttributes: new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.NewsPlatform, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -63,7 +63,7 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.NewsPart, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-12">
-                        @Html.EnumDropDownListFor(model => model.NewsPart, htmlAttributes: new { @class = "form-control" })
+                        @Html.EnumDropDownListFor(model => model.NewsPart, "Seçiniz", htmlAttributes: new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.NewsPart, "", new { @class = "text-danger" })
                     </div>
                 </div>

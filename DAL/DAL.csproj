@@ -55,17 +55,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context\GameNewsDbContext.cs" />
-    <Compile Include="Migrations\202005261316426_ilk.cs" />
-    <Compile Include="Migrations\202005261316426_ilk.Designer.cs">
-      <DependentUpon>202005261316426_ilk.cs</DependentUpon>
+    <Compile Include="Migrations\202005291159100_ilk.cs" />
+    <Compile Include="Migrations\202005291159100_ilk.Designer.cs">
+      <DependentUpon>202005291159100_ilk.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202005281832328_commenterName.cs" />
-    <Compile Include="Migrations\202005281832328_commenterName.Designer.cs">
-      <DependentUpon>202005281832328_commenterName.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202005281901363_likeCount.cs" />
-    <Compile Include="Migrations\202005281901363_likeCount.Designer.cs">
-      <DependentUpon>202005281901363_likeCount.cs</DependentUpon>
+    <Compile Include="Migrations\202005291344101_iki.cs" />
+    <Compile Include="Migrations\202005291344101_iki.Designer.cs">
+      <DependentUpon>202005291344101_iki.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -81,14 +77,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202005261316426_ilk.resx">
-      <DependentUpon>202005261316426_ilk.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202005291159100_ilk.resx">
+      <DependentUpon>202005291159100_ilk.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202005281832328_commenterName.resx">
-      <DependentUpon>202005281832328_commenterName.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202005281901363_likeCount.resx">
-      <DependentUpon>202005281901363_likeCount.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202005291344101_iki.resx">
+      <DependentUpon>202005291344101_iki.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

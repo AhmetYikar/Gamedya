@@ -178,7 +178,7 @@ namespace GameAdmin.Controllers
                 }
                 fileName = Guid.NewGuid() + ".png";
 
-                var path = Path.Combine(Server.MapPath("/Content/UserImages/"), fileName.Replace(".png", "-thumb.png"));
+                var path = Path.Combine(Server.MapPath("/Images/UserImages/"), fileName.Replace(".png", "-thumb.png"));
 
                 Image image = Image.FromStream(file.InputStream, true);
 
@@ -187,7 +187,7 @@ namespace GameAdmin.Controllers
 
                 Image thumb = image.GetThumbnailImage(imgWidth, imgHeight, () => false, IntPtr.Zero);
                 thumb.Save(path);
-                model.Image = "/Content/UserImages/" + fileName.Replace(".png", "-thumb.png");
+                model.Image = "/Images/UserImages/" + fileName.Replace(".png", "-thumb.png");
             }
 
 

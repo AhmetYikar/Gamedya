@@ -71,8 +71,8 @@ namespace Entites.Models.NewsModels
         public string TinyImagePath { get; set; }
         public virtual ICollection<NewsVideo> NewsVideos { get; set; }
 
-        public NewsPlatform NewsPlatform { get; set; }
-        public NewsPart NewsPart { get; set; }
+        public NewsPlatform? NewsPlatform { get; set; }
+        public NewsPart? NewsPart { get; set; }
 
     }
 }
