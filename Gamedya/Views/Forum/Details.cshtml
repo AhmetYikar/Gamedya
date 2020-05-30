@@ -1,0 +1,66 @@
+﻿@model Entites.Models.ForumModels.ForumPost
+
+
+<div class=" container">
+    <div class="col-md-2">  
+    <div class="panel">
+        <div class="panel-danger">
+            deneme
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="col-md-10">
+    <div class="panel">
+        <div class="panel-danger">
+
+            <div>
+                <dl class="text-center" style="margin-top:20px;">
+                    <dt >
+                        @Html.DisplayNameFor(model => model.ForumTitle)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.ForumTitle)
+                    </dd>
+                </dl>
+                <dl class="dl-horizontal">
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Date)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Date)
+                    </dd>
+                    <hr />
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.NewsUser.FullName)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.NewsUser.FullName)
+                    </dd>
+
+
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Content)
+                    </dt>
+
+                    <dd>
+                        @Html.Raw(@Model.Content)
+                    </dd>
+
+
+                </dl>
+            </div>
+        </div>
+    </div>
+
+</div>
+</div>

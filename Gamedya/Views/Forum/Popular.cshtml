@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Gamedya.Models.ForumViewModel>
+@using Gamedya.Helper
+
+<table class="table">
+    <tr>
+
+        <th>
+            Gönderenin ismi
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ForumTitle)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.ViewCount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ForumCategory.CategoryName)
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+
+    <td>
+        <a href="@Url.Action("Details", "Forum",new {id=item.Id})">  @item.ForumUser </a>
+    </td>
+    <td>
+        <a href="@Url.Action("Details", "Forum",new {id=item.Id})">  @Html.DisplayFor(modelItem => item.ForumTitle) </a>
+    </td>
+
+    <td>
+        <a href="@Url.Action("Details", "Forum",new {id=item.Id})">    @Html.DisplayFor(modelItem => item.ViewCount) </a>
+    </td>
+    <td>
+        <a href="@Url.Action("Details", "Forum",new {id=item.Id})">    @Html.DisplayFor(modelItem => item.Date) </a>
+    </td>
+    <td>
+        <a href="@Url.Action("Details", "Forum",new {id=item.Id})">   @Html.DisplayFor(modelItem => item.ForumCategory.CategoryName) </a>
+    </td>s
+</tr>
+    }
+
+</table>

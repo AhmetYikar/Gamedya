@@ -1,38 +1,54 @@
 ﻿@model IEnumerable<Gamedya.Models.ForumViewModel>
+@using Gamedya.Helper
 
-<div class="tab sitebar">
-    <ul class="nav nav-tabs">
-        <li class="active"><a href="#1" data-toggle="tab">Son Bloglar</a></li>
-        <li><a href="#2" data-toggle="tab">Popüler Bloglar</a></li>
-    </ul>
 
-    <div class="tab-content">
-        <div class="tab-pane active" id="1">
+<table class="table">
+    <tr>
+        <th>
+            Gönderenin ismi
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ForumTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ViewCount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
 
-            @foreach (var item in Model)
-            {
-                <div class="media">
-                    <div class="media-left">
-                        <a href="@Url.Action("Details", "Blog",new {id=item.Id})"><img class="media-object" src="@item.TinyImagePath" style="height:60px"></a>
-                    </div><!--media-left-->
-                    <div class="media-body">
-                        <h4 class="media-heading"><a href="@Url.Action("Details", "Blog",new {id=item.Id})">@item.Title</a></h4>
-                        <span class="rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star-half-full"></i>
-                        </span>
-                    </div><!--media-body-->
-                </div><!--media-->
+        <th>
+            @Html.DisplayNameFor(model => model.ForumCategory.CategoryName)
+        </th>
 
-            }
+        <th></th>
+    </tr>
 
-        </div><!--tab-pane-->
+    @foreach (var item in Model)
+    {
+        <tr>
 
-        <div class="tab-pane" id="2">
-            @Html.Action("Popular", "Blog")
-        </div><!--tab-pane-->
-    </div><!--tab-content-->
-</div><!--tab-->
+            <th>
+                <a href="@Url.Action("Details", "Forum",new {id=item.Id})">   @item.ForumUser </a>
+            </th>
+
+            <td>
+                <a href="@Url.Action("Details", "Forum",new {id=item.Id})">     @Html.DisplayFor(modelItem => item.ForumTitle) </a>
+            </td>
+
+            <td>
+                <a href="@Url.Action("Details", "Forum",new {id=item.Id})">   @Html.DisplayFor(modelItem => item.ViewCount) </a>
+            </td>
+
+            <td>
+                <a href="@Url.Action("Details", "Forum",new {id=item.Id})">     @Html.DisplayFor(modelItem => item.Date)</a>
+            <td>
+
+            <td>
+                <a href="@Url.Action("Details", "Forum",new {id=item.Id})">    @Html.DisplayFor(modelItem => item.ForumCategory.CategoryName)</a>
+            </td>
+
+        </tr>
+    }
+
+</table>

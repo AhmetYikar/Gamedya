@@ -17,6 +17,12 @@ namespace Gamedya.Controllers
     {
         // GET: Forum
         private UnitOfWork uow = new UnitOfWork(new GameNewsDbContext());
+        public ActionResult ForumHome()
+        {
+            return View();
+        }
+
+
         #region Index
         public ActionResult Index(string ara, string siralama, string sonArananKelime, int? sayfaNo)
         {
@@ -73,10 +79,10 @@ namespace Gamedya.Controllers
                                                               Id = a.Id,
                                                               ForumTitle = a.ForumTitle,
                                                               Date = a.Date,
-                                                              NewsUserId = a.NewsUserId,                                                       
-                                                             
+                                                              NewsUserId=a.NewsUserId,
+                                                              ForumUser = a.NewsUser.FullName,
                                                               ReplyCount = a.ForumReply.Count(),
-                                                            
+
                                                           })
                                                           .OrderByDescending(a => a.Id);
 
@@ -103,7 +109,7 @@ namespace Gamedya.Controllers
                 {
                     Id = a.Id,
                     ForumTitle = a.ForumTitle,
-                   
+
                 });
                 uow.Dispose();
                 return PartialView(forumView);
@@ -127,7 +133,7 @@ namespace Gamedya.Controllers
                 {
                     Id = a.Id,
                     ForumTitle = a.ForumTitle,
-                   
+
                 });
                 uow.Dispose();
                 return PartialView(forumView);
@@ -150,7 +156,7 @@ namespace Gamedya.Controllers
                 IEnumerable<ForumViewModel> forumView = forumPosts.Select(a => new ForumViewModel
                 {
                     Id = a.Id,
-                    ForumTitle = a.ForumTitle,                   
+                    ForumTitle = a.ForumTitle,
                     ReplyCount = a.ForumReply.Count()
                 });
                 uow.Dispose();
@@ -201,7 +207,7 @@ namespace Gamedya.Controllers
             return Json(JsonRequestBehavior.AllowGet);
         }
 
-       
+
 
 
         #region Delete

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entites.Models.ForumModels;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -12,15 +13,21 @@ namespace Gamedya.Models
       
         [Display(Name = "Forum Başlığı")]
         public string ForumTitle { get; set; }
-        public string Summary { get; set; }
-        
+
+        [Display(Name = "Kategori")]
+        public ForumCategory ForumCategory { get; set; }
+
         [Display(Name = "Yayın Tarihi")]
         public DateTime Date { get; set; }
 
-       
-        public string TinyImagePath { get; set; }
+        [Display(Name = "Görüntülenme")]
+        public string ViewCount { get; set; }
+
         public string NewsUserId { get; set; }
-       
+
+        public string ForumUser { get; set; }
+
+        [Display(Name = "Yorum Sayısı")]
         public int ReplyCount { get; set; }
     }
 }
