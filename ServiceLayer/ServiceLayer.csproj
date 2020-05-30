@@ -103,18 +103,18 @@
     <Compile Include="Uow\UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\DAL\DAL.csproj">
-      <Project>{E401A190-12F5-4A35-AC5F-D230E670EA78}</Project>
+      <Project>{e401a190-12f5-4a35-ac5f-d230e670ea78}</Project>
       <Name>DAL</Name>
     </ProjectReference>
     <ProjectReference Include="..\Entities\Entites.csproj">
-      <Project>{95689E0C-F32A-477B-92DC-CADEF9AEDFF4}</Project>
+      <Project>{95689e0c-f32a-477b-92dc-cadef9aedff4}</Project>
       <Name>Entites</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

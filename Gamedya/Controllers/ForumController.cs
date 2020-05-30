@@ -102,9 +102,9 @@ namespace Gamedya.Controllers
         public ActionResult LatestForums()
         {
 
-            IEnumerable<ForumPost> latestForums = uow.ForumPost.GetAll().Take(6).ToList().OrderByDescending(a => a.Id);
+            IEnumerable<ForumPost> latestForums = uow.ForumPost.GetAll().ToList().OrderByDescending(a => a.Id).Take(6);
 
-            if (latestForums != null && latestForums.Count() > 0)
+            if (latestForums != null)
             {
 
                 IEnumerable<ForumViewModel> forumView = latestForums.Select(a => new ForumViewModel
@@ -115,9 +115,9 @@ namespace Gamedya.Controllers
                     //NewsUserId = a.NewsUserId,
                     Date = a.Date,
                     ForumCategory = a.ForumCategory
-            }); 
-                    uow.Dispose();
-                    return PartialView(forumView);
+                });
+                uow.Dispose();
+                return PartialView(forumView);
                 
             }
             else
