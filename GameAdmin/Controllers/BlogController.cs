@@ -17,7 +17,7 @@ using System.Web.Security;
 
 namespace GameAdmin.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "admin, Admin")]
     public class BlogController : Controller
     {
 
@@ -92,6 +92,15 @@ namespace GameAdmin.Controllers
 
         #endregion
 
+        #region IsNotOks
+        public ActionResult IsNotOks()
+        {
+            IEnumerable<BlogPost> blogs = uow.BlogPost.GetAll().Where(a=>a.IsOk==false);
+            IEnumerable<BlogViewModel> viewBlogs = blogs.Select(a => new BlogViewModel {Id=a.Id,Title=a.Title,TinyImagePath=a.TinyImagePath,Date=a.Date});
+            return View(viewBlogs);
+        }
+        #endregion
+
         #region Details
 
         public ActionResult Details(int? id)
@@ -160,14 +169,45 @@ namespace GameAdmin.Controllers
 
         #endregion
 
+        //Bloglara onay verme
+        #region Approve
+        [HttpPost]
+        public JsonResult Approve(int? id)
+        {
+            int mesaj = 0;
+
+            if (id != null)
+            {
+                try
+                {
+                    mesaj = 1;
+                    var blogpost = uow.BlogPost.GetById(id);
+                    blogpost.IsOk = true;
+                    uow.BlogPost.Update(blogpost);
+                    uow.Complete();
+                    return Json(mesaj, JsonRequestBehavior.AllowGet);
+                }
+                catch
+                {
+                    return Json(mesaj, JsonRequestBehavior.AllowGet);
+                }
+            }
+            return Json(mesaj, JsonRequestBehavior.AllowGet);
+        }
+
+        #endregion
 
         #region Edit
 
         public ActionResult Edit(int? id)
         {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
             var blogpost = uow.BlogPost.GetById(id);
 
-            if (id == null || blogpost.NewsUserId != User.GetUserId())
+            if (blogpost.NewsUserId != User.GetUserId())
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }

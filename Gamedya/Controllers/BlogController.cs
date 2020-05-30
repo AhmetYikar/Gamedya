@@ -1,7 +1,11 @@
 ﻿using DAL;
 using Entites.Models.BlogModels;
+using Entites.Models.UserModels;
 using Gamedya.Helper;
 using Gamedya.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity.Owin;
 using PagedList;
 using ServiceLayer.Uow;
 using System;
@@ -16,6 +20,7 @@ namespace Gamedya.Controllers
     public class BlogController : Controller
     {
         private UnitOfWork uow = new UnitOfWork(new GameNewsDbContext());
+              
         #region Index
         public ActionResult Index(string ara, string siralama, string sonArananKelime, int? sayfaNo)
         {
@@ -66,7 +71,7 @@ namespace Gamedya.Controllers
         {
             using (var uow = new UnitOfWork(new GameNewsDbContext()))
             {
-                IEnumerable<BlogViewModel> blogpost = uow.BlogPost.BlogWithCommentsAndUsers().ToList()
+                IEnumerable<BlogViewModel> blogpost = uow.BlogPost.BlogWithCommentsAndUsers().Where(a=>a.IsOk==true).ToList()
                                                           .Select(a => new BlogViewModel
                                                           {
                                                               Id = a.Id,
@@ -76,7 +81,7 @@ namespace Gamedya.Controllers
                                                               BloggerName = a.NewsUser.FullName,
                                                               TinyImagePath = a.TinyImagePath,
                                                               CommentCount = a.BlogComments.Count(),
-                                                              Summary=a.Summary
+                                                              Summary = a.Summary
                                                           })
                                                           .OrderByDescending(a => a.Id);
 
@@ -92,6 +97,48 @@ namespace Gamedya.Controllers
         #endregion
 
 
+        #region Create
+        [Authorize]
+        [HttpGet]
+        public ActionResult Create()
+        {
+            
+            ViewBag.BlogCategoryId = new SelectList(uow.BlogCategory.GetAll(), "Id", "CategoryName");
+
+            return View();
+
+        }
+                
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "Id,Title,Summary,Content,BlogCategoryId,TinyImagePath")] BlogPost blogpost)
+        {
+            if (ModelState.IsValid == false)
+            {
+                ViewBag.BlogCategoryId = new SelectList(uow.BlogCategory.GetAll(), "Id", "CategoryName");
+                return View(blogpost);
+            }            
+
+            try
+            {
+                blogpost.Date = DateTime.Now;
+                blogpost.EditDate = DateTime.Now;
+                blogpost.NewsUserId = User.GetUserId();
+                uow.BlogPost.Insert(blogpost);
+                uow.Complete();
+                return RedirectToAction("Index");
+            }
+            catch (Exception)
+            {
+                ViewBag.BlogCategoryId = new SelectList(uow.BlogCategory.GetAll(), "Id", "CategoryName");
+                return View(blogpost);
+            }
+
+        }
+
+        #endregion
+
+
         #region BloggerBlogs
         public ActionResult BloggerBlogs(string userId)
         {
@@ -99,7 +146,7 @@ namespace Gamedya.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            IEnumerable<BlogViewModel> blogPosts = uow.BlogPost.BlogWithCommentsAndUsers().Where(a=>a.NewsUserId==userId)
+            IEnumerable<BlogViewModel> blogPosts = uow.BlogPost.BlogWithCommentsAndUsers().Where(a=>a.NewsUserId==userId && a.IsOk==true)
                                                           .Select(a => new BlogViewModel
                                                           {
                                                               Id = a.Id,
@@ -121,11 +168,36 @@ namespace Gamedya.Controllers
         }
         #endregion
 
+        #region BloggersLatestBlogs
+        public ActionResult BloggersLatestBlogs(string userId)
+        {
+            if (userId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            IEnumerable<BlogViewModel> blogPosts = uow.BlogPost.GetAll().Where(a => a.NewsUserId == userId && a.IsOk == true).Take(6)
+                                                          .Select(a => new BlogViewModel
+                                                          {
+                                                              Id = a.Id,
+                                                              Title = a.Title,                                                              
+                                                              TinyImagePath = a.TinyImagePath,
+                                                              NewsUserId=a.NewsUserId
+                                                          })
+                                                          .OrderByDescending(a => a.Id);
+            if (blogPosts.Count() < 1)
+            {
+                return HttpNotFound();
+            }
+
+            return PartialView(blogPosts);
+        }
+        #endregion
+
         #region LatestBlogs
         public ActionResult LatestBlogs()
         {
 
-            IEnumerable<BlogPost> latestBlogs = uow.BlogPost.GetAll().Take(6).ToList().OrderByDescending(a => a.Id);
+            IEnumerable<BlogPost> latestBlogs = uow.BlogPost.GetAll().Where(a=>a.IsOk == true).ToList().OrderByDescending(a => a.Id).Take(6);
 
             if (latestBlogs != null && latestBlogs.Count() > 0)
             {
@@ -149,9 +221,33 @@ namespace Gamedya.Controllers
         #region Popular
         public ActionResult Popular()
         {
-            IEnumerable<BlogPost> popularBlogs = uow.BlogPost.GetAll().Take(6).ToList().OrderByDescending(a => a.ViewCount);
+            IEnumerable<BlogPost> popularBlogs = uow.BlogPost.GetAll().Where(a=>a.IsOk == true).ToList().OrderByDescending(a => a.ViewCount).Take(6);
 
             if (popularBlogs != null && popularBlogs.Count() > 0)
+            {
+                IEnumerable<BlogViewModel> blogView = popularBlogs.Select(a => new BlogViewModel
+                {
+                    Id = a.Id,
+                    Title = a.Title,
+                    TinyImagePath = a.TinyImagePath
+                });
+                uow.Dispose();
+                return PartialView(blogView);
+
+            }
+            else
+            {
+                return null;
+            }
+        }
+        #endregion
+
+        #region BloggersPopularBlogs
+        public ActionResult BloggersPopularBlogs(string userId)
+        {
+            IEnumerable<BlogPost> popularBlogs = uow.BlogPost.GetAll().Where(a => a.NewsUserId == userId && a.IsOk == true).ToList().OrderByDescending(a => a.ViewCount).Take(6);
+
+            if (popularBlogs.Count()>0)
             {
                 IEnumerable<BlogViewModel> blogView = popularBlogs.Select(a => new BlogViewModel
                 {
@@ -173,7 +269,7 @@ namespace Gamedya.Controllers
         #region MostCommented
         public ActionResult MostCommented()
         {
-            IEnumerable<BlogPost> blogPosts = uow.BlogPost.GetBlogDetails(a => a.BlogComments.Count() > 0).Take(6).ToList().OrderByDescending(a => a.BlogComments.Count());
+            IEnumerable<BlogPost> blogPosts = uow.BlogPost.GetBlogDetails(a => a.BlogComments.Count() > 0 && a.IsOk == true).Take(6).ToList().OrderByDescending(a => a.BlogComments.Count());
 
             if (blogPosts != null && blogPosts.Count() > 0)
             {
@@ -195,6 +291,33 @@ namespace Gamedya.Controllers
         }
         #endregion
 
+        #region BloggersMostCommented
+        public ActionResult BloggersMostCommented(string userId)
+        {
+            IEnumerable<BlogPost> blogPosts = uow.BlogPost.GetBlogDetails(a => a.NewsUserId == userId && a.BlogComments.Count() > 0 && a.IsOk == true)
+                                                          .ToList().OrderByDescending(a => a.BlogComments.Count()).Take(6);
+
+            if (blogPosts != null && blogPosts.Count() > 0)
+            {
+                IEnumerable<BlogViewModel> newsView = blogPosts.Select(a => new BlogViewModel
+                {
+                    Id = a.Id,
+                    Title = a.Title,
+                    TinyImagePath = a.TinyImagePath,
+                    CommentCount = a.BlogComments.Count()
+                });
+                uow.Dispose();
+                return PartialView(newsView);
+
+            }
+            else
+            {
+                return null;
+            }
+        }
+        #endregion
+
+
         #region Details
         public ActionResult Details(int? id)
         {
@@ -202,7 +325,7 @@ namespace Gamedya.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var blogPost = uow.BlogPost.GetBlogDetails(a => a.Id == id).FirstOrDefault();
+            var blogPost = uow.BlogPost.GetBlogDetails(a => a.Id == id && a.IsOk == true).FirstOrDefault();
 
             if (blogPost == null)
             {
@@ -217,18 +340,22 @@ namespace Gamedya.Controllers
         [HttpPost]
         public JsonResult BlogRead(int? id)
         {
-            if (id != null)
+            if (id!=null)
             {
-                BlogPost blogPost = uow.BlogPost.GetById(id);
-                if (blogPost!=null)
+                if (GetCookie("blogRead", id) == null)
                 {
-                    blogPost.ViewCount++;
-                    uow.BlogPost.Update(blogPost);
-                    uow.Complete();
-                    return Json(JsonRequestBehavior.AllowGet);
-                }             
-
-            }
+                    CreateCookie("blogRead", id);
+                    BlogPost blogPost = uow.BlogPost.GetById(id);
+                    if (blogPost != null)
+                    {
+                        blogPost.ViewCount++;
+                        uow.BlogPost.Update(blogPost);
+                        uow.Complete();
+                        return Json(JsonRequestBehavior.AllowGet);
+                    }
+                }
+            }   
+            
             return Json(JsonRequestBehavior.AllowGet);
         }
 
@@ -315,5 +442,23 @@ namespace Gamedya.Controllers
         }
 
         #endregion
+
+
+        private void CreateCookie(string name, int? id)
+        {
+            name = name + id.ToString();
+            HttpCookie cookieLike = new HttpCookie(name);
+            cookieLike.Expires = DateTime.Now.AddDays(30);
+            Response.Cookies.Add(cookieLike);
+        }
+        private string GetCookie(string name, int? id)
+        {
+            name = name + id.ToString();
+            if (Request.Cookies.AllKeys.Contains(name))
+            {
+                return Request.Cookies[name].Value;
+            }
+            return null;
+        }
     }
 }

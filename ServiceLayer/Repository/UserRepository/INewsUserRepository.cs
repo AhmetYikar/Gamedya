@@ -11,6 +11,7 @@ namespace ServiceLayer.Repository.UserRepository
     public interface INewsUserRepository : IRepository<NewsUser>
     {
         IEnumerable<NewsUser> UserWithGames();
+        IEnumerable<NewsUser> UserWithRoles(Expression<Func<NewsUser, bool>> predicate);
 
     }
 }

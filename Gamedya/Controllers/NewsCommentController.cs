@@ -21,7 +21,7 @@ namespace Gamedya.Controllers
         // GET: NewsComment
         public ActionResult Index(int? id)
         {
-            IEnumerable<NewsComment> comments = uow.NewsComment.GetCommentWithUser(a=>a.NewsId==id/* && a.IsOk==true*/);
+            IEnumerable<NewsComment> comments = uow.NewsComment.GetCommentWithUser(a=>a.NewsId== id && a.IsOk == true);
 
             if (comments!=null && comments.Count()>0)
             {

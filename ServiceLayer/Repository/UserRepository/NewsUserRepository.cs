@@ -25,5 +25,10 @@ namespace ServiceLayer.Repository.UserRepository
         {
             return _context.Set<NewsUser>().Include(a => a.MyFavouriteGames);
         }
+
+        public IEnumerable<NewsUser> UserWithRoles(Expression<Func<NewsUser, bool>> predicate)
+        {
+            return _context.Set<NewsUser>().Include(a => a.Roles).Where(predicate);
+        }
     }
 }

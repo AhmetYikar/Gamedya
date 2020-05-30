@@ -17,16 +17,6 @@
             <img src="@Html.DisplayFor(model => model.TinyImagePath)" style="height:100px">
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.BlogImages)
-        </dt>
-        @foreach (var item in Model.BlogImages)
-        {
-            <dd>
-                <img src="@item.ImagePath" style="height:100px">
-            </dd>
-        }
-
 
         <ul class="list-group list-group-unbordered">
 
@@ -107,15 +97,35 @@
     </div>
 
 </div>
-@if (Model.BlogComments != null && Model.BlogComments.Count() > 0)
+
+
+@if (Model.IsOk == false)
 {
-    <a href="@Url.Action("Index", "BlogComments", new { id = Model.Id})">Blog Yorumları</a>
-    <span class="label label-primary">@Model.BlogComments.Count().ToString()</span><d> |</d>
+    @Html.ActionLink("Listeye Dön", "IsNotOks") <d> | </d>
+
+    @Html.ActionLink("Sil", "Delete", new { id = Model.Id }) <d>  |  </d> 
+
+    <a class="btn btn-success" onclick="ApproveBlog(@Model.Id)"> Onayla</a>
+    <div id="successMessage" style="color:green"></div>
+    <div id="failMessage" style="color:red"></div>
+    <script src="~/Scripts/BlogScripts.js"></script>
+
 }
 else
-{<d>Haber Yorumları |</d>}
-@if (Model.NewsUserId == User.GetUserId())
 {
-    @Html.ActionLink("Düzenle", "Edit", new { id = Model.Id }) <d> | </d>
+    @Html.ActionLink("Listeye Dön", "Index") <d> | </d>
+
+
+    if (Model.BlogComments != null && Model.BlogComments.Count() > 0)
+    {
+        <a href="@Url.Action("Index", "BlogComments", new { id = Model.Id})">Blog Yorumları</a>
+        <span class="label label-primary">@Model.BlogComments.Count().ToString()</span><d> |</d>
+    }
+    else
+    {<d>Haber Yorumları | </d>}
+    if (Model.NewsUserId == User.GetUserId())
+    {
+        @Html.ActionLink("Düzenle", "Edit", new { id = Model.Id })
+    }
 }
-@Html.ActionLink("Listeye Dön", "Index") |
+

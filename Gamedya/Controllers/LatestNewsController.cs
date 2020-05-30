@@ -18,7 +18,7 @@ namespace Gamedya.Controllers
         public ActionResult GetLatestNews()
         {
 
-            IEnumerable<News> latestNews = uow.News.GetAll().Take(6).ToList().OrderByDescending(a => a.Id);
+            IEnumerable<News> latestNews = uow.News.GetAll().ToList().OrderByDescending(a => a.Id).Take(6);
 
             if (latestNews != null && latestNews.Count() > 0)
             {
@@ -40,7 +40,7 @@ namespace Gamedya.Controllers
 
         public ActionResult GetPopularNews()
         {
-            IEnumerable<News> latestNews = uow.News.GetAll().Take(6).ToList().OrderByDescending(a => a.ViewCount);
+            IEnumerable<News> latestNews = uow.News.GetAll().ToList().OrderByDescending(a => a.ViewCount).Take(6);
 
             if (latestNews != null && latestNews.Count() > 0)
             {

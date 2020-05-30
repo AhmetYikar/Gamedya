@@ -17,7 +17,7 @@ namespace Gamedya.Controllers
         public ActionResult GetSlider()
         {
 
-            IEnumerable<News> latestNews = uow.News.GetAll().Take(5).ToList().OrderByDescending(a => a.Id);
+            IEnumerable<News> latestNews = uow.News.GetAll().ToList().OrderByDescending(a => a.Id).Take(5);
 
             if (latestNews != null && latestNews.Count() > 0)
             {

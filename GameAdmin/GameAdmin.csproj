@@ -6661,6 +6661,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="nots.txt" />
+    <Content Include="Scripts\BlogScripts.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Assest\bower_components\bootstrap-colorpicker\.bower.json" />
@@ -7640,6 +7641,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\Message.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\NewsCommentScripts.js" />
     <Content Include="Scripts\src\index.js" />
     <Content Include="Scripts\src\methods\defaults.js" />
     <Content Include="Scripts\src\methods\destroy.js" />
@@ -7850,6 +7852,8 @@
     <Content Include="Views\Twitch\Details.cshtml" />
     <Content Include="Views\Twitch\Edit.cshtml" />
     <Content Include="Views\Twitch\Index.cshtml" />
+    <Content Include="Views\Blog\IsNotOks.cshtml" />
+    <Content Include="Views\NewsComments\IsNotOks.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

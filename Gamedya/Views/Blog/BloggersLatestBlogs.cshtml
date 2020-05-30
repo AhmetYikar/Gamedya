@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Gamedya.Models.BlogViewModel>
+
+<div class="tab sitebar">
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#1" data-toggle="tab">Yazarın Son Blogları</a></li>
+        <li><a href="#2" data-toggle="tab">Yazarın Popüler Blogları</a></li>
+    </ul>
+
+    <div class="tab-content">
+        <div class="tab-pane active" id="1">
+
+            @foreach (var item in Model)
+            {
+                <div class="media">
+                    <div class="media-left">
+                        <a href="@Url.Action("Details", "Blog",new {id=item.Id})"><img class="media-object" src="@item.TinyImagePath" style="height:60px"></a>
+                    </div><!--media-left-->
+                    <div class="media-body">
+                        <h4 class="media-heading"><a href="@Url.Action("Details", "Blog",new {id=item.Id})">@item.Title</a></h4>
+                        <span class="rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star-half-full"></i>
+                        </span>
+                    </div><!--media-body-->
+                </div><!--media-->
+
+            }
+
+        </div><!--tab-pane-->
+
+        <div class="tab-pane" id="2">
+            @Html.Action("BloggersPopularBlogs", "Blog",new {userId=Model.FirstOrDefault().NewsUserId})
+        </div><!--tab-pane-->
+    </div><!--tab-content-->
+</div><!--tab-->

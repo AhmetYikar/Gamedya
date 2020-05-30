@@ -542,6 +542,10 @@
     <Content Include="Views\Blog\Popular.cshtml" />
     <Content Include="Views\Blog\MostCommented.cshtml" />
     <Content Include="Views\BlogComment\Index.cshtml" />
+    <Content Include="Views\Blog\BloggersLatestBlogs.cshtml" />
+    <Content Include="Views\Blog\BloggersPopularBlogs.cshtml" />
+    <Content Include="Views\Blog\BloggersMostCommented.cshtml" />
+    <Content Include="Views\Blog\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

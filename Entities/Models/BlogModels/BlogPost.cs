@@ -43,7 +43,7 @@ namespace Entites.Models.BlogModels
 
         [Display(Name = "Kapak resmi")]
         public string TinyImagePath { get; set; }
-
+        public bool IsOk { get; set; }
         public int BlogCategoryId { get; set; }
         public virtual BlogCategory BlogCategory { get; set; }
     }

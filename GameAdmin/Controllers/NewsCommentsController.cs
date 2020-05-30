@@ -12,7 +12,7 @@ using Entites.Models.NewsModels;
 
 namespace GameAdmin.Controllers
 {
-    [Authorize(Roles = "admin,yazar")]
+    [Authorize(Roles = "Admin,admin,yazar")]
     public class NewsCommentsController : Controller
     {
         private UnitOfWork uow = new UnitOfWork(new GameNewsDbContext());
@@ -58,6 +58,69 @@ namespace GameAdmin.Controllers
 
 
         }
+        #endregion
+
+        #region IsNotOks
+        public ActionResult IsNotOks()
+        {
+            IEnumerable<NewsComment> newsComments = uow.NewsComment.GetAll().Where(a => a.IsOk == false);
+            return View(newsComments);
+        }
+        #endregion
+
+        //Yorumlara onay verme
+        #region Approve
+        [HttpPost]
+        public JsonResult Approve(int? id)
+        {
+            int mesaj = 0;
+
+            if (id != null)
+            {
+                try
+                {
+                    mesaj = 1;
+                    var newsComment = uow.NewsComment.GetById(id);
+                    newsComment.IsOk = true;
+                    uow.NewsComment.Update(newsComment);
+                    uow.Complete();
+                    return Json(mesaj, JsonRequestBehavior.AllowGet);
+                }
+                catch
+                {
+                    return Json(mesaj, JsonRequestBehavior.AllowGet);
+                }
+            }
+            return Json(mesaj, JsonRequestBehavior.AllowGet);
+        }
+
+        #endregion
+
+        //Yorumları ajax ile sayfa yenilemeden silme
+        #region DeleteByAjax
+        [HttpPost]
+        public JsonResult DeleteByAjax(int? id)
+        {
+            int mesaj = 0;
+
+            if (id != null)
+            {
+                try
+                {
+                    mesaj = 1;
+                    var newsComment = uow.NewsComment.GetById(id);
+                    uow.NewsComment.Delete(newsComment);
+                    uow.Complete();
+                    return Json(mesaj, JsonRequestBehavior.AllowGet);
+                }
+                catch
+                {
+                    return Json(mesaj, JsonRequestBehavior.AllowGet);
+                }
+            }
+            return Json(mesaj, JsonRequestBehavior.AllowGet);
+        }
+
         #endregion
 
         #region edit

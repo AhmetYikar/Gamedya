@@ -15,7 +15,7 @@
             </div>
             <div class="row">
                 <div>
-                    <h3 class="card-title ">@Model.First().BlogPost.Title başlıklı blogun yorumları  </h3>
+                    <h3 class="card-title ">@ViewBag.BlogTitle başlıklı blogun yorumları  </h3>
                 </div>
                 <table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
                     <tr>
@@ -38,7 +38,7 @@
                         <tr>
 
                             <td>
-                                @Html.DisplayFor(modelItem => item.NewsUser.FullName)
+                                @Html.DisplayFor(modelItem => item.CommenterName)
                             </td>
 
                             <td>

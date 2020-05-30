@@ -34,6 +34,7 @@ namespace GameAdmin.Controllers
                 {
                     return null;
                 }
+
                 return View(blogComments);
             }
         }
@@ -48,19 +49,12 @@ namespace GameAdmin.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            BlogPost blogPost = uow.BlogPost.GetBlogWithComments(a => a.Id == id).FirstOrDefault();
-            IEnumerable<BlogComment> comments = blogPost.BlogComments.ToList();
-            if (comments != null)
-            {
-                comments.FirstOrDefault().BlogPost = blogPost;
-
-            }
-
+            IEnumerable<BlogComment> comments = uow.BlogComment.Where(a=>a.BlogPostId==id);
             if (comments == null)
             {
                 return HttpNotFound();
             }
-
+            ViewBag.BlogTitle = uow.BlogPost.GetById(id).Title;
             return View(comments);
         }
         #endregion

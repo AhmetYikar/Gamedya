@@ -4,48 +4,61 @@
 @using Gamedya.Helper;
 
 @{ Layout = "~/Views/Shared/_Layout.cshtml";}
+    <div style="padding-left:28px" class="container">
+        @if (@Model.FirstOrDefault().NewsUserId == User.GetUserId())
+        {
+            <h3 style="color:#000">BLOGLARIM</h3>
 
-<div class="container" style="margin-top:50px;">
+        }
+        else
+        {
+            <h3>@Model.FirstOrDefault().BloggerName.ToUpper() </h3><h4>adlı yazara ait bloglar</h4>
+
+        }
+    </div>>
+
+<div class="container">
     <div class="col-md-9">
+        <a class="btn btn-primary" href="@Url.Action("Create", "Blog")">Blog Yaz</a>
         <div class="row">
             @foreach (var item in Model)
-            {               
-            <div class="col-md-6">
-                <div class="comment_box">
-                    <div class="comments_icon"> <i class="fa fa-comments" aria-hidden="true"></i></div>
-                    <div class="comments"><a href="#">@item.CommentCount</a></div>
-                </div><!--comment_box-->
-                <div class="feature_news_item">
-                    <div class="item">
-                        <hr />
-                        <div class="item_wrapper">
-                            <div class="item_img">
-                                <a href="@Url.Action("Details", "Blog",new {id=item.Id})">    <img class="img-responsive" src="@item.TinyImagePath" alt="@item.Title"> </a>
-                            </div> <!--item_img-->
-                            <div class="item_title_date">
+            {
+                <div class="col-md-6">
+                    <div class="comment_box">
+                        <div class="comments_icon"> <i class="fa fa-comments" aria-hidden="true"></i></div>
+                        <div class="comments"><a href="#">@item.CommentCount</a></div>
+                    </div><!--comment_box-->
+                    <div class="feature_news_item">
+                        <div class="item">
+                            <hr />
+                            <div class="item_wrapper">
+                                <div class="item_img">
+                                    <a href="@Url.Action("Details", "Blog",new {id=item.Id})">    <img class="img-responsive" src="@item.TinyImagePath" alt="@item.Title"> </a>
+                                </div> <!--item_img-->
+                                <div class="item_title_date">
 
-                                <div class="news_item_title">
-                                    <h2> <a href="@Url.Action("Details", "Blog",new {id=item.Id})"> @item.Title</a></h2>
-                                </div>
+                                    <div class="news_item_title">
+                                        <h2> <a href="@Url.Action("Details", "Blog",new {id=item.Id})"> @item.Title</a></h2>
+                                    </div>
 
-                                <div class="item_meta">
-                                    @item.Date.ToShortDateString()  by: <a style="font-size:18px" href="@Url.Action("BloggerBlogs", "Blog",new {id=item.Id})">@item.BloggerName</a>
-                                </div>
-                            </div><!--item_title_date-->
-                        </div> <!--item_wrapper-->
+                                    <div class="item_meta">
+                                        @item.Date.ToShortDateString()  by: <a style="font-size:18px" href="@Url.Action("BloggerBlogs", "Blog",new {userId=item.NewsUserId})">@item.BloggerName</a>
+                                    </div>
+                                </div><!--item_title_date-->
+                            </div> <!--item_wrapper-->
 
-                        <div class="item_content">
-                            @Subs.Sub(item.Summary, 150)
-                        </div>
-                        
-                    </div><!--item-->
-                </div><!--feature_news_item-->
-            </div><!--col-md-6-->
+                            <div class="item_content">
+                                @Subs.Sub(item.Summary, 150)
+                            </div>
+
+                        </div><!--item-->
+                    </div><!--feature_news_item-->
+                </div><!--col-md-6-->
             }
 
         </div><!--row-->
     </div>
-    <div class="col-md-3">
+    <div class="col-md-3" style="margin-top:58px">
         @Html.Action("LatestBlogs", "Blog")
 
         @Html.Action("MostCommented", "Blog")
