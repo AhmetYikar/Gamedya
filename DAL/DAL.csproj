@@ -63,9 +63,9 @@
     <Compile Include="Migrations\202005291344101_iki.Designer.cs">
       <DependentUpon>202005291344101_iki.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202005301827318_blogIsOk.cs" />
-    <Compile Include="Migrations\202005301827318_blogIsOk.Designer.cs">
-      <DependentUpon>202005301827318_blogIsOk.cs</DependentUpon>
+    <Compile Include="Migrations\202005292038124_uc.cs" />
+    <Compile Include="Migrations\202005292038124_uc.Designer.cs">
+      <DependentUpon>202005292038124_uc.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -87,8 +87,8 @@
     <EmbeddedResource Include="Migrations\202005291344101_iki.resx">
       <DependentUpon>202005291344101_iki.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202005301827318_blogIsOk.resx">
-      <DependentUpon>202005301827318_blogIsOk.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202005292038124_uc.resx">
+      <DependentUpon>202005292038124_uc.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

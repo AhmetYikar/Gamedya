@@ -12,5 +12,6 @@ namespace ServiceLayer.Repository.ForumRepository
     {
         IEnumerable<ForumPost> GetForumDetail(Expression<Func<ForumPost, bool>> predicate);
         IEnumerable<ForumPost> GetForumWithReply(Expression<Func<ForumPost, bool>> predicate);
+        IEnumerable<ForumPost> GetForumWithReplysAndUsers();
     }
 }

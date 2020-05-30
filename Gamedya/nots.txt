@@ -6,7 +6,7 @@
         <add namespace="MvcSiteMapProvider.Web.Html.Models" />
 
         **Etiketler EKlenecek
-        *İlgili Haberler Kontroları ile beraber ekelenecek.
+        *İlgili Haberler Kontroları ile beraber ekelenecek. haberin detayına girince ilgili haberlerin gelmesi.
         *FAcebook vs paylaşımları haberlerin ayarlanacak.detailse de 
         *bidirim için ikon konacak
         *login ve register tasarımı ve assetteki fazlalıklar atılacak.

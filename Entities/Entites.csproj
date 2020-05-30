@@ -80,7 +80,6 @@
     <Compile Include="Models\BlogModels\BlogImage.cs" />
     <Compile Include="Models\BlogModels\BlogPost.cs" />
     <Compile Include="Models\ForumModels\ForumCategory.cs" />
-    <Compile Include="Models\ForumModels\ForumImage.cs" />
     <Compile Include="Models\ForumModels\ForumPost.cs" />
     <Compile Include="Models\ForumModels\ForumReply.cs" />
     <Compile Include="Models\GameModels\Game.cs" />

@@ -81,7 +81,7 @@ namespace GameAdmin.Controllers
             using (var uow = new UnitOfWork(new GameNewsDbContext()))
             {
                 IEnumerable<ForumViewModel> forums = uow.ForumPost.GetAll().ToList()
-                                                          .Select(a => new ForumViewModel { Id = a.Id, ForumTitle = a.ForumTitle, Date = a.Date, TinyImagePath = a.TinyImagePath, NewsUserId = a.NewsUserId })
+                                                          .Select(a => new ForumViewModel { Id = a.Id, ForumTitle = a.ForumTitle, Date = a.Date, NewsUserId = a.NewsUserId })
                                                           .OrderByDescending(a => a.Id);
 
                 if (forums != null)
@@ -127,55 +127,25 @@ namespace GameAdmin.Controllers
 
         public ActionResult Create()
         {
-            ViewBag.ForumCategoryId = new SelectList(uow.ForumCategory.GetAll(), "Id", "CategoryName");
+            ViewBag.ForumCategoryId = new SelectList(uow.ForumCategory.GetAll(), "Id", "CategoryName",string.Empty);
             return View();
 
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,ForumTitle,Summary,Content,ForumCategoryId,Date,EditDate,IsActive,ViewCount,TinyImagePath")] ForumPost forumPost, HttpPostedFileBase file)
+        public ActionResult Create([Bind(Include = "Id,ForumTitle,Content,ForumCategoryId,Date,IsActive")] ForumPost forumPost)
         {
-            string fileName = string.Empty;
-            string extension = string.Empty;
-            if (file != null && file.ContentLength > 0 && file.ContentLength < 2 * 1024 * 1024)
-            {
-                extension = Path.GetExtension(file.FileName);
-
-                if (extension.Contains("pdf") || extension.Contains("doc") || extension.Contains("docx"))
-                {
-                    return RedirectToAction("index");
-                }
-                else
-                {
-
-                }
-                fileName = Guid.NewGuid() + ".png";
-                var path = Path.Combine(Server.MapPath("/Content/ForumImages/"), fileName.Replace(".png", "-thumb.png"));
-                Image image = Image.FromStream(file.InputStream, true);
-                int imgWidth = 110;
-                int imgHeight = 95;
-                Image thumb = image.GetThumbnailImage(imgWidth, imgHeight, () => false, IntPtr.Zero);
-                thumb.Save(path);
-            }
-            else
-            {
-                ViewBag.Message = "Resim Yüklemeniz Gerek";
-                ViewBag.ForumCategoryId = new SelectList(uow.ForumCategory.GetAll(), "Id", "CategoryName");
-                return View(forumPost);
-            }
+          
             if (ModelState.IsValid)
             {
                 uow.ForumPost.Insert(new ForumPost
                 {
-                    Date = DateTime.Now,
-                    EditDate = DateTime.Now,
-                    TinyImagePath = "/Content/ForumImages/" + fileName.Replace(".png", "-thumb.png"),
-                    ForumTitle = forumPost.ForumTitle,
-                    Summary = forumPost.Summary,
+                    Date = DateTime.Now,                                     
+                    ForumTitle = forumPost.ForumTitle,                   
                     Content = forumPost.Content,
                     ForumCategoryId = forumPost.ForumCategoryId,
                     IsActive = forumPost.IsActive,
-                    ViewCount = forumPost.ViewCount
+                  
                 });
                 uow.Complete();
                 return RedirectToAction("Index");
@@ -203,50 +173,25 @@ namespace GameAdmin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,ForumTitle,Summary,Content,ForumCategoryId,Date,EditDate,IsActive,ViewCount,TinyImagePath")] ForumPost forumpost, HttpPostedFileBase file)
+        public ActionResult Edit([Bind(Include = "Id,ForumTitle,Content,ForumCategoryId,IsActive,IsOk")] ForumPost forumpost)
         {
-            var forumsdb = uow.ForumPost.GetById(forumpost.Id);
-            string fileName = string.Empty;
-            string extension = string.Empty;
-
-            if (file != null && file.ContentLength > 0 && file.ContentLength < 2 * 1024 * 1024)
-            {
-                extension = Path.GetExtension(file.FileName);
-
-                if (extension.Contains("pdf") || extension.Contains("doc") || extension.Contains("docx"))
-                {
-
-                    return RedirectToAction("index");
-                }
-                else
-                {
-
-                }
-                fileName = Guid.NewGuid() + ".png";
-
-                var path = Path.Combine(Server.MapPath("/Content/ForumImages/"), fileName.Replace(".png", "-thumb.png"));
-
-                Image image = Image.FromStream(file.InputStream, true);
-
-                int imgWidth = 110;
-                int imgHeight = 95;
-
-                Image thumb = image.GetThumbnailImage(imgWidth, imgHeight, () => false, IntPtr.Zero);
-                thumb.Save(path);
-                forumsdb.TinyImagePath = "/Content/ForumImages/" + fileName.Replace(".png", "-thumb.png");
-
-            }
-
-            forumsdb.ForumTitle = forumpost.ForumTitle;
-            forumsdb.Summary = forumpost.Summary;
-            forumsdb.Content = forumpost.Content;
-            forumsdb.ForumCategoryId = forumpost.ForumCategoryId;
-            forumsdb.IsActive = forumpost.IsActive;
-            forumsdb.EditDate = DateTime.Now;
 
             if (ModelState.IsValid)
             {
-                uow.ForumPost.Update(forumsdb);
+                var forumpostdb = uow.ForumPost.GetById(forumpost.Id);
+
+                if (forumpostdb == null)
+                {
+                    ViewBag.ForumCategoryId = new SelectList(uow.ForumCategory.GetAll(), "Id", "CategoryName", forumpost.ForumCategoryId);
+                    return View(forumpost);
+                }
+              
+                forumpostdb.ForumTitle = forumpost.ForumTitle;
+                forumpostdb.Content = forumpost.Content;
+                forumpostdb.ForumCategoryId = forumpost.ForumCategoryId;
+                forumpostdb.IsActive = forumpost.IsActive;
+                forumpostdb.IsOk = forumpost.IsOk;
+                uow.ForumPost.Update(forumpostdb);
                 uow.Complete();
                 return RedirectToAction("Index");
             }

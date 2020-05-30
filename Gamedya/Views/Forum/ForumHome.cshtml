@@ -1,0 +1,822 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+<div class="container">
+    <div class="panel ">
+        <div class="panel-heading panelinbasligi text-center ">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+
+                    <a class="nav-link active " data-toggle="tab" href="#tab-1">  <i class="fas fa-hourglass-end"></i> SON AÇILAN FORUMLAR </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#tab-2"> <i class="fas fa-comment-dots"></i> EN ÇOK CEVAPLANANLAR </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#tab-3"> <i class="fas fa-star"></i> POPÜLER</a>
+                </li>
+            </ul>
+        </div>
+        <!--panel title end-->
+        <!--panel content-->
+        <div class="panel-body">
+            <div class="tab-content">
+                <div class="tab-pane active" id="tab-1">
+                    @Html.Action("LatestForums", "Forum")
+                </div><!--tab-pane-->
+
+                <div class="tab-pane" id="tab-2">
+                    @Html.Action("MostCommented", "Forum")
+                </div><!--tab-pane-->
+                <div class="tab-pane" id="tab-3">
+                    @Html.Action("Popular", "Forum")
+
+                </div><!--tab-pane-->
+
+            </div><!--tab-content-->
+        </div>
+        <!--panel content end-->
+    </div>
+
+</div>
+
+<!--GAMEYDA PANEL-->
+<div class="container">
+    <div class="panel ">
+        <div class="panel-heading panelinbasligi ">
+            <a href="#">  <i class="fas fa-chess-rook"></i> GAMEDYA </a>
+        </div>
+        <!-- panel start-->
+        <div class="panel-body">
+            <div class="col-md-6">
+
+                <h1 style="color:#ff6102">  <i class="fas fa-bullhorn"></i> DUYURULAR </h1>
+                <h4> Gamedya gelişmeler ve yapılan tüm yenilikleri buradan takip edebilirsiniz.   </h4>
+            </div>
+            <div class="col-md-2">
+                <h4>Konular</h4>
+                <h5>200</h5>
+            </div>
+            <div class="col-md-2">
+                <h4>Mesajlar</h4>
+                <h5>200</h5>
+            </div>
+            <div class="col-md-2">
+                <h4>Son Mesajlar</h4>
+                <h5>200</h5>
+            </div>
+        </div>
+        <!-- panel end-->
+        <!-- panel start-->
+        <div class="panel-body">
+            <div class="col-md-6">
+
+                <h1 style="color:#ff6102"> <i class="fab fa-battle-net"></i> İSTEK/ÖNERİ/ŞİKAYET </h1>
+                <h4> Forum hakkında istek öneri ve şikayetlerinizi burada belirtebilirsiniz.  </h4>
+
+            </div>
+            <div class="col-md-2">
+                <h4>Konular</h4>
+                <h5>200</h5>
+            </div>
+            <div class="col-md-2">
+                <h4>Mesajlar</h4>
+                <h5>200</h5>
+            </div>
+            <div class="col-md-2">
+                <h4>Son Mesajlar</h4>
+                <h5>200</h5>
+            </div>
+        </div>
+        <!-- panel end-->
+        <!-- panel start-->
+        <div class="panel-body">
+            <div class="col-md-6">
+
+                <h1 style="color:#ff6102"> <i class="fas fa-handshake"></i>TANIŞMA ALANI </h1>
+                <h4>Gamedya forumu ve diğer üyeler ile tanışmaya hazır mısın? Kendinden bahset ve diğer üyeler ile tanışmaya başla!   </h4>
+
+            </div>
+            <div class="col-md-2">
+                <h4>Konular</h4>
+                <h5>200</h5>
+            </div>
+            <div class="col-md-2">
+                <h4>Mesajlar</h4>
+                <h5>200</h5>
+            </div>
+            <div class="col-md-2">
+                <h4>Son Mesajlar</h4>
+                <h5>200</h5>
+            </div>
+        </div>
+        <!-- panel end-->
+        <!-- panel start-->
+        <div class="panel-body">
+            <div class="col-md-6">
+
+                <h1 style="color:#ff6102">  <i class="fas fa-user-shield"></i> MODERATÖR BAŞVURUSU </h1>
+                <h4> Gamedya oyun forumunda sende yetkili olmak istiyorsan doğru yerdesin. Buradan başvuru yapabilir ve sende takıma katılabilirsin.   </h4>
+
+            </div>
+            <div class="col-md-2">
+                <h4>Konular</h4>
+                <h5>200</h5>
+            </div>
+            <div class="col-md-2">
+                <h4>Mesajlar</h4>
+                <h5>200</h5>
+            </div>
+            <div class="col-md-2">
+                <h4>Son Mesajlar</h4>
+                <h5>200</h5>
+            </div>
+        </div>
+        <!-- panel end-->
+
+    </div>
+
+</div>
+
+
+<!--OYUN GENEL PANEL-->
+<div class="container">
+    <div class="panel ">
+        <div class="panel-heading panelinbasligi ">
+            <a href="#"> <i class="fas fa-ghost"></i>OYUN GENEL </a>
+        </div>
+        <!-- panel start-->
+        <div class="panel-body">
+            <div class="col-md-6">
+
+                <h1 style="color:#ff6102"> <i class="fas fa-gamepad"></i> OYUN İNCELEMELERİ </h1>
+                <h4>Oyun mu arıyorsun? veya bir oyun hakkında incelemeleri mi görmek istiyorsun? Bu kategoriden oyun incelemelerini görebilir ve oyunlar hakkında yorumları okuyabilirsin.</h4>
+            </div>
+            <div class="col-md-2">
+                <h4>Konular</h4>
+                <h5>200</h5>
+            </div>
+            <div class="col-md-2">
+                <h4>Mesajlar</h4>
+                <h5>200</h5>
+            </div>
+            <div class="col-md-2">
+                <h4>Son Mesajlar</h4>
+                <h5>200</h5>
+            </div>
+        </div>
+        <!-- panel end-->
+        <!-- panel start-->
+        <div class="panel-body">
+            <div class="col-md-6">
+
+                <h1 style="color:#ff6102"> <i class="fas fa-gamepad"></i> OYUN REHBERİ </h1>
+                <h4> Oyunlar hakkında bilgi dolu rehberleri sayesinde oyunlar çok zevkli olacak!  </h4>
+
+            </div>
+            <div class="col-md-2">
+                <h4>Konular</h4>
+                <h5>200</h5>
+            </div>
+            <div class="col-md-2">
+                <h4>Mesajlar</h4>
+                <h5>200</h5>
+            </div>
+            <div class="col-md-2">
+                <h4>Son Mesajlar</h4>
+                <h5>200</h5>
+            </div>
+        </div>
+        <!-- panel end-->
+        <!-- panel start-->
+        <div class="panel-body">
+            <div class="col-md-6">
+
+                <h1 style="color:#ff6102"> <i class="fas fa-gamepad"></i> OYUN HABERLERİ </h1>
+                <h4>Oyun haberleri, yeni çıkan oyunlar ve oyun güncellemeleri</h4>
+
+            </div>
+            <div class="col-md-2">
+                <h4>Konular</h4>
+                <h5>200</h5>
+            </div>
+            <div class="col-md-2">
+                <h4>Mesajlar</h4>
+                <h5>200</h5>
+            </div>
+            <div class="col-md-2">
+                <h4>Son Mesajlar</h4>
+                <h5>200</h5>
+            </div>
+        </div>
+        <!-- panel end-->
+        <!-- panel start-->
+        <div class="panel-body">
+            <div class="col-md-6">
+
+                <h1 style="color:#ff6102"> <i class="fas fa-gamepad"></i> OYUN SORUNLARI VE YARDIM </h1>
+                <h4>Oyunlarla ilgili sorun mu yaşıyorsunuz. Bu forumda oyun sorunlarına dair her şeyi bulabilir ve yardım alabilirsiniz. </h4>
+
+            </div>
+            <div class="col-md-2">
+                <h4>Konular</h4>
+                <h5>200</h5>
+            </div>
+            <div class="col-md-2">
+                <h4>Mesajlar</h4>
+                <h5>200</h5>
+            </div>
+            <div class="col-md-2">
+                <h4>Son Mesajlar</h4>
+                <h5>200</h5>
+            </div>
+        </div>
+        <!-- panel end-->
+        <!-- panel start-->
+        <div class="panel-body">
+            <div class="col-md-6">
+
+                <h1 style="color:#ff6102"> <i class="fas fa-gamepad"></i> SİSTEM GEREKSİNİMLERİ </h1>
+                <h4>Aklınıza gelebilecek tüm oyunların sistem gereksinimlerini bulabileceğiniz kategori.</h4>
+
+            </div>
+            <div class="col-md-2">
+                <h4>Konular</h4>
+                <h5>200</h5>
+            </div>
+            <div class="col-md-2">
+                <h4>Mesajlar</h4>
+                <h5>200</h5>
+            </div>
+            <div class="col-md-2">
+                <h4>Son Mesajlar</h4>
+                <h5>200</h5>
+            </div>
+        </div>
+        <!-- panel end-->
+        <!-- panel start-->
+        <div class="panel-body">
+            <div class="col-md-6">
+
+                <h1 style="color:#ff6102"> <i class="fas fa-gamepad"></i> OYUN MEDYA </h1>
+                <h4>Oyun ekran görüntüleri, oyun resimleri ve oyun videoları</h4>
+
+            </div>
+            <div class="col-md-2">
+                <h4>Konular</h4>
+                <h5>200</h5>
+            </div>
+            <div class="col-md-2">
+                <h4>Mesajlar</h4>
+                <h5>200</h5>
+            </div>
+            <div class="col-md-2">
+                <h4>Son Mesajlar</h4>
+                <h5>200</h5>
+            </div>
+        </div>
+        <!-- panel end-->
+        <!-- panel start-->
+        <div class="panel-body">
+            <div class="col-md-6">
+
+                <h1 style="color:#ff6102"> <i class="fas fa-gamepad"></i>KONSOLLAR</h1>
+                <h4>Oyun konsolları paylaşım forumu</h4>
+
+            </div>
+            <div class="col-md-2">
+                <h4>Konular</h4>
+                <h5>200</h5>
+            </div>
+            <div class="col-md-2">
+                <h4>Mesajlar</h4>
+                <h5>200</h5>
+            </div>
+            <div class="col-md-2">
+                <h4>Son Mesajlar</h4>
+                <h5>200</h5>
+            </div>
+        </div>
+        <!-- panel end-->
+    </div>
+
+</div>
+
+<!--ÇEVRİMİÇİ OYUNLAR PANEL-->
+<div class="container">
+    <div class="panel ">
+        <div class="panel-heading panelinbasligi ">
+            <a href="#"> <i class="fas fa-chess-knight"></i> ÇEVRİMİÇİ OYUNLAR </a>
+        </div>
+        <!-- panel start-->
+        <div class="panel-body">
+            <div class="col-md-6">
+
+                <h1 style="color:#ff6102"> <i class="fas fa-puzzle-piece"></i> KNIGHT ONLİNE </h1>
+                <h4> Knıght Online hakkında tüm paylaşımlarını burada görebilir ve paylaşabilirsiniz.</h4>
+            </div>
+            <div class="col-md-2">
+                <h4>Konular</h4>
+                <h5>200</h5>
+            </div>
+            <div class="col-md-2">
+                <h4>Mesajlar</h4>
+                <h5>200</h5>
+            </div>
+            <div class="col-md-2">
+                <h4>Son Mesajlar</h4>
+                <h5>200</h5>
+            </div>
+        </div>
+        <!-- panel end-->
+        <!-- panel start-->
+        <div class="panel-body">
+            <div class="col-md-6">
+
+                <h1 style="color:#ff6102"> <i class="fas fa-puzzle-piece"></i> CS GO ONLİNE </h1>
+                <h4> CS GO hakkında tüm paylaşımlarını burada görebilir ve paylaşabilirsiniz.  </h4>
+            </div>
+            <div class="col-md-2">
+                <h4>Konular</h4>
+                <h5>200</h5>
+            </div>
+            <div class="col-md-2">
+                <h4>Mesajlar</h4>
+                <h5>200</h5>
+            </div>
+            <div class="col-md-2">
+                <h4>Son Mesajlar</h4>
+                <h5>200</h5>
+            </div>
+        </div>
+        <!-- panel end-->
+        <!-- panel start-->
+        <div class="panel-body">
+            <div class="col-md-6">
+
+                <h1 style="color:#ff6102"><i class="fas fa-puzzle-piece"></i> PUB G </h1>
+                <h4>Çoğu oyunda gördüğümüz Battle Royal modunu yaratan Pubg hakkında paylaşımları burada bulabilirsiniz.</h4>
+
+            </div>
+            <div class="col-md-2">
+                <h4>Konular</h4>
+                <h5>200</h5>
+            </div>
+            <div class="col-md-2">
+                <h4>Mesajlar</h4>
+                <h5>200</h5>
+            </div>
+            <div class="col-md-2">
+                <h4>Son Mesajlar</h4>
+                <h5>200</h5>
+            </div>
+        </div>
+        <!-- panel end-->
+        <!-- panel start-->
+        <div class="panel-body">
+            <div class="col-md-6">
+
+                <h1 style="color:#ff6102"> <i class="fas fa-puzzle-piece"></i>MİNECRAFT </h1>
+                <h4>Minecraft hakkında aklınıza gelebilecek tüm paylaşımları Minecraft forumunda bulabilirsiniz.</h4>
+
+            </div>
+            <div class="col-md-2">
+                <h4>Konular</h4>
+                <h5>200</h5>
+            </div>
+            <div class="col-md-2">
+                <h4>Mesajlar</h4>
+                <h5>200</h5>
+            </div>
+            <div class="col-md-2">
+                <h4>Son Mesajlar</h4>
+                <h5>200</h5>
+            </div>
+        </div>
+        <!-- panel end-->
+        <!-- panel start-->
+        <div class="panel-body">
+            <div class="col-md-6">
+
+                <h1 style="color:#ff6102"> <i class="fas fa-puzzle-piece"></i> MOBİL OYUNLAR </h1>
+                <h4>Mobil oyunlar, apklar ve mobil oyun haberleri.</h4>
+
+            </div>
+            <div class="col-md-2">
+                <h4>Konular</h4>
+                <h5>200</h5>
+            </div>
+            <div class="col-md-2">
+                <h4>Mesajlar</h4>
+                <h5>200</h5>
+            </div>
+            <div class="col-md-2">
+                <h4>Son Mesajlar</h4>
+                <h5>200</h5>
+            </div>
+        </div>
+        <!-- panel end-->
+        <!-- panel start-->
+        <div class="panel-body">
+            <div class="col-md-6">
+
+                <h1 style="color:#ff6102"><i class="fas fa-puzzle-piece"></i> DİĞER ÇEVRİMİÇİ OYUNLAR</h1>
+                <h4>Kategorisi olmayan diğer çevrimiçi oyunlar forumu</h4>
+
+            </div>
+            <div class="col-md-2">
+                <h4>Konular</h4>
+                <h5>200</h5>
+            </div>
+            <div class="col-md-2">
+                <h4>Mesajlar</h4>
+                <h5>200</h5>
+            </div>
+            <div class="col-md-2">
+                <h4>Son Mesajlar</h4>
+                <h5>200</h5>
+            </div>
+        </div>
+        <!-- panel end-->
+        <!-- panel start-->
+        <div class="panel-body">
+            <div class="col-md-6">
+
+                <h1 style="color:#ff6102"> <i class="fas fa-puzzle-piece"></i> TARAYICI TABANLI OYUNLAR</h1>
+                <h4>Bilgisayara indirmeden sadece İnternet üzerinden oynanan tarayıcı tabanlı oyunlar forumu.</h4>
+
+            </div>
+            <div class="col-md-2">
+                <h4>Konular</h4>
+                <h5>200</h5>
+            </div>
+            <div class="col-md-2">
+                <h4>Mesajlar</h4>
+                <h5>200</h5>
+            </div>
+            <div class="col-md-2">
+                <h4>Son Mesajlar</h4>
+                <h5>200</h5>
+            </div>
+        </div>
+        <!-- panel end-->
+    </div>
+
+</div>
+
+<!--FPS OYUNLAR PANEL-->
+<div class="container">
+    <div class="panel ">
+        <div class="panel-heading panelinbasligi ">
+            <a href="#"> <i class="fas fa-weight-hanging"></i> FPS OYUNLAR </a>
+        </div>
+        <!-- panel start-->
+        <div class="panel-body">
+            <div class="col-md-6">
+
+                <h1 style="color:#ff6102"><i class="fab fa-fort-awesome-alt"></i> COUNTER STRİKE GLOBAL OFFENSİVE </h1>
+                <h4> Counter Strike ve Counter Strike Global Offensive, CS:GO paylaşımları</h4>
+            </div>
+            <div class="col-md-2">
+                <h4>Konular</h4>
+                <h5>200</h5>
+            </div>
+            <div class="col-md-2">
+                <h4>Mesajlar</h4>
+                <h5>200</h5>
+            </div>
+            <div class="col-md-2">
+                <h4>Son Mesajlar</h4>
+                <h5>200</h5>
+            </div>
+        </div>
+        <!-- panel end-->
+        <!-- panel start-->
+        <div class="panel-body">
+            <div class="col-md-6">
+
+                <h1 style="color:#ff6102"> <i class="fab fa-fort-awesome-alt"></i>  ZULA </h1>
+                <h4> Zula bilgi ve paylaşım forumu. </h4>
+            </div>
+            <div class="col-md-2">
+                <h4>Konular</h4>
+                <h5>200</h5>
+            </div>
+            <div class="col-md-2">
+                <h4>Mesajlar</h4>
+                <h5>200</h5>
+            </div>
+            <div class="col-md-2">
+                <h4>Son Mesajlar</h4>
+                <h5>200</h5>
+            </div>
+        </div>
+        <!-- panel end-->
+        <!-- panel start-->
+        <div class="panel-body">
+            <div class="col-md-6">
+
+                <h1 style="color:#ff6102"><i class="fab fa-fort-awesome-alt"></i> WOLFTEAM </h1>
+                <h4>WolfTeam paylaşım forumu</h4>
+
+            </div>
+            <div class="col-md-2">
+                <h4>Konular</h4>
+                <h5>200</h5>
+            </div>
+            <div class="col-md-2">
+                <h4>Mesajlar</h4>
+                <h5>200</h5>
+            </div>
+            <div class="col-md-2">
+                <h4>Son Mesajlar</h4>
+                <h5>200</h5>
+            </div>
+        </div>
+        <!-- panel end-->
+        <!-- panel start-->
+        <div class="panel-body">
+            <div class="col-md-6">
+
+                <h1 style="color:#ff6102"><i class="fab fa-fort-awesome-alt"></i> DİĞER FPS OYUNLARI </h1>
+                <h4>Kategorisi bulunmayan diğer FPS Oyunları forumu</h4>
+
+            </div>
+            <div class="col-md-2">
+                <h4>Konular</h4>
+                <h5>200</h5>
+            </div>
+            <div class="col-md-2">
+                <h4>Mesajlar</h4>
+                <h5>200</h5>
+            </div>
+            <div class="col-md-2">
+                <h4>Son Mesajlar</h4>
+                <h5>200</h5>
+            </div>
+        </div>
+        <!-- panel end-->
+
+    </div>
+
+</div>
+
+<!-- OYUN TİCARETİ PANEL-->
+<div class="container">
+    <div class="panel ">
+        <div class="panel-heading panelinbasligi ">
+            <a href="#"> <i class="fas fa-user-tie"></i>      OYUN TİCARETİ </a>
+        </div>
+        <!-- panel start-->
+        <div class="panel-body">
+            <div class="col-md-6">
+
+                <h1 style="color:#ff6102"> <i class="fas fa-briefcase"></i> ONLİNE OYUN TİCARETİ </h1>
+                <h4> Bu Bölümde online oyun hesapları, item ve oyun parası satışları yapabilirsiniz.</h4>
+            </div>
+            <div class="col-md-2">
+                <h4>Konular</h4>
+                <h5>200</h5>
+            </div>
+            <div class="col-md-2">
+                <h4>Mesajlar</h4>
+                <h5>200</h5>
+            </div>
+            <div class="col-md-2">
+                <h4>Son Mesajlar</h4>
+                <h5>200</h5>
+            </div>
+        </div>
+        <!-- panel end-->
+        <!-- panel start-->
+        <div class="panel-body">
+            <div class="col-md-6">
+
+                <h1 style="color:#ff6102"> <i class="fas fa-briefcase"></i>  DİĞER TİCARETLER </h1>
+                <h4> Bu bölümde forumda kategorisi bulunmayan hesapların satışlarını ve ticaretini yapabilirsiniz. </h4>
+            </div>
+            <div class="col-md-2">
+                <h4>Konular</h4>
+                <h5>200</h5>
+            </div>
+            <div class="col-md-2">
+                <h4>Mesajlar</h4>
+                <h5>200</h5>
+            </div>
+            <div class="col-md-2">
+                <h4>Son Mesajlar</h4>
+                <h5>200</h5>
+            </div>
+        </div>
+        <!-- panel end-->
+
+
+    </div>
+
+</div>
+
+<!-- VİDEO YAYINCILIĞI PANEL-->
+<div class="container">
+    <div class="panel ">
+        <div class="panel-heading panelinbasligi ">
+            <a href="#"><i class="fas fa-play-circle"></i>  VİDEO YAYINCILIĞI </a>
+        </div>
+        <!-- panel start-->
+        <div class="panel-body">
+            <div class="col-md-6">
+
+                <h1 style="color:#ff6102"> <i class="fab fa-youtube"></i> YOUTUBE KANAL TANITIMI </h1>
+                <h4> Youtube kanallarınızı tanıta bileceğiniz izlenme ve abone arttıra bileceğiniz forum.</h4>
+            </div>
+            <div class="col-md-2">
+                <h4>Konular</h4>
+                <h5>200</h5>
+            </div>
+            <div class="col-md-2">
+                <h4>Mesajlar</h4>
+                <h5>200</h5>
+            </div>
+            <div class="col-md-2">
+                <h4>Son Mesajlar</h4>
+                <h5>200</h5>
+            </div>
+        </div>
+        <!-- panel end-->
+        <!-- panel start-->
+        <div class="panel-body">
+            <div class="col-md-6">
+
+                <h1 style="color:#ff6102"> <i class="fab fa-twitch"></i> TWİTCH YAYINCILARI </h1>
+                <h4> Twitch yayıncılığı bilgi ve paylaşım forumu </h4>
+            </div>
+            <div class="col-md-2">
+                <h4>Konular</h4>
+                <h5>200</h5>
+            </div>
+            <div class="col-md-2">
+                <h4>Mesajlar</h4>
+                <h5>200</h5>
+            </div>
+            <div class="col-md-2">
+                <h4>Son Mesajlar</h4>
+                <h5>200</h5>
+            </div>
+        </div>
+        <!-- panel end-->
+        <!-- panel start-->
+        <div class="panel-body">
+            <div class="col-md-6">
+
+                <h1 style="color:#ff6102"><i class="fas fa-play"></i> OYUN VİDEOLARI </h1>
+                <h4> Kendi çektiğiniz oyun videoları, ilk bakış, inceleme ve rehberlerini paylaşabileceğiniz forum.</h4>
+            </div>
+            <div class="col-md-2">
+                <h4>Konular</h4>
+                <h5>200</h5>
+            </div>
+            <div class="col-md-2">
+                <h4>Mesajlar</h4>
+                <h5>200</h5>
+            </div>
+            <div class="col-md-2">
+                <h4>Son Mesajlar</h4>
+                <h5>200</h5>
+            </div>
+        </div>
+        <!-- panel end-->
+
+    </div>
+
+</div>
+
+
+<!-- PC VE İNTERNET PANEL-->
+<div class="container">
+    <div class="panel ">
+        <div class="panel-heading panelinbasligi ">
+            <a href="#"><i class="fas fa-laptop-code"></i> PC VE İNTERNET </a>
+        </div>
+        <!-- panel start-->
+        <div class="panel-body">
+            <div class="col-md-6">
+
+                <h1 style="color:#ff6102"><i class="fas fa-laptop"></i> DONANIM </h1>
+                <h4>Forumda kategorisi olmayan ve aklınıza gelebilecek tüm paylaşımların yapıldığı forum.</h4>
+            </div>
+            <div class="col-md-2">
+                <h4>Konular</h4>
+                <h5>200</h5>
+            </div>
+            <div class="col-md-2">
+                <h4>Mesajlar</h4>
+                <h5>200</h5>
+            </div>
+            <div class="col-md-2">
+                <h4>Son Mesajlar</h4>
+                <h5>200</h5>
+            </div>
+        </div>
+        <!-- panel end-->
+        <!-- panel start-->
+        <div class="panel-body">
+            <div class="col-md-6">
+
+                <h1 style="color:#ff6102"> <i class="fas fa-laptop"></i> KONU DIŞI </h1>
+                <h4> Twitch yayıncılığı bilgi ve paylaşım forumu </h4>
+            </div>
+            <div class="col-md-2">
+                <h4>Konular</h4>
+                <h5>200</h5>
+            </div>
+            <div class="col-md-2">
+                <h4>Mesajlar</h4>
+                <h5>200</h5>
+            </div>
+            <div class="col-md-2">
+                <h4>Son Mesajlar</h4>
+                <h5>200</h5>
+            </div>
+        </div>
+        <!-- panel end-->
+        <!-- panel start-->
+        <div class="panel-body">
+            <div class="col-md-6">
+
+                <h1 style="color:#ff6102"><i class="fas fa-laptop"></i>GÜNCEL </h1>
+                <h4> Güncel haberler ve gündemi takip edebileceğiniz forum</h4>
+            </div>
+            <div class="col-md-2">
+                <h4>Konular</h4>
+                <h5>200</h5>
+            </div>
+            <div class="col-md-2">
+                <h4>Mesajlar</h4>
+                <h5>200</h5>
+            </div>
+            <div class="col-md-2">
+                <h4>Son Mesajlar</h4>
+                <h5>200</h5>
+            </div>
+        </div>
+        <!-- panel end-->
+        <!-- panel start-->
+        <div class="panel-body">
+            <div class="col-md-6">
+
+                <h1 style="color:#ff6102"><i class="fas fa-laptop"></i>WEB MASTER FORMU </h1>
+                <h4> Webmaster forumu, webmaster içerikleri ve webmaster paylaşımları.</h4>
+            </div>
+            <div class="col-md-2">
+                <h4>Konular</h4>
+                <h5>200</h5>
+            </div>
+            <div class="col-md-2">
+                <h4>Mesajlar</h4>
+                <h5>200</h5>
+            </div>
+            <div class="col-md-2">
+                <h4>Son Mesajlar</h4>
+                <h5>200</h5>
+            </div>
+        </div>
+        <!-- panel end-->
+    </div>
+
+</div>
+
+<!-- DİĞER PANEL-->
+<div class="container">
+    <div class="panel ">
+        <div class="panel-heading panelinbasligi ">
+            <a href="#"><i class="fas fa-otter"></i>DİĞER </a>
+        </div>
+        <!-- panel start-->
+        <div class="panel-body">
+            <div class="col-md-6">
+
+                <h1 style="color:#ff6102"><i class="fas fa-archive"></i> ARŞİV </h1>
+                <h4>Silinen, kullanılmayan ve aktif olmayan eski konular kategorisi.</h4>
+            </div>
+            <div class="col-md-2">
+                <h4>Konular</h4>
+                <h5>200</h5>
+            </div>
+            <div class="col-md-2">
+                <h4>Mesajlar</h4>
+                <h5>200</h5>
+            </div>
+            <div class="col-md-2">
+                <h4>Son Mesajlar</h4>
+                <h5>200</h5>
+            </div>
+        </div>
+        <!-- panel end-->
+
+    </div>
+
+    <div>
+        <a href="@Url.Action("ForumHome", "Forum")">Ana Sayfa</a>
+    </div>
+</div>

@@ -23,7 +23,7 @@ namespace ServiceLayer.Uow
         IBlogCategoryRepository BlogCategory { get; }
 
         IForumCategoryRepository ForumCategory { get; }
-        IForumImageRepository ForumImage { get; }
+       
         IForumPostRepository ForumPost { get; }
         IForumReplyRepository ForumReply { get; }
 
