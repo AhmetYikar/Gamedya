@@ -1,5 +1,4 @@
 ﻿@model IEnumerable<Gamedya.Models.ForumViewModel>
-@using Gamedya.Helper
 
 <table class="table">
     <tr>
@@ -43,7 +42,7 @@
     </td>
     <td>
         <a href="@Url.Action("Details", "Forum",new {id=item.Id})">   @Html.DisplayFor(modelItem => item.ForumCategory.CategoryName) </a>
-    </td>s
+    </td>
 </tr>
     }
 

@@ -17,6 +17,7 @@ namespace Gamedya.Controllers
     {
         // GET: Forum
         private UnitOfWork uow = new UnitOfWork(new GameNewsDbContext());
+
         public ActionResult ForumHome()
         {
             return View();
@@ -73,7 +74,7 @@ namespace Gamedya.Controllers
         {
             using (var uow = new UnitOfWork(new GameNewsDbContext()))
             {
-                IEnumerable<ForumViewModel> blogpost = uow.ForumPost.GetForumWithReplysAndUsers().ToList()
+                IEnumerable<ForumViewModel> forumpost = uow.ForumPost.GetForumWithReplysAndUsers().ToList()
                                                           .Select(a => new ForumViewModel
                                                           {
                                                               Id = a.Id,
@@ -86,10 +87,10 @@ namespace Gamedya.Controllers
                                                           })
                                                           .OrderByDescending(a => a.Id);
 
-                if (blogpost != null)
+                if (forumpost != null)
                 {
                     uow.Dispose();
-                    return blogpost;
+                    return forumpost;
                 }
 
                 return null;
@@ -105,15 +106,19 @@ namespace Gamedya.Controllers
 
             if (latestForums != null && latestForums.Count() > 0)
             {
+
                 IEnumerable<ForumViewModel> forumView = latestForums.Select(a => new ForumViewModel
                 {
                     Id = a.Id,
                     ForumTitle = a.ForumTitle,
-
-                });
-                uow.Dispose();
-                return PartialView(forumView);
-
+                    //ForumUser = a.NewsUser.FullName,
+                    //NewsUserId = a.NewsUserId,
+                    Date = a.Date,
+                    ForumCategory = a.ForumCategory
+            }); 
+                    uow.Dispose();
+                    return PartialView(forumView);
+                
             }
             else
             {

@@ -5,8 +5,15 @@
     <div class="col-md-2">  
     <div class="panel">
         <div class="panel-danger">
-            deneme
-            </div>
+            <dt>
+                @Html.DisplayNameFor(model => model.NewsUser.FullName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.NewsUser.FullName)
+            </dd>
+
+        </div>
         </div>
     </div>
 
@@ -19,10 +26,7 @@
 
             <div>
                 <dl class="text-center" style="margin-top:20px;">
-                    <dt >
-                        @Html.DisplayNameFor(model => model.ForumTitle)
-                    </dt>
-
+                  
                     <dd>
                         @Html.DisplayFor(model => model.ForumTitle)
                     </dd>
@@ -37,16 +41,6 @@
                         @Html.DisplayFor(model => model.Date)
                     </dd>
                     <hr />
-
-                    <dt>
-                        @Html.DisplayNameFor(model => model.NewsUser.FullName)
-                    </dt>
-
-                    <dd>
-                        @Html.DisplayFor(model => model.NewsUser.FullName)
-                    </dd>
-
-
 
                     <dt>
                         @Html.DisplayNameFor(model => model.Content)

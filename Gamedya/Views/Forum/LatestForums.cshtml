@@ -29,7 +29,7 @@
         <tr>
 
             <th>
-                <a href="@Url.Action("Details", "Forum",new {id=item.Id})">   @item.ForumUser </a>
+                <a href="@Url.Action("Details", "Forum",new {id=item.Id})"> @item.ForumUser </a>
             </th>
 
             <td>
@@ -41,7 +41,7 @@
             </td>
 
             <td>
-                <a href="@Url.Action("Details", "Forum",new {id=item.Id})">     @Html.DisplayFor(modelItem => item.Date)</a>
+                <a href="@Url.Action("Details", "Forum",new {id=item.Id})">     @item.Date.ToShortDateString()</a>
             <td>
 
             <td>

@@ -17,7 +17,7 @@ namespace Gamedya.Models
         [Display(Name = "Kategori")]
         public ForumCategory ForumCategory { get; set; }
 
-        [Display(Name = "Yayın Tarihi")]
+        [Display(Name = "Yayın Tarihi")]      
         public DateTime Date { get; set; }
 
         [Display(Name = "Görüntülenme")]
