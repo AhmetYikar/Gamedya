@@ -24,11 +24,10 @@ namespace Entites.Models.ForumModels
         [Display(Name = "Görüntülenme Sayısı")]
         public int ViewCount { get; set; }
 
-        public virtual ICollection<ForumReply> ForumReply { get; set; }
+        public virtual ICollection<ForumReply> ForumReplies { get; set; }
       
         [DataType(DataType.DateTime)]
         public DateTime Date { get; set; }
-
       
         [Display(Name = "Aktif Mi?")]
         public bool IsActive { get; set; }

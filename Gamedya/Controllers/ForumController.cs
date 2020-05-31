@@ -54,7 +54,7 @@ namespace Gamedya.Controllers
             }
 
 
-            var liste = GetBlog().ToList();
+            var liste = GetForum().ToList();
 
 
             if (!string.IsNullOrWhiteSpace(ara))
@@ -70,11 +70,11 @@ namespace Gamedya.Controllers
             return View(liste.ToPagedList(sayfaNumarasi, sayfaBuyuklugu));
         }
 
-        private IEnumerable<ForumViewModel> GetBlog()
+        private IEnumerable<ForumViewModel> GetForum()
         {
             using (var uow = new UnitOfWork(new GameNewsDbContext()))
             {
-                IEnumerable<ForumViewModel> forumpost = uow.ForumPost.GetForumWithReplysAndUsers().ToList()
+                IEnumerable<ForumViewModel> forumposts = uow.ForumPost.GetForumWithRepliesAndUsers().ToList()
                                                           .Select(a => new ForumViewModel
                                                           {
                                                               Id = a.Id,
@@ -82,15 +82,15 @@ namespace Gamedya.Controllers
                                                               Date = a.Date,
                                                               NewsUserId=a.NewsUserId,
                                                               ForumUser = a.NewsUser.FullName,
-                                                              ReplyCount = a.ForumReply.Count(),
+                                                              ReplyCount = a.ForumReplies.Count(),
 
                                                           })
                                                           .OrderByDescending(a => a.Id);
 
-                if (forumpost != null)
+                if (forumposts != null)
                 {
                     uow.Dispose();
-                    return forumpost;
+                    return forumposts;
                 }
 
                 return null;
@@ -154,7 +154,7 @@ namespace Gamedya.Controllers
         #region MostCommented
         public ActionResult MostCommented()
         {
-            IEnumerable<ForumPost> forumPosts = uow.ForumPost.GetForumDetail(a => a.ForumReply.Count() > 0).Take(6).ToList().OrderByDescending(a => a.ForumReply.Count());
+            IEnumerable<ForumPost> forumPosts = uow.ForumPost.GetForumDetail(a => a.ForumReplies.Count() > 0).Take(6).ToList().OrderByDescending(a => a.ForumReplies.Count());
 
             if (forumPosts != null && forumPosts.Count() > 0)
             {
@@ -162,7 +162,7 @@ namespace Gamedya.Controllers
                 {
                     Id = a.Id,
                     ForumTitle = a.ForumTitle,
-                    ReplyCount = a.ForumReply.Count()
+                    ReplyCount = a.ForumReplies.Count()
                 });
                 uow.Dispose();
                 return PartialView(forumView);

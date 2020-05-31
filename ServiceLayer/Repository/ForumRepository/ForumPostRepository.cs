@@ -25,20 +25,20 @@ namespace ServiceLayer.Repository.ForumRepository
         {
             return _context.Set<ForumPost>()                
                 .Include(a => a.ForumCategory)
-                .Include(a => a.ForumReply).Where(predicate);
+                .Include(a => a.ForumReplies).Where(predicate);
         }
 
-        IEnumerable<ForumPost> IForumPostRepository.GetForumWithReply(Expression<Func<ForumPost, bool>> predicate)
+        IEnumerable<ForumPost> IForumPostRepository.GetForumWithReplies(Expression<Func<ForumPost, bool>> predicate)
         {
             return _context.Set<ForumPost>()
-                           .Include(a => a.ForumReply).Where(predicate);
+                           .Include(a => a.ForumReplies).Where(predicate);
         }
 
-        IEnumerable<ForumPost> IForumPostRepository.GetForumWithReplysAndUsers()
+        IEnumerable<ForumPost> IForumPostRepository.GetForumWithRepliesAndUsers()
         {
             return _context.Set<ForumPost>()
                            .Include(a => a.NewsUser)
-                           .Include(a => a.ForumReply);
+                           .Include(a => a.ForumReplies);
         }
     }
 }

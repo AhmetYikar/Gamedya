@@ -11,7 +11,7 @@ namespace ServiceLayer.Repository.ForumRepository
     public interface IForumPostRepository : IRepository<ForumPost>
     {
         IEnumerable<ForumPost> GetForumDetail(Expression<Func<ForumPost, bool>> predicate);
-        IEnumerable<ForumPost> GetForumWithReply(Expression<Func<ForumPost, bool>> predicate);
-        IEnumerable<ForumPost> GetForumWithReplysAndUsers();
+        IEnumerable<ForumPost> GetForumWithReplies(Expression<Func<ForumPost, bool>> predicate);
+        IEnumerable<ForumPost> GetForumWithRepliesAndUsers();
     }
 }
