@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Entity;
 
 namespace ServiceLayer.Repository.ForumRepository
 {
@@ -18,5 +19,6 @@ namespace ServiceLayer.Repository.ForumRepository
 
         public GameNewsDbContext context { get { return _context as GameNewsDbContext; } }
 
+      
     }
 }

@@ -13,5 +13,6 @@ namespace ServiceLayer.Repository.ForumRepository
         IEnumerable<ForumPost> GetForumDetail(Expression<Func<ForumPost, bool>> predicate);
         IEnumerable<ForumPost> GetForumWithReplies(Expression<Func<ForumPost, bool>> predicate);
         IEnumerable<ForumPost> GetForumWithRepliesAndUsers();
+        IEnumerable<ForumPost> GetForumcategoryAndUsers();
     }
 }

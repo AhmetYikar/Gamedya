@@ -9,5 +9,6 @@ namespace ServiceLayer.Repository.ForumRepository
 {
     public interface IForumCategoryRepository : IRepository<ForumCategory>
     {
+        
     }
 }

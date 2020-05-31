@@ -13,7 +13,7 @@ namespace GameAdmin.Controllers
     [Authorize(Roles = "admin,yazar")]
     public class ForumCategoryController : Controller
     {
-
+        private UnitOfWork uow = new UnitOfWork(new GameNewsDbContext());
         // GET: ForumCategory
         #region index
 
@@ -50,15 +50,17 @@ namespace GameAdmin.Controllers
 
             using (var uow = new UnitOfWork(new GameNewsDbContext()))
             {
-                ForumCategory forumcategories = uow.ForumCategory.GetById(id);
+              
 
-                if (forumcategories == null)
+                ForumCategory forumcategory = uow.ForumCategory.GetById(id);
+
+                if (forumcategory == null)
                 {
                     return null;
                 }
+                ViewBag.ParentName = uow.ForumCategory.GetById(forumcategory.ParentId).CategoryName;
 
-
-                return View(forumcategories);
+                return View(forumcategory);
 
             }
         }
@@ -69,6 +71,7 @@ namespace GameAdmin.Controllers
         // GET: NewsCategory/Create
         public ActionResult Create()
         {
+            ViewBag.ParentId = new SelectList(uow.ForumCategory.GetAll(), "Id", "CategoryName", string.Empty);
             return View();
         }
 
@@ -105,21 +108,21 @@ namespace GameAdmin.Controllers
         // GET: NewsCategory/Edit/5
         public ActionResult Edit(int? id)
         {
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            using (var uow = new UnitOfWork(new GameNewsDbContext()))
-            {
+           
                 ForumCategory forumcategories = uow.ForumCategory.GetById(id);
 
                 if (forumcategories == null)
                 {
                     return null;
                 }
-
+                ViewBag.ParentId = new SelectList(uow.ForumCategory.GetAll(), "Id", "CategoryName", string.Empty);
                 return View(forumcategories);
-            }
+            
 
         }
 

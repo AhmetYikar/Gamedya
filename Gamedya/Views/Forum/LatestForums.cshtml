@@ -18,7 +18,7 @@
         </th>
 
         <th>
-            @Html.DisplayNameFor(model => model.ForumCategory.CategoryName)
+            @Html.DisplayNameFor(model => model.CategoryName)
         </th>
 
         <th></th>
@@ -45,7 +45,7 @@
             <td>
 
             <td>
-                <a href="@Url.Action("Details", "Forum",new {id=item.Id})">    @Html.DisplayFor(modelItem => item.ForumCategory.CategoryName)</a>
+                <a href="@Url.Action("Details", "Forum",new {id=item.Id})">    @Html.DisplayFor(modelItem => item.CategoryName)</a>
             </td>
 
         </tr>

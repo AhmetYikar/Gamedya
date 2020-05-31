@@ -15,7 +15,7 @@ namespace Gamedya.Models
         public string ForumTitle { get; set; }
 
         [Display(Name = "Kategori")]
-        public ForumCategory ForumCategory { get; set; }
+        public string CategoryName { get; set; }
 
         [Display(Name = "Yayın Tarihi")]      
         public DateTime Date { get; set; }
@@ -25,7 +25,7 @@ namespace Gamedya.Models
 
         public string NewsUserId { get; set; }
 
-        public string ForumUser { get; set; }
+        public string ForumUser { get; set; } = "";
 
         [Display(Name = "Yorum Sayısı")]
         public int ReplyCount { get; set; }

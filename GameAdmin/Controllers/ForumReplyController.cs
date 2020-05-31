@@ -44,8 +44,8 @@ namespace GameAdmin.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            ForumPost forumPost = uow.ForumPost.GetForumWithReply(a => a.Id == id).FirstOrDefault();
-            IEnumerable<ForumReply> comments = forumPost.ForumReply.ToList();
+            ForumPost forumPost = uow.ForumPost.GetForumWithReplies(a => a.Id == id).FirstOrDefault();
+            IEnumerable<ForumReply> comments = forumPost.ForumReplies.ToList();
             if (comments != null)
             {
                 comments.FirstOrDefault().ForumPost = forumPost;

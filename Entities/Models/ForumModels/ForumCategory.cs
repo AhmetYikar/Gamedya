@@ -19,7 +19,7 @@ namespace Entites.Models.ForumModels
         [MaxLength(255, ErrorMessage = "255 karakterden fazla olamaz")]
         [Display(Name = "Kategori Açıklaması")]
         public string Description { get; set; }
-        [Display(Name = "Kategori Alt Kategori Id")]
+        [Display(Name = "Üst Kategori")]
         public int? ParentId { get; set; }
 
         public ICollection<ForumCategory> ForumCategories { get; set; }
