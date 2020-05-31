@@ -8,13 +8,8 @@
 <div class="box box-primary">
     <div class="box-body box-profile">
         <h3 class="profile-username text-center">Forum Detayları</h3>
-        <dt>
-            @Html.DisplayNameFor(model => model.TinyImagePath)
-        </dt>
-
-        <dd>
-            <img src="@Html.DisplayFor(model => model.TinyImagePath)">
-        </dd>
+      
+        
 
         <ul class="list-group list-group-unbordered">
             <li class="list-group-item">
@@ -36,15 +31,7 @@
                 </dd>
 
             </li>
-            <li class="list-group-item">
-                <dt>
-                    @Html.DisplayNameFor(model => model.Summary)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Summary)
-                </dd>
-            </li>
+         
 
             <li class="list-group-item">
                 <dt>
@@ -67,16 +54,7 @@
                 </dd>
 
             </li>
-            <li class="list-group-item">
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.EditDate)
-                </dt>
-
-                <dd>
-                    @Model.EditDate.ToString()
-                </dd>
-            </li>
+          
             <li class="list-group-item">
                 <dt>
                     @Html.DisplayNameFor(model => model.ViewCount)

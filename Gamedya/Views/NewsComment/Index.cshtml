@@ -12,22 +12,26 @@
                         <img alt="64x64" class="media-object" data-src="~Template/assets/img/img-author1.jpg" src="~Template/assets/img/img-author1.jpg" data-holder-rendered="true">
                     </a>
                 </div>
-                <div class="media-body">
+                <div class="media-body col-md-8">
                     <h2 class="media-heading">@item.GuestName</h2>
                    @item.Content
+                    </div>
 
-                <div class="comment_article_social">                 
+                <div class="comment_article_social col-md-4 pull-right">
+                    <i class="fas fa-thumbs-up" onclick="AddLike(@item.Id)" style="cursor:pointer"> <d  id="@item.Id"> @item.LikeCount.ToString()</d> </i>
+                   
 
-                    <p id="@item.Id" onclick="AddLike(@item.Id)" style="cursor:pointer" class="fa fa-thumbs-o-up">@item.LikeCount.ToString() </p>&nbsp
-                    <p id="@dislikeId" onclick="AddDislike(@item.Id)" style="cursor:pointer" class="fa fa-thumbs-o-down"> @item.UnLikeCount.ToString()</p>
+                    <i class="far fa-thumbs-up"  onclick="AddDislike(@item.Id)" style="cursor:pointer"> <d id="@dislikeId"> @item.UnLikeCount.ToString() </d> </i>
+
                     <br />
                     <div class="item_meta">
-                        @Html.DisplayFor(modelItem => item.Date)                    
+                        @Html.DisplayFor(modelItem => item.Date)
                     </div>
-                 
+
                 </div>
                 </div>
-            </div>
+          
+
         }
         </div><!--readers_comment-->
 

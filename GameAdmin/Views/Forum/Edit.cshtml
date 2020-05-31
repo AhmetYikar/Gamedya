@@ -26,14 +26,7 @@
                     </div>
                 </div>
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Summary, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-12">
-                        @Html.EditorFor(model => model.Summary, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Summary, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
+               
                 <div class="form-group">
                     @Html.LabelFor(model => model.Content, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-12">
@@ -56,22 +49,6 @@
                         <div class="checkbox">
                             @Html.EditorFor(model => model.IsActive)
                             @Html.ValidationMessageFor(model => model.IsActive, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.TinyImagePath, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-12">
-                        <img src="@Html.DisplayFor(model => model.TinyImagePath)">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-12">
-                        <div class="input-group">
-                            <div class="custom-file-input">
-                                <input class="custom-file-input" name="file" id="exampleInputFile" type="file">
-                            </div>
                         </div>
                     </div>
                 </div>

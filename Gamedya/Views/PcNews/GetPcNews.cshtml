@@ -43,8 +43,12 @@
                     </h3>
                     @if (@Model[i].Summary.Count() > 50)
                     {
-                        <a href="@Url.Action("Details", "News",new {id=Model[i].GenerateSlug()})">
-                            <p>@Model[i].Summary.Substring(0, 50)</p></a>
+                <div >
+                    <a  href="@Url.Action("Details", "News",new {id=Model[i].GenerateSlug()})">
+                        <p >@Model[i].Summary.Substring(0, 50)</p>
+                    </a>
+                </div>
+                       
                             }
                     </div><!--media-->
                 }

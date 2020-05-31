@@ -127,7 +127,7 @@ namespace GameAdmin.Controllers
 
         public ActionResult Create()
         {
-            ViewBag.ForumCategoryId = new SelectList(uow.ForumCategory.GetAll(), "Id", "CategoryName",string.Empty);
+            ViewBag.ForumCategoryId = new SelectList(uow.ForumCategory.GetAll(), "Id", "CategoryName", string.Empty);
             return View();
 
         }
@@ -135,17 +135,18 @@ namespace GameAdmin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,ForumTitle,Content,ForumCategoryId,Date,IsActive")] ForumPost forumPost)
         {
-          
+
             if (ModelState.IsValid)
             {
                 uow.ForumPost.Insert(new ForumPost
                 {
-                    Date = DateTime.Now,                                     
-                    ForumTitle = forumPost.ForumTitle,                   
+                    NewsUserId = User.GetUserId(),
+                    Date = DateTime.Now,
+                    ForumTitle = forumPost.ForumTitle,
                     Content = forumPost.Content,
                     ForumCategoryId = forumPost.ForumCategoryId,
                     IsActive = forumPost.IsActive,
-                  
+
                 });
                 uow.Complete();
                 return RedirectToAction("Index");
@@ -185,7 +186,7 @@ namespace GameAdmin.Controllers
                     ViewBag.ForumCategoryId = new SelectList(uow.ForumCategory.GetAll(), "Id", "CategoryName", forumpost.ForumCategoryId);
                     return View(forumpost);
                 }
-              
+
                 forumpostdb.ForumTitle = forumpost.ForumTitle;
                 forumpostdb.Content = forumpost.Content;
                 forumpostdb.ForumCategoryId = forumpost.ForumCategoryId;

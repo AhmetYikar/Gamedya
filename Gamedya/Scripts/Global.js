@@ -32,8 +32,7 @@ function AddLike(id) {
             if (data>0) {
                 $("#" + id).empty(),
                     $("#" + id).append(data),
-                    $("#" + id).css('color', 'green'),
-                    $("#" + id).css('font-size', '16px');
+                    $("#" + id).css('color', 'green');                 
             }     
           
         } 
@@ -51,8 +50,8 @@ function AddDislike(id) {
             if (data>0) {
                 $("#dis" + id).empty(),
                     $("#dis" + id).append(data),
-                    $("#dis" + id).css('color', 'maroon'),
-                    $("#dis" + id).css('font-size', '16px');
+                    $("#dis" + id).css('color', 'maroon');
+                   
             }                     
         }
     })
