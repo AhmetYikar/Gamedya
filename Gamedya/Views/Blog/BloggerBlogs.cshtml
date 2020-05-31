@@ -20,6 +20,8 @@
 <div class="container">
     <div class="col-md-9">
         <a class="btn btn-primary" href="@Url.Action("Create", "Blog")">Blog Yaz</a>
+        <a class="btn btn-warning" href="@Url.Action("BloggersList", "Blog")">Blog Yazarları</a>
+
         <div class="row">
             @foreach (var item in Model)
             {

@@ -13,5 +13,7 @@ namespace ServiceLayer.Repository.UserRepository
         IEnumerable<NewsUser> UserWithGames();
         IEnumerable<NewsUser> UserWithRoles(Expression<Func<NewsUser, bool>> predicate);
 
+        IEnumerable<NewsUser> UserWithBlogPosts(Expression<Func<NewsUser, bool>> predicate);
+
     }
 }

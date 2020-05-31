@@ -47,7 +47,9 @@
                             @Html.Raw(@Model.Content)
                         </div><!--item_content-->
                         <p class="fa fa-eye"> </p> @Model.ViewCount
-
+                    <p>
+                        <a class="btn btn-warning" href="@Url.Action("Create", "Message",new {receieverId=Model.NewsUserId })">Yazara mesaj gönder</a>
+                    </p>
                     </div><!--item_wrapper-->
                 </div><!--feature_news_item-->
 

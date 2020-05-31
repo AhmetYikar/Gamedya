@@ -96,6 +96,27 @@ namespace Gamedya.Controllers
         }
         #endregion
 
+        #region BloggersList
+        public ActionResult BloggersList()
+        {
+            IEnumerable<NewsUser> bloggers = uow.NewsUser.UserWithBlogPosts(a => a.BlogPosts.Count()>0 && a.BlogPosts.Any(x=>x.IsOk==true) ).OrderByDescending(a => a.BlogPosts.Count());
+
+            IEnumerable<BloggerViewModel> bloggersV = bloggers
+                                                  .Select(a => new BloggerViewModel 
+                                                  {
+                                                      Id=a.Id,BloggerName=a.FullName, BlogCount=a.BlogPosts.Count() 
+                                                  });
+
+            if (bloggers != null)
+            {               
+                return View(bloggersV);
+            }
+            else
+            {
+                return HttpNotFound();
+            }
+        }
+        #endregion
 
         #region Create
         [Authorize]
@@ -175,7 +196,7 @@ namespace Gamedya.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            IEnumerable<BlogViewModel> blogPosts = uow.BlogPost.GetAll().Where(a => a.NewsUserId == userId && a.IsOk == true).Take(6)
+            IEnumerable<BlogViewModel> blogPosts = uow.BlogPost.Where(a => a.NewsUserId == userId && a.IsOk == true).Take(6)
                                                           .Select(a => new BlogViewModel
                                                           {
                                                               Id = a.Id,
@@ -197,7 +218,7 @@ namespace Gamedya.Controllers
         public ActionResult LatestBlogs()
         {
 
-            IEnumerable<BlogPost> latestBlogs = uow.BlogPost.GetAll().Where(a=>a.IsOk == true).ToList().OrderByDescending(a => a.Id).Take(6);
+            IEnumerable<BlogPost> latestBlogs = uow.BlogPost.Where(a=>a.IsOk == true).ToList().OrderByDescending(a => a.Id).Take(6);
 
             if (latestBlogs != null && latestBlogs.Count() > 0)
             {
@@ -221,7 +242,7 @@ namespace Gamedya.Controllers
         #region Popular
         public ActionResult Popular()
         {
-            IEnumerable<BlogPost> popularBlogs = uow.BlogPost.GetAll().Where(a=>a.IsOk == true).ToList().OrderByDescending(a => a.ViewCount).Take(6);
+            IEnumerable<BlogPost> popularBlogs = uow.BlogPost.Where(a=>a.IsOk == true).ToList().OrderByDescending(a => a.ViewCount).Take(6);
 
             if (popularBlogs != null && popularBlogs.Count() > 0)
             {
@@ -245,7 +266,7 @@ namespace Gamedya.Controllers
         #region BloggersPopularBlogs
         public ActionResult BloggersPopularBlogs(string userId)
         {
-            IEnumerable<BlogPost> popularBlogs = uow.BlogPost.GetAll().Where(a => a.NewsUserId == userId && a.IsOk == true).ToList().OrderByDescending(a => a.ViewCount).Take(6);
+            IEnumerable<BlogPost> popularBlogs = uow.BlogPost.Where(a => a.NewsUserId == userId && a.IsOk == true).ToList().OrderByDescending(a => a.ViewCount).Take(6);
 
             if (popularBlogs.Count()>0)
             {

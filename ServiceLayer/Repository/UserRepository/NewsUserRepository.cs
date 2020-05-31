@@ -30,5 +30,10 @@ namespace ServiceLayer.Repository.UserRepository
         {
             return _context.Set<NewsUser>().Include(a => a.Roles).Where(predicate);
         }
+
+        public IEnumerable<NewsUser> UserWithBlogPosts(Expression<Func<NewsUser, bool>> predicate)
+        {
+            return _context.Set<NewsUser>().Include(a => a.BlogPosts).Where(predicate);
+        }
     }
 }

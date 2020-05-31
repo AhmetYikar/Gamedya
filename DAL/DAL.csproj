@@ -55,23 +55,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context\GameNewsDbContext.cs" />
-    <Compile Include="Migrations\202005291159100_ilk.cs" />
-    <Compile Include="Migrations\202005291159100_ilk.Designer.cs">
-      <DependentUpon>202005291159100_ilk.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202005291344101_iki.cs" />
-    <Compile Include="Migrations\202005291344101_iki.Designer.cs">
-      <DependentUpon>202005291344101_iki.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202005292038124_uc.cs" />
-    <Compile Include="Migrations\202005292038124_uc.Designer.cs">
-      <DependentUpon>202005292038124_uc.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202005311440390_jj.cs" />
-    <Compile Include="Migrations\202005311440390_jj.Designer.cs">
-      <DependentUpon>202005311440390_jj.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -83,20 +66,6 @@
       <Project>{95689E0C-F32A-477B-92DC-CADEF9AEDFF4}</Project>
       <Name>Entites</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\202005291159100_ilk.resx">
-      <DependentUpon>202005291159100_ilk.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202005291344101_iki.resx">
-      <DependentUpon>202005291344101_iki.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202005292038124_uc.resx">
-      <DependentUpon>202005292038124_uc.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202005311440390_jj.resx">
-      <DependentUpon>202005311440390_jj.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

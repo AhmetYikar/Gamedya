@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Gamedya.Models.BloggerViewModel>
+
+@{
+    ViewBag.Title = "BloggersList";
+}
+
+<div class="container">
+    <p>
+        <a class="btn btn-primary" href="@Url.Action("Create", "Blog")">Blog Yaz</a>
+    </p>
+</div>
+<div class="container">
+
+    <h2>Blog Yazarları </h2>
+
+
+    <table class="table">
+        <tr>
+            <th>
+                Blogger Adı
+            </th>
+            <th>
+                Blog Sayısı
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink(item.BloggerName, "BloggerBlogs", new { userId = item.Id })
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BlogCount)
+                </td>
+
+            </tr>
+        }
+
+    </table>
+</div>

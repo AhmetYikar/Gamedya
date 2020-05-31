@@ -8,15 +8,37 @@
     <div class="container">
 
         <div id="receiver" class="form-horizontal">
-            <h2>Mesaj gönderilecek kişiyi seçiniz</h2>
+            @{
+                if (ViewBag.Receiver != null)
+                {
+                    <h2>Mesaj gönderilecek kişi</h2>
+                }
+                else
+                {
+                    <h2>Mesaj gönderilecek kişiyi seçiniz</h2>
+                }
+            }
             <hr />
             <p class="text-danger">@ViewBag.Message </p>
 
             <div class="form-group">
                 @Html.LabelFor(model => model.NewsUserId, "Alıcı", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
+                    @{
+                        if (ViewBag.Receiver != null)
+                        {
+                                        <d>@ViewBag.Receiver</d>
+                            <p hidden>
+                                @Html.DropDownList("NewsUserId", null, htmlAttributes: new { @class = "form-control", id = "dropDown" })
+                            </p>
 
-                    @Html.DropDownList("NewsUserId", null, htmlAttributes: new { @class = "form-control", id = "dropDown" })
+                        }
+                        else
+                        {
+                            @Html.DropDownList("NewsUserId", null, htmlAttributes: new { @class = "form-control", id = "dropDown" })
+
+                        }
+                    }
 
                     @Html.ValidationMessageFor(model => model.NewsUserId, "", new { @class = "text-danger" })
                 </div>

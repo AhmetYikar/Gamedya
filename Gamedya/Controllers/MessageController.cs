@@ -8,7 +8,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 
 namespace Gamedya.Controllers
@@ -96,10 +95,19 @@ namespace Gamedya.Controllers
         }
 
         // GET: MessageRecipient/Create
-        public ActionResult Create()
+        public ActionResult Create(string receieverId)
         {
-            ViewBag.NewsUserId = new SelectList(uow.NewsUser.GetAll(), "Id", "Email");
-            return View();
+            if (receieverId == null)
+            {
+                ViewBag.NewsUserId = new SelectList(uow.NewsUser.GetAll(), "Id", "Email");
+                return View();
+            }
+            else
+            {
+                ViewBag.Receiver = uow.NewsUser.Where(a => a.Id == receieverId).FirstOrDefault().FullName;
+                ViewBag.NewsUserId = new SelectList(uow.NewsUser.GetAll(), "Id", "Email", receieverId);
+                return View();
+            }
         }
 
         // GET: Message/Create

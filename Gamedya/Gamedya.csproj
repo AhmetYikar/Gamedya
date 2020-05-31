@@ -209,6 +209,7 @@
     <Compile Include="Helper\SeoUrlHelper.cs" />
     <Compile Include="Helper\Subs.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\BloggerViewModel.cs" />
     <Compile Include="Models\BlogViewModel.cs" />
     <Compile Include="Models\ForumViewModel.cs" />
     <Compile Include="Models\NewsViewWeb.cs" />
@@ -2229,6 +2230,7 @@
     <Content Include="Views\Forum\Popular.cshtml" />
     <Content Include="Views\Forum\MostCommented.cshtml" />
     <Content Include="Views\Forum\Details.cshtml" />
+    <Content Include="Views\Blog\BloggersList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

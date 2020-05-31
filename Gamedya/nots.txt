@@ -12,4 +12,5 @@
         *login ve register tasarımı ve assetteki fazlalıklar atılacak.
         *seoları unutmayalım.
         *Blog create sayfasının tasarımı yapılacak
+        *BloggersList sayfasının tasarımı düzeltilecek
         *IsOk kontrolleri ve authorise kontrolleri unutmayalım
