@@ -14,15 +14,16 @@
                         </div> <!--item_img-->
                         <div class="item_title_date">
                             <div class="news_item_title">
-                                <h2><a href="single.html">@Model.First().Title.ToUpper()</a></h2>
+                                <h2><a href="@Url.Action("Details", "News", new { id = Model.First().GenerateSlug()})">@Model.First().Title.ToUpper()</a></h2>
                             </div>
-                            <div class="item_meta"><a href="#">@Model.First().Date.ToShortDateString()</a> by:<a href="#"> Yazar adı gelecek</a>
+                            <div class="item_meta">
+                                <a href="@Url.Action("Details", "News", new { id = Model.First().GenerateSlug()})">@Model.First().Date.ToShortDateString()</a> by:<a href="#"> Yazar adı gelecek</a>
                             </div>
 
                         </div> <!--item_title_date-->
                     </div>	<!--item_wrapper-->
                     <div class="item_content">
-                        @Model.First().Summary
+                        <a href="@Url.Action("Details", "News", new { id = Model.First().GenerateSlug()})"> @Model.First().Summary</a>
                     </div>
 
                 </div>
@@ -37,14 +38,14 @@
                             </div> <!--item_img-->
                             <div class="item_title_date">
                                 <div class="news_item_title">
-                                    <h2><a href="#">@Subs.Sub(Model[i].Title,30).ToUpper()</a></h2>
+                                    <h2><a href="@Url.Action("Details", "News",new {id=Model[i].GenerateSlug()})">@Subs.Sub(Model[i].Title, 30).ToUpper()</a></h2>
                                 </div>
-                                <div class="item_meta"><a href="#">@Model[i].Date.ToShortDateString()</a> by:<a href="#"> Yazar adı gelecek</a></div>
+                                <div class="item_meta"><a href="@Url.Action("Details", "News",new {id=Model[i].GenerateSlug()})">@Model[i].Date.ToShortDateString()</a> by:<a href="#"> Yazar adı gelecek</a></div>
                             </div> <!--item_title_date-->
                         </div> <!--item_wrapper-->
 
                         <div class="item_content">
-                           @Subs.Sub(Model[i].Summary,150)
+                            <a href="@Url.Action("Details", "News",new {id=Model[i].GenerateSlug()})"> @Subs.Sub(Model[i].Summary, 150) </a>
                         </div>
 
                     </div>

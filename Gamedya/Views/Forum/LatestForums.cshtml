@@ -37,7 +37,7 @@
             </td>
 
             <td>
-                <a href="@Url.Action("Details", "Forum",new {id=item.Id})">   @Html.DisplayFor(modelItem => item.ViewCount) </a>
+               @item.ViewCount
             </td>
 
             <td>
@@ -52,3 +52,5 @@
     }
 
 </table>
+
+

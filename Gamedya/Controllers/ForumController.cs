@@ -2,6 +2,7 @@
 using Entites.Models.ForumModels;
 using Gamedya.Helper;
 using Gamedya.Models;
+using Microsoft.Ajax.Utilities;
 using PagedList;
 using ServiceLayer.Uow;
 using System;
@@ -20,7 +21,24 @@ namespace Gamedya.Controllers
 
         public ActionResult ForumHome()
         {
-            return View();
+            var forumPost = uow.ForumPost.GetAll();
+            ForumIndexViewModel model = new ForumIndexViewModel
+            {
+                ForumTitleCount = uow.ForumPost.GetAll().Count(),
+                ReplyCount = uow.ForumReply.GetAll().Count(),
+                ForumCount = uow.ForumPost.GetAll().Count(),
+                LastPost = uow.ForumPost.Where(a => a.ForumTitle == a.ForumTitle).LastOrDefault().ForumTitle
+
+
+            };
+            if (ModelState.IsValid)
+            {
+                return View(model);
+            }
+            return null;
+
+
+
         }
 
 
@@ -80,7 +98,7 @@ namespace Gamedya.Controllers
                                                               Id = a.Id,
                                                               ForumTitle = a.ForumTitle,
                                                               Date = a.Date,
-                                                              NewsUserId=a.NewsUserId,
+                                                              NewsUserId = a.NewsUserId,
                                                               ForumUser = a.NewsUser.FullName,
                                                               ReplyCount = a.ForumReplies.Count(),
 
@@ -113,11 +131,14 @@ namespace Gamedya.Controllers
                     ForumTitle = a.ForumTitle,
                     ForumUser = a.NewsUser.FullName,
                     Date = a.Date,
-                    CategoryName = a.ForumCategory.CategoryName
+                    CategoryName = a.ForumCategory.CategoryName,
+
+
                 });
+
                 uow.Dispose();
                 return PartialView(forumView);
-                
+
             }
             else
             {
@@ -247,6 +268,36 @@ namespace Gamedya.Controllers
 
         }
 
+        #endregion
+
+        #region LatesForums
+        public ActionResult GameReviews()
+        {
+
+            IEnumerable<ForumPost> gamereview = uow.ForumPost.GetForumcategoryAndUsers().ToList().OrderByDescending(a => a.Id);
+
+            if (gamereview != null)
+            {
+
+                IEnumerable<ForumViewModel> forumView = gamereview.Select(a => new ForumViewModel
+                {
+                    Id = a.Id,
+                    ForumTitle = a.ForumTitle,
+                    ForumUser = a.NewsUser.FullName,
+                    Date = a.Date,
+                    CategoryName = a.ForumCategory.CategoryName,
+
+                });
+
+                uow.Dispose();
+                return PartialView(forumView);
+
+            }
+            else
+            {
+                return null;
+            }
+        }
         #endregion
     }
 }

@@ -1,4 +1,6 @@
-﻿
+﻿@model Gamedya.Models.ForumIndexViewModel
+
+
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 
@@ -151,20 +153,20 @@
         <div class="panel-body">
             <div class="col-md-6">
 
-                <h1 style="color:#ff6102"> <i class="fas fa-gamepad"></i> OYUN İNCELEMELERİ </h1>
+                <a href="@Url.Action("GameReviews","Forum")"> <h1 style="color:#ff6102"> <i class="fas fa-gamepad"></i> OYUN İNCELEMELERİ </h1>  </a>
                 <h4>Oyun mu arıyorsun? veya bir oyun hakkında incelemeleri mi görmek istiyorsun? Bu kategoriden oyun incelemelerini görebilir ve oyunlar hakkında yorumları okuyabilirsin.</h4>
             </div>
             <div class="col-md-2">
                 <h4>Konular</h4>
-                <h5>200</h5>
+                <h5>@Model.ForumCount</h5>
             </div>
             <div class="col-md-2">
                 <h4>Mesajlar</h4>
-                <h5>200</h5>
+                <h5>@Model.ReplyCount</h5>
             </div>
             <div class="col-md-2">
                 <h4>Son Mesajlar</h4>
-                <h5>200</h5>
+                <h5>@Model.LastPost</h5>
             </div>
         </div>
         <!-- panel end-->
@@ -172,7 +174,9 @@
         <div class="panel-body">
             <div class="col-md-6">
 
-                <h1 style="color:#ff6102"> <i class="fas fa-gamepad"></i> OYUN REHBERİ </h1>
+                <a href="@Url.Action("GameReviews","Forum")">
+                    <h1 style="color:#ff6102"> <i class="fas fa-gamepad"></i> OYUN REHBERİ </h1>
+                </a>
                 <h4> Oyunlar hakkında bilgi dolu rehberleri sayesinde oyunlar çok zevkli olacak!  </h4>
 
             </div>
@@ -194,7 +198,9 @@
         <div class="panel-body">
             <div class="col-md-6">
 
-                <h1 style="color:#ff6102"> <i class="fas fa-gamepad"></i> OYUN HABERLERİ </h1>
+                <a href="@Url.Action("GameReviews","Forum")">
+                    <h1 style="color:#ff6102"> <i class="fas fa-gamepad"></i> OYUN HABERLERİ </h1>
+                </a>
                 <h4>Oyun haberleri, yeni çıkan oyunlar ve oyun güncellemeleri</h4>
 
             </div>
@@ -216,7 +222,9 @@
         <div class="panel-body">
             <div class="col-md-6">
 
-                <h1 style="color:#ff6102"> <i class="fas fa-gamepad"></i> OYUN SORUNLARI VE YARDIM </h1>
+                <a href="@Url.Action("GameReviews","Forum")">
+                    <h1 style="color:#ff6102"> <i class="fas fa-gamepad"></i> OYUN SORUNLARI VE YARDIM </h1>
+                </a>
                 <h4>Oyunlarla ilgili sorun mu yaşıyorsunuz. Bu forumda oyun sorunlarına dair her şeyi bulabilir ve yardım alabilirsiniz. </h4>
 
             </div>
@@ -238,7 +246,9 @@
         <div class="panel-body">
             <div class="col-md-6">
 
-                <h1 style="color:#ff6102"> <i class="fas fa-gamepad"></i> SİSTEM GEREKSİNİMLERİ </h1>
+                <a href="@Url.Action("GameReviews","Forum")">
+                    <h1 style="color:#ff6102"> <i class="fas fa-gamepad"></i> SİSTEM GEREKSİNİMLERİ </h1>
+                </a>
                 <h4>Aklınıza gelebilecek tüm oyunların sistem gereksinimlerini bulabileceğiniz kategori.</h4>
 
             </div>
@@ -260,7 +270,9 @@
         <div class="panel-body">
             <div class="col-md-6">
 
-                <h1 style="color:#ff6102"> <i class="fas fa-gamepad"></i> OYUN MEDYA </h1>
+                <a href="@Url.Action("GameReviews","Forum")">
+                    <h1 style="color:#ff6102"> <i class="fas fa-gamepad"></i> OYUN MEDYA </h1>
+                </a>
                 <h4>Oyun ekran görüntüleri, oyun resimleri ve oyun videoları</h4>
 
             </div>
@@ -282,7 +294,9 @@
         <div class="panel-body">
             <div class="col-md-6">
 
-                <h1 style="color:#ff6102"> <i class="fas fa-gamepad"></i>KONSOLLAR</h1>
+                <a href="@Url.Action("GameReviews","Forum")">
+                    <h1 style="color:#ff6102"> <i class="fas fa-gamepad"></i>KONSOLLAR</h1>
+                </a>
                 <h4>Oyun konsolları paylaşım forumu</h4>
 
             </div>
@@ -314,7 +328,9 @@
         <div class="panel-body">
             <div class="col-md-6">
 
-                <h1 style="color:#ff6102"> <i class="fas fa-puzzle-piece"></i> KNIGHT ONLİNE </h1>
+                <a href="@Url.Action("GameReviews","Forum")">
+                    <h1 style="color:#ff6102"> <i class="fas fa-puzzle-piece"></i> KNIGHT ONLİNE </h1>
+                </a>
                 <h4> Knıght Online hakkında tüm paylaşımlarını burada görebilir ve paylaşabilirsiniz.</h4>
             </div>
             <div class="col-md-2">
@@ -335,7 +351,9 @@
         <div class="panel-body">
             <div class="col-md-6">
 
-                <h1 style="color:#ff6102"> <i class="fas fa-puzzle-piece"></i> CS GO ONLİNE </h1>
+                <a href="@Url.Action("GameReviews","Forum")">
+                    <h1 style="color:#ff6102"> <i class="fas fa-puzzle-piece"></i> CS GO ONLİNE </h1>
+                </a>
                 <h4> CS GO hakkında tüm paylaşımlarını burada görebilir ve paylaşabilirsiniz.  </h4>
             </div>
             <div class="col-md-2">
@@ -356,7 +374,9 @@
         <div class="panel-body">
             <div class="col-md-6">
 
-                <h1 style="color:#ff6102"><i class="fas fa-puzzle-piece"></i> PUB G </h1>
+                <a href="@Url.Action("GameReviews","Forum")">
+                    <h1 style="color:#ff6102"><i class="fas fa-puzzle-piece"></i> PUB G </h1>
+                </a>
                 <h4>Çoğu oyunda gördüğümüz Battle Royal modunu yaratan Pubg hakkında paylaşımları burada bulabilirsiniz.</h4>
 
             </div>
@@ -378,7 +398,9 @@
         <div class="panel-body">
             <div class="col-md-6">
 
-                <h1 style="color:#ff6102"> <i class="fas fa-puzzle-piece"></i>MİNECRAFT </h1>
+                <a href="@Url.Action("GameReviews","Forum")">
+                    <h1 style="color:#ff6102"> <i class="fas fa-puzzle-piece"></i>MİNECRAFT </h1>
+                </a>
                 <h4>Minecraft hakkında aklınıza gelebilecek tüm paylaşımları Minecraft forumunda bulabilirsiniz.</h4>
 
             </div>
@@ -400,7 +422,9 @@
         <div class="panel-body">
             <div class="col-md-6">
 
-                <h1 style="color:#ff6102"> <i class="fas fa-puzzle-piece"></i> MOBİL OYUNLAR </h1>
+                <a href="@Url.Action("GameReviews","Forum")">
+                    <h1 style="color:#ff6102"> <i class="fas fa-puzzle-piece"></i> MOBİL OYUNLAR </h1>
+                </a>
                 <h4>Mobil oyunlar, apklar ve mobil oyun haberleri.</h4>
 
             </div>
@@ -422,7 +446,9 @@
         <div class="panel-body">
             <div class="col-md-6">
 
-                <h1 style="color:#ff6102"><i class="fas fa-puzzle-piece"></i> DİĞER ÇEVRİMİÇİ OYUNLAR</h1>
+                <a href="@Url.Action("GameReviews","Forum")">
+                    <h1 style="color:#ff6102"><i class="fas fa-puzzle-piece"></i> DİĞER ÇEVRİMİÇİ OYUNLAR</h1>
+                </a>
                 <h4>Kategorisi olmayan diğer çevrimiçi oyunlar forumu</h4>
 
             </div>
@@ -444,7 +470,9 @@
         <div class="panel-body">
             <div class="col-md-6">
 
-                <h1 style="color:#ff6102"> <i class="fas fa-puzzle-piece"></i> TARAYICI TABANLI OYUNLAR</h1>
+                <a href="@Url.Action("GameReviews","Forum")">
+                    <h1 style="color:#ff6102"> <i class="fas fa-puzzle-piece"></i> TARAYICI TABANLI OYUNLAR</h1>
+                </a>
                 <h4>Bilgisayara indirmeden sadece İnternet üzerinden oynanan tarayıcı tabanlı oyunlar forumu.</h4>
 
             </div>
@@ -476,7 +504,9 @@
         <div class="panel-body">
             <div class="col-md-6">
 
-                <h1 style="color:#ff6102"><i class="fab fa-fort-awesome-alt"></i> COUNTER STRİKE GLOBAL OFFENSİVE </h1>
+                <a href="@Url.Action("GameReviews","Forum")">
+                    <h1 style="color:#ff6102"><i class="fab fa-fort-awesome-alt"></i> COUNTER STRİKE GLOBAL OFFENSİVE </h1>
+                </a>
                 <h4> Counter Strike ve Counter Strike Global Offensive, CS:GO paylaşımları</h4>
             </div>
             <div class="col-md-2">
@@ -497,7 +527,9 @@
         <div class="panel-body">
             <div class="col-md-6">
 
-                <h1 style="color:#ff6102"> <i class="fab fa-fort-awesome-alt"></i>  ZULA </h1>
+                <a href="@Url.Action("GameReviews","Forum")">
+                    <h1 style="color:#ff6102"> <i class="fab fa-fort-awesome-alt"></i>  ZULA </h1>
+                </a>
                 <h4> Zula bilgi ve paylaşım forumu. </h4>
             </div>
             <div class="col-md-2">
@@ -518,7 +550,9 @@
         <div class="panel-body">
             <div class="col-md-6">
 
-                <h1 style="color:#ff6102"><i class="fab fa-fort-awesome-alt"></i> WOLFTEAM </h1>
+                <a href="@Url.Action("GameReviews","Forum")">
+                    <h1 style="color:#ff6102"><i class="fab fa-fort-awesome-alt"></i> WOLFTEAM </h1>
+                </a>
                 <h4>WolfTeam paylaşım forumu</h4>
 
             </div>
@@ -540,7 +574,9 @@
         <div class="panel-body">
             <div class="col-md-6">
 
-                <h1 style="color:#ff6102"><i class="fab fa-fort-awesome-alt"></i> DİĞER FPS OYUNLARI </h1>
+                <a href="@Url.Action("GameReviews","Forum")">
+                    <h1 style="color:#ff6102"><i class="fab fa-fort-awesome-alt"></i> DİĞER FPS OYUNLARI </h1>
+                </a>
                 <h4>Kategorisi bulunmayan diğer FPS Oyunları forumu</h4>
 
             </div>
@@ -573,7 +609,9 @@
         <div class="panel-body">
             <div class="col-md-6">
 
-                <h1 style="color:#ff6102"> <i class="fas fa-briefcase"></i> ONLİNE OYUN TİCARETİ </h1>
+                <a href="@Url.Action("GameReviews","Forum")">
+                    <h1 style="color:#ff6102"> <i class="fas fa-briefcase"></i> ONLİNE OYUN TİCARETİ </h1>
+                </a>
                 <h4> Bu Bölümde online oyun hesapları, item ve oyun parası satışları yapabilirsiniz.</h4>
             </div>
             <div class="col-md-2">
@@ -594,7 +632,9 @@
         <div class="panel-body">
             <div class="col-md-6">
 
-                <h1 style="color:#ff6102"> <i class="fas fa-briefcase"></i>  DİĞER TİCARETLER </h1>
+                <a href="@Url.Action("GameReviews","Forum")">
+                    <h1 style="color:#ff6102"> <i class="fas fa-briefcase"></i>  DİĞER TİCARETLER </h1>
+                </a>
                 <h4> Bu bölümde forumda kategorisi bulunmayan hesapların satışlarını ve ticaretini yapabilirsiniz. </h4>
             </div>
             <div class="col-md-2">
@@ -627,7 +667,9 @@
         <div class="panel-body">
             <div class="col-md-6">
 
-                <h1 style="color:#ff6102"> <i class="fab fa-youtube"></i> YOUTUBE KANAL TANITIMI </h1>
+                <a href="@Url.Action("GameReviews","Forum")">
+                    <h1 style="color:#ff6102"> <i class="fab fa-youtube"></i> YOUTUBE KANAL TANITIMI </h1>
+                </a>
                 <h4> Youtube kanallarınızı tanıta bileceğiniz izlenme ve abone arttıra bileceğiniz forum.</h4>
             </div>
             <div class="col-md-2">
@@ -648,7 +690,9 @@
         <div class="panel-body">
             <div class="col-md-6">
 
-                <h1 style="color:#ff6102"> <i class="fab fa-twitch"></i> TWİTCH YAYINCILARI </h1>
+                <a href="@Url.Action("GameReviews","Forum")">
+                    <h1 style="color:#ff6102"> <i class="fab fa-twitch"></i> TWİTCH YAYINCILARI </h1>
+                </a>
                 <h4> Twitch yayıncılığı bilgi ve paylaşım forumu </h4>
             </div>
             <div class="col-md-2">
@@ -669,7 +713,9 @@
         <div class="panel-body">
             <div class="col-md-6">
 
-                <h1 style="color:#ff6102"><i class="fas fa-play"></i> OYUN VİDEOLARI </h1>
+                <a href="@Url.Action("GameReviews","Forum")">
+                    <h1 style="color:#ff6102"><i class="fas fa-play"></i> OYUN VİDEOLARI </h1>
+                </a>
                 <h4> Kendi çektiğiniz oyun videoları, ilk bakış, inceleme ve rehberlerini paylaşabileceğiniz forum.</h4>
             </div>
             <div class="col-md-2">
@@ -702,7 +748,9 @@
         <div class="panel-body">
             <div class="col-md-6">
 
-                <h1 style="color:#ff6102"><i class="fas fa-laptop"></i> DONANIM </h1>
+                <a href="@Url.Action("GameReviews","Forum")">
+                    <h1 style="color:#ff6102"><i class="fas fa-laptop"></i> DONANIM </h1>
+                </a>
                 <h4>Forumda kategorisi olmayan ve aklınıza gelebilecek tüm paylaşımların yapıldığı forum.</h4>
             </div>
             <div class="col-md-2">
@@ -723,7 +771,9 @@
         <div class="panel-body">
             <div class="col-md-6">
 
-                <h1 style="color:#ff6102"> <i class="fas fa-laptop"></i> KONU DIŞI </h1>
+                <a href="@Url.Action("GameReviews","Forum")">
+                    <h1 style="color:#ff6102"> <i class="fas fa-laptop"></i> KONU DIŞI </h1>
+                </a>
                 <h4> Twitch yayıncılığı bilgi ve paylaşım forumu </h4>
             </div>
             <div class="col-md-2">
@@ -744,7 +794,9 @@
         <div class="panel-body">
             <div class="col-md-6">
 
-                <h1 style="color:#ff6102"><i class="fas fa-laptop"></i>GÜNCEL </h1>
+                <a href="@Url.Action("GameReviews","Forum")">
+                    <h1 style="color:#ff6102"><i class="fas fa-laptop"></i>GÜNCEL </h1>
+                </a>
                 <h4> Güncel haberler ve gündemi takip edebileceğiniz forum</h4>
             </div>
             <div class="col-md-2">
@@ -765,7 +817,9 @@
         <div class="panel-body">
             <div class="col-md-6">
 
-                <h1 style="color:#ff6102"><i class="fas fa-laptop"></i>WEB MASTER FORMU </h1>
+                <a href="@Url.Action("GameReviews","Forum")">
+                    <h1 style="color:#ff6102"><i class="fas fa-laptop"></i>WEB MASTER FORMU </h1>
+                </a>
                 <h4> Webmaster forumu, webmaster içerikleri ve webmaster paylaşımları.</h4>
             </div>
             <div class="col-md-2">
@@ -796,7 +850,9 @@
         <div class="panel-body">
             <div class="col-md-6">
 
-                <h1 style="color:#ff6102"><i class="fas fa-archive"></i> ARŞİV </h1>
+                <a href="@Url.Action("GameReviews","Forum")">
+                    <h1 style="color:#ff6102"><i class="fas fa-archive"></i> ARŞİV </h1>
+                </a>
                 <h4>Silinen, kullanılmayan ve aktif olmayan eski konular kategorisi.</h4>
             </div>
             <div class="col-md-2">

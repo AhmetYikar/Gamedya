@@ -211,6 +211,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BloggerViewModel.cs" />
     <Compile Include="Models\BlogViewModel.cs" />
+    <Compile Include="Models\ForumIndexViewModel.cs" />
     <Compile Include="Models\ForumViewModel.cs" />
     <Compile Include="Models\NewsViewWeb.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -2231,6 +2232,7 @@
     <Content Include="Views\Forum\MostCommented.cshtml" />
     <Content Include="Views\Forum\Details.cshtml" />
     <Content Include="Views\Blog\BloggersList.cshtml" />
+    <Content Include="Views\Forum\GameReviews.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
