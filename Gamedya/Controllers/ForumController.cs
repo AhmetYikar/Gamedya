@@ -116,6 +116,46 @@ namespace Gamedya.Controllers
         }
         #endregion
 
+              #region Create
+        [Authorize]
+        [HttpGet]
+        public ActionResult Create()
+        {
+            
+            ViewBag.ForumCategoryId = new SelectList(uow.ForumCategory.GetAll(), "Id", "CategoryName");
+
+            return View();
+
+        }
+                
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "Id,Title,Content,ForumCategoryId,Date")] ForumPost forumpost)
+        {
+            if (ModelState.IsValid == false)
+            {
+                ViewBag.ForumCategoryId = new SelectList(uow.ForumCategory.GetAll(), "Id", "CategoryName");
+                return View(forumpost);
+            }            
+
+            try
+            {
+                forumpost.Date = DateTime.Now;
+                forumpost.NewsUserId = User.GetUserId();
+                uow.ForumPost.Insert(forumpost);
+                uow.Complete();
+                return RedirectToAction("Index");
+            }
+            catch (Exception)
+            {
+                ViewBag.ForumCategoryId = new SelectList(uow.ForumCategory.GetAll(), "Id", "CategoryName");
+                return View(forumpost);
+            }
+
+        }
+
+        #endregion
+
         #region LatesForums
         public ActionResult LatestForums()
         {
