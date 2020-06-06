@@ -7,12 +7,9 @@ namespace Gamedya.Models
 {
     public class ForumIndexViewModel
     {
-        public int ForumTitleCount { get; set; }
-
-        public int ReplyCount { get; set; }
-
+        public int CategoryCount { get; set; }
+        public List<int> CategoryIds { get; set; }
         public int ForumCount { get; set; }
 
-        public string LastPost { get; set; }
     }
 }

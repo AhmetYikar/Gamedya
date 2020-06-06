@@ -1,0 +1,30 @@
+﻿@model Gamedya.Models.ForumByCategoryViewModel
+
+<div class="container">
+    <div class="panel ">
+        <div class="panel-heading panelinbasligi ">
+            <a href="#"> <i class="@Model.iconClass"></i>@Model.CategoryName.ToUpper() </a>
+        </div>
+        <!-- panel start-->
+        @for (int i = 0; i < Model.SubCategories.Count(); i++)
+        {
+            <div class="panel-body">
+                <div class="col-md-6">
+
+                    <a href="@Url.Action("GameReviews","Forum",new {categoryId=Model.SubCategories[i].Id })">
+                        <h1 style="color:#ff6102"> <i class="@Model.SubCategories[i].Description"></i> @Model.SubCategories[i].CategoryName.ToUpper() </h1>
+                    </a>
+                    <h4> @Model.SubCategories[i].CategoryName konusuna dair tüm paylaşımları burada görebilir ve paylaşabilirsiniz.</h4>
+                </div>
+
+                    @Html.Action("ForumBySubCategory", "Forum",new {categoryId=Model.SubCategories[i].Id})
+
+               
+            </div>
+
+        }
+        <!-- panel end-->
+       
+    </div>
+
+</div>

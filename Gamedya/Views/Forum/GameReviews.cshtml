@@ -8,9 +8,8 @@
             <div class="panel-heading panelinbasligi ">
                 <a href="#"> <i class="fas fa-ghost"></i>OYUN GENEL </a>
             </div>
-            <div style="margin-top:10px; text-align:center; ">
-
-                <a class="btn btn-danger" href="@Url.Action("Create", "Forum")">Konu Aç </a>
+            <div style="margin-top:10px; text-align:center;">
+                <a class="btn btn-danger" href="@Url.Action("Create", "Forum", new { id = Model.FirstOrDefault().CategoryId })">Konu Aç </a>
             </div>
          
             <!-- panel start-->

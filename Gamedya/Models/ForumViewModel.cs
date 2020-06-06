@@ -17,11 +17,14 @@ namespace Gamedya.Models
         [Display(Name = "Kategori")]
         public string CategoryName { get; set; }
 
+        public int CategoryId { get; set; }
+
+
         [Display(Name = "Yayın Tarihi")]      
         public DateTime Date { get; set; }
 
         [Display(Name = "Görüntülenme")]
-        public string ViewCount { get; set; }
+        public int ViewCount { get; set; }
 
         public string NewsUserId { get; set; }
 

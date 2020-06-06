@@ -10,15 +10,15 @@
                 <div class="text-center" style="margin-top:10px;">
                     <img src="@User.GetUserImage()" class="img-circle align-content-center" alt="User Image" style="height:80px;">
 
-                   <ul style="margin-top:20px; margin-bottom:auto" >
-                       <li  >
-                           @Html.DisplayNameFor(model => model.NewsUser.FullName)
-                       </li>
-                       <hr/>
-                       <li>
-                           @Html.DisplayFor(model => model.NewsUser.FullName)
-                       </li>
-                   </ul>
+                    <ul style="margin-top:20px; margin-bottom:auto">
+                        <li>
+                            @Html.DisplayNameFor(model => model.NewsUser.FullName)
+                        </li>
+                        <hr />
+                        <li>
+                            @Html.DisplayFor(model => model.NewsUser.FullName)
+                        </li>
+                    </ul>
 
                 </div>
             </div>
@@ -55,6 +55,9 @@
                         <dd>
                             @Html.Raw(@Model.Content)
                         </dd>
+                        <dd>
+                            @Model.ViewCount
+                        </dd>
                     </dl>
                 </div>
             </div>
@@ -62,3 +65,20 @@
 
     </div>
 </div>
+
+@section scripts{
+    @*sayfayı ziyaret edenlerin sayısını ekle*@
+    <script>
+
+                $.ajax({
+                    url: '/Forum/ForumRead/',
+                    data: { id: @Model.Id },
+                    type: 'POST',
+                    dataType: 'json'
+
+                });
+
+    </script>
+  
+}
+

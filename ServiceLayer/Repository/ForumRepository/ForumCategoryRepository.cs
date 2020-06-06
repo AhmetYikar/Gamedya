@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
+using System.Linq.Expressions;
 
 namespace ServiceLayer.Repository.ForumRepository
 {
@@ -19,6 +20,14 @@ namespace ServiceLayer.Repository.ForumRepository
 
         public GameNewsDbContext context { get { return _context as GameNewsDbContext; } }
 
-      
+
+        public IEnumerable<ForumCategory> Details(Expression<Func<ForumCategory, bool>> predicate)
+        {
+            return _context.Set<ForumCategory>()
+                .Include(a => a.ForumPosts)
+                .Include(a => a.ForumCategories)
+                .Where(predicate);
+        }
+
     }
 }

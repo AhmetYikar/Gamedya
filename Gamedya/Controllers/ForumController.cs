@@ -19,118 +19,195 @@ namespace Gamedya.Controllers
         // GET: Forum
         private UnitOfWork uow = new UnitOfWork(new GameNewsDbContext());
 
-        public ActionResult ForumHome()
+        public ActionResult Index()
         {
-            var forumPost = uow.ForumPost.GetAll();
+            var categories = uow.ForumCategory.Where(a=>a.ParentId==null);
+            if (categories==null)
+            {
+                return null;
+            }
+            List<int> ids = new List<int>();
+            foreach (var item in categories)
+            {
+                ids.Add(item.Id);
+            }
+
             ForumIndexViewModel model = new ForumIndexViewModel
             {
-                ForumTitleCount = uow.ForumPost.GetAll().Count(),
-                ReplyCount = uow.ForumReply.GetAll().Count(),
-                ForumCount = uow.ForumPost.GetAll().Count(),
-                LastPost = uow.ForumPost.Where(a => a.ForumTitle == a.ForumTitle).LastOrDefault().ForumTitle
-
-
+                //ForumCount = uow.ForumPost.GetAll().Count(),
+                CategoryCount = categories.Count(),
+                CategoryIds=ids
             };
             if (ModelState.IsValid)
             {
                 return View(model);
             }
             return null;
-
-
-
         }
 
 
-        #region Index
-        public ActionResult Index(string ara, string siralama, string sonArananKelime, int? sayfaNo)
+        #region ForumByCategory
+
+        public ActionResult ForumByCategory(int? categoryId)
         {
-            ViewBag.SonSiralama1 = siralama;
-            //ViewBag.AdaGoreSirala = String.IsNullOrEmpty(siralama) ? "ZdenAya" : string.Empty;
-            //ViewBag.SoyadaGoreSirala = siralama == "SoyadAdanZye" ? "SoyadZdenAya" : "SoyadAdanZye";
-
-            if (ara != null)
+            if (categoryId !=null)
             {
-                sayfaNo = 1;
-            }
-            else
-            {
-                ara = sonArananKelime;
-            }
+               
+                var category = uow.ForumCategory.GetById(categoryId);                
 
-
-            ViewBag.SonArananKelime1 = ara;
-
-
-            if (String.IsNullOrEmpty(siralama))
-            {
-                ViewBag.AdaGoreSirala2 = "ZdenAya";
-            }
-            else
-            {
-                ViewBag.AdaGoreSirala2 = string.Empty;
-            }
-
-
-            var liste = GetForum().ToList();
-
-
-            if (!string.IsNullOrWhiteSpace(ara))
-            {
-                liste = liste.Where(a => a.ForumTitle.Contains(ara)).ToList();
-            }
-
-
-            int sayfaBuyuklugu = 10;
-            int sayfaNumarasi = (sayfaNo ?? 1);
-
-
-            return View(liste.ToPagedList(sayfaNumarasi, sayfaBuyuklugu));
-        }
-
-        private IEnumerable<ForumViewModel> GetForum()
-        {
-            using (var uow = new UnitOfWork(new GameNewsDbContext()))
-            {
-                IEnumerable<ForumViewModel> forumposts = uow.ForumPost.GetForumWithRepliesAndUsers().ToList()
-                                                          .Select(a => new ForumViewModel
-                                                          {
-                                                              Id = a.Id,
-                                                              ForumTitle = a.ForumTitle,
-                                                              Date = a.Date,
-                                                              NewsUserId = a.NewsUserId,
-                                                              ForumUser = a.NewsUser.FullName,
-                                                              ReplyCount = a.ForumReplies.Count(),
-
-                                                          })
-                                                          .OrderByDescending(a => a.Id);
-
-                if (forumposts != null)
+                ForumByCategoryViewModel model = new ForumByCategoryViewModel
                 {
-                    uow.Dispose();
-                    return forumposts;
-                }
+                    CategoryName=category.CategoryName,
+                  
+                    iconClass=category.Description,
+                    SubCategories = uow.ForumCategory.Details(a => a.ParentId == category.Id).ToList()
 
+                };
+                if (ModelState.IsValid)
+                {
+                    return PartialView(model);
+                }
+            }
+            
+            return null;
+        }
+
+        #endregion
+        
+
+        #region ForumBySubCategory
+
+        #endregion
+        public ActionResult ForumBySubCategory(int? categoryId)
+        {
+            if (categoryId==null)
+            {
                 return null;
             }
-        }
-        #endregion
+            var category = uow.ForumCategory.Details(a => a.Id == categoryId).FirstOrDefault();
+            if (category != null)
+            {
+                int replyCount = 0;
+                List<ForumPost> posts = uow.ForumPost.GetForumWithReplies(a=>a.ForumCategoryId==category.Id).ToList();
+                if (posts.Count<1)
+                {
+                    return null;
+                }
+                foreach (var post in posts)
+                {
+                    replyCount = replyCount + post.ForumReplies.Count();
+                }
 
-              #region Create
+                ForumByCategoryViewModel model = new ForumByCategoryViewModel
+                {
+                    ForumCount = category.ForumPosts.Count(),
+                    ReplyCount = replyCount,                   
+                    LastPost = posts.LastOrDefault().ForumTitle
+                };
+                if (ModelState.IsValid)
+                {
+                    return PartialView(model);
+                }
+            }
+           
+            return null;
+        }
+
+
+        //#region Sayfalama
+        //public ActionResult Sayfalama(string ara, string siralama, string sonArananKelime, int? sayfaNo)
+        //{
+        //    ViewBag.SonSiralama1 = siralama;
+        //    //ViewBag.AdaGoreSirala = String.IsNullOrEmpty(siralama) ? "ZdenAya" : string.Empty;
+        //    //ViewBag.SoyadaGoreSirala = siralama == "SoyadAdanZye" ? "SoyadZdenAya" : "SoyadAdanZye";
+
+        //    if (ara != null)
+        //    {
+        //        sayfaNo = 1;
+        //    }
+        //    else
+        //    {
+        //        ara = sonArananKelime;
+        //    }
+
+
+        //    ViewBag.SonArananKelime1 = ara;
+
+
+        //    if (String.IsNullOrEmpty(siralama))
+        //    {
+        //        ViewBag.AdaGoreSirala2 = "ZdenAya";
+        //    }
+        //    else
+        //    {
+        //        ViewBag.AdaGoreSirala2 = string.Empty;
+        //    }
+
+
+        //    var liste = GetForum().ToList();
+
+
+        //    if (!string.IsNullOrWhiteSpace(ara))
+        //    {
+        //        liste = liste.Where(a => a.ForumTitle.Contains(ara)).ToList();
+        //    }
+
+
+        //    int sayfaBuyuklugu = 10;
+        //    int sayfaNumarasi = (sayfaNo ?? 1);
+
+
+        //    return View(liste.ToPagedList(sayfaNumarasi, sayfaBuyuklugu));
+        //}
+
+        //private IEnumerable<ForumViewModel> GetForum()
+        //{
+        //    using (var uow = new UnitOfWork(new GameNewsDbContext()))
+        //    {
+        //        IEnumerable<ForumViewModel> forumposts = uow.ForumPost.GetForumWithRepliesAndUsers().ToList()
+        //                                                  .Select(a => new ForumViewModel
+        //                                                  {
+        //                                                      Id = a.Id,
+        //                                                      ForumTitle = a.ForumTitle,
+        //                                                      Date = a.Date,
+        //                                                      NewsUserId = a.NewsUserId,
+        //                                                      ForumUser = a.NewsUser.FullName,
+        //                                                      ReplyCount = a.ForumReplies.Count(),
+
+        //                                                  })
+        //                                                  .OrderByDescending(a => a.Id);
+
+        //        if (forumposts != null)
+        //        {
+        //            uow.Dispose();
+        //            return forumposts;
+        //        }
+
+        //        return null;
+        //    }
+        //}
+        //#endregion
+
+        #region Create
         [Authorize]
         [HttpGet]
-        public ActionResult Create()
+        public ActionResult Create(int? id)
         {
-            
-            ViewBag.ForumCategoryId = new SelectList(uow.ForumCategory.GetAll(), "Id", "CategoryName");
-
-            return View();
+            if (id==null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }           
+                var forumCategory = uow.ForumCategory.GetById(id);
+                ViewBag.ForumCategoryName = forumCategory.CategoryName;
+                ForumPost forum = new ForumPost();
+                forum.ForumCategoryId = forumCategory.Id;
+                return View(forum);
 
         }
                 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Title,Content,ForumCategoryId,Date")] ForumPost forumpost)
+        public ActionResult Create([Bind(Include = "Id,ForumTitle,Content,ForumCategoryId")] ForumPost forumpost)
         {
             if (ModelState.IsValid == false)
             {
@@ -172,6 +249,7 @@ namespace Gamedya.Controllers
                     ForumUser = a.NewsUser.FullName,
                     Date = a.Date,
                     CategoryName = a.ForumCategory.CategoryName,
+                    ViewCount= a.ViewCount
 
 
                 });
@@ -214,7 +292,7 @@ namespace Gamedya.Controllers
         #region MostCommented
         public ActionResult MostCommented()
         {
-            IEnumerable<ForumPost> forumPosts = uow.ForumPost.GetForumDetail(a => a.ForumReplies.Count() > 0).Take(6).ToList().OrderByDescending(a => a.ForumReplies.Count());
+            IEnumerable<ForumPost> forumPosts = uow.ForumPost.GetForumDetail(a => a.ForumReplies.Count() > 0).ToList().Take(6).OrderByDescending(a => a.ForumReplies.Count());
 
             if (forumPosts != null && forumPosts.Count() > 0)
             {
@@ -310,13 +388,17 @@ namespace Gamedya.Controllers
 
         #endregion
 
-        #region LatesForums
-        public ActionResult GameReviews()
+        #region gamereviews
+        public ActionResult GameReviews(int? categoryId)
         {
+            
+            if (categoryId==null || categoryId<1)
+            {
+                return null;
+            }
+            IEnumerable<ForumPost> gamereview = uow.ForumPost.GetForumcategoryAndUsers().Where(a=>a.ForumCategoryId==categoryId).ToList().OrderByDescending(a => a.Id);
 
-            IEnumerable<ForumPost> gamereview = uow.ForumPost.GetForumcategoryAndUsers().ToList().OrderByDescending(a => a.Id);
-
-            if (gamereview != null)
+            if (gamereview != null && gamereview.Count()>0 )
             {
 
                 IEnumerable<ForumViewModel> forumView = gamereview.Select(a => new ForumViewModel
@@ -326,6 +408,7 @@ namespace Gamedya.Controllers
                     ForumUser = a.NewsUser.FullName,
                     Date = a.Date,
                     CategoryName = a.ForumCategory.CategoryName,
+                    CategoryId=a.ForumCategoryId
 
                 });
 

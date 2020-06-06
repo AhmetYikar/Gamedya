@@ -211,6 +211,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BloggerViewModel.cs" />
     <Compile Include="Models\BlogViewModel.cs" />
+    <Compile Include="Models\ForumByCategoryViewModel.cs" />
     <Compile Include="Models\ForumIndexViewModel.cs" />
     <Compile Include="Models\ForumViewModel.cs" />
     <Compile Include="Models\NewsViewWeb.cs" />
@@ -2562,7 +2563,7 @@
     <Content Include="Views\Blog\Popular.cshtml" />
     <Content Include="Views\Blog\MostCommented.cshtml" />
     <Content Include="Views\BlogComment\Index.cshtml" />
-    <Content Include="Views\Forum\ForumHome.cshtml" />
+    <Content Include="Views\Forum\Index.cshtml" />
     <Content Include="Views\Forum\LatestForums.cshtml" />
     <Content Include="Views\Forum\Popular.cshtml" />
     <Content Include="Views\Forum\MostCommented.cshtml" />
@@ -2571,6 +2572,8 @@
     <Content Include="Views\Forum\GameReviews.cshtml" />
     <Content Include="Views\Forum\Create.cshtml" />
     <Content Include="Views\Blog\Create.cshtml" />
+    <Content Include="Views\Forum\ForumByCategory.cshtml" />
+    <Content Include="Views\Forum\ForumBySubCategory.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
