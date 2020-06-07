@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Entites.Models.ForumModels.ForumReply>
+
+
+       
+            @foreach (var item in Model)
+            {
+
+                <div class="col-md-2">
+                    <div class="panel">
+                        <div class="panel-danger">
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NewsUser.FullName)
+                            </td>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-10">
+                    <div class="panel">
+                        <div class="panel-danger">
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ForumPost.ForumTitle)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Content)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Date)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.LikeCount)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.UnLikeCount)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.IsOk)
+                            </td>
+                        </div>
+                    </div>
+                </div>
+
+            }
+
+    
+
+   

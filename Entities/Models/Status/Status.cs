@@ -20,7 +20,7 @@ namespace Entites.Models.Status
         BlogPost,
         BlogComment,
         ForumPost,
-        ForumComment
+        ForumReply
     }
 
     public class LikeTable

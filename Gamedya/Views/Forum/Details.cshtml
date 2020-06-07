@@ -66,6 +66,38 @@
     </div>
 </div>
 
+<p>
+    @Html.Action("Index", "ForumReply", new { id = Model.Id })
+</p>
+
+
+<div class="container">
+
+
+    <div class="panel">
+        <div class="panel-danger">
+            <div class="panel-title"><h2>Hızlı Cevap Ver</h2></div>
+            <div style="color:coral" id="back">
+            </div>
+
+            <div class="comment_form">
+                <form>
+                    <div class="form-group">
+
+                            <p>@User.GetFullName()</p>                       
+                    </div>
+
+                    <div class="form-group comment">
+                        @Html.TextAreaFor(model => model.Content, new { id = "comment", @class = "ckeditor" })
+
+                    </div>
+                    <button type="button" onclick="AddComment(@Model.Id)" onmouseout="ClearMesajBack()" class="btn btn-submit red"> Cevabı Gönder </button>
+                </form>
+            </div><!--comment_form-->
+        </div><!--add_a_comment-->
+    </div><!--single_content_layout-->
+</div>
+
 @section scripts{
     @*sayfayı ziyaret edenlerin sayısını ekle*@
     <script>
@@ -79,6 +111,6 @@
                 });
 
     </script>
-  
+    <script src="~/Scripts/ForumScript.js"></script>
 }
 

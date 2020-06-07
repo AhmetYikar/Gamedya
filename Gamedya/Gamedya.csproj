@@ -182,6 +182,7 @@
     <Compile Include="Controllers\BlogCommentController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\ForumController.cs" />
+    <Compile Include="Controllers\ForumReplyController.cs" />
     <Compile Include="Controllers\GameReviewController.cs" />
     <Compile Include="Controllers\GameUpdateController.cs" />
     <Compile Include="Controllers\GeneralArticleController.cs" />
@@ -2274,6 +2275,7 @@
     <Content Include="Scripts\esm\popper-utils.min.js" />
     <Content Include="Scripts\esm\popper.js" />
     <Content Include="Scripts\esm\popper.min.js" />
+    <Content Include="Scripts\ForumScript.js" />
     <Content Include="Scripts\index.js.flow" />
     <Content Include="Scripts\esm\popper.min.js.map" />
     <Content Include="Scripts\esm\popper.js.map" />
@@ -2574,6 +2576,7 @@
     <Content Include="Views\Blog\Create.cshtml" />
     <Content Include="Views\Forum\ForumByCategory.cshtml" />
     <Content Include="Views\Forum\ForumBySubCategory.cshtml" />
+    <Content Include="Views\ForumReply\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

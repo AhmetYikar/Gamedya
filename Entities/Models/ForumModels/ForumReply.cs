@@ -19,6 +19,9 @@ namespace Entites.Models.ForumModels
         [DataType(DataType.Date)]
         public DateTime Date { get; set; }
 
+        public int LikeCount { get; set; }
+        public int UnLikeCount { get; set; }
+
         public bool IsOk { get; set; }
         public string NewsUserId { get; set; }
         public NewsUser NewsUser { get; set; }
