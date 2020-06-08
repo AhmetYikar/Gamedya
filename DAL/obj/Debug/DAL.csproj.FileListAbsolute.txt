@@ -111,5 +111,3 @@ C:\Users\SnmzŞti\source\repos\Gamedya\DAL\obj\Debug\DAL.csproj.CoreCompileInput
 C:\Users\SnmzŞti\source\repos\Gamedya\DAL\obj\Debug\DAL.csproj.CopyComplete
 C:\Users\SnmzŞti\source\repos\Gamedya\DAL\obj\Debug\DAL.dll
 C:\Users\SnmzŞti\source\repos\Gamedya\DAL\obj\Debug\DAL.pdb
-C:\Users\SnmzŞti\source\repos\Gamedya\DAL\obj\Debug\DAL.Migrations.ilk.resources
-C:\Users\SnmzŞti\source\repos\Gamedya\DAL\obj\Debug\DAL.csproj.GenerateResource.cache

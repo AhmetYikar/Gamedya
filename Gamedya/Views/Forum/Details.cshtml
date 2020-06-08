@@ -71,32 +71,29 @@
 </p>
 
 
-<div class="container">
-
-
+<div class="container add_a_comment">
     <div class="panel">
         <div class="panel-danger">
-            <div class="panel-title"><h2>Hızlı Cevap Ver</h2></div>
+            <div class="panelinbasligi text-center" ><h2 style="color:#ff6102">Hızlı Cevap Ver</h2></div>
             <div style="color:coral" id="back">
             </div>
 
             <div class="comment_form">
-                <form>
-                    <div class="form-group">
-
-                            <p>@User.GetFullName()</p>                       
-                    </div>
-
+                <form>               
                     <div class="form-group comment">
-                        @Html.TextAreaFor(model => model.Content, new { id = "comment", @class = "ckeditor" })
+                        @*@Html.TextAreaFor(model => model.Content, new { id = "reply", @class = "ckeditor" })*@
+
+                        <textarea class="form-control ckeditor" id="reply"></textarea>
 
                     </div>
-                    <button type="button" onclick="AddComment(@Model.Id)" onmouseout="ClearMesajBack()" class="btn btn-submit red"> Cevabı Gönder </button>
+                    <button type="button" onclick="AddComment(@Model.Id)" onmouseout="ClearMesajBack()" class="btn btn-submit red text-center"> Cevabı Gönder </button>
                 </form>
             </div><!--comment_form-->
         </div><!--add_a_comment-->
     </div><!--single_content_layout-->
 </div>
+
+
 
 @section scripts{
     @*sayfayı ziyaret edenlerin sayısını ekle*@

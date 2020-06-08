@@ -1,5 +1,5 @@
 ﻿function AddComment(data) {
-    var yourComment = $("#comment").val();  
+    var yourComment = $("#reply").val();  
     var messageDiv = $("#back");
     var id = data;
 

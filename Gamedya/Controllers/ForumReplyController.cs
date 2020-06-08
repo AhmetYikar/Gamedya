@@ -31,7 +31,7 @@ namespace Gamedya.Controllers
 
 
         [HttpPost]
-        public JsonResult AddComment(string reply, int forumPostId)
+        public JsonResult AddComment( string reply, int forumPostId)
         {
             string mesaj;
             ForumReply forumReply = new ForumReply();
