@@ -31,12 +31,17 @@ namespace Gamedya.Controllers
 
 
         [HttpPost]
-        public JsonResult AddComment( string reply, int forumPostId)
+        public JsonResult AddComment( string comment, int forumPostId)
         {
             string mesaj;
+            if (comment.Length<2)
+            {
+                mesaj = "yorum 2 karakterden kısa olamaz";
+                return Json(mesaj, JsonRequestBehavior.AllowGet);
+            }
             ForumReply forumReply = new ForumReply();
 
-            forumReply.Content = reply;
+            forumReply.Content = comment;
             forumReply.ForumPostId = forumPostId;
             forumReply.Date = DateTime.Now;
             forumReply.NewsUserId = User.GetUserId();

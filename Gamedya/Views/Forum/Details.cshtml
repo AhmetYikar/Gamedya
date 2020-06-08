@@ -77,14 +77,10 @@
             <div class="panelinbasligi text-center" ><h2 style="color:#ff6102">Hızlı Cevap Ver</h2></div>
             <div style="color:coral" id="back">
             </div>
-
             <div class="comment_form">
                 <form>               
                     <div class="form-group comment">
-                        @*@Html.TextAreaFor(model => model.Content, new { id = "reply", @class = "ckeditor" })*@
-
-                        <textarea class="form-control ckeditor" id="reply"></textarea>
-
+                        <textarea class="form-control" id="comment" contenteditable="true"></textarea>
                     </div>
                     <button type="button" onclick="AddComment(@Model.Id)" onmouseout="ClearMesajBack()" class="btn btn-submit red text-center"> Cevabı Gönder </button>
                 </form>
@@ -104,7 +100,6 @@
                     data: { id: @Model.Id },
                     type: 'POST',
                     dataType: 'json'
-
                 });
 
     </script>
