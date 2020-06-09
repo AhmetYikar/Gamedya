@@ -24,6 +24,11 @@ namespace Gamedya
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+            routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+            routes.Add("BlogDetails", new SeoFriendlyRoute("blog/details/{id}",
+            new RouteValueDictionary(new { controller = "blog", action = "Details" }),
+            new MvcRouteHandler()));
         }
     }
 }

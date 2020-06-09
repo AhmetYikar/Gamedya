@@ -5,38 +5,42 @@
 }
 
 <div class="container">
-    <p>
-        <a class="btn btn-primary" href="@Url.Action("Create", "Blog")">Blog Yaz</a>
-    </p>
-</div>
-<div class="container">
+    <div class="panel">
+        <div class="panel-danger">
+            <p>
+                <a class="btn btn btn-primary pull-right" style="margin-right:10px;" href="@Url.Action("Create", "Blog")">Blog Yaz</a>
+            </p>
+        </div>
+        <div class="container">
 
-    <h2>Blog Yazarları </h2>
+            <h2>Blog Yazarları </h2>
 
 
-    <table class="table">
-        <tr>
-            <th>
-                Blogger Adı
-            </th>
-            <th>
-                Blog Sayısı
-            </th>
-            <th></th>
-        </tr>
+            <table class="table">
+                <tr>
+                    <th>
+                        Blogger Adı
+                    </th>
+                    <th>
+                        Blog Sayısı
+                    </th>
+                    <th></th>
+                </tr>
 
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.ActionLink(item.BloggerName, "BloggerBlogs", new { userId = item.Id })
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.BlogCount)
-                </td>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.ActionLink(item.BloggerName, "BloggerBlogs", new { userId = item.Id })
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.BlogCount)
+                        </td>
 
-            </tr>
-        }
+                    </tr>
+                }
 
-    </table>
+            </table>
+        </div>
+    </div>
 </div>

@@ -1,16 +1,10 @@
-﻿﻿*getslider control yapıldı ancak view de sıkıntı çıktı düzeltilecek.
+﻿ <add namespace="MvcSiteMapProvider.Web.Html" />
+ <add namespace="MvcSiteMapProvider.Web.Html.Models" />
+ ----------------------------------------------------------
 
 
-
- <add namespace="MvcSiteMapProvider.Web.Html" />
-        <add namespace="MvcSiteMapProvider.Web.Html.Models" />
-
-        **Etiketler EKlenecek
-        *İlgili Haberler Kontroları ile beraber ekelenecek. haberin detayına girince ilgili haberlerin gelmesi.
-        *FAcebook vs paylaşımları haberlerin ayarlanacak.detailse de 
-        *bidirim için ikon konacak
-        *login ve register tasarımı ve assetteki fazlalıklar atılacak.
-        *seoları unutmayalım.
-        *Blog create sayfasının tasarımı yapılacak
-        *BloggersList sayfasının tasarımı düzeltilecek
-        *IsOk kontrolleri ve authorise kontrolleri unutmayalım
+*Etiketler EKlenecek
+*İlgili Haberler Kontroları ile beraber ekelenecek. haberin detayına girince ilgili haberlerin gelmesi.
+*FAcebook vs paylaşımları haberlerin ayarlanacak.detailse de 
+*IsOk kontrolleri ve authorise kontrolleri unutmayalım
+*forumreply de ckeditor kullanınca value göndermiyor textarea kullanıca value alıyor.

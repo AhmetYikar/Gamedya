@@ -4,84 +4,89 @@
     ViewBag.Title = "MyMessages";
 }
 <div class="container">
+    <div class="panel">
+        <div class="panel-danger">
+            <h3>Gelen Mesajlar</h3>
+            <hr />
 
-    <h3>Gelen Mesajlar</h3>
+            <table class="table ">
+                <tr>
 
-    <br />
-    <hr />
-    <a href="/Message/Create" class="btn btn-primary">
-        Yeni mesaj gönder
-    </a>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Date)
+                    </th>
+                    <th>
+                        Gönderen
+                    </th>
 
-    <table class="table ">
-        <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Content)
+                    </th>
 
-            <th>
-                @Html.DisplayNameFor(model => model.Date)
-            </th>
-            <th>
-                Gönderen
-            </th>
-
-            <th>
-                @Html.DisplayNameFor(model => model.Content)
-            </th>
-
-            <th></th>
-        </tr>
-
-        @foreach (var item in Model)
-        {
-            if (item.IsRead == true)
-            {
-                <tr style="border-bottom:solid;border-color:#E0EEEE; color:gray">
-
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Date)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.SenderName)
-                    </td>
-                    <td>
-                        @Subs.Sub30(item.Content)
-                    </td>
-                    <td>
-                    </td>
-                    <td>
-                        <a href="@Url.Action("Details", new { id = item.Id })" class="btn btn-primary"> mesaja git   </a>
-
-                        @*silme işleminde id ile birlikte silen kişinin alıcı mı gönderen mi olduğu da actiona gönderilir*@
-                        <a href="@Url.Action("Delete", new { id = item.Id,who="receiver" })" class="btn btn-danger">sil</a>
-                    </td>
-
+                    <th></th>
                 </tr>
-            }
 
-            else
-            {
-                <tr style="border-bottom:solid;border-color:#E0EEEE;font-weight:bold">
+                @foreach (var item in Model)
+                {
+                    if (item.IsRead == true)
+                    {
+                        <tr style="border-bottom:solid;border-color:#E0EEEE; color:gray">
 
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Date)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.SenderName)
-                    </td>
-                    <td>
-                        @Subs.Sub30(item.Content)
-                    </td>
-                    <td>
-                    </td>
-                    <td>
-                        <a href="@Url.Action("Details", new { id = item.Id })" class="btn btn-primary"> mesaja git   </a>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Date)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SenderName)
+                            </td>
+                            <td>
+                                @Subs.Sub30(item.Content)
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                                <a href="@Url.Action("Details", new { id = item.Id })" class="btn btn-primary"> mesaja git   </a>
 
-                        @*silme işleminde id ile birlikte silen kişinin alıcı mı gönderen mi olduğu da actiona gönderilir*@
-                        <a href="@Url.Action("Delete", new { id = item.Id,who="receiver" })" class="btn btn-danger">sil</a>
-                    </td>
+                                @*silme işleminde id ile birlikte silen kişinin alıcı mı gönderen mi olduğu da actiona gönderilir*@
+                                <a href="@Url.Action("Delete", new { id = item.Id,who="receiver" })" class="btn btn-danger">sil</a>
+                            </td>
 
-                </tr>
-            }
-        }
-    </table>
-    @Html.Action("MySentMessages", "Message")
+                        </tr>
+                    }
+
+                    else
+                    {
+                        <tr style="border-bottom:solid;border-color:#E0EEEE;font-weight:bold">
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Date)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SenderName)
+                            </td>
+                            <td>
+                                @Subs.Sub30(item.Content)
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                                <a href="@Url.Action("Details", new { id = item.Id })" class="btn btn-primary"> mesaja git   </a>
+
+                                @*silme işleminde id ile birlikte silen kişinin alıcı mı gönderen mi olduğu da actiona gönderilir*@
+                                <a href="@Url.Action("Delete", new { id = item.Id,who="receiver" })" class="btn btn-danger">sil</a>
+                            </td>
+
+                        </tr>
+                    }
+                }
+
+
+            </table>
+
+            @Html.Action("MySentMessages", "Message")
+            <a href="/Message/Create" class="btn btn-primary pull-right">
+                Yeni mesaj gönder
+            </a>
+        </div>
+     
     </div>
+</div>
