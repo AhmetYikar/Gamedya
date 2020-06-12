@@ -115,11 +115,11 @@ namespace Gamedya.Controllers
 
 
         //#region Sayfalama
-        //public ActionResult Sayfalama(string ara, string siralama, string sonArananKelime, int? sayfaNo)
+        //public ActionResult SearchIndex(string ara, string siralama, string sonArananKelime, int? sayfaNo)
         //{
         //    ViewBag.SonSiralama1 = siralama;
-        //    //ViewBag.AdaGoreSirala = String.IsNullOrEmpty(siralama) ? "ZdenAya" : string.Empty;
-        //    //ViewBag.SoyadaGoreSirala = siralama == "SoyadAdanZye" ? "SoyadZdenAya" : "SoyadAdanZye";
+        //    ViewBag.AdaGoreSirala = String.IsNullOrEmpty(siralama) ? "ZdenAya" : string.Empty;
+        //    ViewBag.SoyadaGoreSirala = siralama == "SoyadAdanZye" ? "SoyadZdenAya" : "SoyadAdanZye";
 
         //    if (ara != null)
         //    {

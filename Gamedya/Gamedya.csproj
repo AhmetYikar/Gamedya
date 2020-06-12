@@ -181,6 +181,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BlogCommentController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
+    <Compile Include="Controllers\DenemeSearchController.cs" />
     <Compile Include="Controllers\ForumController.cs" />
     <Compile Include="Controllers\ForumReplyController.cs" />
     <Compile Include="Controllers\GameReviewController.cs" />
@@ -198,7 +199,6 @@
     <Compile Include="Controllers\NotificationController.cs" />
     <Compile Include="Controllers\PcNewsController.cs" />
     <Compile Include="Controllers\ScienceNewsController.cs" />
-    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\SliderController.cs" />
     <Compile Include="Controllers\TwitchController.cs" />
     <Compile Include="Controllers\VideoNewsController.cs" />
@@ -2555,7 +2555,7 @@
     <Content Include="Views\Notification\Details.cshtml" />
     <Content Include="Views\Notification\GetFourNotification.cshtml" />
     <Content Include="Views\Notification\UserNotification.cshtml" />
-    <Content Include="Views\Search\Index.cshtml" />
+    <Content Include="Views\News\Index.cshtml" />
     <Content Include="Views\Manage\SetProfilImage.cshtml" />
     <Content Include="Views\YouTube\Index.cshtml" />
     <Content Include="Views\Blog\Index.cshtml" />
@@ -2577,9 +2577,13 @@
     <Content Include="Views\Forum\ForumByCategory.cshtml" />
     <Content Include="Views\Forum\ForumBySubCategory.cshtml" />
     <Content Include="Views\ForumReply\Index.cshtml" />
+    <Content Include="Views\Blog\BloggersLatestBlogs.cshtml" />
+    <Content Include="Views\Blog\BloggersMostCommented.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\DenemeSearch\" />
+    <Folder Include="Views\Search\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

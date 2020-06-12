@@ -41,17 +41,21 @@
                             @Model[i].Title
                         </a>
                     </h3>
-                    @if (@Model[i].Summary.Count() > 50)
+                    @if (@Model[i].Summary!=null)
                     {
-                <div >
-                    <a  href="@Url.Action("Details", "News",new {id=Model[i].GenerateSlug()})">
-                        <p >@Model[i].Summary.Substring(0, 50)</p>
-                    </a>
-                </div>
-                       
-                            }
-                    </div><!--media-->
-                }
+                        if (@Model[i].Summary.Length > 50)
+                        {
+                            <div>
+                                <a href="@Url.Action("Details", "News",new {id=Model[i].GenerateSlug()})">
+                                    <p>@Model[i].Summary.Substring(0, 50)</p>
+                                </a>
+                            </div>
+
+                        }
+                    }
+
+                </div><!--media-->
+             }
             </div><!--media_wrapper-->
         </div><!--col-md-5-->
     </div><!--row-->

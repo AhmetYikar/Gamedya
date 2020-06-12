@@ -4,6 +4,7 @@ using ServiceLayer.Repository.GameRepository;
 using ServiceLayer.Repository.MessageRepository;
 using ServiceLayer.Repository.NewsRepository;
 using ServiceLayer.Repository.NotificationRepository;
+using ServiceLayer.Repository.RoleRepository;
 using ServiceLayer.Repository.TwitchYoutubes;
 using ServiceLayer.Repository.UserRepository;
 using System;
@@ -45,6 +46,8 @@ namespace ServiceLayer.Uow
         INotificationRepository Notification { get; }
 
         ITwitchYoutubeRepository TwitchYoutube { get; }
+        IRoleRepository Role { get; }
+
 
         int Complete();
     }

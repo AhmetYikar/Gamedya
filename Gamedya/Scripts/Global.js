@@ -59,3 +59,24 @@ function AddDislike(id) {
 
    
 
+function ChangeMailStatus() {
+    $.ajax({
+        url: '/Manage/ChangeMailPublic/',
+        type: 'POST',
+        dataType: 'json',
+        success: function (mesaj) {
+            if (mesaj == 0) {
+                alert("mail adresiniz gizlendi");
+            }
+            else if (mesaj == 1) {
+                alert("mail adresiniz herkese görünür yapıldı");
+            }
+            else if (mesaj == 2) {
+                alert("işlem başarısız");
+            }
+        },
+        error: function () {
+            alert("script hatası");
+        }
+    })
+}

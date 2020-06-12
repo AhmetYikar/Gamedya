@@ -99,7 +99,7 @@ namespace Gamedya.Controllers
         {
             if (receieverId == null)
             {
-                ViewBag.NewsUserId = new SelectList(uow.NewsUser.GetAll(), "Id", "Email");
+                ViewBag.NewsUserId = new SelectList(uow.NewsUser.Where(a=>a.IsMailPublic==true), "Id", "Email");
                 return View();
             }
             else

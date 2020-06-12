@@ -2,6 +2,7 @@
 using Entites.Models.NewsModels;
 using GameAdmin.Helper;
 using GameAdmin.Models;
+using Microsoft.AspNet.Identity;
 using Microsoft.Azure.Amqp.Framing;
 using PagedList;
 using ServiceLayer.Uow;
@@ -13,14 +14,16 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using System.Xml.Serialization;
 using static System.Net.WebRequestMethods;
+using Microsoft.AspNet.Identity;
+
 
 namespace GameAdmin.Controllers
-{
+{    
 
-
-    [Authorize]
+    [Authorize(Roles = "admin,yazar")]
     public class NewsController : Controller
     {
 

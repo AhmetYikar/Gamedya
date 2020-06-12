@@ -72,6 +72,7 @@ namespace Gamedya.Controllers
             var userId = User.Identity.GetUserId();
             var model = new IndexViewModel
             {
+                IsMailPublic = IsMailPublic(),
                 HasPassword = HasPassword(),
                 HasProfilImage = HasProfilImage(),
                 PhoneNumber = await UserManager.GetPhoneNumberAsync(userId),
@@ -289,7 +290,7 @@ namespace Gamedya.Controllers
             var model = new SetProfilImageViewModel
             {
                 HasProfilImage = HasProfilImage(),
-                ProfilImage=User.GetUserImage()
+                ProfilImage = User.GetUserImage()
             };
             return View(model);
         }
@@ -341,6 +342,41 @@ namespace Gamedya.Controllers
                 return View(model);
             }
         }
+        //Mail gizli-açık durumunu değiştir.
+        public JsonResult ChangeMailPublic()
+        {
+            using (var uow = new UnitOfWork(new GameNewsDbContext()))
+            {
+                byte mesaj;
+                try
+                {
+                    string userId = User.GetUserId();
+                    var user = uow.NewsUser.Where(a => a.Id == userId).FirstOrDefault();
+                    if (user.IsMailPublic == true)
+                    {
+                        user.IsMailPublic = false;
+                        mesaj = 0;
+                    }
+                    else
+                    {
+                        user.IsMailPublic = true;
+                        mesaj = 1;
+                    }
+                    uow.NewsUser.Update(user);
+                    uow.Complete();
+                    return Json(mesaj, JsonRequestBehavior.AllowGet);
+                }
+                catch 
+                {
+                    mesaj = 2;
+                    return Json(mesaj, JsonRequestBehavior.AllowGet);
+                }
+
+            }
+        }
+
+
+
         //
         // GET: /Manage/ManageLogins
         public async Task<ActionResult> ManageLogins(ManageMessageId? message)
@@ -433,6 +469,17 @@ namespace Gamedya.Controllers
         {
             var user = UserManager.FindById(User.Identity.GetUserId());
             if (user.Image != null && user.Image != "")
+            {
+                return true;
+            }
+            return false;
+        }
+
+        //Mail adresinin herkese açık olma ayarı için yapıldı
+        private bool IsMailPublic()
+        {
+            var user = UserManager.FindById(User.Identity.GetUserId());
+            if (user.IsMailPublic == true)
             {
                 return true;
             }

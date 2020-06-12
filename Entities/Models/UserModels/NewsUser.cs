@@ -27,6 +27,8 @@ namespace Entites.Models.UserModels
         [Display(Name = "Profil Foto")]
         public string Image { get; set; }
 
+        public bool IsMailPublic { get; set; }
+
 
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<NewsUser> manager)
@@ -55,6 +57,7 @@ namespace Entites.Models.UserModels
         public ICollection<MessageRecipient> MessageRecipients { get; set; }
         public ICollection<Notification> Notifications { get; set; }
 
+        public ICollection<News> News { get; set; }
 
 
 

@@ -136,8 +136,14 @@
                             </ul>
                             <div style="float:right;margin-right:36px">
                                 <div class="input-group" style="margin-top: -20px;">
-
-                                    @using (Html.BeginForm("Index", "Search", FormMethod.Get, new { @class = "navbar - form", role = "search" }))
+                                    @{ 
+                                        var requestedControllerName = HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString();
+                                        if (requestedControllerName=="Home")
+                                        {
+                                            requestedControllerName = "News";
+                                        }
+                                     }
+                                    @using (Html.BeginForm("Index", requestedControllerName, FormMethod.Get, new { @class = "navbar - form", role = "search" }))
                                     {
                                         <div class="input-group-btn">
                                             <input class="form-control" id="ara" name="ara" placeholder="Arama.." type="text">

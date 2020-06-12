@@ -9,10 +9,10 @@
     {
         <div class="media">
             <div class="media-left" style="height:60px">
-                <a href="@Url.Action("Details", "Blog",new {id=item.Id})"><img class="media-object" src="@item.TinyImagePath" style="height:60px"></a>
+                <a href="@Url.Action("Details", "Blog",new {id=item.GenerateSlug()})"><img class="media-object" src="@item.TinyImagePath" style="height:60px"></a>
             </div><!--media-left-->
             <div class="media-body">
-                <h3 class="media-heading"><a href="@Url.Action("Details", "Blog",new {id=item.Id})">@item.Title</a></h3>
+                <h3 class="media-heading"><a href="@Url.Action("Details", "Blog",new {id=item.GenerateSlug()})">@item.Title</a></h3>
                 <div class="comment_box">
                     <div class="comments_icon"> <i class="fa fa-comments" aria-hidden="true"></i></div>
                     <div class="comments"><a href="#">@item.CommentCount</a></div>

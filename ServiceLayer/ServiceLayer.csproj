@@ -93,6 +93,8 @@
     <Compile Include="Repository\NewsRepository\INewsImageRepository.cs" />
     <Compile Include="Repository\NewsRepository\INewsRepository.cs" />
     <Compile Include="Repository\NotificationRepository\INotificationRepostory.cs" />
+    <Compile Include="Repository\RoleRepository\IRoleRepository.cs" />
+    <Compile Include="Repository\RoleRepository\RoleRepository.cs" />
     <Compile Include="Repository\StatusRepository\ILikeTableRepository.cs" />
     <Compile Include="Repository\StatusRepository\LikeTableRepository.cs" />
     <Compile Include="Repository\TwitchYoutubes\ITwitchYoutubeRepository.cs" />
