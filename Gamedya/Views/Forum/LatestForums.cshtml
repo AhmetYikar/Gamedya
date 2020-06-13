@@ -33,7 +33,7 @@
             </th>
 
             <td>
-                <a href="@Url.Action("Details", "Forum",new {id=item.Id})">     @Html.DisplayFor(modelItem => item.ForumTitle) </a>
+                <a href="@Url.Action("Details", "Forum",new {id=item.GenerateSlug()})">     @Html.DisplayFor(modelItem => item.ForumTitle) </a>
             </td>
 
             <td>
@@ -41,7 +41,7 @@
             </td>
 
             <td>
-                <a href="@Url.Action("Details", "Forum",new {id=item.Id})">     @item.Date.ToShortDateString()</a>
+                <a href="@Url.Action("Details", "Forum",new {id=item.GenerateSlug()})">     @item.Date.ToShortDateString()</a>
             <td>
 
             <td>

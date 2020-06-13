@@ -23,6 +23,10 @@ namespace Gamedya
           new RouteValueDictionary(new { controller = "blog", action = "Details" }),
           new MvcRouteHandler()));
 
+            routes.Add("ForumDetails", new SeoFriendlyRoute("forum/details/{id}",
+        new RouteValueDictionary(new { controller = "forum", action = "Details" }),
+        new MvcRouteHandler()));
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

@@ -32,14 +32,14 @@
                 <img src="@User.GetUserImage()" class="img-circle align-content-center" alt="User Image" style="height:50px;">
             </td>
             <td>
-                <a href="@Url.Action("Details", "Forum",new {id=item.Id})">  @Html.DisplayFor(modelItem => item.ForumTitle) </a>
+                <a href="@Url.Action("Details", "Forum",new {id=item.GenerateSlug()})">  @Html.DisplayFor(modelItem => item.ForumTitle) </a>
             </td>
 
             <td>
                 <a href="@Url.Action("Details", "Forum",new {id=item.Id})">    @Html.DisplayFor(modelItem => item.ViewCount) </a>
             </td>
             <td>
-                <a href="@Url.Action("Details", "Forum",new {id=item.Id})">    @Html.DisplayFor(modelItem => item.Date) </a>
+                <a href="@Url.Action("Details", "Forum",new {id=item.GenerateSlug()})">    @Html.DisplayFor(modelItem => item.Date) </a>
             </td>
             <td>
                 <a href="@Url.Action("Details", "Forum",new {id=item.Id})">   @Html.DisplayFor(modelItem => item.CategoryName) </a>
