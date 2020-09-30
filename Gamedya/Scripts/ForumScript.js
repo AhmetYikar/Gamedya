@@ -1,8 +1,10 @@
 ﻿function AddComment(data) {
-    var yourComment = $("#comment").val();  
+    
     var messageDiv = $("#back");
     var id = data;
+    
 
+    var yourComment = $("#comment").val();  
     $.ajax({
 
         url: '/ForumReply/AddComment/',

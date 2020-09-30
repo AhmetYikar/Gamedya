@@ -114,3 +114,5 @@ C:\Users\SnmzŞti\source\repos\Gamedya\DAL\obj\Debug\DAL.pdb
 C:\Users\ahmet\source\repos\Gamedya\DAL\obj\Debug\DAL.Migrations.forumReplylike.resources
 C:\Users\ahmet\source\repos\Gamedya\DAL\obj\Debug\DAL.csproj.GenerateResource.cache
 C:\Users\ahmet\source\repos\Gamedya\DAL\obj\Debug\DAL.Migrations.isMailPublic.resources
+C:\Users\SnmzŞti\source\repos\Gamedya\DAL\obj\Debug\DAL.Migrations.ilk.resources
+C:\Users\SnmzŞti\source\repos\Gamedya\DAL\obj\Debug\DAL.csproj.GenerateResource.cache

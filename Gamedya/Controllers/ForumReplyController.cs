@@ -31,7 +31,7 @@ namespace Gamedya.Controllers
 
 
         [HttpPost]
-        public JsonResult AddComment( string comment, int forumPostId)
+        public JsonResult AddComment(string comment, int forumPostId)
         {
             string mesaj;
             if (comment.Length<2)

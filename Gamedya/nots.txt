@@ -8,3 +8,4 @@
 *FAcebook vs paylaşımları haberlerin ayarlanacak.detailse de 
 *IsOk kontrolleri ve authorise kontrolleri unutmayalım
 *forumreply de ckeditor kullanınca value göndermiyor textarea kullanıca value alıyor.
+*POstların başına validationtoken yazlacak.
